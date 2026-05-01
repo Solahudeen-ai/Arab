@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arab Community of Lagos | Online Islamic Education & Recruitment</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: {
+                            DEFAULT: '#046A38', // Deep Emerald Green
+                            dark: '#034d28',
+                            light: '#0a8f4e'
+                        },
+                        gold: {
+                            DEFAULT: '#D4AF37', // Soft Gold/Brass
+                            light: '#e6c865'
+                        },
+                        alabaster: '#F9F9F9',
+                        midnight: '#2C3E50', // Charcoal/Midnight Blue
+                    },
+                    fontFamily: {
+                        heading: ['Outfit', 'sans-serif'],
+                        body: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Styles for nuances not easily handled by Tailwind utilities */
+        body {
+            background-color: #F9F9F9;
+            color: #2C3E50;
+        }
+        
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        /* Subtle Card Hover Effects */
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: #D4AF37;
+        }
+
+        /* FAQ Accordion Styling */
+        details > summary {
+            list-style: none;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        details[open] summary ~ * {
+            animation: sweep .3s ease-in-out;
+        }
+        @keyframes sweep {
+            0%    {opacity: 0; margin-top: -10px}
+            100%  {opacity: 1; margin-top: 0px}
+        }
+    </style>
+</head>
+<body class="font-body antialiased text-midnight">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-emerald flex items-center justify-center text-white text-xl">
+                        <i class="fa-solid fa-book-open-reader"></i>
+                    </div>
+                    <span class="font-heading font-bold text-2xl tracking-tight text-emerald">Arab Community<span class="text-gold">.</span></span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#home" class="text-midnight hover:text-emerald font-medium transition-colors">Home</a>
+                    <a href="#about" class="text-midnight hover:text-emerald font-medium transition-colors">About Us</a>
+                    <a href="#academy" class="text-midnight hover:text-emerald font-medium transition-colors">Online Academy</a>
+                    <a href="#recruitment" class="text-midnight hover:text-emerald font-medium transition-colors">Talent Portal</a>
+                    <a href="#contact" class="px-5 py-2.5 rounded-full bg-emerald text-white font-medium hover:bg-emerald-dark transition-colors shadow-md">Portal Login</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-midnight hover:text-emerald focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#home" class="block px-3 py-2 text-midnight font-medium hover:bg-gray-50 rounded-md">Home</a>
+                <a href="#about" class="block px-3 py-2 text-midnight font-medium hover:bg-gray-50 rounded-md">About Us</a>
+                <a href="#academy" class="block px-3 py-2 text-midnight font-medium hover:bg-gray-50 rounded-md">Online Academy</a>
+                <a href="#recruitment" class="block px-3 py-2 text-midnight font-medium hover:bg-gray-50 rounded-md">Talent Portal</a>
+                <a href="#contact" class="block px-3 py-2 text-emerald font-bold hover:bg-gray-50 rounded-md">Portal Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page 1: Home (Hero Section) -->
+    <section id="home" class="pt-32 pb-20 lg:pt-48 lg:pb-32 bg-alabaster">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+                    <div class="inline-block px-4 py-1.5 rounded-full bg-emerald/10 text-emerald font-semibold text-sm tracking-wide">
+                        Online Education & Employment Compliance
+                    </div>
+                    <h1 class="font-heading text-5xl lg:text-6xl font-bold leading-tight text-midnight">
+                        Bridging Classical Scholarship & <span class="text-emerald">Modern Education</span>
+                    </h1>
+                    <p class="text-lg text-slate-600 leading-relaxed max-w-xl">
+                        The premier online portal in Nigeria for mastering Islamic sciences and a trusted intermediary connecting vetted, highly-qualified Ustadhs with integrated Muslim schools.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                        <a href="#academy" class="px-8 py-4 rounded-xl bg-emerald text-white text-center font-semibold hover:bg-emerald-dark transition-all shadow-lg hover:shadow-emerald/30">
+                            Start Learning Online
+                        </a>
+                        <a href="#recruitment" class="px-8 py-4 rounded-xl bg-white border-2 border-slate-200 text-midnight text-center font-semibold hover:border-gold hover:text-gold transition-all">
+                            Hire a Vetted Ustadh
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Graphic/Abstract Representation -->
+                <div class="relative hidden lg:block">
+                    <div class="absolute inset-0 bg-gold/20 rounded-full blur-3xl transform -translate-x-10 translate-y-10"></div>
+                    <div class="bg-white p-8 rounded-3xl shadow-2xl relative border border-gray-100 z-10 grid grid-cols-2 gap-6">
+                        <div class="bg-alabaster p-6 rounded-2xl flex flex-col items-center justify-center text-center gap-4 card-hover">
+                            <div class="w-16 h-16 rounded-full bg-emerald/10 text-emerald flex items-center justify-center text-2xl">
+                                <i class="fa-solid fa-laptop-code"></i>
+                            </div>
+                            <h3 class="font-heading font-bold">100% Online</h3>
+                            <p class="text-sm text-slate-500">Learn from anywhere in Nigeria.</p>
+                        </div>
+                        <div class="bg-alabaster p-6 rounded-2xl flex flex-col items-center justify-center text-center gap-4 card-hover translate-y-8">
+                            <div class="w-16 h-16 rounded-full bg-gold/20 text-gold flex items-center justify-center text-2xl">
+                                <i class="fa-solid fa-shield-halved"></i>
+                            </div>
+                            <h3 class="font-heading font-bold">TRCN Compliant</h3>
+                            <p class="text-sm text-slate-500">Rigorous vetting & guarantor frameworks.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 2: About Us -->
+    <section id="about" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="font-heading text-3xl md:text-4xl font-bold text-midnight mb-4">Pioneering the Future of Islamic Scholarship</h2>
+                <div class="h-1 w-20 bg-gold mx-auto rounded-full mb-6"></div>
+                <p class="text-lg text-slate-600">Addressing the historical divide between Western education and Islamic learning through a modern, digital-first approach.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-alabaster p-8 rounded-2xl border border-gray-100 card-hover">
+                    <i class="fa-solid fa-book-quran text-3xl text-emerald mb-6"></i>
+                    <h3 class="font-heading text-xl font-bold mb-3">Our Story</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Founded to remove geographical barriers, the Arab Community of Lagos operates strictly online. We bring authentic Islamic texts to the modern digital era, ensuring knowledge is accessible to all earnest seekers.
+                    </p>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-alabaster p-8 rounded-2xl border border-gray-100 card-hover">
+                    <i class="fa-solid fa-bridge text-3xl text-gold mb-6"></i>
+                    <h3 class="font-heading text-xl font-bold mb-3">The Educational Divide</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Research shows a critical gap in Western Nigeria between classical Madrasah scholarship and integrated schools. We serve as the bridge, synchronizing deep Islamic sciences with contemporary academic rigor.
+                    </p>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-alabaster p-8 rounded-2xl border border-gray-100 card-hover">
+                    <i class="fa-solid fa-users-gear text-3xl text-emerald mb-6"></i>
+                    <h3 class="font-heading text-xl font-bold mb-3">Expert Leadership</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Guided by a board of seasoned scholars and modern educational compliance experts, we ensure that traditional values are upheld while meeting strict legal and professional employment standards.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 3: Online Academy -->
+    <section id="academy" class="py-24 bg-midnight text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                <div class="max-w-2xl">
+                    <h2 class="font-heading text-3xl md:text-4xl font-bold mb-4">Master the Sciences of the Qur'an and Arabic</h2>
+                    <div class="h-1 w-20 bg-emerald mx-0 rounded-full mb-6"></div>
+                    <p class="text-slate-300 text-lg">
+                        Experience a seamless online learning environment. From live virtual classrooms to recorded classical text libraries, we bring the Madrasah to your screen.
+                    </p>
+                </div>
+                <a href="#contact" class="px-6 py-3 rounded-xl bg-gold text-midnight font-bold hover:bg-white transition-colors flex items-center gap-2">
+                    View Course Catalog <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Course 1 -->
+                <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700 hover:border-emerald transition-colors group cursor-pointer">
+                    <div class="w-12 h-12 rounded-lg bg-emerald/20 text-emerald flex items-center justify-center text-xl mb-6 group-hover:bg-emerald group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-microphone-lines"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold mb-2">Science of Tajweed</h3>
+                    <p class="text-slate-400 text-sm">Perfect your elocution and recitation of the Qur'an with precise articulation points.</p>
+                </div>
+                <!-- Course 2 -->
+                <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700 hover:border-gold transition-colors group cursor-pointer">
+                    <div class="w-12 h-12 rounded-lg bg-gold/20 text-gold flex items-center justify-center text-xl mb-6 group-hover:bg-gold group-hover:text-midnight transition-colors">
+                        <i class="fa-solid fa-music"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold mb-2">Maqamat</h3>
+                    <p class="text-slate-400 text-sm">Explore the beautiful voice melodies and traditional modes of Quranic recitation.</p>
+                </div>
+                <!-- Course 3 -->
+                <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700 hover:border-emerald transition-colors group cursor-pointer">
+                    <div class="w-12 h-12 rounded-lg bg-emerald/20 text-emerald flex items-center justify-center text-xl mb-6 group-hover:bg-emerald group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-language"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold mb-2">Arabic Linguistics</h3>
+                    <p class="text-slate-400 text-sm">Master Nahw (grammar), Sarf (morphology), and Balagha (rhetoric) online.</p>
+                </div>
+                <!-- Course 4 -->
+                <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700 hover:border-gold transition-colors group cursor-pointer">
+                    <div class="w-12 h-12 rounded-lg bg-gold/20 text-gold flex items-center justify-center text-xl mb-6 group-hover:bg-gold group-hover:text-midnight transition-colors">
+                        <i class="fa-solid fa-scale-balanced"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold mb-2">Classical Fiqh</h3>
+                    <p class="text-slate-400 text-sm">Comprehensive study of Islamic jurisprudence structured for modern comprehension.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 4: Talent & Recruitment Intermediary -->
+    <section id="recruitment" class="py-24 bg-alabaster">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="font-heading text-3xl md:text-4xl font-bold text-midnight mb-4">The Premier Network for Qualified Ustadhs</h2>
+                <div class="h-1 w-20 bg-emerald mx-auto rounded-full mb-6"></div>
+                <p class="text-lg text-slate-600">A secure, compliant portal for integrated Muslim schools to hire trusted educators, and for scholars to elevate their teaching careers.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <!-- Left: Compliance Info -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                        <h3 class="font-heading text-2xl font-bold text-midnight mb-4 flex items-center gap-3">
+                            <i class="fa-solid fa-file-shield text-gold"></i> Our Guarantee of Integrity
+                        </h3>
+                        <p class="text-slate-600 mb-6">We eliminate the risk of hiring unverified staff. Our robust vetting process adheres strictly to Nigerian educational standards.</p>
+                        
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-4">
+                                <div class="w-8 h-8 rounded-full bg-emerald/10 text-emerald flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="fa-solid fa-check"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-midnight">Academic Verification (TRCN)</h4>
+                                    <p class="text-sm text-slate-500">Mandatory verification of degrees and Teachers Registration Council of Nigeria certification.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-8 h-8 rounded-full bg-emerald/10 text-emerald flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="fa-solid fa-check"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-midnight">Legal Guarantor Framework</h4>
+                                    <p class="text-sm text-slate-500">Comprehensive guarantor requirements to mitigate gross misconduct and ensure liability protection.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-8 h-8 rounded-full bg-emerald/10 text-emerald flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="fa-solid fa-check"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-midnight">Behavioral & Background Screening</h4>
+                                    <p class="text-sm text-slate-500">In-depth background checks via accredited educational and criminal databases in Nigeria.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Right: Action Cards -->
+                <div class="lg:col-span-5 space-y-6">
+                    <!-- School Card -->
+                    <div class="bg-emerald p-8 rounded-2xl text-white shadow-lg card-hover relative overflow-hidden">
+                        <div class="absolute -right-4 -top-4 opacity-10 text-9xl"><i class="fa-solid fa-school"></i></div>
+                        <h3 class="font-heading text-2xl font-bold mb-2 relative z-10">For Schools</h3>
+                        <p class="text-emerald-100 mb-6 relative z-10">Access our database of pre-vetted, highly qualified Ustadhs ready to teach.</p>
+                        <button class="w-full py-3 bg-white text-emerald font-bold rounded-xl hover:bg-gray-50 transition-colors relative z-10 shadow-sm">
+                            Request Talent Portal Access
+                        </button>
+                    </div>
+
+                    <!-- Ustadh Card -->
+                    <div class="bg-midnight p-8 rounded-2xl text-white shadow-lg card-hover relative overflow-hidden">
+                        <div class="absolute -right-4 -top-4 opacity-10 text-9xl"><i class="fa-solid fa-chalkboard-user"></i></div>
+                        <h3 class="font-heading text-2xl font-bold mb-2 relative z-10">For Educators</h3>
+                        <p class="text-slate-300 mb-6 relative z-10">Upload your credentials, complete your guarantor forms, and join our talent pool.</p>
+                        <button class="w-full py-3 bg-gold text-midnight font-bold rounded-xl hover:bg-gold-light transition-colors relative z-10 shadow-sm">
+                            Apply to Teach
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 5: Connect & Support -->
+    <section id="contact" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                
+                <!-- Contact Form -->
+                <div>
+                    <h2 class="font-heading text-3xl font-bold text-midnight mb-2">Reach Out to Our Team</h2>
+                    <p class="text-slate-600 mb-8">Whether you want to enroll in a course or partner with us for recruitment, send us a message.</p>
+                    
+                    <form class="space-y-5 bg-alabaster p-8 rounded-2xl border border-gray-100 shadow-sm">
+                        <div class="grid grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-1">First Name</label>
+                                <input type="text" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-emerald focus:border-transparent transition-shadow" placeholder="Ali">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-1">Last Name</label>
+                                <input type="text" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-emerald focus:border-transparent transition-shadow" placeholder="Ogunbayo">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-1">Email Address</label>
+                            <input type="email" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-emerald focus:border-transparent transition-shadow" placeholder="ali@example.com">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-1">Inquiry Type</label>
+                            <select class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-emerald focus:border-transparent transition-shadow bg-white">
+                                <option>Online Academy Admission</option>
+                                <option>School Recruitment Request</option>
+                                <option>Ustadh Job Application</option>
+                                <option>General Inquiry</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-1">Message</label>
+                            <textarea rows="4" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-emerald focus:border-transparent transition-shadow" placeholder="How can we help you?"></textarea>
+                        </div>
+                        <button type="button" class="w-full py-4 bg-emerald text-white font-bold rounded-xl hover:bg-emerald-dark transition-colors shadow-md">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Login Portals & FAQ -->
+                <div class="space-y-12">
+                    <!-- Portals -->
+                    <div>
+                        <h3 class="font-heading text-2xl font-bold text-midnight mb-6">Access Your Dashboard</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <a href="#" class="flex items-center justify-between p-6 bg-white border border-gray-200 rounded-2xl hover:border-gold hover:shadow-md transition-all group">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 rounded-full bg-slate-100 text-midnight flex items-center justify-center group-hover:bg-gold/20 group-hover:text-gold transition-colors">
+                                        <i class="fa-solid fa-user-graduate"></i>
+                                    </div>
+                                    <span class="font-bold text-midnight">Student Login</span>
+                                </div>
+                                <i class="fa-solid fa-chevron-right text-slate-400 group-hover:text-gold transition-colors"></i>
+                            </a>
+                            <a href="#" class="flex items-center justify-between p-6 bg-white border border-gray-200 rounded-2xl hover:border-emerald hover:shadow-md transition-all group">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 rounded-full bg-slate-100 text-midnight flex items-center justify-center group-hover:bg-emerald/20 group-hover:text-emerald transition-colors">
+                                        <i class="fa-solid fa-building-columns"></i>
+                                    </div>
+                                    <span class="font-bold text-midnight">School Admin</span>
+                                </div>
+                                <i class="fa-solid fa-chevron-right text-slate-400 group-hover:text-emerald transition-colors"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- FAQ -->
+                    <div>
+                        <h3 class="font-heading text-2xl font-bold text-midnight mb-6">Common Inquiries</h3>
+                        <div class="space-y-4">
+                            <!-- FAQ Item 1 -->
+                            <details class="group bg-alabaster rounded-2xl border border-gray-100 overflow-hidden" open>
+                                <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-5 text-midnight">
+                                    <span>Are the Academy courses fully online?</span>
+                                    <span class="transition group-open:rotate-180">
+                                        <i class="fa-solid fa-chevron-down text-gold"></i>
+                                    </span>
+                                </summary>
+                                <div class="text-slate-600 p-5 pt-0 text-sm leading-relaxed">
+                                    Yes. The Arab Community of Lagos operates strictly as an online-based institution to remove geographical barriers and provide flexible learning across Nigeria and beyond.
+                                </div>
+                            </details>
+                            
+                            <!-- FAQ Item 2 -->
+                            <details class="group bg-alabaster rounded-2xl border border-gray-100 overflow-hidden">
+                                <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-5 text-midnight">
+                                    <span>How do you verify teachers for schools?</span>
+                                    <span class="transition group-open:rotate-180">
+                                        <i class="fa-solid fa-chevron-down text-gold"></i>
+                                    </span>
+                                </summary>
+                                <div class="text-slate-600 p-5 pt-0 text-sm leading-relaxed">
+                                    We conduct a rigorous multi-step vetting process including TRCN certification checks, background screening, and a mandatory legal guarantor framework to ensure total compliance with employment laws.
+                                </div>
+                            </details>
+
+                            <!-- FAQ Item 3 -->
+                            <details class="group bg-alabaster rounded-2xl border border-gray-100 overflow-hidden">
+                                <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-5 text-midnight">
+                                    <span>Is there a fee for schools to use the portal?</span>
+                                    <span class="transition group-open:rotate-180">
+                                        <i class="fa-solid fa-chevron-down text-gold"></i>
+                                    </span>
+                                </summary>
+                                <div class="text-slate-600 p-5 pt-0 text-sm leading-relaxed">
+                                    We operate on a standard recruitment agency commission structure (typically a percentage of the first-year salary) or a retainer model, depending on the volume of hiring required.
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-midnight text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-emerald flex items-center justify-center text-white text-sm">
+                    <i class="fa-solid fa-book-open-reader"></i>
+                </div>
+                <span class="font-heading font-bold text-xl text-white">Arab Community<span class="text-gold">.</span></span>
+            </div>
+            <div class="text-sm text-center md:text-left">
+                &copy; 2026 Arab Community of Lagos. All rights reserved. A fully online institution.
+            </div>
+            <div class="flex space-x-4">
+                <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-emerald hover:text-white transition-colors"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-gold hover:text-white transition-colors"><i class="fa-regular fa-envelope"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Toggle Script -->
+    <script>
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            var menu = document.getElementById('mobile-menu');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+            } else {
+                menu.classList.add('hidden');
+            }
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+
+        // Navbar blur effect on scroll
+        window.addEventListener('scroll', function() {
+            var nav = document.getElementById('navbar');
+            if (window.scrollY > 10) {
+                nav.classList.add('shadow-sm');
+            } else {
+                nav.classList.remove('shadow-sm');
+            }
+        });
+    </script>
+</body>
+</html>
