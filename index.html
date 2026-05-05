@@ -451,25 +451,8 @@ src="https://www.facebook.com/tr?id=3318762058284977&ev=PageView&noscript=1"
                                 <span>Submit & Proceed to Paystack</span>
                             </button>
                         </div> 
-                    
+        </form>            
   <script>
-    document.getElementById('enrollmentForm').addEventListener('submit', function(e) {
-        e.preventDefault(); 
-        
-        document.getElementById('btnText').innerText = "Connecting securely...";
-        document.getElementById('btnIcon').style.display = "none";
-
-        const formData = new FormData(this);
-
-        // Make sure your Make.com link has ' ' around it
-        fetch('https://hook.us1.make.com/your-make-link', {
-            method: 'POST',
-            body: formData
-        }).catch(error => console.error('Webhook error:', error));
-
-        setTimeout(() => {
-            // Make sure your Paystack link has ' ' around it
-            window.location.href = '<script>
     document.getElementById('enrollmentForm').addEventListener('submit', function(e) {
         e.preventDefault(); 
         
@@ -493,7 +476,7 @@ src="https://www.facebook.com/tr?id=3318762058284977&ev=PageView&noscript=1"
         }, 500); 
     });
 </script>
-     </form>
+    
              </div>   
 
                 <!-- Login Portals & FAQ -->
