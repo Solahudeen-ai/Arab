@@ -411,7 +411,7 @@ src="https://www.facebook.com/tr?id=3318762058284977&ev=PageView&noscript=1"
                     <h2 class="font-heading text-3xl font-bold text-midnight mb-2">Student Application Form</h2>
                     <p class="text-slate-600 mb-8">Academic Year 2026</p>
                    
-                    <form action="https://hook.eu1.make.com/hiyiax5py9qflvy9x4lwvq56xyk1n0gs" method="POST" class="space-y-5 bg-alabaster p-8 rounded-2xl border border-gray-100 shadow-sm">
+                    <form id="enroll" class="space-y-5 bg-alabaster p-8 rounded-2xl border border-gray-100 shadow-sm">
                         <div class="grid grid-cols-2 gap-5">
                             <div>
                                 <label class="block text-sm font-semibold text-slate-700 mb-1">Full Name<span class="text-red-500">*</span></label>
@@ -452,30 +452,45 @@ src="https://www.facebook.com/tr?id=3318762058284977&ev=PageView&noscript=1"
                             </button>
                         </div> 
                     </form>
-                 <script>
+  <script>
     document.getElementById('enrollmentForm').addEventListener('submit', function(e) {
-        // 1. Stop the form from loading a new page normally
         e.preventDefault(); 
         
-        // Change button text to show it's loading
         document.getElementById('btnText').innerText = "Connecting securely...";
         document.getElementById('btnIcon').style.display = "none";
 
-        // 2. Gather the student data
         const formData = new FormData(this);
 
-        // 3. Send data to Make.com in the background (Silently)
-        // REPLACE THE LINK BELOW WITH YOUR MAKE.COM WEBHOOK URL
+        // Make sure your Make.com link has ' ' around it
+        fetch('https://hook.us1.make.com/your-make-link', {
+            method: 'POST',
+            body: formData
+        }).catch(error => console.error('Webhook error:', error));
+
+        setTimeout(() => {
+            // Make sure your Paystack link has ' ' around it
+            window.location.href = '<script>
+    document.getElementById('enrollmentForm').addEventListener('submit', function(e) {
+        e.preventDefault(); 
+        
+        document.getElementById('btnText').innerText = "Connecting securely...";
+        document.getElementById('btnIcon').style.display = "none";
+
+        const formData = new FormData(this);
+
+        // Make sure your Make.com link has ' ' around it
         fetch('https://hook.eu1.make.com/hiyiax5py9qflvy9x4lwvq56xyk1n0gs', {
             method: 'POST',
             body: formData
         }).catch(error => console.error('Webhook error:', error));
 
-        // 4. Instantly redirect the student to Paystack
-        // REPLACE THE LINK BELOW WITH YOUR PAYSTACK LINK
         setTimeout(() => {
-            window.location.href = 'https://paystack.shop/pay/arab';
-        }, 500); // 500ms delay just to ensure the webhook catches the data
+            // Make sure your Paystack link has ' ' around it
+            window.location.href = 'https://paystack.com/pay/your-paystack-link';
+        }, 500); 
+    });
+</script>';
+        }, 500); 
     });
 </script>
              </div>   
