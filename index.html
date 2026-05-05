@@ -453,28 +453,42 @@ src="https://www.facebook.com/tr?id=3318762058284977&ev=PageView&noscript=1"
                         </div>            
                     </form>  
                     
-                    <script>
-                        document.getElementById('enrollmentForm').addEventListener('submit', function(e) {
-                            e.preventDefault(); 
-                            
-                            document.getElementById('btnText').innerText = "Connecting securely...";
-                            document.getElementById('btnIcon').style.display = "none";
+                <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.getElementById('enrollmentForm');
+        
+        form.addEventListener('submit', function(e) {
+            // Stop the form from submitting normally and reloading the page
+            e.preventDefault(); 
+            
+            // Safely change the button text
+            const btnText = document.getElementById('btnText');
+            const btnIcon = document.getElementById('btnIcon');
+            
+            if (btnText) {
+                btnText.innerText = "Connecting securely...";
+            }
+            if (btnIcon) {
+                btnIcon.style.display = "none";
+            }
 
-                            const formData = new FormData(this);
+            // Capture the form data
+            const formData = new FormData(this);
 
-                            fetch('https://hook.eu1.make.com/hiyiax5py9qflvy9x4lwvq56xyk1n0gs', {
-                                method: 'POST',
-                                body: formData
-                            }).catch(error => console.error('Webhook error:', error));
+            // Send silently to Make.com in the background
+            fetch('https://hook.eu1.make.com/hiyiax5py9qflvy9x4lwvq56xyk1n0gs', {
+                method: 'POST',
+                body: formData
+            }).catch(error => console.error('Webhook error:', error));
 
-                            setTimeout(() => {
-                                window.location.href = 'https://paystack.shop/pay/arab';
-                            }, 500); 
-                        });
-                    </script>
+            // Redirect to Paystack
+            setTimeout(() => {
+                window.location.href = 'https://paystack.shop/pay/arab';
+            }, 500); 
+        });
+    });
+</script>
                 </div>
-                
-                <div></div>
                 
             </div>
         </div>
