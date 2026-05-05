@@ -452,9 +452,33 @@ src="https://www.facebook.com/tr?id=3318762058284977&ev=PageView&noscript=1"
                             </button>
                         </div> 
                     </form>
-                </div>
-        </div>
-    </section>
+                 <script>
+    document.getElementById('enrollmentForm').addEventListener('submit', function(e) {
+        // 1. Stop the form from loading a new page normally
+        e.preventDefault(); 
+        
+        // Change button text to show it's loading
+        document.getElementById('btnText').innerText = "Connecting securely...";
+        document.getElementById('btnIcon').style.display = "none";
+
+        // 2. Gather the student data
+        const formData = new FormData(this);
+
+        // 3. Send data to Make.com in the background (Silently)
+        // REPLACE THE LINK BELOW WITH YOUR MAKE.COM WEBHOOK URL
+        fetch('https://hook.eu1.make.com/hiyiax5py9qflvy9x4lwvq56xyk1n0gs', {
+            method: 'POST',
+            body: formData
+        }).catch(error => console.error('Webhook error:', error));
+
+        // 4. Instantly redirect the student to Paystack
+        // REPLACE THE LINK BELOW WITH YOUR PAYSTACK LINK
+        setTimeout(() => {
+            window.location.href = 'https://paystack.com/pay/your-payment-link';
+        }, 500); // 500ms delay just to ensure the webhook catches the data
+    });
+</script>
+             </div>   
 
                 <!-- Login Portals & FAQ -->
                 <div class="space-y-12">
