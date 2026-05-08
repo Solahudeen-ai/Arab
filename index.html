@@ -38,26 +38,19 @@
                 }
             }
         }
-     /* Responsive Video Container - Keeps 16:9 ratio */
-.video-wrapper {
+   /* Ensure the page can actually scroll */
+html, body {
+    height: auto !important;
+    overflow-x: hidden; /* Prevents side-scrolling */
+    overflow-y: visible !important; /* Forces vertical scrolling to work */
+}
+
+/* Ensure the video container is part of the flow */
+.video-section-container {
+    display: block;
     position: relative;
-    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-    height: 0;
-    overflow: hidden;
-}
-
-.video-wrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
-    height: 100%;
-    border: none;
-}
-
-/* Custom Glow for the Gold Border */
-.gold-glow {
-    box-shadow: 0 0 25px rgba(212, 175, 55, 0.15);
+    clear: both; /* Ensures no floating elements block it */
 }
     </script>
 
@@ -140,33 +133,30 @@
                 <a href="#contact" class="block px-3 py-2 text-emerald font-bold hover:bg-gray-50 rounded-md">Portal Login</a>
             </div>
         </div>
-   <section class="py-16 md:py-24 bg-alabaster">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+ <section class="video-section-container py-12 md:py-20 bg-alabaster">
+    <div class="max-w-5xl mx-auto px-4">
         
-        <div class="text-center mb-12">
-            <h2 class="font-heading text-3xl md:text-5xl text-midnight font-bold tracking-tight mb-4">
-                Excellence in Every Lesson
-            </h2>
-            <div class="w-20 h-1.5 bg-gold mx-auto rounded-full"></div>
-            <p class="mt-6 font-body text-lg text-midnight/70 max-w-2xl mx-auto">
-                Join our founder for a brief overview of our curriculum and scholarly vision.
-            </p>
+        <div class="text-center mb-8">
+            <h2 class="text-3xl font-heading font-bold text-midnight">Founder's Welcome</h2>
+            <div class="h-1 w-16 bg-gold mx-auto mt-2"></div>
         </div>
 
-        <div class="card-hover gold-glow border-4 border-gold rounded-3xl overflow-hidden bg-midnight shadow-2xl">
+        <div class="card-hover border-4 border-gold rounded-2xl overflow-hidden bg-midnight shadow-2xl">
             <div class="video-wrapper">
                 <iframe 
-                    src="https://www.youtube.com/embed/YOUR_VIDEO_ID?rel=0&modestbranding=1&showinfo=0" 
-                    title="Arab Community of Lagos Welcome Video" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    src="https://www.youtube.com/embed/YOUR_VIDEO_ID?rel=0" 
+                    title="YouTube video player" 
                     allowfullscreen>
                 </iframe>
             </div>
         </div>
-
-        <p class="text-center mt-8 font-body text-sm text-midnight/50 uppercase tracking-widest font-semibold">
-            Institutional Overview • 2026 Academic Session
-        </p>
+        
+    </div>
+</section>
+<section class="py-12">
+    <div class="max-w-4xl mx-auto text-center text-midnight">
+        <h3 class="text-2xl font-bold">Your Remaining Page Content</h3>
+        <p>This should now be visible below the video when you scroll.</p>
     </div>
 </section>
     </nav>
