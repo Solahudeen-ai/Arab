@@ -231,6 +231,194 @@ src="https://www.facebook.com/tr?id=3318762058284977&ev=PageView&noscript=1"
   </div>
     </section>
 
+     <div id="acl-leadership-section" class="font-sans text-gray-800 antialiased bg-slate-50 py-16">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Merriweather:wght@400;700;900&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Merriweather', 'serif'] },
+          colors: {
+            acl: {
+              dark: '#0f172a',    // Midnight Academic Blue
+              primary: '#1e40af', // Royal Blue
+              accent: '#d97706',  // Scholarly Gold
+              light: '#f8fafc'    // Slate Off-White
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .fade-in { animation: fadeIn 0.5s ease-in-out forwards; }
+    @keyframes fadeIn { 
+      from { opacity: 0; transform: translateY(15px); } 
+      to { opacity: 1; transform: translateY(0); } 
+    }
+  </style>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div id="view-directory" class="fade-in block">
+      <div class="text-center mb-16">
+        <h2 class="font-serif text-3xl md:text-5xl font-bold text-acl-dark mb-4">Leadership & Administration</h2>
+        <div class="w-24 h-1 bg-acl-accent mx-auto mb-6"></div>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          Guided by decades of academic excellence and a commitment to the advancement of Arabic and Islamic Studies through our innovative online-based institution.
+        </p>
+      </div>
+
+      <div class="max-w-sm mx-auto bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-300">
+        <div class="h-72 bg-gray-200 relative overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dr. Salahudeen Murtada Adekunle" class="w-full h-full object-cover object-top">
+        </div>
+        <div class="p-8 text-center flex flex-col">
+          <span class="text-xs font-bold text-acl-accent tracking-widest uppercase mb-2">President</span>
+          <h3 class="font-serif text-xl font-bold text-acl-dark mb-3">Dr. Salahudeen Murtada Adekunle, Ph.D.</h3>
+          <p class="text-gray-600 text-sm mb-6 leading-relaxed">
+            A distinguished academic and Senior Lecturer with over 40 years of educational experience, dedicated to driving scholarly excellence.
+          </p>
+          <button onclick="switchProfileView('view-profile')" class="w-full inline-flex justify-center items-center gap-2 bg-acl-primary hover:bg-blue-900 text-white font-medium py-3 px-4 rounded-lg transition-colors shadow-md group">
+            Read Full Profile
+            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+    <div id="view-profile" class="hidden">
+      
+      <button onclick="switchProfileView('view-directory')" class="inline-flex items-center gap-2 text-acl-primary hover:text-blue-900 font-semibold mb-8 transition-colors group">
+        <i data-lucide="arrow-left" class="w-5 h-5 group-hover:-translate-x-1 transition-transform"></i>
+        Back to Leadership Directory
+      </button>
+
+      <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
+        <div class="grid grid-cols-1 lg:grid-cols-12">
+          
+          <div class="lg:col-span-4 bg-acl-dark text-white p-8 md:p-10 flex flex-col items-center lg:items-start text-center lg:text-left relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-acl-primary rounded-full mix-blend-multiply filter blur-3xl opacity-50 translate-x-1/2 -translate-y-1/2"></div>
+            
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dr. Salahudeen" class="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover object-top border-4 border-acl-accent shadow-2xl mb-8 relative z-10">
+            
+            <div class="text-acl-accent font-bold tracking-widest uppercase text-sm mb-2 relative z-10">President</div>
+            <h1 class="font-serif text-3xl md:text-4xl font-bold mb-6 relative z-10">Dr. Salahudeen Murtada Adekunle</h1>
+            
+            <div class="w-full border-t border-white/20 pt-6 mt-2 space-y-4 text-sm text-gray-300 relative z-10">
+              <div class="flex items-center gap-3 justify-center lg:justify-start">
+                <i data-lucide="graduation-cap" class="w-5 h-5 text-acl-accent"></i>
+                <span>Ph.D., University of Ibadan (2013)</span>
+              </div>
+              <div class="flex items-center gap-3 justify-center lg:justify-start">
+                <i data-lucide="award" class="w-5 h-5 text-acl-accent"></i>
+                <span>40+ Years of Academic Leadership</span>
+              </div>
+              <div class="flex items-center gap-3 justify-center lg:justify-start">
+                <i data-lucide="book-open" class="w-5 h-5 text-acl-accent"></i>
+                <span>Senior Lecturer & Lead Researcher</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-8 p-8 md:p-12 lg:p-14 fade-in">
+            
+            <h2 class="font-serif text-2xl md:text-3xl font-bold text-acl-dark mb-6 border-b border-gray-100 pb-4">
+              Executive Biography
+            </h2>
+            
+            <div class="prose prose-lg text-gray-600 space-y-5 leading-relaxed mb-12">
+              <p>
+                Dr. Salahudeen Murtada Adekunle is a highly accomplished scholar and educational administrator, bringing profound expertise to the helm of our fully online-based learning community. His academic foundation spans multiple prestigious institutions, including the Institute Arabe Islamique in Togo, the University of Kuwait where he earned a Diploma in Arabic Language, and the University of Ibadan, where he was awarded his Doctor of Philosophy (Ph.D.) in 2013.
+              </p>
+              <p>
+                With a teaching career originating in 1973, he has dedicated decades to the advancement of Arabic and Islamic Studies. He serves as a Senior Lecturer at Emmanuel Alayande University of Education, Oyo. His administrative excellence is consistently demonstrated by his multiple tenures as the Head of the Department of Islamic Studies at the same institution.
+              </p>
+              <p>
+                Dr. Salahudeen is a prolific author and lead researcher. He has published foundational texts such as <em>A Compendium of Tajwiid: (Quranic Rules of Recitation)</em> and <em>Essentials of Islamic Law of Inheritance</em>, alongside extensive contributions to academic journals. His leadership extends deeply into the community, where he has served as the Chairman of the Nigeria Association of Teachers of Arabic and Islamic Studies (NATAIS) for the Oyo State Chapter and as a prominent Imam.
+              </p>
+            </div>
+
+            <h2 class="font-serif text-2xl font-bold text-acl-dark mb-6 border-b border-gray-100 pb-4">Key Pillars of Authority</h2>
+            
+            <ul class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-12">
+              <li class="flex items-start gap-3 bg-slate-50 p-5 rounded-xl border border-slate-100">
+                <i data-lucide="check-circle" class="w-6 h-6 text-acl-primary shrink-0 mt-0.5"></i>
+                <div>
+                  <strong class="block text-acl-dark mb-1">Academic Pedigree</strong>
+                  <span class="text-sm text-gray-600">Ph.D. (Univ. of Ibadan), M.A. (Univ. of Jos), Diploma in Arabic (Univ. of Kuwait).</span>
+                </div>
+              </li>
+              <li class="flex items-start gap-3 bg-slate-50 p-5 rounded-xl border border-slate-100">
+                <i data-lucide="check-circle" class="w-6 h-6 text-acl-primary shrink-0 mt-0.5"></i>
+                <div>
+                  <strong class="block text-acl-dark mb-1">Educational Leadership</strong>
+                  <span class="text-sm text-gray-600">Senior Lecturer and former Head of the Department of Islamic Studies at Emmanuel Alayande University of Education.</span>
+                </div>
+              </li>
+              <li class="flex items-start gap-3 bg-slate-50 p-5 rounded-xl border border-slate-100">
+                <i data-lucide="check-circle" class="w-6 h-6 text-acl-primary shrink-0 mt-0.5"></i>
+                <div>
+                  <strong class="block text-acl-dark mb-1">Scholarly Impact</strong>
+                  <span class="text-sm text-gray-600">Author of <em>Essentials of Islamic Law of Inheritance</em> and over 30 peer-reviewed journal articles.</span>
+                </div>
+              </li>
+              <li class="flex items-start gap-3 bg-slate-50 p-5 rounded-xl border border-slate-100">
+                <i data-lucide="check-circle" class="w-6 h-6 text-acl-primary shrink-0 mt-0.5"></i>
+                <div>
+                  <strong class="block text-acl-dark mb-1">Professional Affiliations</strong>
+                  <span class="text-sm text-gray-600">Chairman (Oyo Chapter) for NATAIS and certified member of the Teacher Registration Council of Nigeria (TRCN).</span>
+                </div>
+              </li>
+            </ul>
+
+            <div class="bg-blue-50 border border-blue-200 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+              <div class="text-center md:text-left">
+                <h3 class="font-serif font-bold text-xl text-acl-dark mb-2">Full Academic Curriculum Vitae</h3>
+                <p class="text-gray-600 text-sm max-w-md">Review Dr. Salahudeen's complete 10-page academic history, comprehensive publications, and professional appointments.</p>
+              </div>
+              <a href="#" target="_blank" class="shrink-0 inline-flex items-center gap-2 bg-acl-dark hover:bg-black text-white font-semibold py-3 px-6 rounded-lg transition-all shadow-lg hover:shadow-xl group">
+                <i data-lucide="file-text" class="w-5 h-5 group-hover:-translate-y-1 transition-transform"></i>
+                Download C.V. (PDF)
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Initialize icons
+    lucide.createIcons();
+
+    // Function to switch between Directory and Profile seamlessly
+    function switchProfileView(targetId) {
+      const dirView = document.getElementById('view-directory');
+      const profView = document.getElementById('view-profile');
+      
+      if (targetId === 'view-profile') {
+        dirView.classList.add('hidden');
+        dirView.classList.remove('fade-in');
+        profView.classList.remove('hidden');
+        setTimeout(() => { profView.classList.add('fade-in'); }, 10);
+      } else {
+        profView.classList.add('hidden');
+        profView.classList.remove('fade-in');
+        dirView.classList.remove('hidden');
+        setTimeout(() => { dirView.classList.add('fade-in'); }, 10);
+      }
+      
+      // Scroll to the top of the section smoothly
+      document.getElementById('acl-leadership-section').scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+</div>
     <!-- Page 2: About Us -->
     <section id="about" class="py-24 bg-white relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
