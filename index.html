@@ -112,48 +112,82 @@
 </head>
 <body class="font-body antialiased text-midnight">
 
-    <!-- Navigation -->
-  <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20 items-center">
+<!-- Navigation -->
+<nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            
             <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center gap-3">
-       <img src="logo.jpeg" alt="Arab Community of Lagos Logo" class="w-10 h-10 object-contain">
-                    <span class="font-heading font-bold text-2xl tracking-tight text-emerald">Arab Community<span class="text-gold"> </span>
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <img src="logo.jpeg" alt="Arab Community of Lagos Logo" class="w-10 h-10 object-contain">
+                <span class="font-heading font-bold text-2xl tracking-tight text-emerald">
+                    Arab Community<span class="text-gold"> </span>
                 </span>  
-              </div>
-                 
-           
-                <div class="hidden md:flex space-x-8 items-center">
-                    <a href="#home" class="text-midnight hover:text-emerald font-medium transition-colors">Home</a>
-                    <a href="#Leadership & Administration" class="text-midnight hover:text-emerald font-medium transition-colors">Leadership & Administration</a>
-                    <a href="#academy" class="text-midnight hover:text-emerald font-medium transition-colors">Available courses</a>
-                    <a href="#recruitment" class="text-midnight hover:text-emerald font-medium transition-colors">Parents Package</a>
-                    <a href="#contact" class="px-5 py-2.5 rounded-full bg-emerald text-white font-medium hover:bg-emerald-dark transition-colors shadow-md">Portal Login</a>
-                </div>
-
-                <!-- Mobile Menu Button -->
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-midnight hover:text-emerald focus:outline-none">
-                        <i class="fa-solid fa-bars text-2xl"></i>
+            </div>
+             
+            <!-- Desktop Menu -->
+            <!-- Adjusted space-x to accommodate the new links without crowding -->
+            <div class="hidden md:flex space-x-6 lg:space-x-8 items-center">
+                <a href="#home" class="text-midnight hover:text-emerald font-medium transition-colors">Home</a>
+                <a href="#about" class="text-midnight hover:text-emerald font-medium transition-colors">About Us</a>
+                
+                <!-- Our Courses Dropdown -->
+                <div class="relative group">
+                    <button class="text-midnight hover:text-emerald font-medium transition-colors flex items-center gap-1">
+                        Our Courses 
+                        <i class="fa-solid fa-chevron-down text-xs transition-transform group-hover:rotate-180"></i>
                     </button>
+                    <!-- Dropdown Menu Panel -->
+                    <div class="absolute left-0 mt-2 w-56 bg-white border border-gray-100 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                        <div class="py-2">
+                            <a href="#course-khutbah" class="block px-4 py-2 text-sm text-midnight hover:bg-gray-50 hover:text-emerald">Art of the Khutbah</a>
+                            <a href="#course-fast-track" class="block px-4 py-2 text-sm text-midnight hover:bg-gray-50 hover:text-emerald">Student’s Fast-Track</a>
+                            <a href="#course-literacy" class="block px-4 py-2 text-sm text-midnight hover:bg-gray-50 hover:text-emerald">Foundations of Literacy</a>
+                            <a href="#course-arabic-mastery" class="block px-4 py-2 text-sm text-midnight hover:bg-gray-50 hover:text-emerald">Arabic Mastery</a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#instructors" class="text-midnight hover:text-emerald font-medium transition-colors">Instructors</a>
+                <a href="#pricing" class="text-midnight hover:text-emerald font-medium transition-colors">Pricing</a>
+                <a href="#contact" class="text-midnight hover:text-emerald font-medium transition-colors">Contact Us</a>
+                
+                <a href="#portal" class="px-5 py-2.5 rounded-full bg-emerald text-white font-medium hover:bg-emerald-dark transition-colors shadow-md">Portal Login</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden flex items-center">
+                <button id="mobile-menu-btn" class="text-midnight hover:text-emerald focus:outline-none">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile Menu Panel -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg">
+        <div class="px-4 pt-2 pb-6 space-y-2">
+            <a href="#home" class="block px-3 py-2 text-midnight font-medium hover:bg-gray-50 rounded-md">Home</a>
+            <a href="#about" class="block px-3 py-2 text-midnight font-medium hover:bg-gray-50 rounded-md">About Us</a>
+            
+            <!-- Mobile Courses Section -->
+            <div class="px-3 py-2">
+                <div class="text-midnight font-medium mb-1">Our Courses</div>
+                <div class="pl-4 space-y-1 border-l-2 border-gray-100">
+                    <a href="#course-khutbah" class="block px-3 py-2 text-sm text-gray-600 hover:text-emerald hover:bg-gray-50 rounded-md">Art of the Khutbah</a>
+                    <a href="#course-fast-track" class="block px-3 py-2 text-sm text-gray-600 hover:text-emerald hover:bg-gray-50 rounded-md">Student’s Fast-Track</a>
+                    <a href="#course-literacy" class="block px-3 py-2 text-sm text-gray-600 hover:text-emerald hover:bg-gray-50 rounded-md">Foundations of Literacy</a>
+                    <a href="#course-arabic-mastery" class="block px-3 py-2 text-sm text-gray-600 hover:text-emerald hover:bg-gray-50 rounded-md">Arabic Mastery</a>
                 </div>
             </div>
-        </div>
-        <!-- Mobile Menu Panel -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg">
-            <div class="px-4 pt-2 pb-6 space-y-2">
-                <a href="#home" class="block px-3 py-2 text-midnight font-medium hover:bg-gray-50 rounded-md">Home</a>
-                <a href="#about" class="block px-3 py-2 text-midnight font-medium hover:bg-gray-50 rounded-md">Leadership & Administration</a>
-                <a href="#academy" class="block px-3 py-2 text-midnight font-medium hover:bg-gray-50 rounded-md">Available courses</a>
-                <a href="#recruitment" class="block px-3 py-2 text-midnight font-medium hover:bg-gray-50 rounded-md">Parents Package</a>
-                <a href="#contact" class="block px-3 py-2 text-emerald font-bold hover:bg-gray-50 rounded-md">Portal Login</a>
-            </div>
-        </div>
 
+            <a href="#instructors" class="block px-3 py-2 text-midnight font-medium hover:bg-gray-50 rounded-md">Instructors</a>
+            <a href="#pricing" class="block px-3 py-2 text-midnight font-medium hover:bg-gray-50 rounded-md">Pricing</a>
+            <a href="#contact" class="block px-3 py-2 text-midnight font-medium hover:bg-gray-50 rounded-md">Contact Us</a>
+            <a href="#portal" class="block px-3 py-2 text-emerald font-bold hover:bg-gray-50 rounded-md">Portal Login</a>
         </div>
-    
-    </nav>
+    </div>
+</nav>
   <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
