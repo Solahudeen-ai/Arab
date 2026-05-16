@@ -48,6 +48,21 @@
 
   <!-- Custom Styles & Animations -->
   <style>
+    /* ── Movable Background (Ken Burns Effect) ── */
+    .movable-bg {
+      /* Ensure this matches your uploaded image name */
+      background-image: url('hero-bg.jpg'); 
+      background-size: cover;
+      background-position: center;
+      /* Adjust the 30s to make the animation faster or slower */
+      animation: kenBurns 30s ease-in-out infinite alternate;
+    }
+
+    @keyframes kenBurns {
+      0% { transform: scale(1) translate(0, 0); }
+      50% { transform: scale(1.05) translate(-1%, 1%); }
+      100% { transform: scale(1.1) translate(1%, -1%); }
+    }
     /* ── Base & Readability ── */
     :root {
       --brand-emerald: #046A38;
@@ -345,31 +360,51 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
       
-      <!-- Hero Content -->
-      <div class="lg:col-span-7 text-center lg:text-left">
-        
-        <div class="reveal-up inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-gold/30 bg-brand-gold/10 text-brand-gold text-xs sm:text-sm font-semibold tracking-wide uppercase mb-8 backdrop-blur-sm">
-          <span class="w-2 h-2 rounded-full bg-brand-gold animate-pulse"></span>
-          Now Enrolling — Academic Year 2026
-        </div>
+    <!-- ═══════════════════════════════════════════
+     HERO SECTION
+════════════════════════════════════════════ -->
+<section id="home" class="relative min-h-screen flex items-center overflow-hidden pt-20 bg-brand-midnight">
 
-        <h1 class="reveal-up delay-100 font-heading text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-[1.1] mb-6">
-          Mastery Through<br>
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold to-brand-gold-light" id="typewriter-text">Living Interaction</span><span class="cursor"></span>
-        </h1>
+  <!-- 1. Movable Image Background -->
+  <div class="absolute inset-0 z-0 overflow-hidden">
+    <div class="movable-bg w-full h-full"></div>
+  </div>
 
-        <p class="reveal-up delay-200 text-slate-300 text-lg sm:text-xl leading-relaxed mb-10 max-w-2xl mx-auto lg:mx-0">
-          Join Nigeria's premier immersive educational ecosystem. We bridge the gap between static grammar and native fluency by connecting you with classical scholars and native experts.
-        </p>
+  <!-- 2. Dimming Overlay (Dark blend to make white/gold text pop) -->
+  <div class="absolute inset-0 z-0 bg-black/60 bg-gradient-to-br from-black/80 via-transparent to-black/80"></div>
 
-        <div class="reveal-up delay-300 flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start mb-12">
-          <a href="#enroll" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-brand-gold text-brand-midnight font-bold hover:bg-white transition-all shadow-glow-gold hover:-translate-y-1 text-center text-lg btn-shine flex items-center justify-center gap-2">
-            Start Your Application <i class="fa-solid fa-arrow-right"></i>
-          </a>
-          <a href="#academy" class="w-full sm:w-auto px-8 py-4 rounded-xl border border-white/20 text-white font-semibold hover:bg-white/10 transition-all text-center flex items-center justify-center gap-2 backdrop-blur-sm">
-            <i class="fa-solid fa-book-open"></i> Explore Courses
-          </a>
-        </div>
+  <!-- 3. Main Content Container (z-10 ensures it stays above the image) -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 w-full relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+
+    <!-- Hero Content -->
+    <div class="lg:col-span-7 text-center lg:text-left">
+      
+      <div class="reveal-up inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-gold/30 bg-brand-gold/10 text-brand-gold text-xs sm:text-sm font-semibold tracking-wide uppercase mb-8 backdrop-blur-sm">
+        <span class="w-2 h-2 rounded-full bg-brand-gold animate-pulse"></span>
+        Now Enrolling — Academic Year 2026
+      </div>
+
+      <h1 class="reveal-up delay-100 font-heading text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-[1.1] mb-6">
+        Mastery Through<br>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold to-brand-gold-light" id="typewriter-text">Living Interaction</span><span class="cursor"></span>
+      </h1>
+
+      <p class="reveal-up delay-200 text-slate-300 text-lg sm:text-xl leading-relaxed mb-10 max-w-2xl mx-auto lg:mx-0">
+        Join Nigeria's premier immersive educational ecosystem. We bridge the gap between static grammar and native fluency by connecting you with classical scholars and native experts.
+      </p>
+
+      <div class="reveal-up delay-300 flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start mb-12">
+        <a href="#enroll" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-brand-gold text-brand-midnight font-bold hover:bg-white transition-all shadow-glow-gold hover:-translate-y-1 text-center text-lg btn-shine flex items-center justify-center gap-2">
+          Start Your Application <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        <a href="#academy" class="w-full sm:w-auto px-8 py-4 rounded-xl border border-white/20 text-white font-semibold hover:bg-white/10 transition-all text-center flex items-center justify-center gap-2 backdrop-blur-sm">
+          <i class="fa-solid fa-book-open"></i> Explore Courses
+        </a>
+      </div>
+    </div>
+    
+  </div>
+</section>
 
         <!-- Trust Indicators -->
         <div class="reveal-up delay-400 flex flex-wrap justify-center lg:justify-start gap-8 items-center border-t border-white/10 pt-8">
