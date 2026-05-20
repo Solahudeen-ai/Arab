@@ -170,12 +170,12 @@
         </div>
       </div>
 
-      <!-- Right Content: The Sticky Application Form -->
+      <!-- Right Content: The Sticky Application Form with Payment -->
       <div class="lg:w-5/12 lg:sticky lg:top-28">
         <div class="bg-white rounded-2xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] border border-slate-200 overflow-hidden">
           
           <div class="bg-brand-midnight p-6 text-center border-b-4 border-brand-emerald">
-            <h3 class="font-heading text-2xl font-bold text-white">Apply for this Track</h3>
+            <h3 class="font-heading text-2xl font-bold text-white">Enroll in this Track</h3>
             <p class="text-brand-gold text-sm font-medium mt-1">Living Arabic for Business</p>
           </div>
 
@@ -211,30 +211,39 @@
                 </div>
                 
                 <button type="button" onclick="validateAndNext(1, 2)" class="w-full py-4 bg-brand-midnight text-white font-bold rounded-xl hover:bg-brand-emerald transition-colors shadow-md flex items-center justify-center gap-2 group">
-                  Next Step <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                  Continue to Payment <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
                 </button>
               </div>
 
-              <!-- STEP 2: Submission -->
+              <!-- STEP 2: Checkout & Submission -->
               <div id="step2" class="form-step">
                 <div class="floating-input-wrapper">
-                  <textarea id="exp" name="message" class="floating-input peer h-28 resize-none" placeholder=" "></textarea>
-                  <label for="exp" class="floating-label !top-5">What is your primary business sector? (Optional)</label>
+                  <textarea id="exp" name="message" class="floating-input peer h-20 resize-none" placeholder=" "></textarea>
+                  <label for="exp" class="floating-label !top-4">Primary business sector? (Optional)</label>
                 </div>
 
-                <div class="bg-brand-emerald/5 border border-brand-emerald/20 rounded-xl p-5 mb-6 relative overflow-hidden">
-                  <div class="absolute top-0 left-0 w-1 h-full bg-brand-emerald"></div>
-                  <h4 class="font-heading text-sm font-bold text-brand-midnight mb-1">Next Steps</h4>
-                  <p class="text-xs text-slate-600 leading-relaxed">
-                    Upon submission, our team will review your application. If approved, you will receive an email with your secure portal link to finalize enrollment and process tuition.
-                  </p>
+                <div class="bg-slate-50 border border-slate-200 rounded-xl p-5 mb-6">
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="text-sm font-bold text-slate-500 uppercase tracking-wide">Tuition</span>
+                    <span class="font-heading text-2xl font-bold text-brand-midnight">₦40,000<span class="text-sm text-slate-500 font-medium">/mo.</span></span>
+                  </div>
+                  <p class="text-xs text-slate-500 border-t border-slate-200 pt-2">Includes immediate access to your portal, live sessions, and business materials.</p>
+                </div>
+
+                <div class="mb-6">
+                  <label class="flex items-start gap-3 cursor-pointer group">
+                    <input type="checkbox" name="terms_agreed" class="mt-1 w-5 h-5 rounded border-slate-300 text-brand-emerald focus:ring-brand-emerald" required>
+                    <span class="text-xs text-slate-600 group-hover:text-brand-midnight transition-colors leading-relaxed">
+                      I agree to the <a href="#" class="text-brand-emerald underline">Terms of Service</a> and confirm my details are accurate.
+                    </span>
+                  </label>
                 </div>
 
                 <div class="flex gap-3">
                   <button type="button" onclick="prevStep(2, 1)" class="px-5 py-4 bg-slate-100 text-slate-600 font-bold rounded-xl hover:bg-slate-200 transition-colors"><i class="fa-solid fa-arrow-left"></i></button>
                   <button type="submit" id="submitBtn" class="flex-1 py-4 bg-brand-gold text-brand-midnight font-bold rounded-xl hover:bg-brand-gold-light transition-all shadow-md flex items-center justify-center gap-2">
-                    <span id="btnText">Submit Application</span>
-                    <i class="fa-solid fa-paper-plane" id="btnIcon"></i>
+                    <span id="btnText">Pay Securely</span>
+                    <i class="fa-solid fa-lock" id="btnIcon"></i>
                   </button>
                 </div>
               </div>
@@ -284,49 +293,34 @@
   }
 
   function updateProgress(step) {
-    document.getElementById('stepLabel').textContent = step === 1 ? 'Step 1: Details' : 'Step 2: Submit';
+    document.getElementById('stepLabel').textContent = step === 1 ? 'Step 1: Details' : 'Step 2: Checkout';
     document.getElementById('stepPercent').textContent = step === 1 ? '50%' : '100%';
     document.getElementById('progressBar').style.width = step === 1 ? '50%' : '100%';
   }
 
-  // Application Submission Logic
+  // Application Submission & Payment Redirect Logic
   document.getElementById('courseApplicationForm').addEventListener('submit', function(e) {
     e.preventDefault();
     const btn = document.getElementById('submitBtn');
     const text = document.getElementById('btnText');
     const icon = document.getElementById('btnIcon');
     
-    text.textContent = 'Submitting...';
+    text.textContent = 'Processing...';
     icon.className = 'fa-solid fa-spinner fa-spin';
     btn.disabled = true;
     btn.classList.add('opacity-80', 'cursor-not-allowed');
 
     const formData = new FormData(this);
     
-    // Webhook implementation
+    // Send data to webhook
     fetch('https://hook.eu1.make.com/hiyiax5py9qflvy9x4lwvq56xyk1n0gs', { 
       method: 'POST', body: formData 
     }).catch(err => console.error('Webhook error:', err));
     
-    // Show Success State
+    // Redirect to Paystack after a brief delay to ensure webhook fires
     setTimeout(() => { 
-      text.textContent = 'Application Received!';
-      icon.className = 'fa-solid fa-check';
-      btn.classList.remove('bg-brand-gold', 'hover:bg-brand-gold-light');
-      btn.classList.add('bg-brand-emerald', 'text-white');
-      
-      setTimeout(() => {
-        alert("Thank you! Your application for the Business track has been successfully submitted. Check your email shortly.");
-        // Reset the form
-        this.reset();
-        prevStep(2, 1);
-        btn.disabled = false;
-        btn.classList.remove('opacity-80', 'cursor-not-allowed', 'bg-brand-emerald', 'text-white');
-        btn.classList.add('bg-brand-gold');
-        text.textContent = 'Submit Application';
-        icon.className = 'fa-solid fa-paper-plane';
-      }, 1000);
-    }, 1500);
+      window.location.href = 'https://paystack.shop/pay/arablagos'; 
+    }, 1200);
   });
 </script>
 
