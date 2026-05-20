@@ -48,14 +48,11 @@
 
   <!-- Custom Styles & Animations -->
   <style>
- 
     /* ── Movable Background (Ken Burns Effect) ── */
     .movable-bg {
-      /* Ensure this matches your uploaded image name */
       background-image: url('background hero.jpeg'); 
       background-size: cover;
       background-position: center;
-      /* Adjust the 30s to make the animation faster or slower */
       animation: kenBurns 30s ease-in-out infinite alternate;
     }
 
@@ -64,6 +61,7 @@
       50% { transform: scale(1.05) translate(-1%, 1%); }
       100% { transform: scale(1.1) translate(1%, -1%); }
     }
+    
     /* ── Base & Readability ── */
     :root {
       --brand-emerald: #046A38;
@@ -79,13 +77,8 @@
     }
     
     /* Better Text Readability */
-    p {
-      line-height: 1.75;
-      letter-spacing: -0.01em;
-    }
-    h1, h2, h3, h4, h5, h6 {
-      letter-spacing: -0.02em;
-    }
+    p { line-height: 1.75; letter-spacing: -0.01em; }
+    h1, h2, h3, h4, h5, h6 { letter-spacing: -0.02em; }
 
     /* ── Glassmorphism Nav ── */
     .glass-nav {
@@ -101,30 +94,13 @@
     }
     
     /* ── Advanced Scroll Reveals ── */
-    .reveal-up {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .reveal-zoom {
-      opacity: 0;
-      transform: scale(0.92) translateY(20px);
-      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .reveal-left {
-      opacity: 0;
-      transform: translateX(-40px);
-      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .reveal-right {
-      opacity: 0;
-      transform: translateX(40px);
-      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
+    .reveal-up { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+    .reveal-zoom { opacity: 0; transform: scale(0.92) translateY(20px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+    .reveal-left { opacity: 0; transform: translateX(-40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+    .reveal-right { opacity: 0; transform: translateX(40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
     
     .reveal-up.visible, .reveal-zoom.visible, .reveal-left.visible, .reveal-right.visible { 
-      opacity: 1; 
-      transform: none; 
+      opacity: 1; transform: none; 
     }
 
     /* Stagger Delays */
@@ -134,17 +110,6 @@
     .delay-400 { transition-delay: 400ms; }
 
     /* ── Fascinating Animations ── */
-    @keyframes heroGradient {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    .hero-bg {
-      background: linear-gradient(-45deg, #022a16, #046A38, #0B1623, #112236);
-      background-size: 400% 400%;
-      animation: heroGradient 15s ease infinite;
-    }
-
     @keyframes float {
       0%, 100% { transform: translateY(0) scale(1); }
       50% { transform: translateY(-20px) scale(1.02); }
@@ -153,118 +118,59 @@
     .floating-delayed { animation: float 6s ease-in-out infinite; animation-delay: -3s; }
 
     /* Button Shine Effect */
-    .btn-shine {
-      position: relative;
-      overflow: hidden;
-    }
+    .btn-shine { position: relative; overflow: hidden; }
     .btn-shine::before {
       content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 50%;
-      height: 100%;
+      position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
       background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
       transform: skewX(-25deg);
       animation: shine 4s infinite;
     }
-    @keyframes shine {
-      0% { left: -100%; }
-      20% { left: 200%; }
-      100% { left: 200%; }
-    }
+    @keyframes shine { 0% { left: -100%; } 20% { left: 200%; } 100% { left: 200%; } }
 
     /* Typewriter Cursor */
     .cursor {
-      display: inline-block;
-      width: 3px;
-      height: 1.1em;
-      background: var(--brand-gold);
-      margin-left: 4px;
-      vertical-align: text-bottom;
-      animation: blink 0.8s step-end infinite;
+      display: inline-block; width: 3px; height: 1.1em;
+      background: var(--brand-gold); margin-left: 4px;
+      vertical-align: text-bottom; animation: blink 0.8s step-end infinite;
     }
     @keyframes blink { 50% { opacity: 0; } }
 
     /* ── Interactive Cards ── */
-    .hover-card {
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
+    .hover-card { transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
     .hover-card:hover {
       transform: translateY(-8px);
       box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1);
       border-color: var(--brand-gold);
     }
 
-    /* ── Floating Label Inputs (Lead Gen Optimization) ── */
-    .floating-input-wrapper {
-      position: relative;
-      margin-bottom: 1.5rem;
-    }
+    /* ── Floating Label Inputs ── */
+    .floating-input-wrapper { position: relative; margin-bottom: 1.5rem; }
     .floating-input {
-      width: 100%;
-      padding: 1.25rem 1rem 0.5rem 1rem;
-      border: 1px solid #E2E8F0;
-      border-radius: 0.75rem;
-      background-color: #ffffff;
-      outline: none;
-      transition: all 0.3s ease;
-      font-size: 0.95rem;
+      width: 100%; padding: 1.25rem 1rem 0.5rem 1rem; border: 1px solid #E2E8F0;
+      border-radius: 0.75rem; background-color: #ffffff; outline: none;
+      transition: all 0.3s ease; font-size: 0.95rem;
     }
     .floating-input:focus {
-      border-color: var(--brand-emerald);
-      box-shadow: 0 0 0 4px rgba(4, 106, 56, 0.1);
+      border-color: var(--brand-emerald); box-shadow: 0 0 0 4px rgba(4, 106, 56, 0.1);
     }
     .floating-label {
-      position: absolute;
-      left: 1rem;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #64748B;
-      font-size: 0.95rem;
-      transition: all 0.3s ease;
-      pointer-events: none;
+      position: absolute; left: 1rem; top: 50%; transform: translateY(-50%);
+      color: #64748B; font-size: 0.95rem; transition: all 0.3s ease; pointer-events: none;
     }
     .floating-input:focus ~ .floating-label,
     .floating-input:not(:placeholder-shown) ~ .floating-label {
-      top: 0.5rem;
-      transform: translateY(0);
-      font-size: 0.7rem;
-      font-weight: 600;
-      color: var(--brand-emerald);
+      top: 0.5rem; transform: translateY(0); font-size: 0.7rem; font-weight: 600; color: var(--brand-emerald);
     }
 
     /* Form Progress & Steps */
-    .form-step {
-      display: none;
-      opacity: 0;
-      transform: translateX(20px);
-      transition: all 0.4s ease;
-    }
-    .form-step.active {
-      display: block;
-      opacity: 1;
-      transform: translateX(0);
-    }
-    .progress-bar-fill {
-      transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    /* FAQ Accordion */
-    details > summary { list-style: none; }
-    details > summary::-webkit-details-marker { display: none; }
-    details[open] .faq-content { animation: slideDown 0.3s ease-out; }
-    details[open] .faq-icon { transform: rotate(180deg); color: var(--brand-emerald); }
-    @keyframes slideDown {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    .form-step { display: none; opacity: 0; transform: translateX(20px); transition: all 0.4s ease; }
+    .form-step.active { display: block; opacity: 1; transform: translateX(0); }
+    .progress-bar-fill { transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
 
     /* Section Divider */
     .section-divider {
-      width: 60px;
-      height: 4px;
-      border-radius: 2px;
+      width: 60px; height: 4px; border-radius: 2px;
       background: linear-gradient(90deg, var(--brand-emerald), var(--brand-gold));
       margin-bottom: 1.5rem;
     }
@@ -272,53 +178,19 @@
     /* Mobile Menu */
     #mobile-menu {
       transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      max-height: 0;
-      opacity: 0;
-      overflow: hidden;
+      max-height: 0; opacity: 0; overflow: hidden;
     }
-    #mobile-menu.open {
-      max-height: 500px;
-      opacity: 1;
-      border-bottom: 1px solid #E2E8F0;
-    }
+    #mobile-menu.open { max-height: 500px; opacity: 1; border-bottom: 1px solid #E2E8F0; }
 
-    /* Video Frame */
-    .video-frame {
-      position: relative;
-      border-radius: 1.5rem;
-      overflow: hidden;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-    }
-    .video-frame::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 1.5rem;
-      padding: 2px;
-      background: linear-gradient(135deg, rgba(255,255,255,0.4), rgba(255,255,255,0));
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      pointer-events: none;
-    }
     /* ── Video section ── */
     .video-container {
-      position: relative; 
-      width: 100%; 
-      aspect-ratio: 16/9;
-      border-radius: 20px; 
-      overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.18);
-      z-index: 30; /* Pushes the container above all background elements */
+      position: relative; width: 100%; aspect-ratio: 16/9;
+      border-radius: 20px; overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.18); z-index: 30; 
     }
     .video-container iframe { 
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%; 
-      height: 100%; 
-      border: none; 
-      pointer-events: auto; /* Forces the browser to accept mouse clicks here */
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+      border: none; pointer-events: auto; 
     }
   </style>
 </head>
@@ -370,62 +242,56 @@
   </div>
 </nav>
 
-<section id="home" class="relative min-h-[100vh] hero-bg flex items-center overflow-hidden pt-24 pb-12">
-  <!-- Decorative Abstract Shapes -->
-  <div class="absolute top-20 right-10 w-[500px] h-[500px] bg-brand-emerald/20 rounded-full blur-[100px] pointer-events-none floating"></div>
-  <div class="absolute bottom-10 left-10 w-[600px] h-[600px] bg-brand-gold/10 rounded-full blur-[120px] pointer-events-none floating-delayed"></div>
-  <!-- Grid overlay -->
-  <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')] pointer-events-none"></div>
-
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-      
 <!-- ═══════════════════════════════════════════
-     HERO SECTION
+     FIXED SINGLE HERO SECTION
 ════════════════════════════════════════════ -->
-<section id="home" class="relative min-h-screen flex items-center overflow-hidden pt-20">
+<section id="home" class="relative min-h-screen flex items-center overflow-hidden pt-24 pb-12">
 
-  <!-- 1. Movable Image Background (Stretches completely over the section) -->
+  <!-- 1. Movable Image Background -->
   <div class="absolute inset-0 z-0 overflow-hidden">
     <div class="movable-bg w-full h-full"></div>
   </div>
 
-  <!-- 2. THE DIMMING OVERLAY -->
+  <!-- 2. The Dimming Overlay -->
   <div class="absolute inset-0 z-0 bg-black/60"></div>
 
-  <!-- 3. Main Content Container (z-10 ensures it stays above the dim layer) -->
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 w-full relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+  <!-- 3. Decorative Abstract Shapes & Grid -->
+  <div class="absolute top-20 right-10 w-[500px] h-[500px] bg-brand-emerald/30 rounded-full blur-[100px] pointer-events-none floating z-0"></div>
+  <div class="absolute bottom-10 left-10 w-[600px] h-[600px] bg-brand-gold/20 rounded-full blur-[120px] pointer-events-none floating-delayed z-0"></div>
+  <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')] pointer-events-none z-0"></div>
 
-    <!-- Hero Content -->
-    <div class="lg:col-span-7 text-center lg:text-left">
+  <!-- 4. Main Content Container -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
       
-      <div class="reveal-up inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-gold/30 bg-brand-gold/10 text-brand-gold text-xs sm:text-sm font-semibold tracking-wide uppercase mb-8 backdrop-blur-sm">
-        <span class="w-2 h-2 rounded-full bg-brand-gold animate-pulse"></span>
-        Now Enrolling — Academic Year 2026
-      </div>
+      <!-- Hero Content -->
+      <div class="lg:col-span-7 text-center lg:text-left">
+        
+        <!-- Brand Hierarchy Fix -->
+        <div class="reveal-up inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-gold/30 bg-brand-gold/10 text-brand-gold text-xs sm:text-sm font-semibold tracking-wide uppercase mb-8 backdrop-blur-sm">
+          <span class="w-2 h-2 rounded-full bg-brand-gold animate-pulse"></span>
+          The Premier Program by Arab Community of Lagos
+        </div>
 
-      <h1 class="reveal-up delay-100 font-heading text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-[1.1] mb-6">
-        Mastery Through<br>
-        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold to-brand-gold-light" id="typewriter-text">Living Interaction</span><span class="cursor"></span>
-      </h1>
+        <h1 class="reveal-up delay-100 font-heading text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-[1.1] mb-6">
+          Mastery Through<br>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold to-brand-gold-light" id="typewriter-text">Living Interaction</span><span class="cursor"></span>
+        </h1>
 
-      <p class="reveal-up delay-200 text-slate-300 text-lg sm:text-xl leading-relaxed mb-10 max-w-2xl mx-auto lg:mx-0">
-        Join the Arab community of Lagos. We bridge the gap between static grammar and native fluency by connecting you with classical scholars and native experts.
-      </p>
+        <!-- Messaging Fix -->
+        <p class="reveal-up delay-200 text-slate-300 text-lg sm:text-xl leading-relaxed mb-10 max-w-2xl mx-auto lg:mx-0">
+          Enter the <strong class="text-white">Living Arabic</strong> ecosystem. Bridge the gap between static grammar and commanding, native-level fluency by connecting with classical scholars and native experts.
+        </p>
 
-      <div class="reveal-up delay-300 flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start mb-12">
-        <a href="#enroll" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-brand-gold text-brand-midnight font-bold hover:bg-white transition-all shadow-glow-gold hover:-translate-y-1 text-center text-lg btn-shine flex items-center justify-center gap-2">
-          Start Your Application <i class="fa-solid fa-arrow-right"></i>
-        </a>
-        <a href="#academy" class="w-full sm:w-auto px-8 py-4 rounded-xl border border-white/20 text-white font-semibold hover:bg-white/10 transition-all text-center flex items-center justify-center gap-2 backdrop-blur-sm">
-          <i class="fa-solid fa-book-open"></i> Explore Courses
-        </a>
-      </div>
-    </div>
-    
-  </div>
-</section>
-    </div>
+        <div class="reveal-up delay-300 flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start mb-12">
+          <a href="#enroll" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-brand-gold text-brand-midnight font-bold hover:bg-white transition-all shadow-glow-gold hover:-translate-y-1 text-center text-lg btn-shine flex items-center justify-center gap-2">
+            Start Your Application <i class="fa-solid fa-arrow-right"></i>
+          </a>
+          <a href="#academy" class="w-full sm:w-auto px-8 py-4 rounded-xl border border-white/20 text-white font-semibold hover:bg-white/10 transition-all text-center flex items-center justify-center gap-2 backdrop-blur-sm">
+            <i class="fa-solid fa-book-open"></i> Explore Courses
+          </a>
+        </div>
+
         <!-- Trust Indicators -->
         <div class="reveal-up delay-400 flex flex-wrap justify-center lg:justify-start gap-8 items-center border-t border-white/10 pt-8">
           <div class="flex items-center gap-3">
@@ -490,14 +356,16 @@
       </div>
     </div>
   </div>
+
   <!-- Scroll Down Indicator -->
-  <a href="#video-intro" class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/50 hover:text-white transition-colors">
+  <a href="#video-intro" class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/50 hover:text-white transition-colors z-20">
     <span class="text-xs font-semibold tracking-widest uppercase">Discover</span>
     <div class="w-5 h-8 border-2 border-current rounded-full flex justify-center p-1">
       <div class="w-1 h-2 bg-current rounded-full animate-bounce"></div>
     </div>
   </a>
 </section>
+
 <section id="video-intro" class="py-24 bg-white relative">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-12">
@@ -666,7 +534,7 @@
             </div>
             <div class="flex items-start gap-3">
               <div class="w-8 h-8 rounded-full bg-brand-emerald/10 text-brand-emerald flex items-center justify-center shrink-0 mt-1">
-                <i class="fa-solid fa-chalkboard-user"></i>
+                <i class="fa-solid fa-chalk-board-user"></i>
               </div>
               <div>
                 <strong class="block text-brand-midnight text-sm">40+ Years Exp.</strong>
@@ -685,10 +553,9 @@
 </section>
 
 <!-- ═══════════════════════════════════════════
-     COURSES / ACADEMY SECTION (High-Contrast Theme)
+     COURSES / ACADEMY SECTION 
 ════════════════════════════════════════════ -->
 <section id="academy" class="py-24 bg-slate-50 relative border-y border-gray-200">
-  <!-- Subtle Dot Grid Background for texture, not distraction -->
   <div class="absolute inset-0 opacity-40 pointer-events-none" style="background-image: radial-gradient(#cbd5e1 1px, transparent 1px); background-size: 32px 32px;"></div>
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -698,13 +565,12 @@
         <div class="w-16 h-1 bg-brand-emerald mb-6 rounded-full"></div>
         <h2 class="font-heading text-3xl md:text-5xl font-extrabold text-brand-midnight mb-4">One of These Was Made for You</h2>
         <p class="text-slate-600 text-lg leading-relaxed">
-          For centuries, arabic language carried wisdom, worship, commerce and civilization. It still does. And somewhere in you — whether you lead boardrooms, raise children, serve congregations or walk toward Makkah — Arabic has always had your name on it.
-Eight paths. One language. Your transformation starts here.
+          For centuries, the Arabic language carried wisdom, worship, commerce and civilization. It still does. And somewhere in you — whether you lead boardrooms, raise children, serve congregations or walk toward Makkah — Arabic has always had your name on it. <br><br><strong>Eight paths. One language. Your transformation starts here.</strong>
         </p>
       </div>
     </div>
 
-    <!-- Course Cards Grid (Crisp, White, High-Contrast Layout) -->
+    <!-- Course Cards Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
       
       <!-- Track 1: Business (Emerald) -->
@@ -855,19 +721,26 @@ Eight paths. One language. Your transformation starts here.
     </div>
   </div>
 </section>
+
+<!-- ═══════════════════════════════════════════
+     ENROLLMENT FORM SECTION
+════════════════════════════════════════════ -->
 <section id="enroll" class="py-24 bg-brand-surface relative">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="bg-white rounded-3xl shadow-2xl overflow-hidden border border-slate-100 flex flex-col lg:flex-row">
       
       <!-- Left Info Panel -->
       <div class="lg:w-2/5 bg-brand-emerald p-10 md:p-16 text-white flex flex-col justify-between relative overflow-hidden">
-        <!-- Abstract Pattern -->
         <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
         <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-brand-gold rounded-full mix-blend-multiply opacity-50 blur-[50px]"></div>
 
         <div class="relative z-10">
-          <span class="inline-block px-3 py-1 bg-white/20 text-white text-xs font-bold uppercase tracking-widest rounded-full mb-6 backdrop-blur-sm">Admissions Open</span>
-          <h2 class="font-heading text-4xl font-bold mb-6 leading-tight">Secure Your Place in the Next Cohort.</h2>
+          <span class="inline-block px-3 py-1 bg-white/20 text-white text-xs font-bold uppercase tracking-widest rounded-full mb-4 backdrop-blur-sm">Admissions Open</span>
+          
+          <!-- Checkout Hierarchy Fix -->
+          <h2 class="font-heading text-4xl font-bold mb-2 leading-tight">Secure Your Place.</h2>
+          <p class="text-brand-gold font-bold tracking-wide uppercase text-sm mb-6">Living Arabic Enrollment • Arab Community of Lagos</p>
+          
           <p class="text-emerald-50 mb-10 text-lg leading-relaxed">
             Take the first step towards true Arabic Fluency. Our structured enrollment process ensures you are placed in the track that perfectly aligns with your goals.
           </p>
@@ -890,16 +763,11 @@ Eight paths. One language. Your transformation starts here.
           </div>
         </div>
 
-        <!-- Portals Links -->
         <div class="relative z-10 mt-12 pt-8 border-t border-white/20">
           <p class="text-sm text-emerald-100 mb-4 font-semibold">Already a member?</p>
           <div class="flex gap-4">
-            <a href="#" class="text-xs font-bold bg-white text-brand-emerald px-5 py-2.5 rounded-lg hover:bg-slate-100 transition-colors shadow-sm">
-              Student Login
-            </a>
-            <a href="#" class="text-xs font-bold border border-white text-white px-5 py-2.5 rounded-lg hover:bg-white/10 transition-colors">
-              Parent Portal
-            </a>
+            <a href="#" class="text-xs font-bold bg-white text-brand-emerald px-5 py-2.5 rounded-lg hover:bg-slate-100 transition-colors shadow-sm">Student Login</a>
+            <a href="#" class="text-xs font-bold border border-white text-white px-5 py-2.5 rounded-lg hover:bg-white/10 transition-colors">Parent Portal</a>
           </div>
         </div>
       </div>
@@ -950,12 +818,18 @@ Eight paths. One language. Your transformation starts here.
           <div id="step2" class="form-step">
             <div class="mb-6">
               <label class="block text-sm font-bold text-slate-700 mb-3">Select Program of Interest *</label>
-              <select name="inquiry_type" class="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:border-brand-emerald focus:ring-4 focus:ring-brand-emerald/10 outline-none text-slate-700 font-medium appearance-none bg-white relative cursor-pointer" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%231E293B%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: right 1rem top 50%; background-size: 0.65rem auto;">
-                <option value="khutbah">Art of the Khutbah</option>
-                <option value="fasttrack">Student's Fast-Track</option>
-                <option value="literacy">Foundations of Literacy</option>
-                <option value="mastery">Arabic Mastery</option>
-                <option value="general">General Inquiry / Need Advice</option>
+              
+              <!-- Form Dropdown Fix -->
+              <select name="inquiry_type" required class="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:border-brand-emerald focus:ring-4 focus:ring-brand-emerald/10 outline-none text-slate-700 font-medium appearance-none bg-white relative cursor-pointer" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%231E293B%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: right 1rem top 50%; background-size: 0.65rem auto;">
+                <option value="" disabled selected>Choose your Living Arabic track...</option>
+                <option value="business">Living Arabic for Business</option>
+                <option value="worshippers">Living Arabic for Worshippers</option>
+                <option value="imams">Living Arabic for Imams</option>
+                <option value="parents">Living Arabic for Parents</option>
+                <option value="educators">Living Arabic for Educators</option>
+                <option value="diplomats">Living Arabic for Diplomats</option>
+                <option value="hujjaj">Living Arabic for Hujjaj</option>
+                <option value="foundations">Living Arabic: Qur'an Foundations</option>
               </select>
             </div>
             
@@ -1091,21 +965,20 @@ Eight paths. One language. Your transformation starts here.
     });
   });
 
-  // ── 3. Advanced Scroll Reveal (Intersection Observer) ──
+  // ── 3. Advanced Scroll Reveal ──
   const revealElements = document.querySelectorAll('.reveal-up, .reveal-zoom, .reveal-left, .reveal-right');
   const revealObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        observer.unobserve(entry.target); // Only animate once
+        observer.unobserve(entry.target);
       }
     });
   }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
-  
   revealElements.forEach(el => revealObserver.observe(el));
 
-  // ── 4. Typewriter Effect (Hero) ──
-  const phrases = ['Living Interaction.', 'Daily Discipline.', 'Native Fluency.', 'Classical Mastery.'];
+  // ── 4. Typewriter Effect (Updated logic to match phrase) ──
+  const phrases = ['Living Arabic', 'Living Interaction', 'Native Fluency', 'Classical Mastery'];
   let phraseIdx = 0, charIdx = 0, isDeleting = false;
   const typewriterEl = document.getElementById('typewriter-text');
   
@@ -1123,14 +996,13 @@ Eight paths. One language. Your transformation starts here.
     let typingSpeed = isDeleting ? 40 : 80;
 
     if (!isDeleting && charIdx === currentPhrase.length) {
-      typingSpeed = 2000; // Pause at end of word
+      typingSpeed = 2000;
       isDeleting = true;
     } else if (isDeleting && charIdx === 0) {
       isDeleting = false;
       phraseIdx = (phraseIdx + 1) % phrases.length;
-      typingSpeed = 500; // Pause before new word
+      typingSpeed = 500;
     }
-
     setTimeout(typewrite, typingSpeed);
   }
   setTimeout(typewrite, 1000);
@@ -1142,7 +1014,7 @@ Eight paths. One language. Your transformation starts here.
       if(entry.isIntersecting) {
         const target = +entry.target.getAttribute('data-target');
         let count = 0;
-        const inc = target / 40; // speed
+        const inc = target / 40; 
         const timer = setInterval(() => {
           count += inc;
           if(count >= target) {
@@ -1203,7 +1075,6 @@ Eight paths. One language. Your transformation starts here.
     const text = document.getElementById('btnText');
     const icon = document.getElementById('btnIcon');
     
-    // UI Loading State
     text.textContent = 'Processing securely...';
     icon.className = 'fa-solid fa-spinner fa-spin';
     btn.disabled = true;
@@ -1211,13 +1082,10 @@ Eight paths. One language. Your transformation starts here.
 
     const formData = new FormData(this);
     
-    // Original Webhook Logic Preserved
     fetch('https://hook.eu1.make.com/hiyiax5py9qflvy9x4lwvq56xyk1n0gs', { 
-      method: 'POST', 
-      body: formData 
+      method: 'POST', body: formData 
     }).catch(err => console.error('Webhook error:', err));
     
-    // Redirect simulation (using user's original logic)
     setTimeout(() => { 
       window.location.href = 'https://paystack.shop/pay/arablagos'; 
     }, 1200);
@@ -1228,7 +1096,6 @@ Eight paths. One language. Your transformation starts here.
   const formSection = document.getElementById('enroll');
   
   window.addEventListener('scroll', () => {
-    // Hide CTA if we are in the form section to prevent overlap
     const formRect = formSection.getBoundingClientRect();
     if(formRect.top < window.innerHeight && formRect.bottom > 0) {
       stickyCta.style.transform = 'translateY(100%)';
