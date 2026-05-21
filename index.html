@@ -643,6 +643,7 @@
     </div>
   </div>
 </section>
+
 <section id="book-trial" class="py-24 bg-brand-midnight relative overflow-hidden border-t border-white/5">
   <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-gold rounded-full mix-blend-screen filter blur-[150px] opacity-10 translate-x-1/3 -translate-y-1/4 animate-pulse pointer-events-none" style="animation-duration: 8s;"></div>
   <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-brand-emerald rounded-full mix-blend-screen filter blur-[150px] opacity-10 -translate-x-1/3 translate-y-1/3 animate-pulse pointer-events-none" style="animation-duration: 12s;"></div>
@@ -681,7 +682,99 @@
           </div>
 
           <div class="flex items-start gap-5 group">
-            <div class="w-12 h-12 rounded-full border border-brand-gold/30 bg-gradient-to-br from-brand-gold/10 to-transparent text-brand-gold flex items-center justify-center shrink-0 mt-1 shadow-[0_0_20px_rgba(212,175,55,
+            <div class="w-12 h-12 rounded-full border border-brand-gold/30 bg-gradient-to-br from-brand-gold/10 to-transparent text-brand-gold flex items-center justify-center shrink-0 mt-1 shadow-[0_0_20px_rgba(212,175,55,0.1)] group-hover:scale-110 transition-transform duration-500">
+              <i class="fa-solid fa-compass"></i>
+            </div>
+            <div class="text-start">
+              <h4 class="font-heading font-bold text-xl text-white mb-1.5 tracking-wide"><span class="lang-en">Bespoke Curriculum</span><span class="lang-ar">منهج مخصص</span></h4>
+              <p class="text-sm text-slate-400 font-light leading-relaxed"><span class="lang-en">A customized blueprint aligned perfectly with your professional or spiritual goals.</span><span class="lang-ar">خطة مخصصة تتماشى تمامًا مع أهدافك المهنية أو الروحية.</span></p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-5 group">
+            <div class="w-12 h-12 rounded-full border border-brand-gold/30 bg-gradient-to-br from-brand-gold/10 to-transparent text-brand-gold flex items-center justify-center shrink-0 mt-1 shadow-[0_0_20px_rgba(212,175,55,0.1)] group-hover:scale-110 transition-transform duration-500">
+              <i class="fa-solid fa-gem"></i>
+            </div>
+            <div class="text-start">
+              <h4 class="font-heading font-bold text-xl text-white mb-1.5 tracking-wide"><span class="lang-en">Masterclass Preview</span><span class="lang-ar">معاينة الدرس المتقدم</span></h4>
+              <p class="text-sm text-slate-400 font-light leading-relaxed"><span class="lang-en">Experience our highly-interactive, speaking-first Matrix Method live.</span><span class="lang-ar">جرب طريقة المصفوفة التفاعلية التي تركز على التحدث أولاً مباشرة.</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-6 reveal-zoom delay-200">
+        <div class="bg-white rounded-3xl shadow-2xl p-8 md:p-10 relative overflow-hidden">
+          <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-[#F3D56B] via-[#D4AF37] to-[#AA7C11]"></div>
+          
+          <div class="text-center mb-8">
+            <h3 class="font-heading text-2xl font-bold text-brand-midnight mb-2">
+              <span class="lang-en">Reserve Your Slot</span><span class="lang-ar">احجز مقعدك</span>
+            </h3>
+            <p class="text-sm text-slate-500">
+              <span class="lang-en">Step 1 of 2: Details &rarr; Calendar</span>
+              <span class="lang-ar">الخطوة 1 من 2: التفاصيل &larr; التقويم</span>
+            </p>
+          </div>
+
+          <form id="trialBookingForm" class="space-y-5">
+            <div>
+              <label class="block text-sm font-bold text-slate-700 mb-1.5"><span class="lang-en">Full Name *</span><span class="lang-ar">الاسم الكامل *</span></label>
+              <div class="relative">
+                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400"><i class="fa-regular fa-user"></i></div>
+                <input type="text" name="name" required class="w-full pl-11 pr-4 py-3.5 rounded-xl border border-slate-200 focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 outline-none transition-all text-sm text-slate-700" placeholder="e.g. John Doe">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div>
+                <label class="block text-sm font-bold text-slate-700 mb-1.5"><span class="lang-en">Email Address *</span><span class="lang-ar">البريد الإلكتروني *</span></label>
+                <div class="relative">
+                  <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400"><i class="fa-regular fa-envelope"></i></div>
+                  <input type="email" name="email" required class="w-full pl-11 pr-4 py-3.5 rounded-xl border border-slate-200 focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 outline-none transition-all text-sm text-slate-700" placeholder="john@example.com">
+                </div>
+              </div>
+              
+              <div>
+                <label class="block text-sm font-bold text-slate-700 mb-1.5 flex justify-between">
+                  <span><span class="lang-en">WhatsApp Number *</span><span class="lang-ar">رقم الواتساب *</span></span>
+                </label>
+                <div class="relative">
+                  <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400"><i class="fa-brands fa-whatsapp text-emerald-500"></i></div>
+                  <input type="tel" name="phone" required class="w-full pl-11 pr-4 py-3.5 rounded-xl border border-slate-200 focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 outline-none transition-all text-sm text-slate-700" placeholder="+234 ...">
+                </div>
+                <p class="text-[10px] text-slate-400 mt-1.5"><span class="lang-en">Required for session reminders.</span><span class="lang-ar">مطلوب لتذكيرات الجلسة.</span></p>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-sm font-bold text-slate-700 mb-1.5"><span class="lang-en">Current Arabic Level *</span><span class="lang-ar">مستواك الحالي في العربية *</span></label>
+              <div class="relative">
+                <select name="level" required class="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 outline-none transition-all text-sm text-slate-700 appearance-none bg-white cursor-pointer" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%2394a3b8%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: right 1rem top 50%; background-size: 0.65rem auto;">
+                  <option value="" disabled selected>Select your level...</option>
+                  <option value="Complete Beginner">Complete Beginner (Alphabet)</option>
+                  <option value="Elementary">Elementary (Basic words & phrases)</option>
+                  <option value="Intermediate">Intermediate (Can hold basic conversations)</option>
+                  <option value="Advanced">Advanced (Looking for professional fluency)</option>
+                </select>
+              </div>
+            </div>
+
+            <button type="submit" id="trialSubmitBtn" class="w-full py-4 mt-4 bg-brand-midnight text-brand-gold font-bold rounded-xl hover:bg-black transition-all shadow-lg hover:shadow-glow-gold flex items-center justify-center gap-2 group border border-brand-gold/20">
+              <span id="trialBtnText" class="lang-en">Continue to Calendar</span>
+              <span id="trialBtnTextAr" class="lang-ar">استمر إلى التقويم</span>
+              <i id="trialBtnIcon" class="fa-solid fa-arrow-right group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform"></i>
+            </button>
+            
+            <div class="text-center mt-4 flex items-center justify-center gap-2 text-xs font-medium text-slate-400">
+              <i class="fa-solid fa-lock"></i> <span class="lang-en">Your information is secure. No credit card required.</span><span class="lang-ar">معلوماتك آمنة. لا حاجة لبطاقة ائتمان.</span>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </section>
 <a href="https://wa.me/2347060620964?text=Hello,%20I%20would%20like%20to%20enroll%20in%20a%20track." target="_blank" class="fixed bottom-6 right-6 rtl:right-auto rtl:left-6 z-50 bg-[#25D366] hover:bg-[#128C7E] text-white p-4 rounded-full shadow-lg transition-all transform hover:scale-110 flex items-center justify-center">
   <i class="fa-brands fa-whatsapp text-3xl"></i>
