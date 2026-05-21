@@ -5,16 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Arab Community of Lagos | Mastery Through Living Interaction</title>
 
-  <!-- Fonts: 'Cairo' for Arabic, 'Outfit'/'Plus Jakarta' for English -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
   
-  <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://unpkg.com/lucide@latest"></script>
 
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -47,16 +44,13 @@
     }
   </script>
 
-  <!-- CSS Libraries -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/atropos@2.0.2/atropos.css" />
 
-  <!-- JS Libraries -->
   <script type="module" src="https://unpkg.com/@splinetool/viewer@1.0.51/build/spline-viewer.js"></script>
   <script type="module" src="https://cdn.jsdelivr.net/npm/@starfederation/datastar"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.xkcd@1.1.13/dist/chart.xkcd.min.js"></script>
   <script src="https://unpkg.com/comlink/dist/umd/comlink.js"></script>
 
-  <!-- Custom Styles & Bilingual Setup -->
   <style>
     :root {
       --brand-emerald: #046A38;
@@ -76,17 +70,24 @@
       letter-spacing: normal !important;
     }
 
+    /* OPTIMIZED BACKGROUND: Static on mobile, animated ONLY on desktop */
     .movable-bg {
       background-image: url('background hero.jpeg'); 
       background-size: cover;
       background-position: center;
-      animation: kenBurns 30s ease-in-out infinite alternate;
+    }
+
+    @media (min-width: 1024px) {
+      .movable-bg {
+        animation: kenBurns 30s ease-in-out infinite alternate;
+        will-change: transform; /* Forces GPU layer caching */
+      }
     }
 
     @keyframes kenBurns {
       0% { transform: scale(1) translate(0, 0); }
-      50% { transform: scale(1.05) translate(-1%, 1%); }
-      100% { transform: scale(1.1) translate(1%, -1%); }
+      50% { transform: scale(1.03) translate(-0.5%, 0.5%); }
+      100% { transform: scale(1.06) translate(0.5%, -0.5%); }
     }
     
     body {
@@ -113,13 +114,15 @@
       box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1); 
     }
     
-    .reveal-up { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
-    .reveal-zoom { opacity: 0; transform: scale(0.92) translateY(20px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
-    .reveal-left { opacity: 0; transform: translateX(-40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+    /* HARDWARE ACCELERATED REVEALS */
+    .reveal-up { opacity: 0; transform: translateY(20px); transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); will-change: transform, opacity; }
+    .reveal-zoom { opacity: 0; transform: scale(0.96); transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); will-change: transform, opacity; }
+    .reveal-left { opacity: 0; transform: translateX(-20px); transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); will-change: transform, opacity; }
+    .reveal-right { opacity: 0; transform: translateX(20px); transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); will-change: transform, opacity; }
     
     /* Flip reveal directions dynamically for RTL */
-    :root[lang="ar"] .reveal-left { transform: translateX(40px); }
-    :root[lang="ar"] .reveal-right { transform: translateX(-40px); }
+    :root[lang="ar"] .reveal-left { transform: translateX(20px); }
+    :root[lang="ar"] .reveal-right { transform: translateX(-20px); }
 
     .reveal-up.visible, .reveal-zoom.visible, .reveal-left.visible, .reveal-right.visible { 
       opacity: 1; transform: none; 
@@ -147,10 +150,10 @@
     }
     @keyframes blink { 50% { opacity: 0; } }
 
-    .hover-card { transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+    .hover-card { transition: all 0.3s ease; }
     .hover-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1);
+      transform: translateY(-4px);
+      box-shadow: 0 15px 30px -10px rgba(0,0,0,0.08);
       border-color: var(--brand-gold);
     }
 
@@ -182,7 +185,6 @@
     #spline-container spline-viewer { pointer-events: none; }
   </style>
 
-  <!-- Early Initialization for Language from LocalStorage -->
   <script>
     if (localStorage.getItem('theme-lang') === 'ar') {
       document.documentElement.setAttribute('lang', 'ar');
@@ -196,7 +198,6 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between h-20 items-center">
       
-      <!-- Brand Logo -->
       <a href="#" class="flex items-center gap-3 group">
        <img src="logo.jpeg" alt="Arab Community of Lagos Logo" class="h-10 w-auto object-contain drop-shadow-sm">
         <span class="font-heading font-bold text-xl tracking-tight text-brand-midnight">
@@ -205,7 +206,6 @@
         </span>
       </a>
 
-      <!-- Desktop Links -->
       <div class="hidden lg:flex space-x-8 rtl:space-x-reverse items-center">
         <a href="#home" class="text-slate-600 hover:text-brand-emerald font-medium transition-colors text-sm">
           <span class="lang-en">Home</span><span class="lang-ar">الرئيسية</span>
@@ -221,7 +221,6 @@
         </a>
         <div class="w-px h-6 bg-slate-200"></div>
         
-        <!-- Language Switcher -->
         <button onclick="toggleLanguage()" class="text-slate-600 hover:text-brand-gold font-bold transition-colors text-sm flex items-center gap-2 px-2 py-1 rounded-md border border-slate-200 hover:border-brand-gold">
           <i class="fa-solid fa-earth-africa"></i>
           <span class="lang-en">عربي</span>
@@ -237,7 +236,6 @@
         </a>
       </div>
 
-      <!-- Mobile Menu Buttons -->
       <div class="flex lg:hidden items-center gap-4">
         <button onclick="toggleLanguage()" class="text-brand-midnight hover:text-brand-gold font-bold transition-colors text-sm flex items-center gap-1">
           <i class="fa-solid fa-earth-africa"></i>
@@ -250,7 +248,6 @@
     </div>
   </div>
 
-  <!-- Mobile Dropdown -->
   <div id="mobile-menu-wrapper" class="lg:hidden absolute w-full shadow-xl bg-white/95 backdrop-blur-md border-b border-slate-100 z-40">
     <div id="mobile-menu" class="hidden px-6 pt-4 pb-8 space-y-2 text-start">
       <a href="#home" class="mobile-link block px-4 py-3 text-brand-midnight font-medium hover:bg-slate-50 rounded-xl transition-colors"><span class="lang-en">Home</span><span class="lang-ar">الرئيسية</span></a>
@@ -270,7 +267,6 @@
   </div>
   <div class="absolute inset-0 z-0 bg-black/70"></div>
 
-  <!-- 3D Spline Scene -->
   <div id="spline-container" class="absolute inset-0 z-0 pointer-events-none opacity-50 mix-blend-screen hidden">
     <spline-viewer url="https://prod.spline.design/15bX-pIigQ9jHkSg/scene.splinecode" events-target="global" style="width: 100%; height: 100%;"></spline-viewer>
   </div>
@@ -328,7 +324,6 @@
         </div>
       </div>
 
-      <!-- Hero 3D Float Elements -->
       <div class="lg:col-span-5 relative hidden lg:block perspective-1000">
         <div class="grid grid-cols-2 gap-4 relative z-10 transform -rotate-2 rtl:rotate-2">
           
@@ -419,7 +414,6 @@
       </div>
 
       <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <!-- Card 1 -->
         <div class="reveal-up delay-100 bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl hover-card border border-slate-100 text-start">
           <div class="w-14 h-14 rounded-xl bg-brand-emerald/10 flex items-center justify-center text-brand-emerald text-2xl mb-6">
             <i class="fa-solid fa-rotate"></i>
@@ -434,7 +428,6 @@
           </div>
         </div>
 
-        <!-- Card 2 -->
         <div class="reveal-up delay-200 bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl hover-card border border-slate-100 sm:translate-y-8 text-start">
           <div class="w-14 h-14 rounded-xl bg-brand-gold/10 flex items-center justify-center text-brand-gold text-2xl mb-6">
             <i class="fa-solid fa-users-viewfinder"></i>
@@ -505,10 +498,8 @@
       </div>
     </div>
 
-    <!-- Course Grid - ALL 8 COURSES BILINGUAL -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
       
-      <!-- Course 1 -->
       <a href="Course business Index.html" class="block reveal-up delay-100 group cursor-pointer shadow-md rounded-2xl relative overflow-hidden atropos course-atropos text-start">
         <div class="atropos-scale">
           <div class="atropos-rotate">
@@ -521,7 +512,6 @@
         </div>
       </a>
 
-      <!-- Course 2 -->
       <a href="course-worshipper.html" class="block reveal-up delay-200 group cursor-pointer shadow-md rounded-2xl relative overflow-hidden atropos course-atropos text-start">
         <div class="atropos-scale">
           <div class="atropos-rotate">
@@ -534,7 +524,6 @@
         </div>
       </a>
 
-      <!-- Course 3 -->
       <a href="course-imams.html" class="block reveal-up delay-300 group cursor-pointer shadow-md rounded-2xl relative overflow-hidden atropos course-atropos text-start">
         <div class="atropos-scale"><div class="atropos-rotate"><div class="atropos-inner bg-white p-8 h-full flex flex-col border border-gray-200 group-hover:border-brand-emerald transition-colors">
           <div data-atropos-offset="5" class="w-12 h-12 rounded-xl bg-brand-emerald/10 text-brand-emerald flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-mosque"></i></div>
@@ -543,7 +532,6 @@
         </div></div></div>
       </a>
 
-      <!-- Course 4 -->
       <a href="course-parents.html" class="block reveal-up delay-400 group cursor-pointer shadow-md rounded-2xl relative overflow-hidden atropos course-atropos text-start">
         <div class="atropos-scale"><div class="atropos-rotate"><div class="atropos-inner bg-white p-8 h-full flex flex-col border border-gray-200 group-hover:border-brand-gold transition-colors">
           <div data-atropos-offset="5" class="w-12 h-12 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-house-user"></i></div>
@@ -552,7 +540,6 @@
         </div></div></div>
       </a>
 
-      <!-- Course 5 -->
       <a href="course-educators.html" class="block reveal-up delay-100 group cursor-pointer shadow-md rounded-2xl relative overflow-hidden atropos course-atropos text-start">
         <div class="atropos-scale"><div class="atropos-rotate"><div class="atropos-inner bg-white p-8 h-full flex flex-col border border-gray-200 group-hover:border-brand-emerald transition-colors">
           <div data-atropos-offset="5" class="w-12 h-12 rounded-xl bg-brand-emerald/10 text-brand-emerald flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-chalkboard-user"></i></div>
@@ -561,7 +548,6 @@
         </div></div></div>
       </a>
 
-      <!-- Course 6 -->
       <a href="course-diplomats.html" class="block reveal-up delay-200 group cursor-pointer shadow-md rounded-2xl relative overflow-hidden atropos course-atropos text-start">
         <div class="atropos-scale"><div class="atropos-rotate"><div class="atropos-inner bg-white p-8 h-full flex flex-col border border-gray-200 group-hover:border-brand-gold transition-colors">
           <div data-atropos-offset="5" class="w-12 h-12 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-globe"></i></div>
@@ -570,7 +556,6 @@
         </div></div></div>
       </a>
 
-      <!-- Course 7 -->
       <a href="course-hujaj.html" class="block reveal-up delay-300 group cursor-pointer shadow-md rounded-2xl relative overflow-hidden atropos course-atropos text-start">
         <div class="atropos-scale"><div class="atropos-rotate"><div class="atropos-inner bg-white p-8 h-full flex flex-col border border-gray-200 group-hover:border-brand-emerald transition-colors">
           <div data-atropos-offset="5" class="w-12 h-12 rounded-xl bg-brand-emerald/10 text-brand-emerald flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-kaaba"></i></div>
@@ -579,7 +564,6 @@
         </div></div></div>
       </a>
 
-      <!-- Course 8 -->
       <a href="course-qur'an foundation.html" class="block reveal-up delay-400 group cursor-pointer shadow-md rounded-2xl relative overflow-hidden atropos course-atropos text-start">
         <div class="atropos-scale"><div class="atropos-rotate"><div class="atropos-inner bg-white p-8 h-full flex flex-col border border-gray-200 group-hover:border-brand-gold transition-colors">
           <div data-atropos-offset="5" class="w-12 h-12 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-book-open-reader"></i></div>
@@ -591,7 +575,6 @@
   </div>
 </section>
 
-<!-- Floating WhatsApp Button -->
 <a href="https://wa.me/2347060620964?text=Hello,%20I%20would%20like%20to%20enroll%20in%20a%20track." target="_blank" class="fixed bottom-6 right-6 rtl:right-auto rtl:left-6 z-50 bg-[#25D366] hover:bg-[#128C7E] text-white p-4 rounded-full shadow-lg transition-all transform hover:scale-110 flex items-center justify-center">
   <i class="fa-brands fa-whatsapp text-3xl"></i>
 </a>
@@ -619,7 +602,6 @@
         <h4 class="text-white font-bold mb-4 tracking-wide uppercase text-sm"><span class="lang-en">Portals & Settings</span><span class="lang-ar">البوابات والإعدادات</span></h4>
         <ul class="space-y-2 text-sm">
           <li><a href="#" data-on-click="$$get('/api/auth/login')" class="hover:text-brand-emerald transition-colors"><span class="lang-en">Student Login</span><span class="lang-ar">دخول الطالب</span></a></li>
-          <!-- EyeDropper Customizer Trigger -->
           <li class="mt-4">
             <button id="theme-picker" class="text-brand-gold hover:text-brand-gold-light border border-brand-gold/30 px-3 py-1 rounded-md text-xs font-semibold transition-colors">
               <i class="fa-solid fa-palette mr-1"></i> <span class="lang-en">Customize Theme</span><span class="lang-ar">تخصيص المظهر</span>
@@ -637,24 +619,13 @@
   </div>
 </div>
 
-<!-- ========================================== -->
-<!-- 🚀 MODERN LIBRARIES & UTILITIES INCLUSION  -->
-<!-- ========================================== -->
-
-<!-- Lenis (Smooth Scrolling) -->
 <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
-<!-- Rough Notation (Hand-drawn text highlights) -->
 <script src="https://unpkg.com/rough-notation/lib/rough-notation.iife.js"></script>
-<!-- Atropos 3D (Tactile 3D Cards) -->
 <script src="https://cdn.jsdelivr.net/npm/atropos@2.0.2/atropos.min.js"></script>
-<!-- Canvas-Confetti (Micro-interaction rewards) -->
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
-<!-- Baffle.js (Cyberpunk text reveals) -->
 <script src="https://cdn.jsdelivr.net/npm/baffle@0.3.6/dist/baffle.min.js"></script>
-<!-- Rive App Canvas (WASM interactive animations) -->
 <script src="https://unpkg.com/@rive-app/canvas@2.7.0"></script>
 
-<!-- Valtio + System Integrations -->
 <script type="module">
   import { proxy, subscribe } from 'https://esm.sh/valtio/vanilla';
   
@@ -680,7 +651,11 @@
 
   // ── 2. Scheduling API to Prioritize Responsiveness ──
   function scheduleHeavyInitializations() {
-    document.getElementById('spline-container').classList.remove('hidden');
+    // 🚀 Only load heavy 3D Spline on Desktop to prevent mobile lag
+    if (window.innerWidth >= 1024) {
+      const splineContainer = document.getElementById('spline-container');
+      if(splineContainer) splineContainer.classList.remove('hidden');
+    }
 
     const svgEl = document.querySelector('#retention-chart');
     if(svgEl && window.chartXkcd) {
@@ -722,6 +697,7 @@
 
 <script>
   // ── Standard UI Scripts ──
+  const isMobile = window.innerWidth < 1024;
 
   // ── Language Toggle Logic ──
   function toggleLanguage() {
@@ -737,21 +713,22 @@
     }
   }
 
-  // ── Optimized Lenis Smooth Scroll ──
-  const lenis = new Lenis({
-    duration: 0.8,           
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    smoothWheel: true,       
-    smoothTouch: true,       
-    touchMultiplier: 1.5,    
-    infinite: false,
-  });
+  // ── Optimized Lenis Smooth Scroll (Desktop Only to prevent mobile lag) ──
+  if (!isMobile && typeof Lenis !== 'undefined') {
+    const lenis = new Lenis({
+      duration: 0.8,           
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,       
+      smoothTouch: false, /* Disabled on touch */
+      infinite: false,
+    });
 
-  function raf(time) {
-    lenis.raf(time);
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
     requestAnimationFrame(raf);
   }
-  requestAnimationFrame(raf);
 
   // View Transitions Mobile Menu
   document.getElementById('mobile-menu-btn').addEventListener('click', function() {
@@ -787,30 +764,49 @@
   // Canvas Confetti
   document.querySelectorAll('.confetti-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-      confetti({ particleCount: 120, spread: 70, origin: { y: 0.6 }, colors: ['#046A38', '#D4AF37', '#ffffff'] });
+      confetti({ particleCount: 100, spread: 60, origin: { y: 0.6 }, colors: ['#046A38', '#D4AF37', '#ffffff'] });
     });
   });
 
-  // Rough Notation
-  const targetText = document.getElementById('annotate-target');
-  if (targetText && window.roughNotation) {
-    const annotation = roughNotation.annotate(targetText, { type: 'highlight', color: '#F3D56B', animationDuration: 1500, multiline: true });
-    const observer = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) { annotation.show(); observer.disconnect(); }
-    }, { threshold: 0.5 });
-    observer.observe(targetText);
-  }
+  // Rough Notation (Delayed to free up main thread on initial load)
+  setTimeout(() => {
+    const targetText = document.getElementById('annotate-target');
+    if (targetText && window.roughNotation) {
+      const annotation = roughNotation.annotate(targetText, { type: 'highlight', color: '#F3D56B', animationDuration: 1500, multiline: true });
+      const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) { annotation.show(); observer.disconnect(); }
+      }, { threshold: 0.5 });
+      observer.observe(targetText);
+    }
+  }, 500);
 
-  // Atropos 3D
-  if (window.Atropos) {
+  // Atropos 3D (Desktop Only to prevent mobile lag)
+  if (!isMobile && window.Atropos) {
     document.querySelectorAll('.course-atropos').forEach((el) => {
       Atropos({ el: el, activeOffset: 40, shadowScale: 1.05 });
     });
   }
 
-  // Navbar Scroll
+  // Navbar Scroll & Sticky CTA (Throttled for Performance)
+  let ticking = false;
   window.addEventListener('scroll', () => {
-    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        // Navbar
+        document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+        
+        // Sticky CTA
+        const stickyCta = document.getElementById('sticky-cta');
+        const footerSection = document.querySelector('footer');
+        if(stickyCta && footerSection) {
+          const footerRect = footerSection.getBoundingClientRect();
+          if(footerRect.top < window.innerHeight) { stickyCta.style.transform = 'translateY(100%)'; } 
+          else { stickyCta.style.transform = 'translateY(0)'; }
+        }
+        ticking = false;
+      });
+      ticking = true;
+    }
   });
 
   // Scroll Reveal
@@ -829,6 +825,7 @@
   const typewriterEl = document.getElementById('typewriter-text');
   
   function typewrite() {
+    if (!typewriterEl) return;
     const isArabic = document.documentElement.getAttribute('lang') === 'ar';
     const currentPhrases = isArabic ? phrasesAr : phrasesEn;
     
@@ -844,7 +841,7 @@
       charIdx++; 
     }
     
-    let typingSpeed = isDeleting ? 40 : 80;
+    let typingSpeed = isDeleting ? 30 : 60;
     
     if (!isDeleting && charIdx === currentPhrase.length) { 
       typingSpeed = 2000; 
@@ -852,21 +849,12 @@
     } else if (isDeleting && charIdx === 0) { 
       isDeleting = false; 
       phraseIdx = (phraseIdx + 1) % currentPhrases.length; 
-      typingSpeed = 500; 
+      typingSpeed = 400; 
     }
     
     setTimeout(typewrite, typingSpeed);
   }
-  setTimeout(typewrite, 1000);
-
-  // Sticky CTA
-  const stickyCta = document.getElementById('sticky-cta');
-  const footerSection = document.querySelector('footer');
-  window.addEventListener('scroll', () => {
-    const footerRect = footerSection.getBoundingClientRect();
-    if(footerRect.top < window.innerHeight) { stickyCta.style.transform = 'translateY(100%)'; } 
-    else { stickyCta.style.transform = 'translateY(0)'; }
-  });
+  setTimeout(typewrite, 800);
 </script>
 
 </body>
