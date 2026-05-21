@@ -962,10 +962,27 @@
   const b = baffle('.baffle-text', { characters: '█▓▒░>_</ ArabLagos', speed: 75 }).start();
   setTimeout(() => b.reveal(1000), 1200);
 
-  // Canvas Confetti
+ // ── Upgraded Ribbon Splash Confetti ──
   document.querySelectorAll('.confetti-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      confetti({ particleCount: 100, spread: 60, origin: { y: 0.6 }, colors: ['#046A38', '#D4AF37', '#ffffff'] });
+    btn.addEventListener('click', (e) => {
+      // Calculate the exact center of the button that was clicked
+      const rect = btn.getBoundingClientRect();
+      const originX = (rect.left + rect.width / 2) / window.innerWidth;
+      const originY = (rect.top + rect.height / 2) / window.innerHeight;
+
+      // Fire a prominent ribbon splash
+      confetti({
+        particleCount: 160,
+        spread: 120,
+        startVelocity: 40,
+        origin: { x: originX, y: originY }, // Splashes exactly from the button
+        colors: ['#046A38', '#D4AF37', '#F3D56B', '#ffffff'], // Emerald, Gold, Light Gold, White
+        shapes: ['square', 'circle'],
+        gravity: 1.1,
+        scalar: 1.2, // Slightly larger ribbons/particles
+        ticks: 350,  // Lasts a bit longer on screen
+        zIndex: 99999 // Forces it to the absolute front, overriding all navigation bars
+      });
     });
   });
 
