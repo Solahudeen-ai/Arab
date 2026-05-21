@@ -70,7 +70,7 @@
       letter-spacing: normal !important;
     }
 
-    /* OPTIMIZED BACKGROUND: Static on mobile, animated ONLY on desktop */
+    /* OPTIMIZED BACKGROUND */
     .movable-bg {
       background-image: url('background hero.jpeg'); 
       background-size: cover;
@@ -80,7 +80,7 @@
     @media (min-width: 1024px) {
       .movable-bg {
         animation: kenBurns 30s ease-in-out infinite alternate;
-        will-change: transform; /* Forces GPU layer caching */
+        will-change: transform;
       }
     }
 
@@ -120,7 +120,6 @@
     .reveal-left { opacity: 0; transform: translateX(-20px); transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); will-change: transform, opacity; }
     .reveal-right { opacity: 0; transform: translateX(20px); transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); will-change: transform, opacity; }
     
-    /* Flip reveal directions dynamically for RTL */
     :root[lang="ar"] .reveal-left { transform: translateX(20px); }
     :root[lang="ar"] .reveal-right { transform: translateX(-20px); }
 
@@ -183,6 +182,40 @@
     .xkcd-chart-container svg { width: 100%; height: 180px; }
     #spline-container { pointer-events: none; }
     #spline-container spline-viewer { pointer-events: none; }
+
+    /* ── Course Card Glow Effects ── */
+    .card-glow-wrapper {
+      position: relative;
+      border-radius: 1rem;
+      z-index: 1;
+    }
+    
+    /* Static soft background glow */
+    .card-glow-wrapper::before {
+      content: '';
+      position: absolute;
+      inset: -2px; 
+      border-radius: 1.1rem;
+      background: linear-gradient(135deg, rgba(4, 106, 56, 0.15), rgba(212, 175, 55, 0.15));
+      filter: blur(8px);
+      z-index: -1;
+      transition: opacity 0.4s ease, filter 0.4s ease, background 0.4s ease;
+      will-change: opacity, filter;
+    }
+
+    /* Emerald Hover Glow */
+    .glow-hover-emerald:hover::before {
+      background: var(--brand-emerald);
+      filter: blur(12px);
+      opacity: 0.6;
+    }
+
+    /* Gold Hover Glow */
+    .glow-hover-gold:hover::before {
+      background: var(--brand-gold);
+      filter: blur(12px);
+      opacity: 0.6;
+    }
   </style>
 
   <script>
@@ -498,79 +531,128 @@
       </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
       
-      <a href="Course business Index.html" class="block reveal-up delay-100 group cursor-pointer shadow-md rounded-2xl relative overflow-hidden atropos course-atropos text-start">
-        <div class="atropos-scale">
-          <div class="atropos-rotate">
-            <div class="atropos-inner bg-white p-8 h-full flex flex-col border border-gray-200 group-hover:border-brand-emerald transition-colors">
-              <div data-atropos-offset="5" class="w-12 h-12 rounded-xl bg-brand-emerald/10 text-brand-emerald flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-briefcase"></i></div>
-              <h3 data-atropos-offset="3" class="font-heading text-lg font-bold mb-2 group-hover:text-brand-emerald"><span class="lang-en">Practical Arabic for Business</span><span class="lang-ar">اللغة العربية للأعمال</span></h3>
-              <p data-atropos-offset="1" class="text-slate-600 text-sm mt-2"><span class="lang-en">Specialized corporate vocabulary and negotiation terminology.</span><span class="lang-ar">مفردات متخصصة للشركات ومصطلحات التفاوض.</span></p>
+      <!-- Practical Arabic for Business -->
+      <div class="card-glow-wrapper glow-hover-emerald reveal-up delay-100">
+        <a href="Course business Index.html" class="block group cursor-pointer shadow-md rounded-2xl relative overflow-hidden atropos course-atropos text-start h-full">
+          <div class="atropos-scale h-full">
+            <div class="atropos-rotate h-full">
+              <div class="atropos-inner bg-white p-8 h-full flex flex-col border border-transparent group-hover:border-brand-emerald transition-colors rounded-2xl relative z-10">
+                <div data-atropos-offset="5" class="w-12 h-12 rounded-xl bg-brand-emerald/10 text-brand-emerald flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-briefcase"></i></div>
+                <h3 data-atropos-offset="3" class="font-heading text-lg font-bold mb-2 group-hover:text-brand-emerald"><span class="lang-en">Practical Arabic for Business</span><span class="lang-ar">اللغة العربية للأعمال</span></h3>
+                <p data-atropos-offset="1" class="text-slate-600 text-sm mt-2"><span class="lang-en">Specialized corporate vocabulary and negotiation terminology.</span><span class="lang-ar">مفردات متخصصة للشركات ومصطلحات التفاوض.</span></p>
+              </div>
             </div>
           </div>
-        </div>
-      </a>
+        </a>
+      </div>
 
-      <a href="course-worshipper.html" class="block reveal-up delay-200 group cursor-pointer shadow-md rounded-2xl relative overflow-hidden atropos course-atropos text-start">
-        <div class="atropos-scale">
-          <div class="atropos-rotate">
-            <div class="atropos-inner bg-white p-8 h-full flex flex-col border border-gray-200 group-hover:border-brand-gold transition-colors">
-              <div data-atropos-offset="5" class="w-12 h-12 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-bolt"></i></div>
-              <h3 data-atropos-offset="3" class="font-heading text-lg font-bold mb-2 group-hover:text-brand-gold"><span class="lang-en">Practical Arabic for Worshippers</span><span class="lang-ar">اللغة العربية للمصلين</span></h3>
-              <p data-atropos-offset="1" class="text-slate-600 text-sm mt-2"><span class="lang-en">Deepen your spiritual connection through classical comprehension.</span><span class="lang-ar">تعميق ارتباطك الروحي من خلال الفهم الكلاسيكي.</span></p>
+      <!-- Practical Arabic for Worshippers -->
+      <div class="card-glow-wrapper glow-hover-gold reveal-up delay-200">
+        <a href="course-worshipper.html" class="block group cursor-pointer shadow-md rounded-2xl relative overflow-hidden atropos course-atropos text-start h-full">
+          <div class="atropos-scale h-full">
+            <div class="atropos-rotate h-full">
+              <div class="atropos-inner bg-white p-8 h-full flex flex-col border border-transparent group-hover:border-brand-gold transition-colors rounded-2xl relative z-10">
+                <div data-atropos-offset="5" class="w-12 h-12 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-bolt"></i></div>
+                <h3 data-atropos-offset="3" class="font-heading text-lg font-bold mb-2 group-hover:text-brand-gold"><span class="lang-en">Practical Arabic for Worshippers</span><span class="lang-ar">اللغة العربية للمصلين</span></h3>
+                <p data-atropos-offset="1" class="text-slate-600 text-sm mt-2"><span class="lang-en">Deepen your spiritual connection through classical comprehension.</span><span class="lang-ar">تعميق ارتباطك الروحي من خلال الفهم الكلاسيكي.</span></p>
+              </div>
             </div>
           </div>
-        </div>
-      </a>
+        </a>
+      </div>
 
-      <a href="course-imams.html" class="block reveal-up delay-300 group cursor-pointer shadow-md rounded-2xl relative overflow-hidden atropos course-atropos text-start">
-        <div class="atropos-scale"><div class="atropos-rotate"><div class="atropos-inner bg-white p-8 h-full flex flex-col border border-gray-200 group-hover:border-brand-emerald transition-colors">
-          <div data-atropos-offset="5" class="w-12 h-12 rounded-xl bg-brand-emerald/10 text-brand-emerald flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-mosque"></i></div>
-          <h3 data-atropos-offset="3" class="font-heading text-lg font-bold mb-2 group-hover:text-brand-emerald"><span class="lang-en">Practical Arabic for Imams</span><span class="lang-ar">اللغة العربية للأئمة</span></h3>
-          <p data-atropos-offset="1" class="text-slate-600 text-sm mt-2"><span class="lang-en">Command the pulpit with advanced morphological and syntax mastery.</span><span class="lang-ar">التمكن من الخطابة بإتقان متقدم في الصرف والنحو.</span></p>
-        </div></div></div>
-      </a>
+      <!-- Practical Arabic for Imams -->
+      <div class="card-glow-wrapper glow-hover-emerald reveal-up delay-300">
+        <a href="course-imams.html" class="block group cursor-pointer shadow-md rounded-2xl relative overflow-hidden atropos course-atropos text-start h-full">
+          <div class="atropos-scale h-full">
+            <div class="atropos-rotate h-full">
+              <div class="atropos-inner bg-white p-8 h-full flex flex-col border border-transparent group-hover:border-brand-emerald transition-colors rounded-2xl relative z-10">
+                <div data-atropos-offset="5" class="w-12 h-12 rounded-xl bg-brand-emerald/10 text-brand-emerald flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-mosque"></i></div>
+                <h3 data-atropos-offset="3" class="font-heading text-lg font-bold mb-2 group-hover:text-brand-emerald"><span class="lang-en">Practical Arabic for Imams</span><span class="lang-ar">اللغة العربية للأئمة</span></h3>
+                <p data-atropos-offset="1" class="text-slate-600 text-sm mt-2"><span class="lang-en">Command the pulpit with advanced morphological and syntax mastery.</span><span class="lang-ar">التمكن من الخطابة بإتقان متقدم في الصرف والنحو.</span></p>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
 
-      <a href="course-parents.html" class="block reveal-up delay-400 group cursor-pointer shadow-md rounded-2xl relative overflow-hidden atropos course-atropos text-start">
-        <div class="atropos-scale"><div class="atropos-rotate"><div class="atropos-inner bg-white p-8 h-full flex flex-col border border-gray-200 group-hover:border-brand-gold transition-colors">
-          <div data-atropos-offset="5" class="w-12 h-12 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-house-user"></i></div>
-          <h3 data-atropos-offset="3" class="font-heading text-lg font-bold mb-2 group-hover:text-brand-gold"><span class="lang-en">Monitoring Arabic for Parents</span><span class="lang-ar">اللغة العربية للآباء</span></h3>
-          <p data-atropos-offset="1" class="text-slate-600 text-sm mt-2"><span class="lang-en">A complete program to teach your child at home effectively.</span><span class="lang-ar">برنامج متكامل لتعليم طفلك في المنزل بفعالية.</span></p>
-        </div></div></div>
-      </a>
+      <!-- Monitoring Arabic for Parents -->
+      <div class="card-glow-wrapper glow-hover-gold reveal-up delay-400">
+        <a href="course-parents.html" class="block group cursor-pointer shadow-md rounded-2xl relative overflow-hidden atropos course-atropos text-start h-full">
+          <div class="atropos-scale h-full">
+            <div class="atropos-rotate h-full">
+              <div class="atropos-inner bg-white p-8 h-full flex flex-col border border-transparent group-hover:border-brand-gold transition-colors rounded-2xl relative z-10">
+                <div data-atropos-offset="5" class="w-12 h-12 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-house-user"></i></div>
+                <h3 data-atropos-offset="3" class="font-heading text-lg font-bold mb-2 group-hover:text-brand-gold"><span class="lang-en">Monitoring Arabic for Parents</span><span class="lang-ar">اللغة العربية للآباء</span></h3>
+                <p data-atropos-offset="1" class="text-slate-600 text-sm mt-2"><span class="lang-en">A complete program to teach your child at home effectively.</span><span class="lang-ar">برنامج متكامل لتعليم طفلك في المنزل بفعالية.</span></p>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
 
-      <a href="course-educators.html" class="block reveal-up delay-100 group cursor-pointer shadow-md rounded-2xl relative overflow-hidden atropos course-atropos text-start">
-        <div class="atropos-scale"><div class="atropos-rotate"><div class="atropos-inner bg-white p-8 h-full flex flex-col border border-gray-200 group-hover:border-brand-emerald transition-colors">
-          <div data-atropos-offset="5" class="w-12 h-12 rounded-xl bg-brand-emerald/10 text-brand-emerald flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-chalkboard-user"></i></div>
-          <h3 data-atropos-offset="3" class="font-heading text-lg font-bold mb-2 group-hover:text-brand-emerald"><span class="lang-en">Practical Arabic for Educators</span><span class="lang-ar">اللغة العربية للمعلمين</span></h3>
-          <p data-atropos-offset="1" class="text-slate-600 text-sm mt-2"><span class="lang-en">Elevate your classroom instruction with dynamic pedagogy.</span><span class="lang-ar">ارتقِ بتعليمك الصفي باستخدام طرق تدريس ديناميكية.</span></p>
-        </div></div></div>
-      </a>
+      <!-- Practical Arabic for Educators -->
+      <div class="card-glow-wrapper glow-hover-emerald reveal-up delay-100">
+        <a href="course-educators.html" class="block group cursor-pointer shadow-md rounded-2xl relative overflow-hidden atropos course-atropos text-start h-full">
+          <div class="atropos-scale h-full">
+            <div class="atropos-rotate h-full">
+              <div class="atropos-inner bg-white p-8 h-full flex flex-col border border-transparent group-hover:border-brand-emerald transition-colors rounded-2xl relative z-10">
+                <div data-atropos-offset="5" class="w-12 h-12 rounded-xl bg-brand-emerald/10 text-brand-emerald flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-chalkboard-user"></i></div>
+                <h3 data-atropos-offset="3" class="font-heading text-lg font-bold mb-2 group-hover:text-brand-emerald"><span class="lang-en">Practical Arabic for Educators</span><span class="lang-ar">اللغة العربية للمعلمين</span></h3>
+                <p data-atropos-offset="1" class="text-slate-600 text-sm mt-2"><span class="lang-en">Elevate your classroom instruction with dynamic pedagogy.</span><span class="lang-ar">ارتقِ بتعليمك الصفي باستخدام طرق تدريس ديناميكية.</span></p>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
 
-      <a href="course-diplomats.html" class="block reveal-up delay-200 group cursor-pointer shadow-md rounded-2xl relative overflow-hidden atropos course-atropos text-start">
-        <div class="atropos-scale"><div class="atropos-rotate"><div class="atropos-inner bg-white p-8 h-full flex flex-col border border-gray-200 group-hover:border-brand-gold transition-colors">
-          <div data-atropos-offset="5" class="w-12 h-12 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-globe"></i></div>
-          <h3 data-atropos-offset="3" class="font-heading text-lg font-bold mb-2 group-hover:text-brand-gold"><span class="lang-en">Practical Arabic for Diplomats</span><span class="lang-ar">اللغة العربية للدبلوماسيين</span></h3>
-          <p data-atropos-offset="1" class="text-slate-600 text-sm mt-2"><span class="lang-en">Precise articulation, vocal resonance, and high-impact rhetoric.</span><span class="lang-ar">نطق دقيق، ورنين صوتي، وبلاغة عالية التأثير.</span></p>
-        </div></div></div>
-      </a>
+      <!-- Practical Arabic for Diplomats -->
+      <div class="card-glow-wrapper glow-hover-gold reveal-up delay-200">
+        <a href="course-diplomats.html" class="block group cursor-pointer shadow-md rounded-2xl relative overflow-hidden atropos course-atropos text-start h-full">
+          <div class="atropos-scale h-full">
+            <div class="atropos-rotate h-full">
+              <div class="atropos-inner bg-white p-8 h-full flex flex-col border border-transparent group-hover:border-brand-gold transition-colors rounded-2xl relative z-10">
+                <div data-atropos-offset="5" class="w-12 h-12 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-globe"></i></div>
+                <h3 data-atropos-offset="3" class="font-heading text-lg font-bold mb-2 group-hover:text-brand-gold"><span class="lang-en">Practical Arabic for Diplomats</span><span class="lang-ar">اللغة العربية للدبلوماسيين</span></h3>
+                <p data-atropos-offset="1" class="text-slate-600 text-sm mt-2"><span class="lang-en">Precise articulation, vocal resonance, and high-impact rhetoric.</span><span class="lang-ar">نطق دقيق، ورنين صوتي، وبلاغة عالية التأثير.</span></p>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
 
-      <a href="course-hujaj.html" class="block reveal-up delay-300 group cursor-pointer shadow-md rounded-2xl relative overflow-hidden atropos course-atropos text-start">
-        <div class="atropos-scale"><div class="atropos-rotate"><div class="atropos-inner bg-white p-8 h-full flex flex-col border border-gray-200 group-hover:border-brand-emerald transition-colors">
-          <div data-atropos-offset="5" class="w-12 h-12 rounded-xl bg-brand-emerald/10 text-brand-emerald flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-kaaba"></i></div>
-          <h3 data-atropos-offset="3" class="font-heading text-lg font-bold mb-2 group-hover:text-brand-emerald"><span class="lang-en">Conversational Arabic for Hujjaj</span><span class="lang-ar">اللغة العربية للحجاج</span></h3>
-          <p data-atropos-offset="1" class="text-slate-600 text-sm mt-2"><span class="lang-en">Navigate Makkah with specialized conversational fluency for logistics.</span><span class="lang-ar">تنقل في مكة بطلاقة محادثة متخصصة للخدمات اللوجستية.</span></p>
-        </div></div></div>
-      </a>
+      <!-- Conversational Arabic for Hujjaj -->
+      <div class="card-glow-wrapper glow-hover-emerald reveal-up delay-300">
+        <a href="course-hujaj.html" class="block group cursor-pointer shadow-md rounded-2xl relative overflow-hidden atropos course-atropos text-start h-full">
+          <div class="atropos-scale h-full">
+            <div class="atropos-rotate h-full">
+              <div class="atropos-inner bg-white p-8 h-full flex flex-col border border-transparent group-hover:border-brand-emerald transition-colors rounded-2xl relative z-10">
+                <div data-atropos-offset="5" class="w-12 h-12 rounded-xl bg-brand-emerald/10 text-brand-emerald flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-kaaba"></i></div>
+                <h3 data-atropos-offset="3" class="font-heading text-lg font-bold mb-2 group-hover:text-brand-emerald"><span class="lang-en">Conversational Arabic for Hujjaj</span><span class="lang-ar">اللغة العربية للحجاج</span></h3>
+                <p data-atropos-offset="1" class="text-slate-600 text-sm mt-2"><span class="lang-en">Navigate Makkah with specialized conversational fluency for logistics.</span><span class="lang-ar">تنقل في مكة بطلاقة محادثة متخصصة للخدمات اللوجستية.</span></p>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
 
-      <a href="course-qur'an foundation.html" class="block reveal-up delay-400 group cursor-pointer shadow-md rounded-2xl relative overflow-hidden atropos course-atropos text-start">
-        <div class="atropos-scale"><div class="atropos-rotate"><div class="atropos-inner bg-white p-8 h-full flex flex-col border border-gray-200 group-hover:border-brand-gold transition-colors">
-          <div data-atropos-offset="5" class="w-12 h-12 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-book-open-reader"></i></div>
-          <h3 data-atropos-offset="3" class="font-heading text-lg font-bold mb-2 group-hover:text-brand-gold"><span class="lang-en">Qur'an Foundation</span><span class="lang-ar">تأسيس القرآن الكريم</span></h3>
-          <p data-atropos-offset="1" class="text-slate-600 text-sm mt-2"><span class="lang-en">Fundamental rules of Tajweed and basic reading mechanics.</span><span class="lang-ar">القواعد الأساسية للتجويد وآليات القراءة الأساسية.</span></p>
-        </div></div></div>
-      </a>
+      <!-- Qur'an Foundation -->
+      <div class="card-glow-wrapper glow-hover-gold reveal-up delay-400">
+        <a href="course-qur'an foundation.html" class="block group cursor-pointer shadow-md rounded-2xl relative overflow-hidden atropos course-atropos text-start h-full">
+          <div class="atropos-scale h-full">
+            <div class="atropos-rotate h-full">
+              <div class="atropos-inner bg-white p-8 h-full flex flex-col border border-transparent group-hover:border-brand-gold transition-colors rounded-2xl relative z-10">
+                <div data-atropos-offset="5" class="w-12 h-12 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-book-open-reader"></i></div>
+                <h3 data-atropos-offset="3" class="font-heading text-lg font-bold mb-2 group-hover:text-brand-gold"><span class="lang-en">Qur'an Foundation</span><span class="lang-ar">تأسيس القرآن الكريم</span></h3>
+                <p data-atropos-offset="1" class="text-slate-600 text-sm mt-2"><span class="lang-en">Fundamental rules of Tajweed and basic reading mechanics.</span><span class="lang-ar">القواعد الأساسية للتجويد وآليات القراءة الأساسية.</span></p>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+
     </div>
   </div>
 </section>
