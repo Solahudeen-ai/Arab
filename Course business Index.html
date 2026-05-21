@@ -5,13 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Living Arabic for Business | Arab Community of Lagos</title>
 
-  <!-- Fonts --><!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Living Arabic for Business | Arab Community of Lagos</title>
-
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,7 +13,6 @@
   <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -48,32 +40,34 @@
   <style>
     body { background-color: #F8FAFC; color: #1E293B; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
     
-    /* ── GPU Optimized Transitions ── */
-    .form-step { display: none; opacity: 0; transform: translateX(20px); transition: opacity 0.3s ease, transform 0.3s ease; will-change: transform, opacity; }
-    .form-step.active { display: block; opacity: 1; transform: translateX(0); }
+    /* ── Polished Form Styles ── */
+    .form-step { display: none; opacity: 0; transform: translateY(10px); transition: opacity 0.4s ease, transform 0.4s ease; will-change: transform, opacity; }
+    .form-step.active { display: block; opacity: 1; transform: translateY(0); }
     
-    /* ── Floating Label Inputs ── */
-    .floating-input-wrapper { position: relative; margin-bottom: 1.25rem; }
+    .floating-input-wrapper { position: relative; margin-bottom: 1.5rem; }
     .floating-input {
-      width: 100%; padding: 1.25rem 1rem 0.5rem 1rem; border: 1px solid #E2E8F0;
+      width: 100%; padding: 1.25rem 1rem 0.5rem 1rem; border: 1px solid #CBD5E1;
       border-radius: 0.75rem; background-color: #ffffff; outline: none;
-      transition: border-color 0.3s ease; font-size: 0.95rem;
+      transition: all 0.3s ease; font-size: 0.95rem;
     }
-    .floating-input:focus { border-color: #046A38; box-shadow: 0 0 0 4px rgba(4, 106, 56, 0.1); }
+    .floating-input:focus { border-color: #046A38; box-shadow: 0 0 0 4px rgba(4, 106, 56, 0.08); }
     .floating-label {
       position: absolute; left: 1rem; top: 50%; transform: translateY(-50%);
-      color: #64748B; font-size: 0.95rem; transition: all 0.3s ease; pointer-events: none;
+      color: #64748B; font-size: 0.95rem; transition: all 0.2s ease; pointer-events: none;
     }
     .floating-input:focus ~ .floating-label,
     .floating-input:not(:placeholder-shown) ~ .floating-label {
-      top: 0.5rem; transform: translateY(0); font-size: 0.7rem; font-weight: 600; color: #046A38;
+      top: 0.75rem; transform: translateY(0); font-size: 0.7rem; font-weight: 700; color: #046A38; letter-spacing: 0.05em; text-transform: uppercase;
     }
     .progress-bar-fill { transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1); will-change: width; }
+    
+    /* Enhanced Card Shadows */
+    .card-shadow { box-shadow: 0 4px 20px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.03); }
   </style>
 </head>
 <body class="antialiased">
 
-<nav id="navbar" class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-transparent h-20 flex items-center transition-all duration-300">
+<nav id="navbar" class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-transparent transition-all duration-300 h-20 flex items-center">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex justify-between items-center">
     <a href="index.html" class="flex items-center gap-2 text-slate-500 hover:text-brand-emerald transition-colors font-medium text-sm">
       <i class="fa-solid fa-arrow-left"></i> Back to Directory
@@ -85,46 +79,46 @@
 </nav>
 
 <section class="pt-32 pb-16 bg-brand-midnight relative overflow-hidden">
-  <div class="absolute inset-0 z-0 bg-[url('background hero.jpeg')] bg-cover bg-center opacity-20 mix-blend-overlay"></div>
+  <div class="absolute inset-0 z-0 bg-[url('background hero.jpeg')] bg-cover bg-center opacity-10 mix-blend-overlay"></div>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    <div class="inline-block px-3 py-1 bg-brand-emerald/20 border border-brand-emerald/30 text-brand-emerald-light text-xs font-bold uppercase tracking-widest rounded-full mb-4">
+    <div class="inline-block px-4 py-1.5 bg-white/10 backdrop-blur border border-white/20 text-white text-[10px] font-bold uppercase tracking-[0.2em] rounded-full mb-6">
       Professional Track
     </div>
-    <h1 class="font-heading text-4xl md:text-6xl font-extrabold text-white mb-4">Living Arabic for Business</h1>
+    <h1 class="font-heading text-4xl md:text-6xl font-extrabold text-white mb-6">Living Arabic for Business</h1>
     <p class="text-slate-300 text-lg md:text-xl max-w-2xl leading-relaxed">
       Command the room. An advanced track optimized for high-influence leadership, corporate environments, and international negotiation.
     </p>
   </div>
 </section>
 
-<section class="py-16">
+<section class="py-20">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex flex-col lg:flex-row gap-12 items-start">
+    <div class="flex flex-col lg:flex-row gap-16 items-start">
       
-      <!-- Course Details -->
-      <div class="lg:w-7/12 space-y-12">
-        <div>
-          <h2 class="font-heading text-3xl font-bold text-brand-midnight mb-4">Course Overview</h2>
-          <p class="text-slate-600 leading-relaxed">
+      <!-- Content -->
+      <div class="lg:w-7/12">
+        <div class="mb-16">
+          <h2 class="font-heading text-3xl font-bold text-brand-midnight mb-6">Course Overview</h2>
+          <p class="text-slate-600 leading-relaxed text-lg">
             In international business, fluency is not just about vocabulary; it is about respect, nuance, and influence. This specialized track bypasses standard conversational Arabic to focus entirely on corporate dialogue, formal correspondence, and high-stakes negotiation terminology.
           </p>
         </div>
 
         <div>
-          <h3 class="font-heading text-2xl font-bold text-brand-midnight mb-6 border-b border-slate-200 pb-2">What You Will Master</h3>
+          <h3 class="font-heading text-2xl font-bold text-brand-midnight mb-8">What You Will Master</h3>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm"><div class="w-10 h-10 bg-brand-emerald/10 text-brand-emerald rounded-lg flex items-center justify-center mb-4 text-xl"><i class="fa-solid fa-handshake"></i></div><h4 class="font-bold text-brand-midnight mb-2">Corporate Etiquette</h4><p class="text-sm text-slate-600">Master formal titles and cultural protocols for boardroom environments.</p></div>
-            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm"><div class="w-10 h-10 bg-brand-emerald/10 text-brand-emerald rounded-lg flex items-center justify-center mb-4 text-xl"><i class="fa-solid fa-file-contract"></i></div><h4 class="font-bold text-brand-midnight mb-2">Formal Correspondence</h4><p class="text-sm text-slate-600">Draft professional emails, contracts, and proposals with perfect syntax.</p></div>
-            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm"><div class="w-10 h-10 bg-brand-emerald/10 text-brand-emerald rounded-lg flex items-center justify-center mb-4 text-xl"><i class="fa-solid fa-comments-dollar"></i></div><h4 class="font-bold text-brand-midnight mb-2">Negotiation Rhetoric</h4><p class="text-sm text-slate-600">Learn the persuasive vocabulary needed to close deals naturally.</p></div>
-            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm"><div class="w-10 h-10 bg-brand-emerald/10 text-brand-emerald rounded-lg flex items-center justify-center mb-4 text-xl"><i class="fa-solid fa-users-gear"></i></div><h4 class="font-bold text-brand-midnight mb-2">Industry Terminology</h4><p class="text-sm text-slate-600">Sector-specific vocabulary for finance and legal frameworks.</p></div>
+            <div class="bg-white p-8 rounded-2xl border border-slate-100 card-shadow"><div class="w-12 h-12 bg-brand-emerald/10 text-brand-emerald rounded-xl flex items-center justify-center mb-6 text-xl"><i class="fa-solid fa-handshake"></i></div><h4 class="font-bold text-brand-midnight mb-2">Corporate Etiquette</h4><p class="text-sm text-slate-600 leading-relaxed">Master formal titles and cultural protocols for boardroom environments.</p></div>
+            <div class="bg-white p-8 rounded-2xl border border-slate-100 card-shadow"><div class="w-12 h-12 bg-brand-emerald/10 text-brand-emerald rounded-xl flex items-center justify-center mb-6 text-xl"><i class="fa-solid fa-file-contract"></i></div><h4 class="font-bold text-brand-midnight mb-2">Formal Correspondence</h4><p class="text-sm text-slate-600 leading-relaxed">Draft professional emails, contracts, and proposals with perfect syntax.</p></div>
+            <div class="bg-white p-8 rounded-2xl border border-slate-100 card-shadow"><div class="w-12 h-12 bg-brand-emerald/10 text-brand-emerald rounded-xl flex items-center justify-center mb-6 text-xl"><i class="fa-solid fa-comments-dollar"></i></div><h4 class="font-bold text-brand-midnight mb-2">Negotiation Rhetoric</h4><p class="text-sm text-slate-600 leading-relaxed">Learn the persuasive vocabulary needed to close deals naturally.</p></div>
+            <div class="bg-white p-8 rounded-2xl border border-slate-100 card-shadow"><div class="w-12 h-12 bg-brand-emerald/10 text-brand-emerald rounded-xl flex items-center justify-center mb-6 text-xl"><i class="fa-solid fa-users-gear"></i></div><h4 class="font-bold text-brand-midnight mb-2">Industry Terminology</h4><p class="text-sm text-slate-600 leading-relaxed">Sector-specific vocabulary for finance and legal frameworks.</p></div>
           </div>
         </div>
       </div>
 
       <!-- Application Form -->
       <div class="lg:w-5/12 lg:sticky lg:top-28">
-        <div class="bg-white rounded-2xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] border border-slate-200 overflow-hidden">
-          <div class="bg-brand-midnight p-6 text-center border-b-4 border-brand-emerald">
+        <div class="bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden">
+          <div class="bg-brand-midnight p-8 text-center border-b-4 border-brand-emerald">
             <h3 class="font-heading text-2xl font-bold text-white">Enroll in this Track</h3>
           </div>
           <div class="p-8">
@@ -133,7 +127,7 @@
                 <span id="stepLabel" class="text-brand-emerald">Step 1: Details</span>
                 <span id="stepPercent">50%</span>
               </div>
-              <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+              <div class="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
                 <div id="progressBar" class="progress-bar-fill h-full bg-brand-emerald rounded-full" style="width:50%"></div>
               </div>
             </div>
@@ -143,32 +137,32 @@
               
               <div id="step1" class="form-step active">
                 <div class="floating-input-wrapper"><input type="text" id="fname" name="first_name" class="floating-input peer" placeholder=" " required><label for="fname" class="floating-label">Full Name *</label></div>
-                <div class="grid grid-cols-2 gap-3 mb-1.5">
+                <div class="grid grid-cols-2 gap-4 mb-2">
                   <div class="floating-input-wrapper mb-0"><input type="email" id="email" name="email" class="floating-input peer" placeholder=" " required><label for="email" class="floating-label">Email *</label></div>
                   <div class="floating-input-wrapper mb-0"><input type="tel" id="phone" name="Phone_number" class="floating-input peer" placeholder=" " required><label for="phone" class="floating-label">Phone *</label></div>
                 </div>
-                <div class="mb-4 mt-2">
-                  <select name="arabic_level" required class="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:border-brand-emerald outline-none text-slate-700 text-sm font-medium bg-white cursor-pointer">
-                    <option value="" disabled selected>Current Level *</option>
+                <div class="mb-6 mt-4">
+                  <select name="arabic_level" required class="w-full px-4 py-4 rounded-xl border border-slate-300 focus:border-brand-emerald outline-none text-slate-600 text-sm font-medium bg-white cursor-pointer transition-colors">
+                    <option value="" disabled selected>Current Arabic Proficiency *</option>
                     <option value="beginner">Beginner</option><option value="intermediate">Intermediate</option><option value="advanced">Advanced</option>
                   </select>
                 </div>
-                <button type="button" onclick="validateAndNext(1, 2)" class="w-full py-4 bg-brand-midnight text-white font-bold rounded-xl hover:bg-brand-emerald transition-colors shadow-md">Continue</button>
+                <button type="button" onclick="validateAndNext(1, 2)" class="w-full py-4 bg-brand-midnight text-white font-bold rounded-xl hover:bg-brand-emerald transition-all shadow-lg active:scale-[0.98]">Continue</button>
               </div>
 
               <div id="step2" class="form-step">
                 <div class="mb-6">
                   <label class="block text-sm font-bold text-slate-700 mb-3">Select Plan *</label>
-                  <select name="selected_tier" required class="w-full px-4 py-4 rounded-xl border-2 border-brand-emerald/30 focus:border-brand-emerald outline-none text-brand-midnight font-bold bg-brand-emerald/5 cursor-pointer">
+                  <select name="selected_tier" required class="w-full px-4 py-4 rounded-xl border-2 border-brand-emerald/30 focus:border-brand-emerald outline-none text-brand-midnight font-bold bg-brand-emerald/5 cursor-pointer transition-all">
                     <option value="" disabled selected>Choose your plan...</option>
-                    <option value="essential">Essential - ₦30k/mo</option>
-                    <option value="accelerated">Accelerated - ₦40k/mo</option>
-                    <option value="vip">VIP Immersive - ₦75k/mo</option>
+                    <option value="essential">Essential - ₦30,000/mo</option>
+                    <option value="accelerated">Accelerated - ₦40,000/mo</option>
+                    <option value="vip">VIP Immersive - ₦75,000/mo</option>
                   </select>
                 </div>
                 <div class="flex gap-3">
-                  <button type="button" onclick="prevStep(2, 1)" class="px-5 py-4 bg-slate-100 text-slate-600 font-bold rounded-xl hover:bg-slate-200 transition-colors"><i class="fa-solid fa-arrow-left"></i></button>
-                  <button type="submit" id="submitBtn" class="flex-1 py-4 bg-brand-gold text-brand-midnight font-bold rounded-xl hover:bg-brand-gold-light transition-all shadow-md">Pay Securely</button>
+                  <button type="button" onclick="prevStep(2, 1)" class="px-6 py-4 bg-slate-100 text-slate-600 font-bold rounded-xl hover:bg-slate-200 transition-colors"><i class="fa-solid fa-arrow-left"></i></button>
+                  <button type="submit" id="submitBtn" class="flex-1 py-4 bg-brand-gold text-brand-midnight font-bold rounded-xl hover:bg-brand-gold-light transition-all shadow-lg active:scale-[0.98]">Pay Securely</button>
                 </div>
               </div>
             </form>
@@ -179,13 +173,18 @@
   </div>
 </section>
 
+<footer class="bg-white border-t border-slate-100 py-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <p class="text-sm text-slate-400 font-medium">© 2026 Arab Community of Lagos. All rights reserved.</p>
+  </div>
+</footer>
+
 <script>
-  // Optimized Scroll Handler
   let ticking = false;
   window.addEventListener('scroll', () => {
     if (!ticking) {
       window.requestAnimationFrame(() => {
-        document.getElementById('navbar').classList.toggle('shadow-sm', window.scrollY > 20);
+        document.getElementById('navbar').classList.toggle('shadow-md', window.scrollY > 20);
         ticking = false;
       });
       ticking = true;
@@ -216,204 +215,6 @@
     const btn = document.getElementById('submitBtn');
     btn.disabled = true;
     btn.textContent = 'Processing...';
-    
-    fetch('https://hook.eu1.make.com/hiyiax5py9qflvy9x4lwvq56xyk1n0gs', { method: 'POST', body: new FormData(this) });
-    setTimeout(() => { window.location.href = 'https://paystack.shop/pay/arablagos'; }, 1000);
-  });
-</script>
-</body>
-</html>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              emerald: '#046A38',
-              'emerald-dark': '#024222',
-              'emerald-light': '#0a8f4e',
-              gold: '#D4AF37',
-              'gold-light': '#F3D56B',
-              midnight: '#0B1623',
-            }
-          },
-          fontFamily: {
-            heading: ['Outfit', 'sans-serif'],
-            body: ['Plus Jakarta Sans', 'sans-serif'],
-          }
-        }
-      }
-    }
-  </script>
-
-  <style>
-    body { background-color: #F8FAFC; color: #1E293B; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-font-smoothing: antialiased; }
-    
-    /* ── GPU Optimized Transitions ── */
-    .form-step { display: none; opacity: 0; transform: translateX(20px); transition: opacity 0.4s ease, transform 0.4s ease; will-change: transform, opacity; }
-    .form-step.active { display: block; opacity: 1; transform: translateX(0); }
-    
-    /* ── Floating Label Inputs ── */
-    .floating-input-wrapper { position: relative; margin-bottom: 1.25rem; }
-    .floating-input {
-      width: 100%; padding: 1.25rem 1rem 0.5rem 1rem; border: 1px solid #E2E8F0;
-      border-radius: 0.75rem; background-color: #ffffff; outline: none;
-      transition: border-color 0.3s ease; font-size: 0.95rem;
-    }
-    .floating-input:focus { border-color: #046A38; box-shadow: 0 0 0 4px rgba(4, 106, 56, 0.1); }
-    .floating-label {
-      position: absolute; left: 1rem; top: 50%; transform: translateY(-50%);
-      color: #64748B; font-size: 0.95rem; transition: all 0.3s ease; pointer-events: none;
-    }
-    .floating-input:focus ~ .floating-label,
-    .floating-input:not(:placeholder-shown) ~ .floating-label {
-      top: 0.5rem; transform: translateY(0); font-size: 0.7rem; font-weight: 600; color: #046A38;
-    }
-    .progress-bar-fill { transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1); will-change: width; }
-  </style>
-</head>
-<body class="antialiased">
-
-<nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 h-20 flex items-center">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex justify-between items-center">
-    <a href="index.html" class="flex items-center gap-2 text-slate-500 hover:text-brand-emerald transition-colors font-medium text-sm">
-      <i class="fa-solid fa-arrow-left"></i> Back to Directory
-    </a>
-    <span class="font-heading font-bold text-lg tracking-tight text-brand-midnight hidden sm:block">
-      Arab Community of Lagos<span class="text-brand-gold">.</span>
-    </span>
-  </div>
-</nav>
-
-<section class="pt-32 pb-16 bg-brand-midnight relative overflow-hidden">
-  <div class="absolute inset-0 z-0 bg-[url('background hero.jpeg')] bg-cover bg-center opacity-20 mix-blend-overlay"></div>
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    <div class="inline-block px-3 py-1 bg-brand-emerald/20 border border-brand-emerald/30 text-brand-emerald-light text-xs font-bold uppercase tracking-widest rounded-full mb-4">
-      Professional Track
-    </div>
-    <h1 class="font-heading text-4xl md:text-6xl font-extrabold text-white mb-4">Living Arabic for Business</h1>
-    <p class="text-slate-300 text-lg md:text-xl max-w-2xl leading-relaxed">
-      Command the room. An advanced track optimized for high-influence leadership, corporate environments, and international negotiation.
-    </p>
-  </div>
-</section>
-
-<section class="py-16">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex flex-col lg:flex-row gap-12 items-start">
-      
-      <div class="lg:w-7/12 space-y-12">
-        <div>
-          <h2 class="font-heading text-3xl font-bold text-brand-midnight mb-4">Course Overview</h2>
-          <p class="text-slate-600 leading-relaxed">
-            In international business, fluency is not just about vocabulary; it is about respect, nuance, and influence. This specialized track bypasses standard conversational Arabic to focus entirely on corporate dialogue, formal correspondence, and high-stakes negotiation terminology.
-          </p>
-        </div>
-
-        <div>
-          <h3 class="font-heading text-2xl font-bold text-brand-midnight mb-6 border-b border-slate-200 pb-2">What You Will Master</h3>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm"><div class="w-10 h-10 bg-brand-emerald/10 text-brand-emerald rounded-lg flex items-center justify-center mb-4 text-xl"><i class="fa-solid fa-handshake"></i></div><h4 class="font-bold text-brand-midnight mb-2">Corporate Etiquette</h4><p class="text-sm text-slate-600">Master formal titles and cultural protocols for boardroom environments.</p></div>
-            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm"><div class="w-10 h-10 bg-brand-emerald/10 text-brand-emerald rounded-lg flex items-center justify-center mb-4 text-xl"><i class="fa-solid fa-file-contract"></i></div><h4 class="font-bold text-brand-midnight mb-2">Formal Correspondence</h4><p class="text-sm text-slate-600">Draft professional emails, contracts, and proposals with perfect syntax.</p></div>
-            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm"><div class="w-10 h-10 bg-brand-emerald/10 text-brand-emerald rounded-lg flex items-center justify-center mb-4 text-xl"><i class="fa-solid fa-comments-dollar"></i></div><h4 class="font-bold text-brand-midnight mb-2">Negotiation Rhetoric</h4><p class="text-sm text-slate-600">Learn the persuasive vocabulary needed to close deals naturally.</p></div>
-            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm"><div class="w-10 h-10 bg-brand-emerald/10 text-brand-emerald rounded-lg flex items-center justify-center mb-4 text-xl"><i class="fa-solid fa-users-gear"></i></div><h4 class="font-bold text-brand-midnight mb-2">Industry Terminology</h4><p class="text-sm text-slate-600">Sector-specific vocabulary for finance and legal frameworks.</p></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Application Form -->
-      <div class="lg:w-5/12 lg:sticky lg:top-28">
-        <div class="bg-white rounded-2xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] border border-slate-200 overflow-hidden">
-          <div class="bg-brand-midnight p-6 text-center border-b-4 border-brand-emerald">
-            <h3 class="font-heading text-2xl font-bold text-white">Enroll in this Track</h3>
-          </div>
-          <div class="p-8">
-            <div class="mb-8">
-              <div class="flex justify-between text-xs font-bold text-slate-400 mb-2 uppercase tracking-wider">
-                <span id="stepLabel" class="text-brand-emerald">Step 1: Details</span>
-                <span id="stepPercent">50%</span>
-              </div>
-              <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
-                <div id="progressBar" class="progress-bar-fill h-full bg-brand-emerald rounded-full" style="width:50%"></div>
-              </div>
-            </div>
-
-            <form id="courseApplicationForm">
-              <input type="hidden" name="inquiry_type" value="Living Arabic for Business">
-              
-              <div id="step1" class="form-step active">
-                <div class="floating-input-wrapper"><input type="text" id="fname" name="first_name" class="floating-input peer" placeholder=" " required><label for="fname" class="floating-label">Full Name *</label></div>
-                <div class="grid grid-cols-2 gap-3 mb-1.5">
-                  <div class="floating-input-wrapper mb-0"><input type="email" id="email" name="email" class="floating-input peer" placeholder=" " required><label for="email" class="floating-label">Email *</label></div>
-                  <div class="floating-input-wrapper mb-0"><input type="tel" id="phone" name="Phone_number" class="floating-input peer" placeholder=" " required><label for="phone" class="floating-label">Phone *</label></div>
-                </div>
-                <div class="mb-4 mt-2">
-                  <select name="arabic_level" required class="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:border-brand-emerald outline-none text-slate-700 text-sm font-medium bg-white cursor-pointer">
-                    <option value="" disabled selected>Current Level *</option>
-                    <option value="beginner">Beginner</option><option value="intermediate">Intermediate</option><option value="advanced">Advanced</option>
-                  </select>
-                </div>
-                <button type="button" onclick="validateAndNext(1, 2)" class="w-full py-4 bg-brand-midnight text-white font-bold rounded-xl hover:bg-brand-emerald transition-colors shadow-md">Continue</button>
-              </div>
-
-              <div id="step2" class="form-step">
-                <div class="mb-6">
-                  <label class="block text-sm font-bold text-slate-700 mb-3">Select Plan *</label>
-                  <select name="selected_tier" required class="w-full px-4 py-4 rounded-xl border-2 border-brand-emerald/30 focus:border-brand-emerald outline-none text-brand-midnight font-bold bg-brand-emerald/5 cursor-pointer">
-                    <option value="" disabled selected>Choose your plan...</option>
-                    <option value="essential">Essential - ₦30k/mo</option>
-                    <option value="accelerated">Accelerated - ₦40k/mo</option>
-                    <option value="vip">VIP Immersive - ₦75k/mo</option>
-                  </select>
-                </div>
-                <div class="flex gap-3">
-                  <button type="button" onclick="prevStep(2, 1)" class="px-5 py-4 bg-slate-100 text-slate-600 font-bold rounded-xl hover:bg-slate-200 transition-colors"><i class="fa-solid fa-arrow-left"></i></button>
-                  <button type="submit" id="submitBtn" class="flex-1 py-4 bg-brand-gold text-brand-midnight font-bold rounded-xl hover:bg-brand-gold-light transition-all shadow-md">Pay Securely</button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<script>
-  function validateAndNext(curr, next) {
-    const inputs = document.getElementById('step' + curr).querySelectorAll('input[required], select[required]');
-    for (let i = 0; i < inputs.length; i++) { if (!inputs[i].checkValidity()) { inputs[i].reportValidity(); return; } }
-    document.getElementById('step' + curr).classList.remove('active');
-    document.getElementById('step' + next).classList.add('active');
-    updateProgress(next);
-  }
-
-  function prevStep(curr, prev) {
-    document.getElementById('step' + curr).classList.remove('active');
-    document.getElementById('step' + prev).classList.add('active');
-    updateProgress(prev);
-  }
-
-  function updateProgress(step) {
-    document.getElementById('stepLabel').textContent = step === 1 ? 'Step 1: Details' : 'Step 2: Checkout';
-    document.getElementById('progressBar').style.width = step === 1 ? '50%' : '100%';
-  }
-
-  document.getElementById('courseApplicationForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const btn = document.getElementById('submitBtn');
-    btn.disabled = true;
-    btn.textContent = 'Processing...';
-    
     fetch('https://hook.eu1.make.com/hiyiax5py9qflvy9x4lwvq56xyk1n0gs', { method: 'POST', body: new FormData(this) });
     setTimeout(() => { window.location.href = 'https://paystack.shop/pay/arablagos'; }, 1000);
   });
