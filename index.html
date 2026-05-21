@@ -49,6 +49,12 @@
   <!-- Atropos 3D CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/atropos@2.0.2/atropos.css" />
 
+  <!-- Spline 3D Viewer (Web Component) -->
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.0.51/build/spline-viewer.js"></script>
+
+  <!-- Datastar (Hypermedia Framework) -->
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@starfederation/datastar"></script>
+
   <!-- Custom Styles & Animations -->
   <style>
     /* ── Movable Background (Ken Burns Effect) ── */
@@ -112,14 +118,6 @@
     .delay-300 { transition-delay: 300ms; }
     .delay-400 { transition-delay: 400ms; }
 
-    /* ── Fascinating Animations ── */
-    @keyframes float {
-      0%, 100% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-20px) scale(1.02); }
-    }
-    .floating { animation: float 6s ease-in-out infinite; }
-    .floating-delayed { animation: float 6s ease-in-out infinite; animation-delay: -3s; }
-
     /* Button Shine Effect */
     .btn-shine { position: relative; overflow: hidden; }
     .btn-shine::before {
@@ -139,7 +137,7 @@
     }
     @keyframes blink { 50% { opacity: 0; } }
 
-    /* ── Interactive Cards (Non-Atropos elements) ── */
+    /* Interactive Cards (Non-Atropos elements) */
     .hover-card { transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
     .hover-card:hover {
       transform: translateY(-8px);
@@ -154,7 +152,7 @@
       margin-bottom: 1.5rem;
     }
 
-    /* ── Video section ── */
+    /* Video section */
     .video-container {
       position: relative; width: 100%; aspect-ratio: 16/9;
       border-radius: 20px; overflow: hidden;
@@ -167,6 +165,12 @@
 
     /* Custom Atropos Adjustments */
     .atropos-inner { border-radius: 1rem; }
+
+    /* Native View Transitions API Styles */
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+      animation-duration: 0.3s;
+    }
   </style>
 </head>
 <body class="antialiased">
@@ -190,7 +194,8 @@
         <a href="#leadership" class="text-slate-600 hover:text-brand-emerald font-medium transition-colors text-sm">Leadership</a>
         <a href="#academy" class="text-slate-600 hover:text-brand-emerald font-medium transition-colors text-sm">Courses</a>
         <div class="w-px h-6 bg-slate-200"></div>
-        <a href="#" class="text-slate-600 hover:text-brand-emerald font-medium transition-colors text-sm"><i class="fa-solid fa-lock mr-1"></i> Portal Login</a>
+        <!-- Datastar SSE Implementation: data-on-click will morph the DOM based on server response -->
+        <a href="#" data-on-click="$$get('/api/auth/login')" class="text-slate-600 hover:text-brand-emerald font-medium transition-colors text-sm"><i class="fa-solid fa-lock mr-1"></i> Portal Login</a>
         <a href="#academy" class="confetti-btn px-6 py-2.5 rounded-full bg-brand-emerald text-white text-sm font-semibold hover:bg-brand-emerald-dark transition-all shadow-md hover:shadow-glow-emerald btn-shine">
           View Courses
         </a>
@@ -203,7 +208,7 @@
     </div>
   </div>
 
-  <!-- Mobile Dropdown Wrapper (Uses AutoAnimate) -->
+  <!-- Mobile Dropdown Wrapper -->
   <div id="mobile-menu-wrapper" class="lg:hidden absolute w-full shadow-xl bg-white/95 backdrop-blur-md border-b border-slate-100 z-40">
     <div id="mobile-menu" class="hidden px-6 pt-4 pb-8 space-y-2">
       <a href="#home" class="mobile-link block px-4 py-3 text-brand-midnight font-medium hover:bg-slate-50 rounded-xl transition-colors">Home</a>
@@ -211,7 +216,8 @@
       <a href="#leadership" class="mobile-link block px-4 py-3 text-brand-midnight font-medium hover:bg-slate-50 rounded-xl transition-colors">Leadership</a>
       <a href="#academy" class="mobile-link block px-4 py-3 text-brand-midnight font-medium hover:bg-slate-50 rounded-xl transition-colors">Courses</a>
       <hr class="my-2 border-slate-100">
-      <a href="#" class="mobile-link block px-4 py-3 text-brand-emerald font-bold hover:bg-slate-50 rounded-xl transition-colors"><i class="fa-solid fa-user-circle mr-2"></i>Portal Login</a>
+      <!-- Datastar SSE Implementation Mobile -->
+      <a href="#" data-on-click="$$get('/api/auth/login')" class="mobile-link block px-4 py-3 text-brand-emerald font-bold hover:bg-slate-50 rounded-xl transition-colors"><i class="fa-solid fa-user-circle mr-2"></i>Portal Login</a>
       <a href="#academy" class="confetti-btn mobile-link mt-4 block w-full text-center px-6 py-3 rounded-xl bg-brand-emerald text-white font-bold shadow-md">View Courses</a>
     </div>
   </div>
@@ -228,12 +234,13 @@
   </div>
 
   <!-- 2. The Dimming Overlay -->
-  <div class="absolute inset-0 z-0 bg-black/60"></div>
+  <div class="absolute inset-0 z-0 bg-black/70"></div>
 
-  <!-- 3. Decorative Abstract Shapes & Grid -->
-  <div class="absolute top-20 right-10 w-[500px] h-[500px] bg-brand-emerald/30 rounded-full blur-[100px] pointer-events-none floating z-0"></div>
-  <div class="absolute bottom-10 left-10 w-[600px] h-[600px] bg-brand-gold/20 rounded-full blur-[120px] pointer-events-none floating-delayed z-0"></div>
-  <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')] pointer-events-none z-0"></div>
+  <!-- 3. GPU-Accelerated 3D Spline Scene (Replaces Flat Decorative Shapes) -->
+  <div class="absolute inset-0 z-0 pointer-events-none opacity-50 mix-blend-screen">
+    <!-- Using a highly optimized, interactive abstract shapes Spline -->
+    <spline-viewer url="https://prod.spline.design/15bX-pIigQ9jHkSg/scene.splinecode" events-target="global" style="width: 100%; height: 100%;"></spline-viewer>
+  </div>
 
   <!-- 4. Main Content Container -->
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full relative z-10">
@@ -242,18 +249,19 @@
       <!-- Hero Content -->
       <div class="lg:col-span-7 text-center lg:text-left">
         
-        <!-- Brand Hierarchy Fix -->
         <div class="reveal-up inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-gold/30 bg-brand-gold/10 text-brand-gold text-xs sm:text-sm font-semibold tracking-wide uppercase mb-8 backdrop-blur-sm">
           <span class="w-2 h-2 rounded-full bg-brand-gold animate-pulse"></span>
           The Premier Program by Arab Community of Lagos
         </div>
 
+        <!-- Baffle.js Cyberpunk Target Applied Here -->
+        <h1 class="reveal-up delay-100 font-heading text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-[1.1] mb-6 baffle-text">
+          Mastery Through
+        </h1>
         <h1 class="reveal-up delay-100 font-heading text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-[1.1] mb-6">
-          Mastery Through<br>
           <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold to-brand-gold-light" id="typewriter-text">Living Interaction</span><span class="cursor"></span>
         </h1>
 
-        <!-- Messaging Fix -->
         <p class="reveal-up delay-200 text-slate-300 text-lg sm:text-xl leading-relaxed mb-10 max-w-2xl mx-auto lg:mx-0">
           Enter the <strong class="text-white">Living Arabic</strong> ecosystem. Bridge the gap between static grammar and commanding, native-level fluency by connecting with classical scholars and native experts.
         </p>
@@ -292,9 +300,8 @@
 
       <!-- Hero Visuals (Cards) -->
       <div class="lg:col-span-5 relative hidden lg:block perspective-1000">
-        <div class="grid grid-cols-2 gap-4 relative z-10 transform -rotate-2">
-          
-          <div class="reveal-zoom delay-100 bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 shadow-glass hover-card flex flex-col items-start gap-4 transform translate-y-8">
+        <div class="grid grid-cols-2 gap-4 relative z-10 transform -rotate-2 pointer-events-none">
+          <div class="reveal-zoom delay-100 bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 shadow-glass flex flex-col items-start gap-4 transform translate-y-8">
             <div class="w-12 h-12 rounded-full bg-brand-emerald/40 border border-brand-emerald-light/50 flex items-center justify-center text-xl text-white">
               <i class="fa-solid fa-globe"></i>
             </div>
@@ -304,7 +311,7 @@
             </div>
           </div>
 
-          <div class="reveal-zoom delay-200 bg-gradient-to-br from-brand-gold/20 to-brand-gold/5 backdrop-blur-md p-6 rounded-2xl border border-brand-gold/30 shadow-glass hover-card flex flex-col items-start gap-4">
+          <div class="reveal-zoom delay-200 bg-gradient-to-br from-brand-gold/20 to-brand-gold/5 backdrop-blur-md p-6 rounded-2xl border border-brand-gold/30 shadow-glass flex flex-col items-start gap-4">
             <div class="w-12 h-12 rounded-full bg-brand-gold/40 border border-brand-gold-light/50 flex items-center justify-center text-xl text-white">
               <i class="fa-solid fa-graduation-cap"></i>
             </div>
@@ -314,7 +321,7 @@
             </div>
           </div>
 
-          <div class="reveal-zoom delay-300 bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 shadow-glass hover-card flex flex-col items-start gap-4 col-span-2 mt-4 flex-row items-center">
+          <div class="reveal-zoom delay-300 bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 shadow-glass flex flex-col items-start gap-4 col-span-2 mt-4 flex-row items-center">
             <div class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center text-xl text-white shrink-0">
               <i class="fa-solid fa-chart-line"></i>
             </div>
@@ -326,7 +333,6 @@
               <p class="text-sm text-slate-300 leading-snug">Increase in retention through daily cadence training compared to traditional models.</p>
             </div>
           </div>
-
         </div>
       </div>
     </div>
@@ -494,7 +500,7 @@
 </section>
 
 <!-- ═══════════════════════════════════════════
-     COURSES / ACADEMY SECTION (Now powered by Atropos 3D)
+     COURSES / ACADEMY SECTION (Powered by Atropos 3D)
 ════════════════════════════════════════════ -->
 <section id="academy" class="py-24 bg-slate-50 relative border-y border-gray-200">
   <div class="absolute inset-0 opacity-40 pointer-events-none" style="background-image: radial-gradient(#cbd5e1 1px, transparent 1px); background-size: 32px 32px;"></div>
@@ -508,7 +514,6 @@
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-      
       <a href="Course business Index.html" class="block reveal-up delay-100 group cursor-pointer shadow-md rounded-2xl relative overflow-hidden atropos course-atropos">
         <div class="atropos-scale">
           <div class="atropos-rotate">
@@ -615,15 +620,21 @@
   <i class="fa-brands fa-whatsapp text-3xl"></i>
 </a>
 
-<footer class="bg-brand-midnight text-slate-400 py-16 border-t border-white/10">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<footer class="bg-brand-midnight text-slate-400 py-16 border-t border-white/10 relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
       <div class="col-span-1 md:col-span-2">
         <div class="flex items-center gap-3 mb-6">
          <img src="logo.jpeg" alt="Arab Community of Lagos Logo" class="h-10 w-auto object-contain drop-shadow-sm">
           <span class="font-heading font-bold text-2xl text-white">Arab Community of Lagos<span class="text-brand-gold">.</span></span>
         </div>
-        <p class="text-sm leading-relaxed max-w-sm">Science confirms that achieving true linguistic mastery is nearly impossible without a supportive ecosystem for consistent, active speaking.</p>
+        <p class="text-sm leading-relaxed max-w-sm mb-6">Science confirms that achieving true linguistic mastery is nearly impossible without a supportive ecosystem for consistent, active speaking.</p>
+        
+        <!-- Rive WASM Animation Canvas integration -->
+        <div class="w-48 h-48 -ml-4 opacity-80 mix-blend-screen">
+          <canvas id="rive-mascot" width="200" height="200"></canvas>
+        </div>
+
       </div>
       <div>
         <h4 class="text-white font-bold mb-4 tracking-wide uppercase text-sm">Quick Links</h4>
@@ -636,7 +647,8 @@
       <div>
         <h4 class="text-white font-bold mb-4 tracking-wide uppercase text-sm">Portals</h4>
         <ul class="space-y-2 text-sm">
-          <li><a href="#" class="hover:text-brand-emerald transition-colors">Student Login</a></li>
+          <!-- Datastar implementation -->
+          <li><a href="#" data-on-click="$$get('/api/auth/login')" class="hover:text-brand-emerald transition-colors">Student Login</a></li>
         </ul>
       </div>
     </div>
@@ -655,7 +667,7 @@
 
 <!-- 1. Lenis (Smooth Scrolling) -->
 <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
-<!-- 2. AutoAnimate (Zero-config DOM animations) -->
+<!-- 2. AutoAnimate (Included if needed elsewhere, though menu now uses View Transitions) -->
 <script src="https://cdn.jsdelivr.net/npm/@formkit/auto-animate@0.8.2/browser/index.min.js"></script>
 <!-- 3. Rough Notation (Hand-drawn text highlights) -->
 <script src="https://unpkg.com/rough-notation/lib/rough-notation.iife.js"></script>
@@ -663,46 +675,72 @@
 <script src="https://cdn.jsdelivr.net/npm/atropos@2.0.2/atropos.min.js"></script>
 <!-- 5. Canvas-Confetti (Micro-interaction rewards) -->
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+<!-- 6. Baffle.js (Cyberpunk text reveals) -->
+<script src="https://cdn.jsdelivr.net/npm/baffle@0.3.6/dist/baffle.min.js"></script>
+<!-- 7. Rive App Canvas (WASM interactive animations) -->
+<script src="https://unpkg.com/@rive-app/canvas@2.7.0"></script>
 
 <script>
   // ── 1. Initialize Lenis Smooth Scroll ──
   const lenis = new Lenis({
     duration: 1.2,
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) // Custom ease
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
   });
   function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
   requestAnimationFrame(raf);
 
-  // ── 2. Initialize AutoAnimate on Mobile Menu ──
-  const mobileMenuWrapper = document.getElementById('mobile-menu-wrapper');
-  if (window.autoAnimate) {
-    autoAnimate(mobileMenuWrapper);
-  }
-
-  // Mobile Menu Toggle Logic (Simplified for AutoAnimate)
+  // ── 2. View Transitions API for Mobile Menu ──
   document.getElementById('mobile-menu-btn').addEventListener('click', function() {
-    const menu = document.getElementById('mobile-menu');
-    menu.classList.toggle('hidden'); // AutoAnimate handles the sliding transition!
-    
-    const icon = this.querySelector('i');
-    if(menu.classList.contains('hidden')) {
-      icon.classList.remove('fa-xmark');
-      icon.classList.add('fa-bars');
+    const toggleMenu = () => {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+      const icon = document.querySelector('#mobile-menu-btn i');
+      if(menu.classList.contains('hidden')) {
+        icon.classList.remove('fa-xmark');
+        icon.classList.add('fa-bars');
+      } else {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-xmark');
+      }
+    };
+
+    // Use native View Transitions if supported (Zero bundle size morphing)
+    if (document.startViewTransition) {
+      document.startViewTransition(() => toggleMenu());
     } else {
-      icon.classList.remove('fa-bars');
-      icon.classList.add('fa-xmark');
+      toggleMenu(); // Fallback for older browsers
     }
   });
 
-  // Close mobile menu on link click
+  // Close mobile menu on link click using View Transitions
   document.querySelectorAll('.mobile-link').forEach(link => {
     link.addEventListener('click', () => {
-      document.getElementById('mobile-menu').classList.add('hidden');
-      document.querySelector('#mobile-menu-btn i').classList.replace('fa-xmark', 'fa-bars');
+      const closeMenu = () => {
+        document.getElementById('mobile-menu').classList.add('hidden');
+        document.querySelector('#mobile-menu-btn i').classList.replace('fa-xmark', 'fa-bars');
+      };
+      if (document.startViewTransition) document.startViewTransition(() => closeMenu());
+      else closeMenu();
     });
   });
 
-  // ── 3. Initialize Canvas Confetti on CTA Buttons ──
+  // ── 3. Baffle.js Cyberpunk Reveal ──
+  // Targets the "Mastery Through" text on load
+  const b = baffle('.baffle-text', {
+      characters: '█▓▒░>_</ ArabLagos',
+      speed: 75
+  }).start();
+  // Reveal the actual text after 1.2 seconds of hacker-aesthetic scrambled text
+  setTimeout(() => b.reveal(1000), 1200);
+
+  // ── 4. Initialize Rive Mascot in Footer ──
+  new rive.Rive({
+    src: 'https://cdn.rive.app/animations/vehicles.riv', // Public placeholder vector animation
+    canvas: document.getElementById('rive-mascot'),
+    autoplay: true,
+  });
+
+  // ── 5. Initialize Canvas Confetti on CTA Buttons ──
   document.querySelectorAll('.confetti-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       confetti({
@@ -714,7 +752,7 @@
     });
   });
 
-  // ── 4. Initialize Rough Notation Highlighter ──
+  // ── 6. Initialize Rough Notation Highlighter ──
   const targetText = document.getElementById('annotate-target');
   if (targetText && window.roughNotation) {
     const annotation = roughNotation.annotate(targetText, { 
@@ -724,7 +762,6 @@
       multiline: true
     });
     
-    // Animate only when scrolled into view
     const observer = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
         annotation.show();
@@ -734,7 +771,7 @@
     observer.observe(targetText);
   }
 
-  // ── 5. Initialize Atropos 3D on Course Cards ──
+  // ── 7. Initialize Atropos 3D on Course Cards ──
   if (window.Atropos) {
     document.querySelectorAll('.course-atropos').forEach((el) => {
       Atropos({
