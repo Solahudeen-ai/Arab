@@ -168,6 +168,53 @@
             </li>
           </ul>
         </div>
+
+        <!-- 3-Tier Pricing Section -->
+        <div>
+          <h3 class="font-heading text-2xl font-bold text-brand-midnight mb-6 border-b border-slate-200 pb-2">Tuition & Investment Options</h3>
+          
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center mt-8">
+            
+            <!-- Tier 1: Essential -->
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-shadow flex flex-col h-full">
+              <h4 class="font-bold text-slate-500 mb-1 uppercase tracking-wide text-xs">Essential</h4>
+              <div class="font-heading text-3xl font-bold text-brand-midnight mb-4">₦30k<span class="text-sm text-slate-400 font-medium">/mo</span></div>
+              <ul class="text-sm text-slate-600 space-y-3 mb-6 flex-1">
+                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-emerald mt-0.5"></i> Base Curriculum Access</li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-emerald mt-0.5"></i> Group Sessions</li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-emerald mt-0.5"></i> Standard Portal Access</li>
+              </ul>
+            </div>
+
+            <!-- Tier 2: Accelerated (The Decoy / Target) -->
+            <div class="bg-brand-midnight rounded-2xl p-8 border-2 border-brand-gold shadow-2xl flex flex-col relative transform md:-translate-y-4 z-10 h-[105%]">
+              <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand-gold text-brand-midnight text-[10px] font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-md whitespace-nowrap">
+                Most Popular
+              </div>
+              <h4 class="font-bold text-brand-gold mb-1 uppercase tracking-wide text-xs">Accelerated</h4>
+              <div class="font-heading text-4xl font-bold text-white mb-4">₦40k<span class="text-sm text-slate-400 font-medium">/mo</span></div>
+              <ul class="text-sm text-slate-200 space-y-4 mb-6 flex-1">
+                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-gold mt-0.5"></i> Everything in Essential</li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-gold mt-0.5"></i> Live Q&A and Assessments</li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-gold mt-0.5"></i> Sector-Specific Materials</li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-gold mt-0.5"></i> Official Certification</li>
+              </ul>
+            </div>
+
+            <!-- Tier 3: VIP Immersive (The Anchor) -->
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-shadow flex flex-col h-full">
+              <h4 class="font-bold text-slate-500 mb-1 uppercase tracking-wide text-xs">Immersive VIP</h4>
+              <div class="font-heading text-3xl font-bold text-brand-midnight mb-4">₦75k<span class="text-sm text-slate-400 font-medium">/mo</span></div>
+              <ul class="text-sm text-slate-600 space-y-3 mb-6 flex-1">
+                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-emerald mt-0.5"></i> Everything in Accelerated</li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-emerald mt-0.5"></i> 1-on-1 Monthly Coaching</li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-emerald mt-0.5"></i> Priority Support Line</li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
       </div>
 
       <!-- Right Content: The Sticky Application Form with Payment -->
@@ -195,46 +242,69 @@
               <!-- Hidden input to lock the track automatically -->
               <input type="hidden" name="inquiry_type" value="Living Arabic for Business">
 
-              <!-- STEP 1: Personal Details -->
+              <!-- STEP 1: Academic Profile & Details -->
               <div id="step1" class="form-step active">
                 <div class="floating-input-wrapper">
                   <input type="text" id="fname" name="first_name" class="floating-input peer" placeholder=" " required>
                   <label for="fname" class="floating-label">Full Name *</label>
                 </div>
-                <div class="floating-input-wrapper">
-                  <input type="email" id="email" name="email" class="floating-input peer" placeholder=" " required>
-                  <label for="email" class="floating-label">Email Address *</label>
+                
+                <div class="grid grid-cols-2 gap-3 mb-1.5">
+                  <div class="floating-input-wrapper mb-0">
+                    <input type="email" id="email" name="email" class="floating-input peer" placeholder=" " required>
+                    <label for="email" class="floating-label">Email Address *</label>
+                  </div>
+                  <div class="floating-input-wrapper mb-0">
+                    <input type="tel" id="phone" name="Phone_number" class="floating-input peer" placeholder=" " required>
+                    <label for="phone" class="floating-label">Phone Number *</label>
+                  </div>
                 </div>
+
+                <div class="mb-4 mt-2">
+                  <select name="arabic_level" required class="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:border-brand-emerald outline-none text-slate-700 text-sm font-medium appearance-none bg-white relative cursor-pointer" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%231E293B%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: right 1rem top 50%; background-size: 0.65rem auto;">
+                    <option value="" disabled selected>Current Arabic Level *</option>
+                    <option value="beginner">Beginner (Alphabet / Basic words)</option>
+                    <option value="intermediate">Intermediate (Can read, limited vocabulary)</option>
+                    <option value="advanced">Advanced (Conversational but not fluent)</option>
+                  </select>
+                </div>
+
                 <div class="floating-input-wrapper mb-6">
-                  <input type="tel" id="phone" name="Phone_number" class="floating-input peer" placeholder=" " required>
-                  <label for="phone" class="floating-label">Phone Number *</label>
+                  <textarea id="goal" name="primary_goal" class="floating-input peer h-20 resize-none" placeholder=" " required></textarea>
+                  <label for="goal" class="floating-label !top-4">What is your primary goal for this track? *</label>
                 </div>
                 
                 <button type="button" onclick="validateAndNext(1, 2)" class="w-full py-4 bg-brand-midnight text-white font-bold rounded-xl hover:bg-brand-emerald transition-colors shadow-md flex items-center justify-center gap-2 group">
-                  Continue to Payment <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                  Continue to Selection <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
                 </button>
               </div>
 
-              <!-- STEP 2: Checkout & Submission -->
+              <!-- STEP 2: Checkout Review -->
               <div id="step2" class="form-step">
-                <div class="floating-input-wrapper">
-                  <textarea id="exp" name="message" class="floating-input peer h-20 resize-none" placeholder=" "></textarea>
-                  <label for="exp" class="floating-label !top-4">Primary business sector? (Optional)</label>
+                
+                <!-- The Choice Selection -->
+                <div class="mb-6">
+                  <label class="block text-sm font-bold text-slate-700 mb-3">Select Your Tuition Plan *</label>
+                  <select name="selected_tier" required class="w-full px-4 py-4 rounded-xl border-2 border-brand-emerald/30 focus:border-brand-emerald focus:ring-4 focus:ring-brand-emerald/10 outline-none text-brand-midnight font-bold bg-brand-emerald/5 appearance-none relative cursor-pointer" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%231E293B%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: right 1rem top 50%; background-size: 0.85rem auto;">
+                    <option value="" disabled selected>Choose your plan...</option>
+                    <option value="essential">Essential Plan - ₦30,000/mo</option>
+                    <option value="accelerated">Accelerated Plan (Recommended) - ₦40,000/mo</option>
+                    <option value="vip">Immersive VIP Plan - ₦75,000/mo</option>
+                  </select>
                 </div>
 
-                <div class="bg-slate-50 border border-slate-200 rounded-xl p-5 mb-6">
-                  <div class="flex items-center justify-between mb-2">
-                    <span class="text-sm font-bold text-slate-500 uppercase tracking-wide">Tuition</span>
-                    <span class="font-heading text-2xl font-bold text-brand-midnight">₦40,000<span class="text-sm text-slate-500 font-medium">/mo.</span></span>
-                  </div>
-                  <p class="text-xs text-slate-500 border-t border-slate-200 pt-2">Includes immediate access to your portal, live sessions, and business materials.</p>
+                <div class="bg-brand-emerald/5 border border-brand-emerald/20 rounded-xl p-5 mb-6">
+                  <h4 class="font-heading font-bold text-brand-midnight mb-1">Application Ready</h4>
+                  <p class="text-xs text-slate-600 leading-relaxed">
+                    By proceeding to payment, your application will be submitted for processing. You can manage or upgrade your tier inside your portal at any time.
+                  </p>
                 </div>
 
                 <div class="mb-6">
                   <label class="flex items-start gap-3 cursor-pointer group">
                     <input type="checkbox" name="terms_agreed" class="mt-1 w-5 h-5 rounded border-slate-300 text-brand-emerald focus:ring-brand-emerald" required>
                     <span class="text-xs text-slate-600 group-hover:text-brand-midnight transition-colors leading-relaxed">
-                      I agree to the <a href="#" class="text-brand-emerald underline">Terms of Service</a> and confirm my details are accurate.
+                      I agree to the <a href="#" class="text-brand-emerald underline">Terms of Service</a> and confirm my application details are accurate.
                     </span>
                   </label>
                 </div>
