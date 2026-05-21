@@ -22,9 +22,10 @@
         extend: {
           colors: {
             brand: {
-              emerald: '#046A38',
-              'emerald-dark': '#024222',
-              'emerald-light': '#0a8f4e',
+              /* Modified to use CSS variables for Valtio + EyeDropper dynamic theming */
+              emerald: 'var(--brand-emerald)', 
+              'emerald-dark': 'color-mix(in srgb, var(--brand-emerald) 80%, black)',
+              'emerald-light': 'color-mix(in srgb, var(--brand-emerald) 80%, white)',
               gold: '#D4AF37',
               'gold-light': '#F3D56B',
               midnight: '#0B1623',
@@ -37,7 +38,7 @@
             body: ['Plus Jakarta Sans', 'sans-serif'],
           },
           boxShadow: {
-            'glow-emerald': '0 0 20px rgba(4, 106, 56, 0.4)',
+            'glow-emerald': '0 0 20px color-mix(in srgb, var(--brand-emerald) 40%, transparent)',
             'glow-gold': '0 0 20px rgba(212, 175, 55, 0.4)',
             'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.07)',
           }
@@ -46,18 +47,22 @@
     }
   </script>
 
-  <!-- Atropos 3D CSS -->
+  <!-- CSS Libraries -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/atropos@2.0.2/atropos.css" />
 
-  <!-- Spline 3D Viewer (Web Component) -->
+  <!-- JS Libraries (Non-Module) -->
   <script type="module" src="https://unpkg.com/@splinetool/viewer@1.0.51/build/spline-viewer.js"></script>
-
-  <!-- Datastar (Hypermedia Framework) -->
   <script type="module" src="https://cdn.jsdelivr.net/npm/@starfederation/datastar"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.xkcd@1.1.13/dist/chart.xkcd.min.js"></script>
+  <script src="https://unpkg.com/comlink/dist/umd/comlink.js"></script>
 
   <!-- Custom Styles & Animations -->
   <style>
-    /* ── Movable Background (Ken Burns Effect) ── */
+    :root {
+      --brand-emerald: #046A38;
+      --brand-gold: #D4AF37;
+    }
+    
     .movable-bg {
       background-image: url('background hero.jpeg'); 
       background-size: cover;
@@ -71,11 +76,6 @@
       100% { transform: scale(1.1) translate(1%, -1%); }
     }
     
-    /* ── Base & Readability ── */
-    :root {
-      --brand-emerald: #046A38;
-      --brand-gold: #D4AF37;
-    }
     body {
       background-color: #F8FAFC;
       color: #1E293B;
@@ -85,11 +85,9 @@
       -moz-osx-font-smoothing: grayscale;
     }
     
-    /* Better Text Readability */
     p { line-height: 1.75; letter-spacing: -0.01em; }
     h1, h2, h3, h4, h5, h6 { letter-spacing: -0.02em; }
 
-    /* ── Glassmorphism Nav ── */
     .glass-nav {
       background: rgba(255, 255, 255, 0.85);
       backdrop-filter: blur(16px);
@@ -102,23 +100,19 @@
       box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1); 
     }
     
-    /* ── Advanced Scroll Reveals ── */
     .reveal-up { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
     .reveal-zoom { opacity: 0; transform: scale(0.92) translateY(20px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
     .reveal-left { opacity: 0; transform: translateX(-40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
     .reveal-right { opacity: 0; transform: translateX(40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
-    
     .reveal-up.visible, .reveal-zoom.visible, .reveal-left.visible, .reveal-right.visible { 
       opacity: 1; transform: none; 
     }
 
-    /* Stagger Delays */
     .delay-100 { transition-delay: 100ms; }
     .delay-200 { transition-delay: 200ms; }
     .delay-300 { transition-delay: 300ms; }
     .delay-400 { transition-delay: 400ms; }
 
-    /* Button Shine Effect */
     .btn-shine { position: relative; overflow: hidden; }
     .btn-shine::before {
       content: '';
@@ -129,7 +123,6 @@
     }
     @keyframes shine { 0% { left: -100%; } 20% { left: 200%; } 100% { left: 200%; } }
 
-    /* Typewriter Cursor */
     .cursor {
       display: inline-block; width: 3px; height: 1.1em;
       background: var(--brand-gold); margin-left: 4px;
@@ -137,7 +130,6 @@
     }
     @keyframes blink { 50% { opacity: 0; } }
 
-    /* Interactive Cards (Non-Atropos elements) */
     .hover-card { transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
     .hover-card:hover {
       transform: translateY(-8px);
@@ -145,14 +137,12 @@
       border-color: var(--brand-gold);
     }
 
-    /* Section Divider */
     .section-divider {
       width: 60px; height: 4px; border-radius: 2px;
       background: linear-gradient(90deg, var(--brand-emerald), var(--brand-gold));
       margin-bottom: 1.5rem;
     }
 
-    /* Video section */
     .video-container {
       position: relative; width: 100%; aspect-ratio: 16/9;
       border-radius: 20px; overflow: hidden;
@@ -163,13 +153,17 @@
       border: none; pointer-events: auto; 
     }
 
-    /* Custom Atropos Adjustments */
     .atropos-inner { border-radius: 1rem; }
 
-    /* Native View Transitions API Styles */
     ::view-transition-old(root),
     ::view-transition-new(root) {
       animation-duration: 0.3s;
+    }
+
+    /* chart.xkcd specific styling */
+    .xkcd-chart-container svg {
+      width: 100%;
+      height: 180px;
     }
   </style>
 </head>
@@ -194,7 +188,6 @@
         <a href="#leadership" class="text-slate-600 hover:text-brand-emerald font-medium transition-colors text-sm">Leadership</a>
         <a href="#academy" class="text-slate-600 hover:text-brand-emerald font-medium transition-colors text-sm">Courses</a>
         <div class="w-px h-6 bg-slate-200"></div>
-        <!-- Datastar SSE Implementation: data-on-click will morph the DOM based on server response -->
         <a href="#" data-on-click="$$get('/api/auth/login')" class="text-slate-600 hover:text-brand-emerald font-medium transition-colors text-sm"><i class="fa-solid fa-lock mr-1"></i> Portal Login</a>
         <a href="#academy" class="confetti-btn px-6 py-2.5 rounded-full bg-brand-emerald text-white text-sm font-semibold hover:bg-brand-emerald-dark transition-all shadow-md hover:shadow-glow-emerald btn-shine">
           View Courses
@@ -216,45 +209,32 @@
       <a href="#leadership" class="mobile-link block px-4 py-3 text-brand-midnight font-medium hover:bg-slate-50 rounded-xl transition-colors">Leadership</a>
       <a href="#academy" class="mobile-link block px-4 py-3 text-brand-midnight font-medium hover:bg-slate-50 rounded-xl transition-colors">Courses</a>
       <hr class="my-2 border-slate-100">
-      <!-- Datastar SSE Implementation Mobile -->
       <a href="#" data-on-click="$$get('/api/auth/login')" class="mobile-link block px-4 py-3 text-brand-emerald font-bold hover:bg-slate-50 rounded-xl transition-colors"><i class="fa-solid fa-user-circle mr-2"></i>Portal Login</a>
       <a href="#academy" class="confetti-btn mobile-link mt-4 block w-full text-center px-6 py-3 rounded-xl bg-brand-emerald text-white font-bold shadow-md">View Courses</a>
     </div>
   </div>
 </nav>
 
-<!-- ═══════════════════════════════════════════
-     FIXED SINGLE HERO SECTION
-════════════════════════════════════════════ -->
 <section id="home" class="relative min-h-screen flex items-center overflow-hidden pt-24 pb-12">
-
-  <!-- 1. Movable Image Background -->
   <div class="absolute inset-0 z-0 overflow-hidden">
     <div class="movable-bg w-full h-full"></div>
   </div>
-
-  <!-- 2. The Dimming Overlay -->
   <div class="absolute inset-0 z-0 bg-black/70"></div>
 
-  <!-- 3. GPU-Accelerated 3D Spline Scene (Replaces Flat Decorative Shapes) -->
-  <div class="absolute inset-0 z-0 pointer-events-none opacity-50 mix-blend-screen">
-    <!-- Using a highly optimized, interactive abstract shapes Spline -->
+  <!-- 3D Spline Scene Container (Initialized via Scheduler API) -->
+  <div id="spline-container" class="absolute inset-0 z-0 pointer-events-none opacity-50 mix-blend-screen hidden">
     <spline-viewer url="https://prod.spline.design/15bX-pIigQ9jHkSg/scene.splinecode" events-target="global" style="width: 100%; height: 100%;"></spline-viewer>
   </div>
 
-  <!-- 4. Main Content Container -->
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full relative z-10">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
       
-      <!-- Hero Content -->
       <div class="lg:col-span-7 text-center lg:text-left">
-        
         <div class="reveal-up inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-gold/30 bg-brand-gold/10 text-brand-gold text-xs sm:text-sm font-semibold tracking-wide uppercase mb-8 backdrop-blur-sm">
           <span class="w-2 h-2 rounded-full bg-brand-gold animate-pulse"></span>
           The Premier Program by Arab Community of Lagos
         </div>
 
-        <!-- Baffle.js Cyberpunk Target Applied Here -->
         <h1 class="reveal-up delay-100 font-heading text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-[1.1] mb-6 baffle-text">
           Mastery Through
         </h1>
@@ -275,7 +255,6 @@
           </a>
         </div>
 
-        <!-- Trust Indicators -->
         <div class="reveal-up delay-400 flex flex-wrap justify-center lg:justify-start gap-8 items-center border-t border-white/10 pt-8">
           <div class="flex items-center gap-3">
             <div class="flex -space-x-3">
@@ -298,9 +277,9 @@
         </div>
       </div>
 
-      <!-- Hero Visuals (Cards) -->
       <div class="lg:col-span-5 relative hidden lg:block perspective-1000">
-        <div class="grid grid-cols-2 gap-4 relative z-10 transform -rotate-2 pointer-events-none">
+        <div class="grid grid-cols-2 gap-4 relative z-10 transform -rotate-2">
+          
           <div class="reveal-zoom delay-100 bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 shadow-glass flex flex-col items-start gap-4 transform translate-y-8">
             <div class="w-12 h-12 rounded-full bg-brand-emerald/40 border border-brand-emerald-light/50 flex items-center justify-center text-xl text-white">
               <i class="fa-solid fa-globe"></i>
@@ -321,24 +300,16 @@
             </div>
           </div>
 
-          <div class="reveal-zoom delay-300 bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 shadow-glass flex flex-col items-start gap-4 col-span-2 mt-4 flex-row items-center">
-            <div class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center text-xl text-white shrink-0">
-              <i class="fa-solid fa-chart-line"></i>
-            </div>
-            <div>
-              <div class="flex items-end gap-2">
-                <span class="font-heading font-extrabold text-3xl text-brand-gold counter" data-target="90">0</span>
-                <span class="font-heading font-bold text-xl text-brand-gold mb-1">%</span>
-              </div>
-              <p class="text-sm text-slate-300 leading-snug">Increase in retention through daily cadence training compared to traditional models.</p>
-            </div>
+          <!-- Chart.xkcd Implementation Replaces Flat Number Card -->
+          <div class="reveal-zoom delay-300 bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 shadow-glass col-span-2 mt-4 xkcd-chart-container">
+            <svg id="retention-chart"></svg>
           </div>
+
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Scroll Down Indicator -->
   <a href="#video-intro" class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/50 hover:text-white transition-colors z-20">
     <span class="text-xs font-semibold tracking-widest uppercase">Discover</span>
     <div class="w-5 h-8 border-2 border-current rounded-full flex justify-center p-1">
@@ -369,7 +340,7 @@
 </section>
 
 <section id="why-acl" class="py-24 bg-brand-surface border-y border-slate-200 relative overflow-hidden">
-  <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(#046A38 2px, transparent 2px); background-size: 30px 30px;"></div>
+  <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(var(--brand-emerald) 2px, transparent 2px); background-size: 30px 30px;"></div>
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
@@ -499,9 +470,6 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════
-     COURSES / ACADEMY SECTION (Powered by Atropos 3D)
-════════════════════════════════════════════ -->
 <section id="academy" class="py-24 bg-slate-50 relative border-y border-gray-200">
   <div class="absolute inset-0 opacity-40 pointer-events-none" style="background-image: radial-gradient(#cbd5e1 1px, transparent 1px); background-size: 32px 32px;"></div>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -631,10 +599,7 @@
         <p class="text-sm leading-relaxed max-w-sm mb-6">Science confirms that achieving true linguistic mastery is nearly impossible without a supportive ecosystem for consistent, active speaking.</p>
         
         <!-- Rive WASM Animation Canvas integration -->
-        <div class="w-48 h-48 -ml-4 opacity-80 mix-blend-screen">
-          <canvas id="rive-mascot" width="200" height="200"></canvas>
-        </div>
-
+        <canvas id="rive-mascot" width="120" height="120" class="opacity-80 mix-blend-screen"></canvas>
       </div>
       <div>
         <h4 class="text-white font-bold mb-4 tracking-wide uppercase text-sm">Quick Links</h4>
@@ -645,10 +610,11 @@
         </ul>
       </div>
       <div>
-        <h4 class="text-white font-bold mb-4 tracking-wide uppercase text-sm">Portals</h4>
+        <h4 class="text-white font-bold mb-4 tracking-wide uppercase text-sm">Portals & Settings</h4>
         <ul class="space-y-2 text-sm">
-          <!-- Datastar implementation -->
           <li><a href="#" data-on-click="$$get('/api/auth/login')" class="hover:text-brand-emerald transition-colors">Student Login</a></li>
+          <!-- EyeDropper Customizer Trigger -->
+          <li class="mt-4"><button id="theme-picker" class="text-brand-gold hover:text-brand-gold-light border border-brand-gold/30 px-3 py-1 rounded-md text-xs font-semibold"><i class="fa-solid fa-palette mr-1"></i> Customize Theme</button></li>
         </ul>
       </div>
     </div>
@@ -665,54 +631,122 @@
 <!-- 🚀 MODERN LIBRARIES & UTILITIES INCLUSION  -->
 <!-- ========================================== -->
 
-<!-- 1. Lenis (Smooth Scrolling) -->
+<!-- Lenis (Smooth Scrolling) -->
 <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
-<!-- 2. AutoAnimate (Included if needed elsewhere, though menu now uses View Transitions) -->
-<script src="https://cdn.jsdelivr.net/npm/@formkit/auto-animate@0.8.2/browser/index.min.js"></script>
-<!-- 3. Rough Notation (Hand-drawn text highlights) -->
+<!-- Rough Notation (Hand-drawn text highlights) -->
 <script src="https://unpkg.com/rough-notation/lib/rough-notation.iife.js"></script>
-<!-- 4. Atropos 3D (Tactile 3D Cards) -->
+<!-- Atropos 3D (Tactile 3D Cards) -->
 <script src="https://cdn.jsdelivr.net/npm/atropos@2.0.2/atropos.min.js"></script>
-<!-- 5. Canvas-Confetti (Micro-interaction rewards) -->
+<!-- Canvas-Confetti (Micro-interaction rewards) -->
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
-<!-- 6. Baffle.js (Cyberpunk text reveals) -->
+<!-- Baffle.js (Cyberpunk text reveals) -->
 <script src="https://cdn.jsdelivr.net/npm/baffle@0.3.6/dist/baffle.min.js"></script>
-<!-- 7. Rive App Canvas (WASM interactive animations) -->
+<!-- Rive App Canvas (WASM interactive animations) -->
 <script src="https://unpkg.com/@rive-app/canvas@2.7.0"></script>
 
-<script>
-  // ── 1. Initialize Lenis Smooth Scroll ──
-  const lenis = new Lenis({
-    duration: 1.2,
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+<!-- Valtio + System Integrations -->
+<script type="module">
+  import { proxy, subscribe } from 'https://esm.sh/valtio/vanilla';
+  
+  // ── 1. Valtio State Management + EyeDropper API ──
+  const themeState = proxy({ brandColor: '#046A38' });
+
+  subscribe(themeState, () => {
+    // Update the native CSS variable, seamlessly changing Tailwind's dynamic UI
+    document.documentElement.style.setProperty('--brand-emerald', themeState.brandColor);
   });
+
+  const pickerBtn = document.getElementById('theme-picker');
+  if (!window.EyeDropper) {
+    pickerBtn.style.display = 'none'; // Fallback if unsupported
+  } else {
+    pickerBtn.addEventListener('click', async () => {
+      try {
+        const eyeDropper = new EyeDropper();
+        const result = await eyeDropper.open();
+        themeState.brandColor = result.sRGBHex; // Valtio handles the mutation
+      } catch (e) { console.log('Color picker dismissed'); }
+    });
+  }
+
+  // ── 2. Scheduling API to Prioritize Responsiveness ──
+  function scheduleHeavyInitializations() {
+    // Reveal Spline only after critical render
+    document.getElementById('spline-container').classList.remove('hidden');
+
+    // Chart.xkcd (Whimsical Data)
+    const svgEl = document.querySelector('#retention-chart');
+    if(svgEl) {
+      new chartXkcd.Bar(svgEl, {
+        title: 'Fluency Retention Gap',
+        data: {
+          labels: ['Traditional', 'ACL Method'],
+          datasets: [{ data: [30, 90] }]
+        },
+        options: { xTickCount: 2, yTickCount: 2, legendPosition: 0 }
+      });
+    }
+
+    // Rive WASM Mascot
+    new rive.Rive({
+      src: 'https://cdn.rive.app/animations/vehicles.riv', 
+      canvas: document.getElementById('rive-mascot'),
+      autoplay: true,
+    });
+  }
+
+  // Defer heavy workloads so UI isn't blocked 
+  if ('scheduler' in window) {
+    scheduler.postTask(scheduleHeavyInitializations, { priority: 'background' });
+  } else {
+    requestIdleCallback ? requestIdleCallback(scheduleHeavyInitializations) : setTimeout(scheduleHeavyInitializations, 0);
+  }
+
+  // ── 3. Comlink Web Worker for Heavy Logic ──
+  const workerCode = `
+    importScripts('https://unpkg.com/comlink/dist/umd/comlink.js');
+    const analyticsProcessing = {
+       simulateHeavyDataAnalysis(records) {
+          let sum = 0;
+          for(let i=0; i<1e7; i++) sum++; // Simulate CPU-heavy task
+          return "Analyzed " + records + " records seamlessly without blocking the main thread.";
+       }
+    }
+    Comlink.expose(analyticsProcessing);
+  `;
+  const blob = new Blob([workerCode], { type: 'application/javascript' });
+  const worker = new Worker(URL.createObjectURL(blob));
+  const api = Comlink.wrap(worker);
+  
+  // Trigger off-thread computation silently in the background
+  api.simulateHeavyDataAnalysis(50000).then(res => console.log('Comlink Web Worker:', res));
+
+</script>
+
+<script>
+  // ── Standard UI Scripts ──
+
+  // Lenis Smooth Scroll
+  const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
   function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
   requestAnimationFrame(raf);
 
-  // ── 2. View Transitions API for Mobile Menu ──
+  // View Transitions Mobile Menu
   document.getElementById('mobile-menu-btn').addEventListener('click', function() {
     const toggleMenu = () => {
       const menu = document.getElementById('mobile-menu');
       menu.classList.toggle('hidden');
       const icon = document.querySelector('#mobile-menu-btn i');
       if(menu.classList.contains('hidden')) {
-        icon.classList.remove('fa-xmark');
-        icon.classList.add('fa-bars');
+        icon.classList.remove('fa-xmark'); icon.classList.add('fa-bars');
       } else {
-        icon.classList.remove('fa-bars');
-        icon.classList.add('fa-xmark');
+        icon.classList.remove('fa-bars'); icon.classList.add('fa-xmark');
       }
     };
-
-    // Use native View Transitions if supported (Zero bundle size morphing)
-    if (document.startViewTransition) {
-      document.startViewTransition(() => toggleMenu());
-    } else {
-      toggleMenu(); // Fallback for older browsers
-    }
+    if (document.startViewTransition) document.startViewTransition(() => toggleMenu());
+    else toggleMenu();
   });
 
-  // Close mobile menu on link click using View Transitions
   document.querySelectorAll('.mobile-link').forEach(link => {
     link.addEventListener('click', () => {
       const closeMenu = () => {
@@ -724,121 +758,71 @@
     });
   });
 
-  // ── 3. Baffle.js Cyberpunk Reveal ──
-  // Targets the "Mastery Through" text on load
-  const b = baffle('.baffle-text', {
-      characters: '█▓▒░>_</ ArabLagos',
-      speed: 75
-  }).start();
-  // Reveal the actual text after 1.2 seconds of hacker-aesthetic scrambled text
+  // Baffle.js Cyberpunk Reveal
+  const b = baffle('.baffle-text', { characters: '█▓▒░>_</ ArabLagos', speed: 75 }).start();
   setTimeout(() => b.reveal(1000), 1200);
 
-  // ── 4. Initialize Rive Mascot in Footer ──
-  new rive.Rive({
-    src: 'https://cdn.rive.app/animations/vehicles.riv', // Public placeholder vector animation
-    canvas: document.getElementById('rive-mascot'),
-    autoplay: true,
-  });
-
-  // ── 5. Initialize Canvas Confetti on CTA Buttons ──
+  // Canvas Confetti
   document.querySelectorAll('.confetti-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      confetti({
-        particleCount: 120,
-        spread: 70,
-        origin: { y: 0.6 },
-        colors: ['#046A38', '#D4AF37', '#ffffff'] // Brand colors
-      });
+    btn.addEventListener('click', () => {
+      confetti({ particleCount: 120, spread: 70, origin: { y: 0.6 }, colors: ['#046A38', '#D4AF37', '#ffffff'] });
     });
   });
 
-  // ── 6. Initialize Rough Notation Highlighter ──
+  // Rough Notation
   const targetText = document.getElementById('annotate-target');
   if (targetText && window.roughNotation) {
-    const annotation = roughNotation.annotate(targetText, { 
-      type: 'highlight', 
-      color: '#F3D56B', // Brand Gold
-      animationDuration: 1500,
-      multiline: true
-    });
-    
+    const annotation = roughNotation.annotate(targetText, { type: 'highlight', color: '#F3D56B', animationDuration: 1500, multiline: true });
     const observer = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        annotation.show();
-        observer.disconnect();
-      }
+      if (entries[0].isIntersecting) { annotation.show(); observer.disconnect(); }
     }, { threshold: 0.5 });
     observer.observe(targetText);
   }
 
-  // ── 7. Initialize Atropos 3D on Course Cards ──
+  // Atropos 3D
   if (window.Atropos) {
     document.querySelectorAll('.course-atropos').forEach((el) => {
-      Atropos({
-        el: el,
-        activeOffset: 40,
-        shadowScale: 1.05,
-      });
+      Atropos({ el: el, activeOffset: 40, shadowScale: 1.05 });
     });
   }
 
-  // ── Original Logic: Navbar Scroll Effect ──
+  // Navbar Scroll
   window.addEventListener('scroll', () => {
     document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
   });
 
-  // ── Original Logic: Advanced Scroll Reveal ──
+  // Scroll Reveal
   const revealElements = document.querySelectorAll('.reveal-up, .reveal-zoom, .reveal-left, .reveal-right');
   const revealObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
     });
   }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
   revealElements.forEach(el => revealObserver.observe(el));
 
-  // ── Original Logic: Typewriter Effect ──
+  // Typewriter Effect
   const phrases = ['Living Arabic', 'Living Interaction', 'Native Fluency', 'Classical Mastery'];
   let phraseIdx = 0, charIdx = 0, isDeleting = false;
   const typewriterEl = document.getElementById('typewriter-text');
   
   function typewrite() {
     const currentPhrase = phrases[phraseIdx];
-    if (isDeleting) {
-      typewriterEl.textContent = currentPhrase.substring(0, charIdx - 1);
-      charIdx--;
-    } else {
-      typewriterEl.textContent = currentPhrase.substring(0, charIdx + 1);
-      charIdx++;
-    }
-
+    if (isDeleting) { typewriterEl.textContent = currentPhrase.substring(0, charIdx - 1); charIdx--; } 
+    else { typewriterEl.textContent = currentPhrase.substring(0, charIdx + 1); charIdx++; }
     let typingSpeed = isDeleting ? 40 : 80;
-
-    if (!isDeleting && charIdx === currentPhrase.length) {
-      typingSpeed = 2000;
-      isDeleting = true;
-    } else if (isDeleting && charIdx === 0) {
-      isDeleting = false;
-      phraseIdx = (phraseIdx + 1) % phrases.length;
-      typingSpeed = 500;
-    }
+    if (!isDeleting && charIdx === currentPhrase.length) { typingSpeed = 2000; isDeleting = true; } 
+    else if (isDeleting && charIdx === 0) { isDeleting = false; phraseIdx = (phraseIdx + 1) % phrases.length; typingSpeed = 500; }
     setTimeout(typewrite, typingSpeed);
   }
   setTimeout(typewrite, 1000);
 
-  // ── Original Logic: Sticky Mobile CTA Visibility Toggle ──
+  // Sticky CTA
   const stickyCta = document.getElementById('sticky-cta');
   const footerSection = document.querySelector('footer');
-  
   window.addEventListener('scroll', () => {
     const footerRect = footerSection.getBoundingClientRect();
-    if(footerRect.top < window.innerHeight) {
-      stickyCta.style.transform = 'translateY(100%)';
-    } else {
-      stickyCta.style.transform = 'translateY(0)';
-    }
+    if(footerRect.top < window.innerHeight) { stickyCta.style.transform = 'translateY(100%)'; } 
+    else { stickyCta.style.transform = 'translateY(0)'; }
   });
 </script>
 
