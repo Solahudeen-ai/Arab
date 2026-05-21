@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Living Arabic for Imams | Arab Community of Lagos</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              emerald: '#046A38',
+              'emerald-dark': '#024222',
+              'emerald-light': '#0a8f4e',
+              gold: '#D4AF37',
+              'gold-light': '#F3D56B',
+              midnight: '#0B1623',
+              slate: '#1E293B',
+              surface: '#F8FAFC',
+            }
+          },
+          fontFamily: {
+            heading: ['Outfit', 'sans-serif'],
+            body: ['Plus Jakarta Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Styles -->
+  <style>
+    body {
+      background-color: #F8FAFC;
+      color: #1E293B;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    /* ── Floating Label Inputs ── */
+    .floating-input-wrapper { position: relative; margin-bottom: 1.25rem; }
+    .floating-input {
+      width: 100%; padding: 1.25rem 1rem 0.5rem 1rem; border: 1px solid #E2E8F0;
+      border-radius: 0.75rem; background-color: #ffffff; outline: none;
+      transition: all 0.3s ease; font-size: 0.95rem;
+    }
+    .floating-input:focus {
+      border-color: var(--brand-emerald); box-shadow: 0 0 0 4px rgba(4, 106, 56, 0.1);
+    }
+    .floating-label {
+      position: absolute; left: 1rem; top: 50%; transform: translateY(-50%);
+      color: #64748B; font-size: 0.95rem; transition: all 0.3s ease; pointer-events: none;
+    }
+    .floating-input:focus ~ .floating-label,
+    .floating-input:not(:placeholder-shown) ~ .floating-label {
+      top: 0.5rem; transform: translateY(0); font-size: 0.7rem; font-weight: 600; color: #046A38;
+    }
+
+    /* Form Progress & Steps */
+    .form-step { display: none; opacity: 0; transform: translateX(20px); transition: all 0.4s ease; }
+    .form-step.active { display: block; opacity: 1; transform: translateX(0); }
+    .progress-bar-fill { transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+  </style>
+</head>
+<body class="antialiased">
+
+<!-- Simple Minimalist Nav -->
+<nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 h-20 flex items-center">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex justify-between items-center">
+    <a href="index.html" class="flex items-center gap-2 text-slate-500 hover:text-brand-emerald transition-colors font-medium text-sm">
+      <i class="fa-solid fa-arrow-left"></i> Back to Directory
+    </a>
+    <span class="font-heading font-bold text-lg tracking-tight text-brand-midnight hidden sm:block">
+      Arab Community of Lagos<span class="text-brand-gold">.</span>
+    </span>
+  </div>
+</nav>
+
+<!-- Course Hero -->
+<section class="pt-32 pb-16 bg-brand-midnight relative overflow-hidden">
+  <div class="absolute inset-0 z-0 bg-[url('background hero.jpeg')] bg-cover bg-center opacity-20 mix-blend-overlay"></div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="inline-block px-3 py-1 bg-brand-emerald/20 border border-brand-emerald/30 text-brand-emerald-light text-xs font-bold uppercase tracking-widest rounded-full mb-4">
+      Leadership Track
+    </div>
+    <h1 class="font-heading text-4xl md:text-6xl font-extrabold text-white mb-4">Living Arabic for Imams</h1>
+    <p class="text-slate-300 text-lg md:text-xl max-w-2xl leading-relaxed">
+      Command the pulpit with linguistic authority. A technical deep-dive into classical mechanics to independently decode unvoweled texts and deliver impactful Khutbahs.
+    </p>
+  </div>
+</section>
+
+<!-- Split Layout -->
+<section class="py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col lg:flex-row gap-12 items-start">
+      
+      <!-- Left Content: Course Details -->
+      <div class="lg:w-7/12 space-y-12">
+        
+        <div>
+          <h2 class="font-heading text-3xl font-bold text-brand-midnight mb-4">Course Overview</h2>
+          <p class="text-slate-600 leading-relaxed">
+            Leading a congregation requires more than rote memorization; it demands a profound, structural understanding of the classical language. This specialized track equips Imams, Khateebs, and Da'ees with the advanced morphological and syntactical tools necessary to parse complex, unvoweled texts (I'rab) and articulate Islamic jurisprudence with absolute precision.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-heading text-2xl font-bold text-brand-midnight mb-6 border-b border-slate-200 pb-2">What You Will Master</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+              <div class="w-10 h-10 bg-brand-emerald/10 text-brand-emerald rounded-lg flex items-center justify-center mb-4 text-xl">
+                <i class="fa-solid fa-scroll"></i>
+              </div>
+              <h4 class="font-bold text-brand-midnight mb-2">Classical Text Parsing</h4>
+              <p class="text-sm text-slate-600">Develop the ability to confidently read, independently translate, and explain unvoweled (Tashkeel-free) classical Islamic manuscripts.</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+              <div class="w-10 h-10 bg-brand-emerald/10 text-brand-emerald rounded-lg flex items-center justify-center mb-4 text-xl">
+                <i class="fa-solid fa-microphone-lines"></i>
+              </div>
+              <h4 class="font-bold text-brand-midnight mb-2">Pulpit Rhetoric (Khutbah)</h4>
+              <p class="text-sm text-slate-600">Master the art of classical Arabic oratory, utilizing proper intonation, pausing, and rhythmic delivery for Friday sermons.</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+              <div class="w-10 h-10 bg-brand-emerald/10 text-brand-emerald rounded-lg flex items-center justify-center mb-4 text-xl">
+                <i class="fa-solid fa-sitemap"></i>
+              </div>
+              <h4 class="font-bold text-brand-midnight mb-2">Advanced Morphology (Sarf)</h4>
+              <p class="text-sm text-slate-600">Deconstruct complex word roots and verb patterns to extract precise jurisprudential and exegetical meanings.</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+              <div class="w-10 h-10 bg-brand-emerald/10 text-brand-emerald rounded-lg flex items-center justify-center mb-4 text-xl">
+                <i class="fa-solid fa-scale-balanced"></i>
+              </div>
+              <h4 class="font-bold text-brand-midnight mb-2">Syntactical Analysis (Nahw)</h4>
+              <p class="text-sm text-slate-600">Command the structural rules of Arabic grammar to ensure absolute accuracy in teaching, counseling, and leading prayer.</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="font-heading text-2xl font-bold text-brand-midnight mb-6 border-b border-slate-200 pb-2">Target Audience</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3">
+              <i class="fa-solid fa-circle-check text-brand-emerald mt-1"></i>
+              <span class="text-slate-600">Active Imams and Khateebs looking to elevate their Friday sermons and community classes.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <i class="fa-solid fa-circle-check text-brand-emerald mt-1"></i>
+              <span class="text-slate-600">Advanced students of knowledge preparing for leadership roles in Islamic institutions.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <i class="fa-solid fa-circle-check text-brand-emerald mt-1"></i>
+              <span class="text-slate-600">Madrassah proprietors seeking to standardize and deepen their classical Arabic instruction.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 3-Tier Pricing Section -->
+        <div>
+          <h3 class="font-heading text-2xl font-bold text-brand-midnight mb-6 border-b border-slate-200 pb-2">Tuition & Investment Options</h3>
+          
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center mt-8">
+            
+            <!-- Tier 1: Essential -->
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-shadow flex flex-col h-full">
+              <h4 class="font-bold text-slate-500 mb-1 uppercase tracking-wide text-xs">Essential</h4>
+              <div class="font-heading text-3xl font-bold text-brand-midnight mb-4">₦30k<span class="text-sm text-slate-400 font-medium">/mo</span></div>
+              <ul class="text-sm text-slate-600 space-y-3 mb-6 flex-1">
+                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-emerald mt-0.5"></i> Base Curriculum Access</li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-emerald mt-0.5"></i> Group Sessions</li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-emerald mt-0.5"></i> Standard Portal Access</li>
+              </ul>
+            </div>
+
+            <!-- Tier 2: Accelerated (The Decoy / Target) -->
+            <div class="bg-brand-midnight rounded-2xl p-8 border-2 border-brand-gold shadow-2xl flex flex-col relative transform md:-translate-y-4 z-10 h-[105%]">
+              <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand-gold text-brand-midnight text-[10px] font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-md whitespace-nowrap">
+                Most Popular
+              </div>
+              <h4 class="font-bold text-brand-gold mb-1 uppercase tracking-wide text-xs">Accelerated</h4>
+              <div class="font-heading text-4xl font-bold text-white mb-4">₦40k<span class="text-sm text-slate-400 font-medium">/mo</span></div>
+              <ul class="text-sm text-slate-200 space-y-4 mb-6 flex-1">
+                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-gold mt-0.5"></i> Everything in Essential</li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-gold mt-0.5"></i> Live Q&A and Assessments</li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-gold mt-0.5"></i> Sector-Specific Materials</li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-gold mt-0.5"></i> Official Certification</li>
+              </ul>
+            </div>
+
+            <!-- Tier 3: VIP Immersive (The Anchor) -->
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-shadow flex flex-col h-full">
+              <h4 class="font-bold text-slate-500 mb-1 uppercase tracking-wide text-xs">Immersive VIP</h4>
+              <div class="font-heading text-3xl font-bold text-brand-midnight mb-4">₦75k<span class="text-sm text-slate-400 font-medium">/mo</span></div>
+              <ul class="text-sm text-slate-600 space-y-3 mb-6 flex-1">
+                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-emerald mt-0.5"></i> Everything in Accelerated</li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-emerald mt-0.5"></i> 1-on-1 Monthly Coaching</li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-emerald mt-0.5"></i> Priority Support Line</li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Content: The Sticky Application Form with Payment -->
+      <div class="lg:w-5/12 lg:sticky lg:top-28">
+        <div class="bg-white rounded-2xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] border border-slate-200 overflow-hidden">
+          
+          <div class="bg-brand-midnight p-6 text-center border-b-4 border-brand-emerald">
+            <h3 class="font-heading text-2xl font-bold text-white">Enroll in this Track</h3>
+            <p class="text-brand-gold text-sm font-medium mt-1">Living Arabic for Imams</p>
+          </div>
+
+          <div class="p-8">
+            <!-- Progress Tracker -->
+            <div class="mb-8">
+              <div class="flex justify-between text-xs font-bold text-slate-400 mb-2 uppercase tracking-wider">
+                <span id="stepLabel" class="text-brand-emerald">Step 1: Details</span>
+                <span id="stepPercent">50%</span>
+              </div>
+              <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+                <div id="progressBar" class="progress-bar-fill h-full bg-brand-emerald rounded-full" style="width:50%"></div>
+              </div>
+            </div>
+
+            <form id="courseApplicationForm">
+              <!-- Hidden input to lock the track automatically -->
+              <input type="hidden" name="inquiry_type" value="Living Arabic for Imams">
+
+              <!-- STEP 1: Academic Profile & Details -->
+              <div id="step1" class="form-step active">
+                <div class="floating-input-wrapper">
+                  <input type="text" id="fname" name="first_name" class="floating-input peer" placeholder=" " required>
+                  <label for="fname" class="floating-label">Full Name *</label>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-3 mb-1.5">
+                  <div class="floating-input-wrapper mb-0">
+                    <input type="email" id="email" name="email" class="floating-input peer" placeholder=" " required>
+                    <label for="email" class="floating-label">Email Address *</label>
+                  </div>
+                  <div class="floating-input-wrapper mb-0">
+                    <input type="tel" id="phone" name="Phone_number" class="floating-input peer" placeholder=" " required>
+                    <label for="phone" class="floating-label">Phone Number *</label>
+                  </div>
+                </div>
+
+                <div class="mb-4 mt-2">
+                  <select name="arabic_level" required class="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:border-brand-emerald outline-none text-slate-700 text-sm font-medium appearance-none bg-white relative cursor-pointer" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%231E293B%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: right 1rem top 50%; background-size: 0.65rem auto;">
+                    <option value="" disabled selected>Current Arabic Level *</option>
+                    <option value="beginner">Beginner (Alphabet / Basic words)</option>
+                    <option value="intermediate">Intermediate (Can read, limited vocabulary)</option>
+                    <option value="advanced">Advanced (Conversational but not fluent)</option>
+                  </select>
+                </div>
+
+                <div class="floating-input-wrapper mb-6">
+                  <textarea id="goal" name="primary_goal" class="floating-input peer h-20 resize-none" placeholder=" " required></textarea>
+                  <label for="goal" class="floating-label !top-4">What is your primary goal for this track? *</label>
+                </div>
+                
+                <button type="button" onclick="validateAndNext(1, 2)" class="w-full py-4 bg-brand-midnight text-white font-bold rounded-xl hover:bg-brand-emerald transition-colors shadow-md flex items-center justify-center gap-2 group">
+                  Continue to Selection <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                </button>
+              </div>
+
+              <!-- STEP 2: Checkout Review -->
+              <div id="step2" class="form-step">
+                
+                <!-- The Choice Selection -->
+                <div class="mb-6">
+                  <label class="block text-sm font-bold text-slate-700 mb-3">Select Your Tuition Plan *</label>
+                  <select name="selected_tier" required class="w-full px-4 py-4 rounded-xl border-2 border-brand-emerald/30 focus:border-brand-emerald focus:ring-4 focus:ring-brand-emerald/10 outline-none text-brand-midnight font-bold bg-brand-emerald/5 appearance-none relative cursor-pointer" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%231E293B%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: right 1rem top 50%; background-size: 0.85rem auto;">
+                    <option value="" disabled selected>Choose your plan...</option>
+                    <option value="essential">Essential Plan - ₦30,000/mo</option>
+                    <option value="accelerated">Accelerated Plan (Recommended) - ₦40,000/mo</option>
+                    <option value="vip">Immersive VIP Plan - ₦75,000/mo</option>
+                  </select>
+                </div>
+
+                <div class="bg-brand-emerald/5 border border-brand-emerald/20 rounded-xl p-5 mb-6">
+                  <h4 class="font-heading font-bold text-brand-midnight mb-1">Application Ready</h4>
+                  <p class="text-xs text-slate-600 leading-relaxed">
+                    By proceeding to payment, your application will be submitted for processing. You can manage or upgrade your tier inside your portal at any time.
+                  </p>
+                </div>
+
+                <div class="mb-6">
+                  <label class="flex items-start gap-3 cursor-pointer group">
+                    <input type="checkbox" name="terms_agreed" class="mt-1 w-5 h-5 rounded border-slate-300 text-brand-emerald focus:ring-brand-emerald" required>
+                    <span class="text-xs text-slate-600 group-hover:text-brand-midnight transition-colors leading-relaxed">
+                      I agree to the <a href="#" class="text-brand-emerald underline">Terms of Service</a> and confirm my application details are accurate.
+                    </span>
+                  </label>
+                </div>
+
+                <div class="flex gap-3">
+                  <button type="button" onclick="prevStep(2, 1)" class="px-5 py-4 bg-slate-100 text-slate-600 font-bold rounded-xl hover:bg-slate-200 transition-colors"><i class="fa-solid fa-arrow-left"></i></button>
+                  <button type="submit" id="submitBtn" class="flex-1 py-4 bg-brand-gold text-brand-midnight font-bold rounded-xl hover:bg-brand-gold-light transition-all shadow-md flex items-center justify-center gap-2">
+                    <span id="btnText">Pay Securely</span>
+                    <i class="fa-solid fa-lock" id="btnIcon"></i>
+                  </button>
+                </div>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer class="bg-white border-t border-slate-200 py-8 mt-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <p class="text-sm text-slate-500">© 2026 Arab Community of Lagos. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  // Form Navigation Logic
+  function validateAndNext(currentStep, nextStepNum) {
+    const currentDiv = document.getElementById('step' + currentStep);
+    const inputs = currentDiv.querySelectorAll('input[required], select[required], textarea[required]');
+    let isValid = true;
+    
+    inputs.forEach(input => {
+      if (!input.checkValidity()) {
+        input.reportValidity();
+        isValid = false;
+      }
+    });
+    
+    if (isValid) nextStep(currentStep, nextStepNum);
+  }
+
+  function nextStep(currentStep, nextStepNum) {
+    document.getElementById('step' + currentStep).classList.remove('active');
+    document.getElementById('step' + nextStepNum).classList.add('active');
+    updateProgress(nextStepNum);
+  }
+
+  function prevStep(currentStep, prevStepNum) {
+    document.getElementById('step' + currentStep).classList.remove('active');
+    document.getElementById('step' + prevStepNum).classList.add('active');
+    updateProgress(prevStepNum);
+  }
+
+  function updateProgress(step) {
+    document.getElementById('stepLabel').textContent = step === 1 ? 'Step 1: Details' : 'Step 2: Checkout';
+    document.getElementById('stepPercent').textContent = step === 1 ? '50%' : '100%';
+    document.getElementById('progressBar').style.width = step === 1 ? '50%' : '100%';
+  }
+
+  // Application Submission & Payment Redirect Logic
+  document.getElementById('courseApplicationForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    const text = document.getElementById('btnText');
+    const icon = document.getElementById('btnIcon');
+    
+    text.textContent = 'Processing...';
+    icon.className = 'fa-solid fa-spinner fa-spin';
+    btn.disabled = true;
+    btn.classList.add('opacity-80', 'cursor-not-allowed');
+
+    const formData = new FormData(this);
+    
+    // Send data to webhook
+    fetch('https://hook.eu1.make.com/hiyiax5py9qflvy9x4lwvq56xyk1n0gs', { 
+      method: 'POST', body: formData 
+    }).catch(err => console.error('Webhook error:', err));
+    
+    // Redirect to Paystack after a brief delay to ensure webhook fires
+    setTimeout(() => { 
+      window.location.href = 'https://paystack.shop/pay/arablagos'; 
+    }, 1200);
+  });
+</script>
+
+</body>
+</html>
