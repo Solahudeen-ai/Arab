@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,8 +46,18 @@
     }
   </script>
 
+  <!-- External Modern Libraries CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/atropos@2.0.2/atropos.css" />
+
   <!-- Custom Styles & Animations -->
   <style>
+    /* Lenis Smooth Scroll Fix */
+    html.lenis, html.lenis body { height: auto; }
+    .lenis.lenis-smooth { scroll-behavior: auto !important; }
+    .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+    .lenis.lenis-stopped { overflow: hidden; }
+    .lenis.lenis-smooth iframe { pointer-events: none; }
+
     /* ── Movable Background (Ken Burns Effect) ── */
     .movable-bg {
       background-image: url('background hero.jpeg'); 
@@ -168,6 +178,9 @@
       position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
       border: none; pointer-events: auto; 
     }
+
+    /* Atropos Override Fix */
+    .atropos-inner { border-radius: 1rem; }
   </style>
 </head>
 <body class="antialiased">
@@ -192,7 +205,8 @@
         <a href="#academy" class="text-slate-600 hover:text-brand-emerald font-medium transition-colors text-sm">Courses</a>
         <div class="w-px h-6 bg-slate-200"></div>
         <a href="#" class="text-slate-600 hover:text-brand-emerald font-medium transition-colors text-sm"><i class="fa-solid fa-lock mr-1"></i> Portal Login</a>
-        <a href="#academy" class="px-6 py-2.5 rounded-full bg-brand-emerald text-white text-sm font-semibold hover:bg-brand-emerald-dark transition-all shadow-md hover:shadow-glow-emerald btn-shine">
+        <!-- Canvas Confetti Button Class Added -->
+        <a href="#academy" class="btn-confetti px-6 py-2.5 rounded-full bg-brand-emerald text-white text-sm font-semibold hover:bg-brand-emerald-dark transition-all shadow-md hover:shadow-glow-emerald btn-shine">
           View Courses
         </a>
       </div>
@@ -204,7 +218,7 @@
     </div>
   </div>
 
-  <!-- Mobile Dropdown -->
+  <!-- Mobile Dropdown with AutoAnimate ID -->
   <div id="mobile-menu" class="lg:hidden bg-white absolute w-full shadow-xl">
     <div class="px-6 pt-4 pb-8 space-y-2">
       <a href="#home" class="block px-4 py-3 text-brand-midnight font-medium hover:bg-slate-50 rounded-xl transition-colors">Home</a>
@@ -213,7 +227,7 @@
       <a href="#academy" class="block px-4 py-3 text-brand-midnight font-medium hover:bg-slate-50 rounded-xl transition-colors">Courses</a>
       <hr class="my-2 border-slate-100">
       <a href="#" class="block px-4 py-3 text-brand-emerald font-bold hover:bg-slate-50 rounded-xl transition-colors"><i class="fa-solid fa-user-circle mr-2"></i>Portal Login</a>
-      <a href="#academy" class="mt-4 block w-full text-center px-6 py-3 rounded-xl bg-brand-emerald text-white font-bold shadow-md">View Courses</a>
+      <a href="#academy" class="btn-confetti mt-4 block w-full text-center px-6 py-3 rounded-xl bg-brand-emerald text-white font-bold shadow-md">View Courses</a>
     </div>
   </div>
 </nav>
@@ -243,7 +257,6 @@
       <!-- Hero Content -->
       <div class="lg:col-span-7 text-center lg:text-left">
         
-        <!-- Brand Hierarchy Fix -->
         <div class="reveal-up inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-gold/30 bg-brand-gold/10 text-brand-gold text-xs sm:text-sm font-semibold tracking-wide uppercase mb-8 backdrop-blur-sm">
           <span class="w-2 h-2 rounded-full bg-brand-gold animate-pulse"></span>
           The Premier Program by Arab Community of Lagos
@@ -254,13 +267,14 @@
           <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold to-brand-gold-light" id="typewriter-text">Living Interaction</span><span class="cursor"></span>
         </h1>
 
-        <!-- Messaging Fix -->
         <p class="reveal-up delay-200 text-slate-300 text-lg sm:text-xl leading-relaxed mb-10 max-w-2xl mx-auto lg:mx-0">
-          Enter the <strong class="text-white">Living Arabic</strong> ecosystem. Bridge the gap between static grammar and commanding, native-level fluency by connecting with classical scholars and native experts.
+          <!-- Rough Notation Target Added -->
+          Enter the <strong class="text-white rn-highlight" data-rn-color="#046A38">Living Arabic</strong> ecosystem. Bridge the gap between static grammar and commanding, native-level fluency by connecting with classical scholars and native experts.
         </p>
 
         <div class="reveal-up delay-300 flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start mb-12">
-          <a href="#academy" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-brand-gold text-brand-midnight font-bold hover:bg-white transition-all shadow-glow-gold hover:-translate-y-1 text-center text-lg btn-shine flex items-center justify-center gap-2">
+          <!-- Canvas Confetti Button Class Added -->
+          <a href="#academy" class="btn-confetti w-full sm:w-auto px-8 py-4 rounded-xl bg-brand-gold text-brand-midnight font-bold hover:bg-white transition-all shadow-glow-gold hover:-translate-y-1 text-center text-lg btn-shine flex items-center justify-center gap-2">
             Find Your Track <i class="fa-solid fa-arrow-down"></i>
           </a>
           <a href="#why-acl" class="w-full sm:w-auto px-8 py-4 rounded-xl border border-white/20 text-white font-semibold hover:bg-white/10 transition-all text-center flex items-center justify-center gap-2 backdrop-blur-sm">
@@ -295,7 +309,7 @@
       <div class="lg:col-span-5 relative hidden lg:block perspective-1000">
         <div class="grid grid-cols-2 gap-4 relative z-10 transform -rotate-2">
           
-          <div class="reveal-zoom delay-100 bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 shadow-glass hover-card flex flex-col items-start gap-4 transform translate-y-8">
+          <div class="reveal-zoom delay-100 bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 shadow-glass flex flex-col items-start gap-4 transform translate-y-8">
             <div class="w-12 h-12 rounded-full bg-brand-emerald/40 border border-brand-emerald-light/50 flex items-center justify-center text-xl text-white">
               <i class="fa-solid fa-globe"></i>
             </div>
@@ -305,7 +319,7 @@
             </div>
           </div>
 
-          <div class="reveal-zoom delay-200 bg-gradient-to-br from-brand-gold/20 to-brand-gold/5 backdrop-blur-md p-6 rounded-2xl border border-brand-gold/30 shadow-glass hover-card flex flex-col items-start gap-4">
+          <div class="reveal-zoom delay-200 bg-gradient-to-br from-brand-gold/20 to-brand-gold/5 backdrop-blur-md p-6 rounded-2xl border border-brand-gold/30 shadow-glass flex flex-col items-start gap-4">
             <div class="w-12 h-12 rounded-full bg-brand-gold/40 border border-brand-gold-light/50 flex items-center justify-center text-xl text-white">
               <i class="fa-solid fa-graduation-cap"></i>
             </div>
@@ -315,7 +329,7 @@
             </div>
           </div>
 
-          <div class="reveal-zoom delay-300 bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 shadow-glass hover-card flex flex-col items-start gap-4 col-span-2 mt-4 flex-row items-center">
+          <div class="reveal-zoom delay-300 bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 shadow-glass flex flex-col items-start gap-4 col-span-2 mt-4 flex-row items-center">
             <div class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center text-xl text-white shrink-0">
               <i class="fa-solid fa-chart-line"></i>
             </div>
@@ -354,7 +368,6 @@
       </p>
     </div>
        <div class="reveal delay-300 video-container">
-  <!-- Replace the URL below with your actual YouTube Embed link -->
   <iframe
     src="https://www.youtube.com/embed/Q8U2bdqc-n8?&autoplay=1&mute=1"
     title="Welcome to the Arab Community of Lagos"
@@ -365,7 +378,6 @@
 </section>
 
 <section id="why-acl" class="py-24 bg-brand-surface border-y border-slate-200 relative overflow-hidden">
-  <!-- BG pattern -->
   <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(#046A38 2px, transparent 2px); background-size: 30px 30px;"></div>
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -377,7 +389,8 @@
           Why Traditional Arabic Classes Fail.
         </h2>
         <p class="reveal-left delay-200 text-lg text-slate-600 mb-6 leading-relaxed">
-          Research indicates classroom Arabic in Nigeria creates a <strong class="text-brand-emerald">70% gap</strong> between grammar knowledge and conversational fluency. 
+          <!-- Rough Notation Target Added -->
+          Research indicates classroom Arabic in Nigeria creates a <strong class="text-brand-emerald rn-circle" data-rn-color="#D4AF37">70% gap</strong> between grammar knowledge and conversational fluency. 
         </p>
         <p class="reveal-left delay-300 text-lg text-slate-600 mb-8 leading-relaxed">
           Without an immersive daily environment, students fail to transition from static rules to active mastery. ACL bridges this gap with a systematic, speaking-first framework.
@@ -390,7 +403,6 @@
       </div>
 
       <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <!-- Feature 1 -->
         <div class="reveal-up delay-100 bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl hover-card border border-slate-100">
           <div class="w-14 h-14 rounded-xl bg-brand-emerald/10 flex items-center justify-center text-brand-emerald text-2xl mb-6">
             <i class="fa-solid fa-rotate"></i>
@@ -404,7 +416,6 @@
           </div>
         </div>
 
-        <!-- Feature 2 -->
         <div class="reveal-up delay-200 bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl hover-card border border-slate-100 sm:translate-y-8">
           <div class="w-14 h-14 rounded-xl bg-brand-gold/10 flex items-center justify-center text-brand-gold text-2xl mb-6">
             <i class="fa-solid fa-users-viewfinder"></i>
@@ -418,7 +429,6 @@
           </div>
         </div>
 
-        <!-- Feature 3 -->
         <div class="reveal-up delay-300 bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl hover-card border border-slate-100">
           <div class="w-14 h-14 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 text-2xl mb-6">
             <i class="fa-solid fa-shield-halved"></i>
@@ -432,7 +442,6 @@
           </div>
         </div>
 
-        <!-- Feature 4 -->
         <div class="reveal-up delay-400 bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl hover-card border border-slate-100 sm:translate-y-8">
           <div class="w-14 h-14 rounded-xl bg-purple-50 flex items-center justify-center text-purple-600 text-2xl mb-6">
             <i class="fa-solid fa-brain"></i>
@@ -453,7 +462,6 @@
 
 <section id="leadership" class="py-24 bg-white relative">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    
     <div class="text-center mb-16 reveal-up">
       <div class="section-divider mx-auto"></div>
       <h2 class="font-heading text-3xl md:text-5xl font-bold text-brand-midnight mb-4">Academic Authority</h2>
@@ -462,63 +470,36 @@
       </p>
     </div>
 
-    <!-- Interactive Profile Container -->
     <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-200 max-w-5xl mx-auto reveal-zoom">
       <div class="grid grid-cols-1 md:grid-cols-12 relative">
-        
-        <!-- Sidebar Image Area -->
         <div class="md:col-span-5 bg-brand-midnight relative overflow-hidden flex flex-col justify-end min-h-[400px]">
-          <!-- Abstract Background shapes -->
           <div class="absolute top-0 right-0 w-64 h-64 bg-brand-emerald rounded-full mix-blend-screen filter blur-[80px] opacity-40 translate-x-1/4 -translate-y-1/4"></div>
-          
           <img src="Image.jpeg" alt="Dr. Salahudeen Murtada Adekunle" class="w-full h-full object-cover object-top">
           <div class="absolute inset-0 bg-gradient-to-t from-brand-midnight via-brand-midnight/60 to-transparent"></div>
-          
           <div class="relative z-10 p-8 text-white">
-            <div class="inline-block px-3 py-1 bg-brand-gold text-brand-midnight text-xs font-bold uppercase tracking-widest rounded-full mb-3 shadow-md">
-              President & Lead Scholar
-            </div>
+            <div class="inline-block px-3 py-1 bg-brand-gold text-brand-midnight text-xs font-bold uppercase tracking-widest rounded-full mb-3 shadow-md">President & Lead Scholar</div>
             <h3 class="font-heading text-3xl font-bold mb-1">Dr. Salahudeen M.A.</h3>
             <p class="text-slate-300 text-sm font-medium">Ph.D., University of Ibadan (2013)</p>
           </div>
         </div>
-
-        <!-- Content Area -->
         <div class="md:col-span-7 p-8 md:p-12 lg:p-14 bg-white flex flex-col justify-center">
           <h4 class="font-heading text-2xl font-bold text-brand-midnight mb-6 pb-4 border-b border-slate-100 flex items-center gap-3">
             <i class="fa-solid fa-award text-brand-gold"></i> Executive Biography
           </h4>
-          
           <div class="prose prose-slate prose-sm text-slate-600 leading-relaxed mb-8">
-            <p class="mb-4">
-              Dr. Salahudeen Murtada Adekunle is a highly accomplished scholar bringing profound expertise to our fully online-based learning community. His academic foundation spans multiple prestigious institutions, including the University of Kuwait and the University of Ibadan.
-            </p>
-            <p>
-              With a teaching career originating in 1973, he serves as a Senior Lecturer at Emmanuel Alayande University of Education. He is a prolific author of foundational texts such as <em>A Compendium of Tajwiid</em> and has served as Chairman of NATAIS (Oyo State).
-            </p>
+            <p class="mb-4">Dr. Salahudeen Murtada Adekunle is a highly accomplished scholar bringing profound expertise to our fully online-based learning community. His academic foundation spans multiple prestigious institutions, including the University of Kuwait and the University of Ibadan.</p>
+            <p>With a teaching career originating in 1973, he serves as a Senior Lecturer at Emmanuel Alayande University of Education. He is a prolific author of foundational texts such as <em>A Compendium of Tajwiid</em> and has served as Chairman of NATAIS (Oyo State).</p>
           </div>
-
           <div class="grid grid-cols-2 gap-4 mb-8">
             <div class="flex items-start gap-3">
-              <div class="w-8 h-8 rounded-full bg-brand-emerald/10 text-brand-emerald flex items-center justify-center shrink-0 mt-1">
-                <i class="fa-solid fa-book-open"></i>
-              </div>
-              <div>
-                <strong class="block text-brand-midnight text-sm">30+ Publications</strong>
-                <span class="text-xs text-slate-500">Peer-reviewed journals & books</span>
-              </div>
+              <div class="w-8 h-8 rounded-full bg-brand-emerald/10 text-brand-emerald flex items-center justify-center shrink-0 mt-1"><i class="fa-solid fa-book-open"></i></div>
+              <div><strong class="block text-brand-midnight text-sm">30+ Publications</strong><span class="text-xs text-slate-500">Peer-reviewed journals & books</span></div>
             </div>
             <div class="flex items-start gap-3">
-              <div class="w-8 h-8 rounded-full bg-brand-emerald/10 text-brand-emerald flex items-center justify-center shrink-0 mt-1">
-                <i class="fa-solid fa-chalk-board-user"></i>
-              </div>
-              <div>
-                <strong class="block text-brand-midnight text-sm">40+ Years Exp.</strong>
-                <span class="text-xs text-slate-500">Academic Leadership</span>
-              </div>
+              <div class="w-8 h-8 rounded-full bg-brand-emerald/10 text-brand-emerald flex items-center justify-center shrink-0 mt-1"><i class="fa-solid fa-chalk-board-user"></i></div>
+              <div><strong class="block text-brand-midnight text-sm">40+ Years Exp.</strong><span class="text-xs text-slate-500">Academic Leadership</span></div>
             </div>
           </div>
-
           <a href="#" class="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-brand-midnight text-brand-midnight font-bold rounded-xl hover:bg-brand-midnight hover:text-white transition-all w-full sm:w-auto text-center group">
             <i class="fa-regular fa-file-pdf group-hover:-translate-y-1 transition-transform"></i> Download Full C.V.
           </a>
@@ -528,338 +509,217 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════
-     COURSES / ACADEMY SECTION 
-════════════════════════════════════════════ -->
+<!-- AutoAnimate Container Added via ID -->
 <section id="academy" class="py-24 bg-slate-50 relative border-y border-gray-200">
   <div class="absolute inset-0 opacity-40 pointer-events-none" style="background-image: radial-gradient(#cbd5e1 1px, transparent 1px); background-size: 32px 32px;"></div>
-
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    
     <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
       <div class="max-w-3xl reveal-up">
         <div class="w-16 h-1 bg-brand-emerald mb-6 rounded-full"></div>
         <h2 class="font-heading text-3xl md:text-5xl font-extrabold text-brand-midnight mb-4">One of These Was Made for You</h2>
-        <p class="text-slate-600 text-lg leading-relaxed">
-          For centuries, the Arabic language carried wisdom, worship, commerce and civilization. It still does. And somewhere in you — whether you lead boardrooms, raise children, serve congregations or walk toward Makkah — Arabic has always had your name on it. <br><br><strong>Eight paths. One language. Your transformation starts here.</strong>
-        </p>
+        <p class="text-slate-600 text-lg leading-relaxed">Eight paths. One language. Your transformation starts here.</p>
       </div>
     </div>
 
-    <!-- Course Cards Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+    <!-- AutoAnimate Grid ID Added -->
+    <div id="course-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
       
-      <!-- Track 1: Business (Emerald) -->
-      <a href="Course business Index.html" class="block reveal-up delay-100 bg-white p-8 rounded-2xl border border-gray-200 hover:border-brand-emerald transition-all hover:-translate-y-2 group cursor-pointer shadow-md hover:shadow-[0_20px_40px_-15px_rgba(4,106,56,0.15)] relative overflow-hidden">
-        <div class="w-14 h-14 rounded-xl bg-brand-emerald/10 text-brand-emerald flex items-center justify-center text-2xl mb-6 group-hover:scale-110 group-hover:bg-brand-emerald group-hover:text-white transition-all duration-300">
-          <i class="fa-solid fa-briefcase"></i>
-        </div>
-        <h3 class="font-heading text-xl font-bold mb-3 text-brand-midnight group-hover:text-brand-emerald transition-colors">Living Arabic for Business</h3>
-        <p class="text-slate-600 text-sm mb-6 leading-relaxed min-h-[60px]">Advanced track optimized for high-influence leadership, corporate environments, and negotiation.</p>
-        <ul class="text-slate-700 text-sm space-y-3 mb-6 font-medium">
-          <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-emerald mt-1 text-xs"></i> Corporate influence</li>
-          <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-emerald mt-1 text-xs"></i> High-stakes negotiation</li>
-          <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-emerald mt-1 text-xs"></i> Native fluency adaptation</li>
-        </ul>
-        <div class="pt-4 border-t border-gray-100 flex justify-between items-center mt-auto">
-          <p class="text-brand-emerald text-xs font-bold uppercase tracking-wide">Professionals</p>
-          <i class="fa-solid fa-arrow-right text-brand-emerald opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0"></i>
-        </div>
-      </a>
+      <!-- Atropos Wrappers Applied to All Cards -->
+      <div class="atropos course-atropos">
+        <div class="atropos-scale"><div class="atropos-rotate"><div class="atropos-inner">
+          <a href="Course business Index.html" class="block bg-white p-8 rounded-2xl border border-gray-200 hover:border-brand-emerald transition-all shadow-md h-full">
+            <div data-atropos-offset="5" class="w-12 h-12 rounded-xl bg-brand-emerald/10 text-brand-emerald flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-briefcase"></i></div>
+            <h3 data-atropos-offset="2" class="font-heading text-lg font-bold mb-2 group-hover:text-brand-emerald">Living Arabic for Business</h3>
+          </a>
+        </div></div></div>
+      </div>
 
-      <!-- Track 2: Worshippers (Gold) -->
-      <a href="course-worshipper.html" class="block reveal-up delay-200 bg-white p-8 rounded-2xl border border-gray-200 hover:border-brand-gold transition-all hover:-translate-y-2 group relative overflow-hidden cursor-pointer shadow-md hover:shadow-[0_20px_40px_-15px_rgba(212,175,55,0.2)]">
-        <div class="absolute top-0 right-0 bg-brand-gold text-brand-midnight text-[10px] font-bold px-3 py-1.5 rounded-bl-lg z-10 uppercase tracking-wider">Popular</div>
-        <div class="w-14 h-14 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center text-2xl mb-6 group-hover:scale-110 group-hover:bg-brand-gold group-hover:text-brand-midnight transition-all duration-300">
-          <i class="fa-solid fa-bolt"></i>
-        </div>
-        <h3 class="font-heading text-xl font-bold mb-3 text-brand-midnight group-hover:text-brand-gold transition-colors">Living Arabic for Worshippers</h3>
-        <p class="text-slate-600 text-sm mb-6 leading-relaxed min-h-[60px]">Intensive program covering core linguistic knowledge to achieve deep comprehension in prayer.</p>
-        <ul class="text-slate-700 text-sm space-y-3 mb-6 font-medium">
-          <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-gold mt-1 text-xs"></i> Core fluency mastery</li>
-          <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-gold mt-1 text-xs"></i> Accelerated grammar</li>
-          <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-gold mt-1 text-xs"></i> Rapid vocabulary</li>
-        </ul>
-        <div class="pt-4 border-t border-gray-100 flex justify-between items-center mt-auto">
-          <p class="text-brand-gold text-xs font-bold uppercase tracking-wide">Deepening Salah</p>
-          <i class="fa-solid fa-arrow-right text-brand-gold opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0"></i>
-        </div>
-      </a>
+      <div class="atropos course-atropos">
+        <div class="atropos-scale"><div class="atropos-rotate"><div class="atropos-inner">
+          <a href="course-worshipper.html" class="block bg-white p-8 rounded-2xl border border-gray-200 hover:border-brand-gold transition-all shadow-md h-full">
+            <div data-atropos-offset="5" class="w-12 h-12 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-bolt"></i></div>
+            <h3 data-atropos-offset="2" class="font-heading text-lg font-bold mb-2 group-hover:text-brand-gold">Living Arabic for Worshippers</h3>
+          </a>
+        </div></div></div>
+      </div>
 
-      <!-- Track 3: Imams (Emerald) -->
-      <a href="course-imams.html" class="block reveal-up delay-300 bg-white p-8 rounded-2xl border border-gray-200 hover:border-brand-emerald transition-all hover:-translate-y-2 group cursor-pointer shadow-md hover:shadow-[0_20px_40px_-15px_rgba(4,106,56,0.15)] relative overflow-hidden">
-        <div class="w-14 h-14 rounded-xl bg-brand-emerald/10 text-brand-emerald flex items-center justify-center text-2xl mb-6 group-hover:scale-110 group-hover:bg-brand-emerald group-hover:text-white transition-all duration-300">
-          <i class="fa-solid fa-mosque"></i>
-        </div>
-        <h3 class="font-heading text-xl font-bold mb-3 text-brand-midnight group-hover:text-brand-emerald transition-colors">Living Arabic for Imams</h3>
-        <p class="text-slate-600 text-sm mb-6 leading-relaxed min-h-[60px]">Technical deep-dive into mechanics to independently decode unvoweled texts and command the pulpit.</p>
-        <ul class="text-slate-700 text-sm space-y-3 mb-6 font-medium">
-          <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-emerald mt-1 text-xs"></i> Morphological patterns</li>
-          <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-emerald mt-1 text-xs"></i> Syntax decoding</li>
-          <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-emerald mt-1 text-xs"></i> Advanced parsing</li>
-        </ul>
-        <div class="pt-4 border-t border-gray-100 flex justify-between items-center mt-auto">
-          <p class="text-brand-emerald text-xs font-bold uppercase tracking-wide">Khutbah Givers</p>
-          <i class="fa-solid fa-arrow-right text-brand-emerald opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0"></i>
-        </div>
-      </a>
+      <div class="atropos course-atropos">
+        <div class="atropos-scale"><div class="atropos-rotate"><div class="atropos-inner">
+          <a href="course-imams.html" class="block bg-white p-8 rounded-2xl border border-gray-200 hover:border-brand-emerald transition-all shadow-md h-full">
+            <div data-atropos-offset="5" class="w-12 h-12 rounded-xl bg-brand-emerald/10 text-brand-emerald flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-mosque"></i></div>
+            <h3 data-atropos-offset="2" class="font-heading text-lg font-bold mb-2 group-hover:text-brand-emerald">Living Arabic for Imams</h3>
+          </a>
+        </div></div></div>
+      </div>
 
-      <!-- Track 4: Parents (Gold) -->
-      <a href="course-parents.html" class="block reveal-up delay-400 bg-white p-8 rounded-2xl border border-gray-200 hover:border-brand-gold transition-all hover:-translate-y-2 group cursor-pointer shadow-md hover:shadow-[0_20px_40px_-15px_rgba(212,175,55,0.2)] relative overflow-hidden">
-        <div class="w-14 h-14 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center text-2xl mb-6 group-hover:scale-110 group-hover:bg-brand-gold group-hover:text-brand-midnight transition-all duration-300">
-          <i class="fa-solid fa-house-user"></i>
-        </div>
-        <h3 class="font-heading text-xl font-bold mb-3 text-brand-midnight group-hover:text-brand-gold transition-colors">Living Arabic for Parents</h3>
-        <p class="text-slate-600 text-sm mb-6 leading-relaxed min-h-[60px]">A complete program empowering you to teach your child at home with measurable results.</p>
-        <ul class="text-slate-700 text-sm space-y-3 mb-6 font-medium">
-          <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-gold mt-1 text-xs"></i> Step-by-step models</li>
-          <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-gold mt-1 text-xs"></i> Child engagement tactics</li>
-          <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-gold mt-1 text-xs"></i> Home-based assessment</li>
-        </ul>
-        <div class="pt-4 border-t border-gray-100 flex justify-between items-center mt-auto">
-          <p class="text-brand-gold text-xs font-bold uppercase tracking-wide">Raising Children</p>
-          <i class="fa-solid fa-arrow-right text-brand-gold opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0"></i>
-        </div>
-      </a>
+      <div class="atropos course-atropos">
+        <div class="atropos-scale"><div class="atropos-rotate"><div class="atropos-inner">
+          <a href="course-parents.html" class="block bg-white p-8 rounded-2xl border border-gray-200 hover:border-brand-gold transition-all shadow-md h-full">
+            <div data-atropos-offset="5" class="w-12 h-12 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-house-user"></i></div>
+            <h3 data-atropos-offset="2" class="font-heading text-lg font-bold mb-2 group-hover:text-brand-gold">Living Arabic for Parents</h3>
+          </a>
+        </div></div></div>
+      </div>
 
-      <!-- Track 5: Educators (Emerald) -->
-      <a href="course-educators.html" class="block reveal-up delay-100 bg-white p-8 rounded-2xl border border-gray-200 hover:border-brand-emerald transition-all hover:-translate-y-2 group cursor-pointer shadow-md hover:shadow-[0_20px_40px_-15px_rgba(4,106,56,0.15)] relative overflow-hidden">
-        <div class="w-14 h-14 rounded-xl bg-brand-emerald/10 text-brand-emerald flex items-center justify-center text-2xl mb-6 group-hover:scale-110 group-hover:bg-brand-emerald group-hover:text-white transition-all duration-300">
-          <i class="fa-solid fa-chalkboard-user"></i>
-        </div>
-        <h3 class="font-heading text-xl font-bold mb-3 text-brand-midnight group-hover:text-brand-emerald transition-colors">Living Arabic for Educators</h3>
-        <p class="text-slate-600 text-sm mb-6 leading-relaxed min-h-[60px]">Elevate classroom instruction with specialized pedagogy and accuracy training.</p>
-        <ul class="text-slate-700 text-sm space-y-3 mb-6 font-medium">
-          <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-emerald mt-1 text-xs"></i> Effective methodologies</li>
-          <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-emerald mt-1 text-xs"></i> Grammatical accuracy</li>
-          <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-emerald mt-1 text-xs"></i> Student engagement</li>
-        </ul>
-        <div class="pt-4 border-t border-gray-100 flex justify-between items-center mt-auto">
-          <p class="text-brand-emerald text-xs font-bold uppercase tracking-wide">Teachers</p>
-          <i class="fa-solid fa-arrow-right text-brand-emerald opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0"></i>
-        </div>
-      </a>
+      <div class="atropos course-atropos">
+        <div class="atropos-scale"><div class="atropos-rotate"><div class="atropos-inner">
+          <a href="course-educators.html" class="block bg-white p-8 rounded-2xl border border-gray-200 hover:border-brand-emerald transition-all shadow-md h-full">
+            <div data-atropos-offset="5" class="w-12 h-12 rounded-xl bg-brand-emerald/10 text-brand-emerald flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-chalkboard-user"></i></div>
+            <h3 data-atropos-offset="2" class="font-heading text-lg font-bold mb-2 group-hover:text-brand-emerald">Living Arabic for Educators</h3>
+          </a>
+        </div></div></div>
+      </div>
 
-      <!-- Track 6: Diplomats (Gold) -->
-      <a href="course-diplomats.html" class="block reveal-up delay-200 bg-white p-8 rounded-2xl border border-gray-200 hover:border-brand-gold transition-all hover:-translate-y-2 group cursor-pointer shadow-md hover:shadow-[0_20px_40px_-15px_rgba(212,175,55,0.2)] relative overflow-hidden">
-        <div class="w-14 h-14 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center text-2xl mb-6 group-hover:scale-110 group-hover:bg-brand-gold group-hover:text-brand-midnight transition-all duration-300">
-          <i class="fa-solid fa-globe"></i>
-        </div>
-        <h3 class="font-heading text-xl font-bold mb-3 text-brand-midnight group-hover:text-brand-gold transition-colors">Living Arabic for Diplomats</h3>
-        <p class="text-slate-600 text-sm mb-6 leading-relaxed min-h-[60px]">Command the room with precise articulation, vocal resonance, and high-impact rhetoric.</p>
-        <ul class="text-slate-700 text-sm space-y-3 mb-6 font-medium">
-          <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-gold mt-1 text-xs"></i> High-stakes rhetoric</li>
-          <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-gold mt-1 text-xs"></i> Native vocal resonance</li>
-          <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-gold mt-1 text-xs"></i> Strategic delivery</li>
-        </ul>
-        <div class="pt-4 border-t border-gray-100 flex justify-between items-center mt-auto">
-          <p class="text-brand-gold text-xs font-bold uppercase tracking-wide">Intl. Relations</p>
-          <i class="fa-solid fa-arrow-right text-brand-gold opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0"></i>
-        </div>
-      </a>
+      <div class="atropos course-atropos">
+        <div class="atropos-scale"><div class="atropos-rotate"><div class="atropos-inner">
+          <a href="course-diplomats.html" class="block bg-white p-8 rounded-2xl border border-gray-200 hover:border-brand-gold transition-all shadow-md h-full">
+            <div data-atropos-offset="5" class="w-12 h-12 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-globe"></i></div>
+            <h3 data-atropos-offset="2" class="font-heading text-lg font-bold mb-2 group-hover:text-brand-gold">Living Arabic for Diplomats</h3>
+          </a>
+        </div></div></div>
+      </div>
 
-      <!-- Track 7: Hujjaj (Emerald) -->
-      <a href="course-hujaj.html" class="block reveal-up delay-300 bg-white p-8 rounded-2xl border border-gray-200 hover:border-brand-emerald transition-all hover:-translate-y-2 group cursor-pointer shadow-md hover:shadow-[0_20px_40px_-15px_rgba(4,106,56,0.15)] relative overflow-hidden">
-        <div class="w-14 h-14 rounded-xl bg-brand-emerald/10 text-brand-emerald flex items-center justify-center text-2xl mb-6 group-hover:scale-110 group-hover:bg-brand-emerald group-hover:text-white transition-all duration-300">
-          <i class="fa-solid fa-kaaba"></i>
-        </div>
-        <h3 class="font-heading text-xl font-bold mb-3 text-brand-midnight group-hover:text-brand-emerald transition-colors">Living Arabic for Hujjaj</h3>
-        <p class="text-slate-600 text-sm mb-6 leading-relaxed min-h-[60px]">Handle every interaction confidently with specialized conversational fluency for logistics and travel.</p>
-        <ul class="text-slate-700 text-sm space-y-3 mb-6 font-medium">
-          <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-emerald mt-1 text-xs"></i> Logistical vocabulary</li>
-          <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-emerald mt-1 text-xs"></i> Emergency response</li>
-          <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-emerald mt-1 text-xs"></i> Pilgrim management</li>
-        </ul>
-        <div class="pt-4 border-t border-gray-100 flex justify-between items-center mt-auto">
-          <p class="text-brand-emerald text-xs font-bold uppercase tracking-wide">Preparing for Makkah</p>
-          <i class="fa-solid fa-arrow-right text-brand-emerald opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0"></i>
-        </div>
-      </a>
+      <div class="atropos course-atropos">
+        <div class="atropos-scale"><div class="atropos-rotate"><div class="atropos-inner">
+          <a href="course-hujaj.html" class="block bg-white p-8 rounded-2xl border border-gray-200 hover:border-brand-emerald transition-all shadow-md h-full">
+            <div data-atropos-offset="5" class="w-12 h-12 rounded-xl bg-brand-emerald/10 text-brand-emerald flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-kaaba"></i></div>
+            <h3 data-atropos-offset="2" class="font-heading text-lg font-bold mb-2 group-hover:text-brand-emerald">Living Arabic for Hujjaj</h3>
+          </a>
+        </div></div></div>
+      </div>
 
-      <!-- Track 8: Foundations (Gold) -->
-      <a href="course-qur'an foundation.html" class="block reveal-up delay-400 bg-white p-8 rounded-2xl border border-gray-200 hover:border-brand-gold transition-all hover:-translate-y-2 group cursor-pointer shadow-md hover:shadow-[0_20px_40px_-15px_rgba(212,175,55,0.2)] relative overflow-hidden">
-        <div class="w-14 h-14 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center text-2xl mb-6 group-hover:scale-110 group-hover:bg-brand-gold group-hover:text-brand-midnight transition-all duration-300">
-          <i class="fa-solid fa-book-open-reader"></i>
-        </div>
-        <h3 class="font-heading text-xl font-bold mb-3 text-brand-midnight group-hover:text-brand-gold transition-colors">Living Arabic: Qur'an Foundations</h3>
-        <p class="text-slate-600 text-sm mb-6 leading-relaxed min-h-[60px]">Begin your journey with the fundamental rules of Tajweed and basic reading mechanics.</p>
-        <ul class="text-slate-700 text-sm space-y-3 mb-6 font-medium">
-          <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-gold mt-1 text-xs"></i> Alphabet mastery</li>
-          <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-gold mt-1 text-xs"></i> Tajweed fundamentals</li>
-          <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-gold mt-1 text-xs"></i> Recitation fluency</li>
-        </ul>
-        <div class="pt-4 border-t border-gray-100 flex justify-between items-center mt-auto">
-          <p class="text-brand-gold text-xs font-bold uppercase tracking-wide">Beginners</p>
-          <i class="fa-solid fa-arrow-right text-brand-gold opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0"></i>
-        </div>
-      </a>
-
+      <div class="atropos course-atropos">
+        <div class="atropos-scale"><div class="atropos-rotate"><div class="atropos-inner">
+          <a href="course-qur'an foundation.html" class="block bg-white p-8 rounded-2xl border border-gray-200 hover:border-brand-gold transition-all shadow-md h-full">
+            <div data-atropos-offset="5" class="w-12 h-12 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-book-open-reader"></i></div>
+            <h3 data-atropos-offset="2" class="font-heading text-lg font-bold mb-2 group-hover:text-brand-gold">Qur'an Foundation</h3>
+          </a>
+        </div></div></div>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- Floating WhatsApp Button -->
+<a href="https://wa.me/234XXXXXXXXXX?text=Hello,%20I%20would%20like%20to%20enroll%20in%20a%20track." 
+   target="_blank" 
+   class="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#128C7E] text-white p-4 rounded-full shadow-lg transition-all transform hover:scale-110 flex items-center justify-center">
+  <i class="fa-brands fa-whatsapp text-3xl"></i>
+</a>
+
 <footer class="bg-brand-midnight text-slate-400 py-16 border-t border-white/10">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-      
       <div class="col-span-1 md:col-span-2">
         <div class="flex items-center gap-3 mb-6">
          <img src="logo.jpeg" alt="Arab Community of Lagos Logo" class="h-10 w-auto object-contain drop-shadow-sm">
           <span class="font-heading font-bold text-2xl text-white">Arab Community of Lagos<span class="text-brand-gold">.</span></span>
         </div>
-        <p class="text-sm leading-relaxed max-w-sm">Science confirms that achieving true linguistic mastery is nearly impossible without a supportive ecosystem for consistent, active speaking. For students in Nigeria, the daily environment often fails to provide the immersion required to thrive. Our community addresses this "Educational Divide" by providing a high-frequency speaking framework where students engage in real-time dialogue with native speakers.
-        </p>
+        <p class="text-sm leading-relaxed max-w-sm">Science confirms that achieving true linguistic mastery is nearly impossible without a supportive ecosystem for consistent, active speaking.</p>
       </div>
-
       <div>
         <h4 class="text-white font-bold mb-4 tracking-wide uppercase text-sm">Quick Links</h4>
         <ul class="space-y-2 text-sm">
           <li><a href="#home" class="hover:text-brand-gold transition-colors">Home</a></li>
           <li><a href="#why-acl" class="hover:text-brand-gold transition-colors">Methodology</a></li>
           <li><a href="#academy" class="hover:text-brand-gold transition-colors">Course Tracks</a></li>
-          <li><a href="#leadership" class="hover:text-brand-gold transition-colors">Leadership</a></li>
         </ul>
       </div>
-
       <div>
         <h4 class="text-white font-bold mb-4 tracking-wide uppercase text-sm">Portals</h4>
         <ul class="space-y-2 text-sm">
           <li><a href="#" class="hover:text-brand-emerald transition-colors">Student Login</a></li>
-          <li><a href="#" class="hover:text-brand-emerald transition-colors">Parent Dashboard</a></li>
-          <li><a href="#" class="hover:text-brand-emerald transition-colors">Staff Intranet</a></li>
         </ul>
-      </div>
-
-    </div>
-
-    <div class="flex flex-col md:flex-row justify-between items-center gap-6 pt-8 border-t border-white/10 text-xs">
-      <p>© 2026 Arab Community of Lagos. All rights reserved.</p>
-      <div class="flex space-x-4">
-        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-white hover:bg-brand-emerald transition-all hover:-translate-y-1">
-          <i class="fa-brands fa-whatsapp text-lg"></i>
-        </a>
-        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-white hover:bg-brand-gold hover:text-brand-midnight transition-all hover:-translate-y-1">
-          <i class="fa-regular fa-envelope text-lg"></i>
-        </a>
-        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-white hover:bg-[#1DA1F2] transition-all hover:-translate-y-1">
-          <i class="fa-brands fa-twitter text-lg"></i>
-        </a>
       </div>
     </div>
   </div>
 </footer>
 
-<div id="sticky-cta" class="fixed bottom-0 left-0 w-full z-40 lg:hidden bg-white/90 backdrop-blur-md border-t border-slate-200 shadow-[0_-10px_40px_rgba(0,0,0,0.1)] p-4 transform translate-y-0 transition-transform duration-300">
-  <div class="flex max-w-md mx-auto">
-    <a href="#academy" class="w-full py-4 text-center bg-brand-emerald text-white font-bold rounded-xl text-lg active:bg-brand-emerald-dark shadow-glow-emerald transition-colors">Find Your Course</a>
-  </div>
-</div>
+<!-- External Scripts CDN Loading -->
+<script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
+<script src="https://unpkg.com/rough-notation/lib/rough-notation.iife.js"></script>
+<script src="https://unpkg.com/atropos@2.0.2/atropos.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@formkit/auto-animate@0.8.1/index.global.min.js"></script>
 
+<!-- Execution & Initialization Scripts -->
 <script>
-  // ── 1. Navbar Scroll Effect ──
-  window.addEventListener('scroll', () => {
-    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
-  });
+  // 1. Lenis Smooth Scroll Initialization
+  const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), direction: 'vertical', gestureDirection: 'vertical', smooth: true, mouseMultiplier: 1, smoothTouch: false, touchMultiplier: 2, infinite: false, })
+  function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+  requestAnimationFrame(raf);
 
-  // ── 2. Mobile Menu Toggle ──
+  // 2. Navbar Scroll Logic
+  window.addEventListener('scroll', () => { document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20); });
+
+  // 3. Typewriter Logic
+  const phrases = ['Living Arabic', 'Living Interaction', 'Native Fluency', 'Classical Mastery'];
+  let pIdx = 0, cIdx = 0, isDel = false;
+  const el = document.getElementById('typewriter-text');
+  function type() {
+    el.textContent = isDel ? phrases[pIdx].substring(0, cIdx-1) : phrases[pIdx].substring(0, cIdx+1);
+    cIdx = isDel ? cIdx-1 : cIdx+1;
+    if(!isDel && cIdx === phrases[pIdx].length) { isDel = true; setTimeout(type, 2000); }
+    else if(isDel && cIdx === 0) { isDel = false; pIdx = (pIdx+1)%phrases.length; setTimeout(type, 500); }
+    else setTimeout(type, isDel ? 40 : 80);
+  }
+  type();
+
+  // 4. Mobile Menu Toggle Logic
   document.getElementById('mobile-menu-btn').addEventListener('click', function() {
     const menu = document.getElementById('mobile-menu');
     menu.classList.toggle('open');
-    const icon = this.querySelector('i');
-    if(menu.classList.contains('open')) {
-      icon.classList.remove('fa-bars');
-      icon.classList.add('fa-xmark');
-    } else {
-      icon.classList.remove('fa-xmark');
-      icon.classList.add('fa-bars');
-    }
   });
 
-  document.querySelectorAll('#mobile-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-      document.getElementById('mobile-menu').classList.remove('open');
-      document.querySelector('#mobile-menu-btn i').classList.replace('fa-xmark', 'fa-bars');
+  // 5. Atropos 3D Initialization
+  document.querySelectorAll('.course-atropos').forEach((el) => {
+    Atropos({
+      el: el,
+      activeOffset: 40,
+      shadowScale: 1.05,
+      rotateXMax: 15,
+      rotateYMax: 15,
+      highlight: true
     });
   });
 
-  // ── 3. Advanced Scroll Reveal ──
-  const revealElements = document.querySelectorAll('.reveal-up, .reveal-zoom, .reveal-left, .reveal-right');
-  const revealObserver = new IntersectionObserver((entries, observer) => {
+  // 6. Canvas Confetti Logic
+  document.querySelectorAll('.btn-confetti').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      confetti({
+        particleCount: 150,
+        spread: 80,
+        origin: { y: 0.6 },
+        colors: ['#046A38', '#D4AF37', '#ffffff'] // Brand emerald and gold
+      });
+    });
+  });
+
+  // 7. AutoAnimate Initialization (Zero Config DOM tracking)
+  const { autoAnimate } = window.formkit;
+  autoAnimate(document.getElementById('mobile-menu'));
+  autoAnimate(document.getElementById('course-grid'));
+
+  // 8. Rough Notation Logic (Triggered on scroll via Intersection Observer)
+  const { annotate } = window.RoughNotation;
+  const rnObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
-  revealElements.forEach(el => revealObserver.observe(el));
-
-  // ── 4. Typewriter Effect ──
-  const phrases = ['Living Arabic', 'Living Interaction', 'Native Fluency', 'Classical Mastery'];
-  let phraseIdx = 0, charIdx = 0, isDeleting = false;
-  const typewriterEl = document.getElementById('typewriter-text');
-  
-  function typewrite() {
-    const currentPhrase = phrases[phraseIdx];
-    
-    if (isDeleting) {
-      typewriterEl.textContent = currentPhrase.substring(0, charIdx - 1);
-      charIdx--;
-    } else {
-      typewriterEl.textContent = currentPhrase.substring(0, charIdx + 1);
-      charIdx++;
-    }
-
-    let typingSpeed = isDeleting ? 40 : 80;
-
-    if (!isDeleting && charIdx === currentPhrase.length) {
-      typingSpeed = 2000;
-      isDeleting = true;
-    } else if (isDeleting && charIdx === 0) {
-      isDeleting = false;
-      phraseIdx = (phraseIdx + 1) % phrases.length;
-      typingSpeed = 500;
-    }
-    setTimeout(typewrite, typingSpeed);
-  }
-  setTimeout(typewrite, 1000);
-
-  // ── 5. Number Counters ──
-  const counters = document.querySelectorAll('.counter');
-  const counterObserver = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting) {
-        const target = +entry.target.getAttribute('data-target');
-        let count = 0;
-        const inc = target / 40; 
-        const timer = setInterval(() => {
-          count += inc;
-          if(count >= target) {
-            entry.target.innerText = target;
-            clearInterval(timer);
-          } else {
-            entry.target.innerText = Math.ceil(count);
-          }
-        }, 30);
-        obs.unobserve(entry.target);
+        const el = entry.target;
+        const color = el.getAttribute('data-rn-color') || '#D4AF37';
+        const type = el.classList.contains('rn-circle') ? 'circle' : 'highlight';
+        
+        const annotation = annotate(el, { type: type, color: color, strokeWidth: 3, multiline: true });
+        annotation.show();
+        observer.unobserve(el); // Only draw once
       }
     });
   }, { threshold: 0.5 });
-  counters.forEach(c => counterObserver.observe(c));
 
-  // ── 6. Sticky Mobile CTA Visibility Toggle ──
-  const stickyCta = document.getElementById('sticky-cta');
-  const footerSection = document.querySelector('footer');
-  
-  window.addEventListener('scroll', () => {
-    const footerRect = footerSection.getBoundingClientRect();
-    // Hide CTA when footer is visible on screen
-    if(footerRect.top < window.innerHeight) {
-      stickyCta.style.transform = 'translateY(100%)';
-    } else {
-      stickyCta.style.transform = 'translateY(0)';
-    }
+  document.querySelectorAll('.rn-circle, .rn-highlight').forEach(el => {
+    rnObserver.observe(el);
   });
+
 </script>
 
 </body>
