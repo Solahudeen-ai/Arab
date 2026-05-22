@@ -45,10 +45,6 @@
   </script>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/atropos@2.0.2/atropos.css" />
-
-  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.0.51/build/spline-viewer.js"></script>
-  <script type="module" src="https://cdn.jsdelivr.net/npm/@starfederation/datastar"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.xkcd@1.1.13/dist/chart.xkcd.min.js"></script>
   <script src="https://unpkg.com/comlink/dist/umd/comlink.js"></script>
 
   <style>
@@ -134,8 +130,7 @@
 
     .btn-shine { position: relative; overflow: hidden; }
     .btn-shine::before {
-      content: '';
-      position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
+      content: absolute; top: 0; left: -100%; width: 50%; height: 100%;
       background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
       transform: skewX(-25deg);
       animation: shine 4s infinite;
@@ -174,48 +169,15 @@
 
     .atropos-inner { border-radius: 1rem; }
 
-    ::view-transition-old(root),
-    ::view-transition-new(root) {
-      animation-duration: 0.3s;
-    }
-
-    .xkcd-chart-container svg { width: 100%; height: 180px; }
-    #spline-container { pointer-events: none; }
-    #spline-container spline-viewer { pointer-events: none; }
-
-    /* ── Course Card Glow Effects ── */
-    .card-glow-wrapper {
-      position: relative;
-      border-radius: 1rem;
-      z-index: 1;
-    }
-    
-    /* Static soft background glow */
+    .card-glow-wrapper { position: relative; border-radius: 1rem; z-index: 1; }
     .card-glow-wrapper::before {
-      content: '';
-      position: absolute;
-      inset: -2px; 
-      border-radius: 1.1rem;
+      content: ''; position: absolute; inset: -2px; border-radius: 1.1rem;
       background: linear-gradient(135deg, rgba(4, 106, 56, 0.15), rgba(212, 175, 55, 0.15));
-      filter: blur(8px);
-      z-index: -1;
-      transition: opacity 0.4s ease, filter 0.4s ease, background 0.4s ease;
+      filter: blur(8px); z-index: -1; transition: opacity 0.4s ease, filter 0.4s ease, background 0.4s ease;
       will-change: opacity, filter;
     }
-
-    /* Emerald Hover Glow */
-    .glow-hover-emerald:hover::before {
-      background: var(--brand-emerald);
-      filter: blur(12px);
-      opacity: 0.6;
-    }
-
-    /* Gold Hover Glow */
-    .glow-hover-gold:hover::before {
-      background: var(--brand-gold);
-      filter: blur(12px);
-      opacity: 0.6;
-    }
+    .glow-hover-emerald:hover::before { background: var(--brand-emerald); filter: blur(12px); opacity: 0.6; }
+    .glow-hover-gold:hover::before { background: var(--brand-gold); filter: blur(12px); opacity: 0.6; }
   </style>
 
   <script>
@@ -232,7 +194,7 @@
     <div class="flex justify-between h-20 items-center">
       
       <a href="#" class="flex items-center gap-3 group">
-       <img src="logo.jpeg" alt="Arab Community of Lagos Logo" class="h-10 w-auto object-contain drop-shadow-sm">
+       <img src="logo.png" alt="Arab Community of Lagos Logo" class="h-10 w-auto object-contain drop-shadow-sm">
         <span class="font-heading font-bold text-xl tracking-tight text-brand-midnight">
           <span class="lang-en">Arab Community of Lagos<span class="text-brand-gold">.</span></span>
           <span class="lang-ar">مجتمع لاغوس العربي<span class="text-brand-gold">.</span></span>
@@ -244,7 +206,7 @@
           <span class="lang-en">Home</span><span class="lang-ar">الرئيسية</span>
         </a>
         <a href="#why-acl" class="text-slate-600 hover:text-brand-emerald font-medium transition-colors text-sm">
-          <span class="lang-en">Why ACL</span><span class="lang-ar">لماذا نحن</span>
+          <span class="lang-en">Methodology</span><span class="lang-ar">المنهجية</span>
         </a>
         <a href="#leadership" class="text-slate-600 hover:text-brand-emerald font-medium transition-colors text-sm">
           <span class="lang-en">Leadership</span><span class="lang-ar">الإدارة</span>
@@ -270,9 +232,6 @@
           <i class="fa-solid fa-lock me-1"></i> 
           <span class="lang-en">Portal Login</span><span class="lang-ar">بوابة الدخول</span>
         </a>
-        <a href="#academy" class="confetti-btn px-6 py-2.5 rounded-full bg-brand-emerald text-white text-sm font-semibold hover:bg-brand-emerald-dark transition-all shadow-md hover:shadow-glow-emerald btn-shine">
-          <span class="lang-en">View Courses</span><span class="lang-ar">عرض الدورات</span>
-        </a>
       </div>
 
       <div class="flex lg:hidden items-center gap-4">
@@ -290,19 +249,14 @@
   <div id="mobile-menu-wrapper" class="lg:hidden absolute w-full shadow-xl bg-white/95 backdrop-blur-md border-b border-slate-100 z-40">
     <div id="mobile-menu" class="hidden px-6 pt-4 pb-8 space-y-2 text-start">
       <a href="#home" class="mobile-link block px-4 py-3 text-brand-midnight font-medium hover:bg-slate-50 rounded-xl transition-colors"><span class="lang-en">Home</span><span class="lang-ar">الرئيسية</span></a>
-      <a href="#why-acl" class="mobile-link block px-4 py-3 text-brand-midnight font-medium hover:bg-slate-50 rounded-xl transition-colors"><span class="lang-en">Why ACL</span><span class="lang-ar">لماذا نحن</span></a>
+      <a href="#why-acl" class="mobile-link block px-4 py-3 text-brand-midnight font-medium hover:bg-slate-50 rounded-xl transition-colors"><span class="lang-en">Methodology</span><span class="lang-ar">المنهجية</span></a>
       <a href="#leadership" class="mobile-link block px-4 py-3 text-brand-midnight font-medium hover:bg-slate-50 rounded-xl transition-colors"><span class="lang-en">Leadership</span><span class="lang-ar">الإدارة</span></a>
       <a href="#academy" class="mobile-link block px-4 py-3 text-brand-midnight font-medium hover:bg-slate-50 rounded-xl transition-colors"><span class="lang-en">Courses</span><span class="lang-ar">الدورات</span></a>
-      
       <a href="#book-trial" class="mobile-link block px-4 py-3 text-brand-gold font-bold hover:bg-slate-50 rounded-xl transition-colors">
         <i class="fa-solid fa-gift mr-2 rtl:ml-2"></i><span class="lang-en">Book Free Trial</span><span class="lang-ar">احجز تجربة مجانية</span>
       </a>
-
       <hr class="my-2 border-slate-100">
-      
       <a href="portal.html" class="mobile-link block px-4 py-3 text-brand-emerald font-bold hover:bg-slate-50 rounded-xl transition-colors"><i class="fa-solid fa-user-circle me-2 rtl:ml-2"></i><span class="lang-en">Portal Login</span><span class="lang-ar">بوابة الدخول</span></a>
-      
-      <a href="#academy" class="confetti-btn mobile-link mt-4 block w-full text-center px-6 py-3 rounded-xl bg-brand-emerald text-white font-bold shadow-md"><span class="lang-en">View Courses</span><span class="lang-ar">عرض الدورات</span></a>
     </div>
   </div>
 </nav>
@@ -312,10 +266,6 @@
     <div class="movable-bg w-full h-full"></div>
   </div>
   <div class="absolute inset-0 z-0 bg-black/70"></div>
-
-  <div id="spline-container" class="absolute inset-0 z-0 pointer-events-none opacity-50 mix-blend-screen hidden">
-    <spline-viewer url="https://prod.spline.design/15bX-pIigQ9jHkSg/scene.splinecode" events-target="global" style="width: 100%; height: 100%;"></spline-viewer>
-  </div>
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full relative z-10">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
@@ -350,16 +300,14 @@
 
         <div class="reveal-up delay-400 flex flex-wrap justify-center lg:justify-start gap-8 items-center border-t border-white/10 pt-8">
           <div class="flex items-center gap-3">
-            <div class="flex -space-x-3 rtl:space-x-reverse">
-              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=100&h=100&q=80" class="w-10 h-10 rounded-full border-2 border-brand-midnight object-cover" alt="Student">
-              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?fit=crop&w=100&h=100&q=80" class="w-10 h-10 rounded-full border-2 border-brand-midnight object-cover" alt="Student">
-              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?fit=crop&w=100&h=100&q=80" class="w-10 h-10 rounded-full border-2 border-brand-midnight object-cover" alt="Student">
+            <div class="w-12 h-12 rounded-full bg-brand-emerald/20 border border-brand-emerald flex items-center justify-center text-brand-emerald text-xl">
+              <i class="fa-solid fa-user-graduate"></i>
             </div>
             <div class="text-start">
               <div class="flex text-brand-gold text-xs">
                 <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
               </div>
-              <div class="text-white text-xs font-medium"><span class="lang-en">500+ Active Learners</span><span class="lang-ar">أكثر من 500 طالب نشط</span></div>
+              <div class="text-white text-xs font-medium"><span class="lang-en">A Verified Learning Community</span><span class="lang-ar">مجتمع تعليمي موثوق</span></div>
             </div>
           </div>
         </div>
@@ -383,13 +331,9 @@
               <i class="fa-solid fa-graduation-cap"></i>
             </div>
             <div class="text-start">
-              <h3 class="font-heading font-bold text-white text-lg"><span class="lang-en">Certified Paths</span><span class="lang-ar">مسارات معتمدة</span></h3>
-              <p class="text-sm text-slate-300 mt-1 leading-snug"><span class="lang-en">Recognized credentials for academic & career growth.</span><span class="lang-ar">شهادات معترف بها للنمو الأكاديمي والمهني.</span></p>
+              <h3 class="font-heading font-bold text-white text-lg"><span class="lang-en">Structured Paths</span><span class="lang-ar">مسارات منظمة</span></h3>
+              <p class="text-sm text-slate-300 mt-1 leading-snug"><span class="lang-en">Clear curriculums designed for measurable progress.</span><span class="lang-ar">مناهج واضحة مصممة لتحقيق تقدم ملموس.</span></p>
             </div>
-          </div>
-
-          <div class="reveal-zoom delay-300 bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 shadow-glass col-span-2 mt-4 xkcd-chart-container">
-            <svg id="retention-chart"></svg>
           </div>
 
         </div>
@@ -410,21 +354,22 @@
     <div class="text-center mb-12">
       <div class="section-divider mx-auto reveal-up"></div>
       <h2 class="reveal-up delay-100 font-heading text-3xl md:text-5xl font-bold text-brand-midnight mb-6">
-        <span class="lang-en">A Message Worth Hearing</span><span class="lang-ar">اختبر فرق التعلم معنا</span>
+        <span class="lang-en">A Message Worth Hearing</span><span class="lang-ar">رسالة تستحق الاستماع</span>
       </h2>
       <p class="reveal-up delay-200 text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
         <span class="lang-en">We live in a world where Arabic is more relevant than ever — yet so misunderstood. In this short video, we share why we believe the Arabic-speaking community has a vital role to play, and why that's at the core of everything we do.</span>
-        <span class="lang-ar">نحن لا نعلم المفردات فقط؛ بل نغرس الإيقاع الطبيعي للغة الفصحى. شاهد هذه المقدمة الموجزة لفهم كيف تحول منهجيتنا التعلم الجامد إلى إتقان لغوي حقيقي.</span>
+        <span class="lang-ar">نحن نعيش في عالم أصبحت فيه اللغة العربية أكثر أهمية من أي وقت مضى — ومع ذلك يُساء فهمها. في هذا الفيديو القصير، نشارك سبب إيماننا بأن المجتمع الناطق بالعربية له دور حيوي.</span>
       </p>
-      </div>
- <div class="reveal delay-300 video-container">
-  <iframe
-    src="https://www.youtube.com/embed/1qBBJsyHNFE?autoplay=1&mute=1&rel=0&modestbranding=1"
-    title="Welcome to the Arab Community of Lagos"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen>
-  </iframe>
-</div>
+    </div>
+    <div class="reveal delay-300 video-container shadow-xl">
+      <iframe
+        src="https://www.youtube.com/embed/1qBBJsyHNFE?rel=0&modestbranding=1"
+        title="Welcome to the Arab Community of Lagos"
+        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
 </section>
 
 <section id="why-acl" class="py-24 bg-brand-surface border-y border-slate-200 relative overflow-hidden">
@@ -436,29 +381,25 @@
       <div class="lg:col-span-5 text-center lg:text-start">
         <div class="section-divider reveal-left mx-auto lg:mx-0"></div>
         <h2 class="reveal-left delay-100 font-heading text-3xl md:text-5xl font-bold text-brand-midnight mb-6">
-          <span class="lang-en">Why Traditional Arabic Classes Fail.</span><span class="lang-ar">لماذا تفشل فصول اللغة العربية التقليدية.</span>
+          <span class="lang-en">Why Traditional Arabic Classes Falter.</span><span class="lang-ar">لماذا تتعثر الفصول التقليدية.</span>
         </h2>
         <p class="reveal-left delay-200 text-lg text-slate-600 mb-6 leading-relaxed">
-          <span class="lang-en">Research indicates classroom Arabic in Nigeria creates a <strong id="annotate-target" class="text-brand-emerald">70% gap</strong> between grammar knowledge and conversational fluency.</span>
-          <span class="lang-ar">تشير الأبحاث إلى أن الفصول التقليدية تخلق <strong id="annotate-target" class="text-brand-emerald">فجوة بنسبة 70%</strong> بين معرفة القواعد والطلاقة في المحادثة.</span>
+          <span class="lang-en">Traditional classroom environments often struggle to bridge the <strong id="annotate-target" class="text-brand-emerald">critical gap</strong> between static grammar memorization and active conversational fluency.</span>
+          <span class="lang-ar">غالبًا ما تكافح الفصول التقليدية لسد <strong id="annotate-target" class="text-brand-emerald">الفجوة الحرجة</strong> بين حفظ القواعد الجامدة والطلاقة النشطة في المحادثة.</span>
         </p>
         <p class="reveal-left delay-300 text-lg text-slate-600 mb-8 leading-relaxed">
-          <span class="lang-en">Without an immersive daily environment, students fail to transition from static rules to active mastery. ACL bridges this gap with a systematic, speaking-first framework.</span>
-          <span class="lang-ar">بدون بيئة يومية تفاعلية، يفشل الطلاب في الانتقال من حفظ القواعد إلى الإتقان النشط. نحن نسد هذه الفجوة بمنهجية منهجية تركز على التحدث أولاً.</span>
+          <span class="lang-en">Without an immersive environment, students fail to transition from theoretical rules to active mastery. We resolve this with a systematic, speaking-first framework.</span>
+          <span class="lang-ar">بدون بيئة تفاعلية، يفشل الطلاب في الانتقال من القواعد النظرية إلى الإتقان النشط. نحن نحل هذه المشكلة بإطار منهجي يركز على التحدث أولاً.</span>
         </p>
         <div class="reveal-left delay-400">
-          <div class="reveal delay-300 video-container mb-8">
+          <div class="reveal delay-300 video-container mb-8 shadow-lg">
             <iframe
-              src="https://www.youtube.com/embed/Q8U2bdqc-n8?autoplay=1&mute=1&rel=0&modestbranding=1"
-              title="Welcome to the Arab Community of Lagos"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              src="https://www.youtube.com/embed/Q8U2bdqc-n8?rel=0&modestbranding=1"
+              title="Methodology of the Arab Community of Lagos"
+              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen>
             </iframe>
           </div>
-          <a href="#academy" class="confetti-btn inline-flex items-center gap-2 text-brand-emerald font-bold hover:text-brand-emerald-dark transition-colors group">
-            <span class="lang-en">See our methodology</span><span class="lang-ar">اطلع على منهجيتنا</span> 
-            <i class="fa-solid fa-arrow-right transform rtl:rotate-180 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform"></i>
-          </a>
         </div>
       </div>
 
@@ -467,13 +408,13 @@
           <div class="w-14 h-14 rounded-xl bg-brand-emerald/10 flex items-center justify-center text-brand-emerald text-2xl mb-6">
             <i class="fa-solid fa-rotate"></i>
           </div>
-          <h3 class="font-heading text-xl font-bold text-brand-midnight mb-3"><span class="lang-en">Daily Repetition</span><span class="lang-ar">التكرار اليومي</span></h3>
+          <h3 class="font-heading text-xl font-bold text-brand-midnight mb-3"><span class="lang-en">Structured Consistency</span><span class="lang-ar">الاتساق المنظم</span></h3>
           <p class="text-slate-600 text-sm leading-relaxed mb-4">
-            <span class="lang-en">We operate exclusively online to enforce daily discipline. Rhythmic repetition improves retention drastically.</span>
-            <span class="lang-ar">نعمل حصريًا عبر الإنترنت لفرض الانضباط اليومي. التكرار المنتظم يحسن الاحتفاظ بالمعلومات بشكل جذري.</span>
+            <span class="lang-en">We operate exclusively online to enforce daily discipline and routine. Consistent repetition improves retention drastically.</span>
+            <span class="lang-ar">نعمل حصريًا عبر الإنترنت لفرض الانضباط والروتين اليومي. التكرار المستمر يحسن الاحتفاظ بالمعلومات بشكل جذري.</span>
           </p>
           <div class="text-brand-emerald text-sm font-semibold flex items-center gap-2">
-            <i class="fa-solid fa-arrow-trend-up"></i> <span class="lang-en">3x Faster Progression</span><span class="lang-ar">تقدم أسرع بـ 3 أضعاف</span>
+            <i class="fa-solid fa-arrow-trend-up"></i> <span class="lang-en">Accelerated Progression</span><span class="lang-ar">تقدم متسارع</span>
           </div>
         </div>
 
@@ -481,13 +422,13 @@
           <div class="w-14 h-14 rounded-xl bg-brand-gold/10 flex items-center justify-center text-brand-gold text-2xl mb-6">
             <i class="fa-solid fa-users-viewfinder"></i>
           </div>
-          <h3 class="font-heading text-xl font-bold text-brand-midnight mb-3"><span class="lang-en">Native Exposure</span><span class="lang-ar">التعرض للغة الأصلية</span></h3>
+          <h3 class="font-heading text-xl font-bold text-brand-midnight mb-3"><span class="lang-en">Authentic Exposure</span><span class="lang-ar">التعرض الأصيل</span></h3>
           <p class="text-slate-600 text-sm leading-relaxed mb-4">
-            <span class="lang-en">Interact directly with native speakers and highly vetted classical scholars.</span>
-            <span class="lang-ar">تفاعل مباشرة مع الناطقين الأصليين وعلماء اللغة الكلاسيكية الموثوقين.</span>
+            <span class="lang-en">Interact directly with experienced instructors and highly vetted classical scholars.</span>
+            <span class="lang-ar">تفاعل مباشرة مع مدربين ذوي خبرة وعلماء كلاسيكيين موثوقين.</span>
           </p>
           <div class="text-brand-gold text-sm font-semibold flex items-center gap-2">
-            <i class="fa-solid fa-check-double"></i> <span class="lang-en">Authentic Articulation</span><span class="lang-ar">نطق أصيل ومتقن</span>
+            <i class="fa-solid fa-check-double"></i> <span class="lang-en">Accurate Articulation</span><span class="lang-ar">نطق دقيق</span>
           </div>
         </div>
       </div>
@@ -524,12 +465,10 @@
             <i class="fa-solid fa-award text-brand-gold"></i> <span class="lang-en">Executive Biography</span><span class="lang-ar">السيرة الذاتية</span>
           </h4>
           <div class="prose prose-slate prose-sm text-slate-600 leading-relaxed mb-8">
-            <p class="mb-4"><span class="lang-en">Some teachers know the subject. Dr. Salahudeen has lived it for over 50 years.</span><span class="lang-ar">الدكتور صلاح الدين مرتضى أديكونلي هو باحث أكاديمي متميز يقدم خبرته العميقة لمجتمعنا التعليمي عبر الإنترنت. تمتد خلفيته الأكاديمية لتشمل مؤسسات مرموقة مثل جامعة الكويت وجامعة إبادان.</span></p>
-            <p><span class="lang-en">Since 1973, he has dedicated his life to one mission — making authentic Arabic and Islamic knowledge accessible, accurate, and transformative. His academic journey has taken him from the University of Ibadan to the University of Kuwait, earning him a reputation as one of Nigeria's most respected voices in Islamic scholarship.
-He is not just a lecturer. He is a published author of foundational academic texts, a former Chairman of NATAIS, and the architect of the very method your child or you will learn through.
-When you join Arab Lagos, you are not getting a generic online course. You are getting 50+ years of mastery — delivered to your screen.</span><span class="lang-ar">بمسيرة تعليمية بدأت عام 1973، يعمل كمحاضر أول في جامعة إيمانويل ألاياندي للتعليم. وهو مؤلف لعدة نصوص تأسيسية وشغل منصب رئيس جمعية NATAIS.</span></p>
+            <p class="mb-4"><span class="lang-en">Some teachers merely know the subject. Dr. Salahudeen has dedicated his life to researching and expanding it.</span><span class="lang-ar">الدكتور صلاح الدين مرتضى أديكونلي هو باحث أكاديمي متميز يقدم خبرته العميقة لمجتمعنا التعليمي عبر الإنترنت.</span></p>
+            <p><span class="lang-en">His academic journey has taken him from the University of Ibadan to the University of Kuwait, earning him a reputation as a highly respected voice in Islamic scholarship. He is a published author of foundational academic texts and a former Chairman of NATAIS. When you join Arab Community of Lagos, you are receiving instruction shaped by decades of pedagogical refinement.</span><span class="lang-ar">بمسيرة تعليمية رائدة، يعمل كمحاضر أول وهو مؤلف لعدة نصوص تأسيسية وشغل منصب رئيس جمعية NATAIS.</span></p>
           </div>
-          <a href="#" class="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-brand-midnight text-brand-midnight font-bold rounded-xl hover:bg-brand-midnight hover:text-white transition-all w-full sm:w-auto text-center group">
+          <a href="Dr_Salahudeen_CV.pdf" target="_blank" class="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-brand-midnight text-brand-midnight font-bold rounded-xl hover:bg-brand-midnight hover:text-white transition-all w-full sm:w-auto text-center group">
             <i class="fa-regular fa-file-pdf group-hover:-translate-y-1 transition-transform"></i> <span class="lang-en">Download Full C.V.</span><span class="lang-ar">تحميل السيرة الذاتية</span>
           </a>
         </div>
@@ -544,8 +483,8 @@ When you join Arab Lagos, you are not getting a generic online course. You are g
     <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
       <div class="max-w-3xl reveal-up text-start">
         <div class="w-16 h-1 bg-brand-emerald mb-6 rounded-full"></div>
-        <h2 class="font-heading text-3xl md:text-5xl font-extrabold text-brand-midnight mb-4"><span class="lang-en">One of These Was Made for You</span><span class="lang-ar">مسار مصمم خصيصاً لك</span></h2>
-        <p class="text-slate-600 text-lg leading-relaxed"><span class="lang-en">Eight paths. One language. Your transformation starts here.</span><span class="lang-ar">ثمانية مسارات. لغة واحدة. تحولك يبدأ من هنا.</span></p>
+        <h2 class="font-heading text-3xl md:text-5xl font-extrabold text-brand-midnight mb-4"><span class="lang-en">Certified Learning Tracks</span><span class="lang-ar">مسارات تعليمية معتمدة</span></h2>
+        <p class="text-slate-600 text-lg leading-relaxed"><span class="lang-en">Select a specialization aligned with your professional or personal objectives.</span><span class="lang-ar">اختر تخصصاً يتماشى مع أهدافك المهنية أو الشخصية.</span></p>
       </div>
     </div>
 
@@ -557,12 +496,11 @@ When you join Arab Lagos, you are not getting a generic online course. You are g
             <div class="atropos-rotate h-full flex flex-col">
               <div class="atropos-inner bg-white p-8 h-full flex flex-col border border-transparent group-hover:border-brand-emerald transition-colors rounded-2xl relative z-10">
                 <div data-atropos-offset="5" class="w-12 h-12 rounded-xl bg-brand-emerald/10 text-brand-emerald flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-briefcase"></i></div>
-                <h3 data-atropos-offset="3" class="font-heading text-lg font-bold mb-2 group-hover:text-brand-emerald"><span class="lang-en">Practical Arabic for Business</span><span class="lang-ar">اللغة العربية للأعمال</span></h3>
+                <h3 data-atropos-offset="3" class="font-heading text-lg font-bold mb-2 group-hover:text-brand-emerald"><span class="lang-en">Arabic for Business</span><span class="lang-ar">اللغة العربية للأعمال</span></h3>
                 <p data-atropos-offset="1" class="text-slate-600 text-sm mt-2 mb-4"><span class="lang-en">Specialized corporate vocabulary and negotiation terminology.</span><span class="lang-ar">مفردات متخصصة للشركات ومصطلحات التفاوض.</span></p>
                 <div data-atropos-offset="2" class="mt-auto pt-4">
-                  <span class="inline-flex items-center justify-center w-full px-4 py-2.5 text-sm font-bold rounded-xl transition-all border-2 border-brand-emerald text-brand-emerald group-hover:bg-brand-emerald group-hover:text-white">
-                    <span class="lang-en">Enroll Now</span><span class="lang-ar">سجل الآن</span>
-                    <i class="fa-solid fa-arrow-right ml-2 rtl:mr-2 rtl:ml-0 transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform"></i>
+                  <span class="inline-flex items-center justify-center w-full px-4 py-2.5 text-sm font-bold rounded-xl transition-all border-2 border-slate-200 text-slate-600 group-hover:border-brand-emerald group-hover:bg-brand-emerald group-hover:text-white">
+                    <span class="lang-en">View Details & Tuition</span><span class="lang-ar">عرض التفاصيل والرسوم</span>
                   </span>
                 </div>
               </div>
@@ -577,12 +515,11 @@ When you join Arab Lagos, you are not getting a generic online course. You are g
             <div class="atropos-rotate h-full flex flex-col">
               <div class="atropos-inner bg-white p-8 h-full flex flex-col border border-transparent group-hover:border-brand-gold transition-colors rounded-2xl relative z-10">
                 <div data-atropos-offset="5" class="w-12 h-12 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-bolt"></i></div>
-                <h3 data-atropos-offset="3" class="font-heading text-lg font-bold mb-2 group-hover:text-brand-gold"><span class="lang-en">Practical Arabic for Worshippers</span><span class="lang-ar">اللغة العربية للمصلين</span></h3>
+                <h3 data-atropos-offset="3" class="font-heading text-lg font-bold mb-2 group-hover:text-brand-gold"><span class="lang-en">Arabic for Worshippers</span><span class="lang-ar">اللغة العربية للمصلين</span></h3>
                 <p data-atropos-offset="1" class="text-slate-600 text-sm mt-2 mb-4"><span class="lang-en">Deepen your spiritual connection through classical comprehension.</span><span class="lang-ar">تعميق ارتباطك الروحي من خلال الفهم الكلاسيكي.</span></p>
                 <div data-atropos-offset="2" class="mt-auto pt-4">
-                  <span class="inline-flex items-center justify-center w-full px-4 py-2.5 text-sm font-bold rounded-xl transition-all border-2 border-brand-gold text-brand-gold group-hover:bg-brand-gold group-hover:text-white">
-                    <span class="lang-en">Enroll Now</span><span class="lang-ar">سجل الآن</span>
-                    <i class="fa-solid fa-arrow-right ml-2 rtl:mr-2 rtl:ml-0 transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform"></i>
+                  <span class="inline-flex items-center justify-center w-full px-4 py-2.5 text-sm font-bold rounded-xl transition-all border-2 border-slate-200 text-slate-600 group-hover:border-brand-gold group-hover:bg-brand-gold group-hover:text-white">
+                    <span class="lang-en">View Details & Tuition</span><span class="lang-ar">عرض التفاصيل والرسوم</span>
                   </span>
                 </div>
               </div>
@@ -597,12 +534,11 @@ When you join Arab Lagos, you are not getting a generic online course. You are g
             <div class="atropos-rotate h-full flex flex-col">
               <div class="atropos-inner bg-white p-8 h-full flex flex-col border border-transparent group-hover:border-brand-emerald transition-colors rounded-2xl relative z-10">
                 <div data-atropos-offset="5" class="w-12 h-12 rounded-xl bg-brand-emerald/10 text-brand-emerald flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-mosque"></i></div>
-                <h3 data-atropos-offset="3" class="font-heading text-lg font-bold mb-2 group-hover:text-brand-emerald"><span class="lang-en">Practical Arabic for Imams</span><span class="lang-ar">اللغة العربية للأئمة</span></h3>
-                <p data-atropos-offset="1" class="text-slate-600 text-sm mt-2 mb-4"><span class="lang-en">Command the pulpit with advanced morphological and syntax mastery.</span><span class="lang-ar">التمكن من الخطابة بإتقان متقدم في الصرف والنحو.</span></p>
+                <h3 data-atropos-offset="3" class="font-heading text-lg font-bold mb-2 group-hover:text-brand-emerald"><span class="lang-en">Arabic for Imams</span><span class="lang-ar">اللغة العربية للأئمة</span></h3>
+                <p data-atropos-offset="1" class="text-slate-600 text-sm mt-2 mb-4"><span class="lang-en">Enhance your public speaking with structural and syntax mastery.</span><span class="lang-ar">التمكن من الخطابة بإتقان متقدم في الصرف والنحو.</span></p>
                 <div data-atropos-offset="2" class="mt-auto pt-4">
-                  <span class="inline-flex items-center justify-center w-full px-4 py-2.5 text-sm font-bold rounded-xl transition-all border-2 border-brand-emerald text-brand-emerald group-hover:bg-brand-emerald group-hover:text-white">
-                    <span class="lang-en">Enroll Now</span><span class="lang-ar">سجل الآن</span>
-                    <i class="fa-solid fa-arrow-right ml-2 rtl:mr-2 rtl:ml-0 transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform"></i>
+                  <span class="inline-flex items-center justify-center w-full px-4 py-2.5 text-sm font-bold rounded-xl transition-all border-2 border-slate-200 text-slate-600 group-hover:border-brand-emerald group-hover:bg-brand-emerald group-hover:text-white">
+                    <span class="lang-en">View Details & Tuition</span><span class="lang-ar">عرض التفاصيل والرسوم</span>
                   </span>
                 </div>
               </div>
@@ -617,12 +553,11 @@ When you join Arab Lagos, you are not getting a generic online course. You are g
             <div class="atropos-rotate h-full flex flex-col">
               <div class="atropos-inner bg-white p-8 h-full flex flex-col border border-transparent group-hover:border-brand-gold transition-colors rounded-2xl relative z-10">
                 <div data-atropos-offset="5" class="w-12 h-12 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-house-user"></i></div>
-                <h3 data-atropos-offset="3" class="font-heading text-lg font-bold mb-2 group-hover:text-brand-gold"><span class="lang-en">Monitoring Arabic for Parents</span><span class="lang-ar">اللغة العربية للآباء</span></h3>
-                <p data-atropos-offset="1" class="text-slate-600 text-sm mt-2 mb-4"><span class="lang-en">A complete program to teach your child at home effectively.</span><span class="lang-ar">برنامج متكامل لتعليم طفلك في المنزل بفعالية.</span></p>
+                <h3 data-atropos-offset="3" class="font-heading text-lg font-bold mb-2 group-hover:text-brand-gold"><span class="lang-en">Arabic for Parents & Guardians</span><span class="lang-ar">اللغة العربية للآباء</span></h3>
+                <p data-atropos-offset="1" class="text-slate-600 text-sm mt-2 mb-4"><span class="lang-en">A complete framework to guide and support your child's learning at home.</span><span class="lang-ar">برنامج متكامل لتعليم طفلك في المنزل بفعالية.</span></p>
                 <div data-atropos-offset="2" class="mt-auto pt-4">
-                  <span class="inline-flex items-center justify-center w-full px-4 py-2.5 text-sm font-bold rounded-xl transition-all border-2 border-brand-gold text-brand-gold group-hover:bg-brand-gold group-hover:text-white">
-                    <span class="lang-en">Enroll Now</span><span class="lang-ar">سجل الآن</span>
-                    <i class="fa-solid fa-arrow-right ml-2 rtl:mr-2 rtl:ml-0 transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform"></i>
+                  <span class="inline-flex items-center justify-center w-full px-4 py-2.5 text-sm font-bold rounded-xl transition-all border-2 border-slate-200 text-slate-600 group-hover:border-brand-gold group-hover:bg-brand-gold group-hover:text-white">
+                    <span class="lang-en">View Details & Tuition</span><span class="lang-ar">عرض التفاصيل والرسوم</span>
                   </span>
                 </div>
               </div>
@@ -637,12 +572,11 @@ When you join Arab Lagos, you are not getting a generic online course. You are g
             <div class="atropos-rotate h-full flex flex-col">
               <div class="atropos-inner bg-white p-8 h-full flex flex-col border border-transparent group-hover:border-brand-emerald transition-colors rounded-2xl relative z-10">
                 <div data-atropos-offset="5" class="w-12 h-12 rounded-xl bg-brand-emerald/10 text-brand-emerald flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-chalkboard-user"></i></div>
-                <h3 data-atropos-offset="3" class="font-heading text-lg font-bold mb-2 group-hover:text-brand-emerald"><span class="lang-en">Practical Arabic for Educators</span><span class="lang-ar">اللغة العربية للمعلمين</span></h3>
-                <p data-atropos-offset="1" class="text-slate-600 text-sm mt-2 mb-4"><span class="lang-en">Elevate your classroom instruction with dynamic pedagogy.</span><span class="lang-ar">ارتقِ بتعليمك الصفي باستخدام طرق تدريس ديناميكية.</span></p>
+                <h3 data-atropos-offset="3" class="font-heading text-lg font-bold mb-2 group-hover:text-brand-emerald"><span class="lang-en">Arabic for Educators</span><span class="lang-ar">اللغة العربية للمعلمين</span></h3>
+                <p data-atropos-offset="1" class="text-slate-600 text-sm mt-2 mb-4"><span class="lang-en">Elevate your classroom instruction with modern pedagogy.</span><span class="lang-ar">ارتقِ بتعليمك الصفي باستخدام طرق تدريس ديناميكية.</span></p>
                 <div data-atropos-offset="2" class="mt-auto pt-4">
-                  <span class="inline-flex items-center justify-center w-full px-4 py-2.5 text-sm font-bold rounded-xl transition-all border-2 border-brand-emerald text-brand-emerald group-hover:bg-brand-emerald group-hover:text-white">
-                    <span class="lang-en">Enroll Now</span><span class="lang-ar">سجل الآن</span>
-                    <i class="fa-solid fa-arrow-right ml-2 rtl:mr-2 rtl:ml-0 transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform"></i>
+                  <span class="inline-flex items-center justify-center w-full px-4 py-2.5 text-sm font-bold rounded-xl transition-all border-2 border-slate-200 text-slate-600 group-hover:border-brand-emerald group-hover:bg-brand-emerald group-hover:text-white">
+                    <span class="lang-en">View Details & Tuition</span><span class="lang-ar">عرض التفاصيل والرسوم</span>
                   </span>
                 </div>
               </div>
@@ -657,12 +591,11 @@ When you join Arab Lagos, you are not getting a generic online course. You are g
             <div class="atropos-rotate h-full flex flex-col">
               <div class="atropos-inner bg-white p-8 h-full flex flex-col border border-transparent group-hover:border-brand-gold transition-colors rounded-2xl relative z-10">
                 <div data-atropos-offset="5" class="w-12 h-12 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-globe"></i></div>
-                <h3 data-atropos-offset="3" class="font-heading text-lg font-bold mb-2 group-hover:text-brand-gold"><span class="lang-en">Practical Arabic for Diplomats</span><span class="lang-ar">اللغة العربية للدبلوماسيين</span></h3>
-                <p data-atropos-offset="1" class="text-slate-600 text-sm mt-2 mb-4"><span class="lang-en">Precise articulation, vocal resonance, and high-impact rhetoric.</span><span class="lang-ar">نطق دقيق، ورنين صوتي، وبلاغة عالية التأثير.</span></p>
+                <h3 data-atropos-offset="3" class="font-heading text-lg font-bold mb-2 group-hover:text-brand-gold"><span class="lang-en">Arabic for Diplomats</span><span class="lang-ar">اللغة العربية للدبلوماسيين</span></h3>
+                <p data-atropos-offset="1" class="text-slate-600 text-sm mt-2 mb-4"><span class="lang-en">Precise articulation and professional etiquette for official settings.</span><span class="lang-ar">نطق دقيق، ورنين صوتي، وبلاغة عالية التأثير.</span></p>
                 <div data-atropos-offset="2" class="mt-auto pt-4">
-                  <span class="inline-flex items-center justify-center w-full px-4 py-2.5 text-sm font-bold rounded-xl transition-all border-2 border-brand-gold text-brand-gold group-hover:bg-brand-gold group-hover:text-white">
-                    <span class="lang-en">Enroll Now</span><span class="lang-ar">سجل الآن</span>
-                    <i class="fa-solid fa-arrow-right ml-2 rtl:mr-2 rtl:ml-0 transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform"></i>
+                  <span class="inline-flex items-center justify-center w-full px-4 py-2.5 text-sm font-bold rounded-xl transition-all border-2 border-slate-200 text-slate-600 group-hover:border-brand-gold group-hover:bg-brand-gold group-hover:text-white">
+                    <span class="lang-en">View Details & Tuition</span><span class="lang-ar">عرض التفاصيل والرسوم</span>
                   </span>
                 </div>
               </div>
@@ -677,12 +610,11 @@ When you join Arab Lagos, you are not getting a generic online course. You are g
             <div class="atropos-rotate h-full flex flex-col">
               <div class="atropos-inner bg-white p-8 h-full flex flex-col border border-transparent group-hover:border-brand-emerald transition-colors rounded-2xl relative z-10">
                 <div data-atropos-offset="5" class="w-12 h-12 rounded-xl bg-brand-emerald/10 text-brand-emerald flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-kaaba"></i></div>
-                <h3 data-atropos-offset="3" class="font-heading text-lg font-bold mb-2 group-hover:text-brand-emerald"><span class="lang-en">Conversational Arabic for Hujjaj</span><span class="lang-ar">اللغة العربية للحجاج</span></h3>
-                <p data-atropos-offset="1" class="text-slate-600 text-sm mt-2 mb-4"><span class="lang-en">Navigate Makkah with specialized conversational fluency for logistics.</span><span class="lang-ar">تنقل في مكة بطلاقة محادثة متخصصة للخدمات اللوجستية.</span></p>
+                <h3 data-atropos-offset="3" class="font-heading text-lg font-bold mb-2 group-hover:text-brand-emerald"><span class="lang-en">Arabic for Hujjaj</span><span class="lang-ar">اللغة العربية للحجاج</span></h3>
+                <p data-atropos-offset="1" class="text-slate-600 text-sm mt-2 mb-4"><span class="lang-en">Navigate Makkah with specialized conversational fluency for travel.</span><span class="lang-ar">تنقل في مكة بطلاقة محادثة متخصصة للخدمات اللوجستية.</span></p>
                 <div data-atropos-offset="2" class="mt-auto pt-4">
-                  <span class="inline-flex items-center justify-center w-full px-4 py-2.5 text-sm font-bold rounded-xl transition-all border-2 border-brand-emerald text-brand-emerald group-hover:bg-brand-emerald group-hover:text-white">
-                    <span class="lang-en">Enroll Now</span><span class="lang-ar">سجل الآن</span>
-                    <i class="fa-solid fa-arrow-right ml-2 rtl:mr-2 rtl:ml-0 transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform"></i>
+                  <span class="inline-flex items-center justify-center w-full px-4 py-2.5 text-sm font-bold rounded-xl transition-all border-2 border-slate-200 text-slate-600 group-hover:border-brand-emerald group-hover:bg-brand-emerald group-hover:text-white">
+                    <span class="lang-en">View Details & Tuition</span><span class="lang-ar">عرض التفاصيل والرسوم</span>
                   </span>
                 </div>
               </div>
@@ -700,9 +632,8 @@ When you join Arab Lagos, you are not getting a generic online course. You are g
                 <h3 data-atropos-offset="3" class="font-heading text-lg font-bold mb-2 group-hover:text-brand-gold"><span class="lang-en">Qur'an Foundation</span><span class="lang-ar">تأسيس القرآن الكريم</span></h3>
                 <p data-atropos-offset="1" class="text-slate-600 text-sm mt-2 mb-4"><span class="lang-en">Fundamental rules of Tajweed and basic reading mechanics.</span><span class="lang-ar">القواعد الأساسية للتجويد وآليات القراءة الأساسية.</span></p>
                 <div data-atropos-offset="2" class="mt-auto pt-4">
-                  <span class="inline-flex items-center justify-center w-full px-4 py-2.5 text-sm font-bold rounded-xl transition-all border-2 border-brand-gold text-brand-gold group-hover:bg-brand-gold group-hover:text-white">
-                    <span class="lang-en">Enroll Now</span><span class="lang-ar">سجل الآن</span>
-                    <i class="fa-solid fa-arrow-right ml-2 rtl:mr-2 rtl:ml-0 transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform"></i>
+                  <span class="inline-flex items-center justify-center w-full px-4 py-2.5 text-sm font-bold rounded-xl transition-all border-2 border-slate-200 text-slate-600 group-hover:border-brand-gold group-hover:bg-brand-gold group-hover:text-white">
+                    <span class="lang-en">View Details & Tuition</span><span class="lang-ar">عرض التفاصيل والرسوم</span>
                   </span>
                 </div>
               </div>
@@ -713,11 +644,11 @@ When you join Arab Lagos, you are not getting a generic online course. You are g
 
     </div>
   </div>
+</section>
+
 <section id="book-trial" class="py-24 bg-brand-midnight relative overflow-hidden border-t border-white/5">
   <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-gold rounded-full mix-blend-screen filter blur-[150px] opacity-10 translate-x-1/3 -translate-y-1/4 animate-pulse pointer-events-none" style="animation-duration: 8s;"></div>
   <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-brand-emerald rounded-full mix-blend-screen filter blur-[150px] opacity-10 -translate-x-1/3 translate-y-1/3 animate-pulse pointer-events-none" style="animation-duration: 12s;"></div>
-
-  <div class="absolute inset-0 opacity-[0.015] pointer-events-none" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E');"></div>
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
@@ -725,18 +656,18 @@ When you join Arab Lagos, you are not getting a generic online course. You are g
       <div class="lg:col-span-6 text-center lg:text-start text-white">
         <div class="inline-flex items-center gap-2 px-5 py-2 bg-gradient-to-r from-brand-gold/10 to-transparent border border-brand-gold/30 text-brand-gold-light text-xs font-bold uppercase tracking-[0.2em] rounded-full mb-8 reveal-up shadow-[0_0_15px_rgba(212,175,55,0.15)]">
           <span class="w-1.5 h-1.5 rounded-full bg-brand-gold animate-ping"></span>
-          <span class="lang-en">Limited Spots — Only 2 Available Per Week</span>
-          <span class="lang-ar">أماكن محدودة — يتوفر مقعدان فقط أسبوعياً</span>
+          <span class="lang-en">Quality Assurance: Limited Weekly Slots Available</span>
+          <span class="lang-ar">أماكن محدودة لضمان الجودة</span>
         </div>
         
         <h2 class="font-heading text-4xl md:text-6xl font-extrabold mb-6 reveal-up delay-100 leading-tight">
-          <span class="lang-en">🎓 Book Your <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-[#F3D56B] via-[#D4AF37] to-[#AA7C11] drop-shadow-sm">Free Trial Class</span></span>
-          <span class="lang-ar">🎓 احجز <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-[#F3D56B] via-[#D4AF37] to-[#AA7C11] drop-shadow-sm">جلستك التجريبية المجانية</span></span>
+          <span class="lang-en">🎓 Book Your <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-[#F3D56B] via-[#D4AF37] to-[#AA7C11] drop-shadow-sm">Evaluation Session</span></span>
+          <span class="lang-ar">🎓 احجز <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-[#F3D56B] via-[#D4AF37] to-[#AA7C11] drop-shadow-sm">جلسة التقييم الخاصة بك</span></span>
         </h2>
         
         <p class="text-slate-300/90 text-lg md:text-xl font-light leading-relaxed mb-10 max-w-xl mx-auto lg:mx-0 reveal-up delay-200">
-          <span class="lang-en">Not sure yet? That's exactly why we created this. Before you commit to anything, sit with one of our expert Educators in a live, private 30-minute session — completely free. No pressure. No strings.</span>
-          <span class="lang-ar">لست متأكداً بعد؟ لهذا السبب بالتحديد صممنا هذه الجلسة. قبل أن تلتزم بأي شيء، اجلس مع أحد خبرائنا في جلسة خاصة ومباشرة لمدة 30 دقيقة — مجاناً بالكامل. بدون ضغوط. بدون قيود.</span>
+          <span class="lang-en">Before you commit, schedule a complimentary 30-minute consultation with a senior educator to audit your current proficiency and map out your optimal learning path.</span>
+          <span class="lang-ar">قبل أن تلتزم، حدد موعدًا لاستشارة مجانية مع معلم كبير لتقييم كفاءتك ورسم مسار التعلم الأمثل لك.</span>
         </p>
 
         <div class="space-y-8 reveal-up delay-300">
@@ -746,7 +677,7 @@ When you join Arab Lagos, you are not getting a generic online course. You are g
             </div>
             <div class="text-start">
               <h4 class="font-heading font-bold text-xl text-white mb-1.5 tracking-wide"><span class="lang-en">Your Personal Assessment</span><span class="lang-ar">تقييمك الشخصي</span></h4>
-              <p class="text-sm text-slate-400 font-light leading-relaxed"><span class="lang-en">We listen to you speak and pinpoint exactly what's holding your Arabic back — things you didn't even know were there.</span><span class="lang-ar">نستمع إلى تحدثك ونحدد بدقة ما يعيق تقدمك — أشياء ربما لم تكن تدرك وجودها.</span></p>
+              <p class="text-sm text-slate-400 font-light leading-relaxed"><span class="lang-en">We listen to your pronunciation and syntax to pinpoint exactly what areas require attention.</span><span class="lang-ar">نستمع إلى النطق وبناء الجملة لتحديد المجالات التي تتطلب الاهتمام.</span></p>
             </div>
           </div>
 
@@ -756,25 +687,15 @@ When you join Arab Lagos, you are not getting a generic online course. You are g
             </div>
             <div class="text-start">
               <h4 class="font-heading font-bold text-xl text-white mb-1.5 tracking-wide"><span class="lang-en">Your Custom Roadmap</span><span class="lang-ar">خريطتك المخصصة</span></h4>
-              <p class="text-sm text-slate-400 font-light leading-relaxed"><span class="lang-en">You'll leave with a clear, honest plan built around your goals — whether that's career growth, confidence, or communication.</span><span class="lang-ar">ستخرج بخطة واضحة وصادقة مبنية حول أهدافك — سواء كان ذلك للنمو المهني، أو الثقة، أو التواصل.</span></p>
-            </div>
-          </div>
-
-          <div class="flex items-start gap-5 group">
-            <div class="w-12 h-12 rounded-full border border-brand-gold/30 bg-gradient-to-br from-brand-gold/10 to-transparent text-brand-gold flex items-center justify-center shrink-0 mt-1 shadow-[0_0_20px_rgba(212,175,55,0.1)] group-hover:scale-110 transition-transform duration-500 text-xl">
-              ⚡
-            </div>
-            <div class="text-start">
-              <h4 class="font-heading font-bold text-xl text-white mb-1.5 tracking-wide"><span class="lang-en">A Taste of Our Matrix Method</span><span class="lang-ar">نبذة عن طريقة المصفوفة لدينا</span></h4>
-              <p class="text-sm text-slate-400 font-light leading-relaxed"><span class="lang-en">You'll experience our live speaking-first class format — the same one our enrolled students rave about. Most people are shocked by how much they improve in just one session.</span><span class="lang-ar">ستختبر تنسيق فصولنا المباشرة التي تركز على التحدث أولاً — وهو نفس التنسيق الذي يشيد به طلابنا المسجلون. يتفاجأ معظم الناس بمدى تحسنهم في جلسة واحدة فقط.</span></p>
+              <p class="text-sm text-slate-400 font-light leading-relaxed"><span class="lang-en">You'll receive a clear, honest plan built around your specific linguistic goals.</span><span class="lang-ar">ستتلقى خطة واضحة ومبنية حول أهدافك اللغوية.</span></p>
             </div>
           </div>
         </div>
 
         <div class="mt-10 p-6 rounded-2xl bg-white/5 border border-white/10 relative reveal-up delay-400 backdrop-blur-sm">
           <i class="fa-solid fa-quote-left absolute top-4 left-4 text-brand-gold/20 text-3xl"></i>
-          <p class="text-slate-300 italic text-sm md:text-base relative z-10 pl-6"><span class="lang-en">"I came for the free class and ended up registering the same day."</span><span class="lang-ar">"جئت من أجل الفصل المجاني وانتهى بي الأمر بالتسجيل في نفس اليوم."</span></p>
-          <div class="mt-3 pl-6 font-semibold text-brand-gold text-sm"><span class="lang-en">— Fatima A., Lagos</span><span class="lang-ar">— فاطمة أ.، لاغوس</span></div>
+          <p class="text-slate-300 italic text-sm md:text-base relative z-10 pl-6"><span class="lang-en">"The trial wasn't a generic sales pitch. It was an objective, diagnostic assessment that showed me exactly where my pronunciation was failing."</span><span class="lang-ar">"لم تكن التجربة مجرد عرض مبيعات. لقد كان تقييمًا أظهر لي أين يفشل النطق لدي."</span></p>
+          <div class="mt-3 pl-6 font-semibold text-brand-gold text-sm"><span class="lang-en">— Aisha O., Business Track</span><span class="lang-ar">— عائشة أو. ، مسار الأعمال</span></div>
         </div>
 
       </div>
@@ -787,10 +708,6 @@ When you join Arab Lagos, you are not getting a generic online course. You are g
             <h3 class="font-heading text-2xl font-bold text-brand-midnight mb-2">
               <span class="lang-en">Reserve Your Slot</span><span class="lang-ar">احجز مقعدك</span>
             </h3>
-            <p class="text-brand-emerald font-bold text-sm animate-pulse">
-              <span class="lang-en">Only 2 free spots open this week.</span>
-              <span class="lang-ar">مقعدان مجانيان فقط متاحان هذا الأسبوع.</span>
-            </p>
           </div>
 
           <form id="trialBookingForm" class="space-y-5">
@@ -807,7 +724,7 @@ When you join Arab Lagos, you are not getting a generic online course. You are g
                 <label class="block text-sm font-bold text-slate-700 mb-1.5"><span class="lang-en">Email Address *</span><span class="lang-ar">البريد الإلكتروني *</span></label>
                 <div class="relative">
                   <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400"><i class="fa-regular fa-envelope"></i></div>
-                  <input type="email" name="email" required class="w-full pl-11 pr-4 py-3.5 rounded-xl border border-slate-200 focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 outline-none transition-all text-sm text-slate-700" placeholder="Solah@example.com">
+                  <input type="email" name="email" required class="w-full pl-11 pr-4 py-3.5 rounded-xl border border-slate-200 focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 outline-none transition-all text-sm text-slate-700" placeholder="user@example.com">
                 </div>
               </div>
               
@@ -836,7 +753,7 @@ When you join Arab Lagos, you are not getting a generic online course. You are g
             </div>
 
             <button type="submit" id="trialSubmitBtn" class="w-full py-4 mt-4 bg-brand-midnight text-brand-gold font-bold rounded-xl hover:bg-black transition-all shadow-lg hover:shadow-glow-gold flex items-center justify-center gap-2 group border border-brand-gold/20">
-              <span id="trialBtnText" class="lang-en">👉 Reserve My Free Spot Now</span>
+              <span id="trialBtnText" class="lang-en">👉 Reserve My Evaluation Now</span>
               <span id="trialBtnTextAr" class="lang-ar">👉 احجز مقعدي المجاني الآن</span>
             </button>
             
@@ -860,11 +777,10 @@ When you join Arab Lagos, you are not getting a generic online course. You are g
     <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
       <div class="col-span-1 md:col-span-2">
         <div class="flex items-center gap-3 mb-6">
-         <img src="logo.jpeg" alt="Arab Community of Lagos Logo" class="h-10 w-auto object-contain drop-shadow-sm">
+         <img src="logo.png" alt="Arab Community of Lagos Logo" class="h-10 w-auto object-contain drop-shadow-sm">
           <span class="font-heading font-bold text-2xl text-white"><span class="lang-en">Arab Community of Lagos<span class="text-brand-gold">.</span></span><span class="lang-ar">مجتمع لاغوس العربي<span class="text-brand-gold">.</span></span></span>
         </div>
         <p class="text-sm leading-relaxed max-w-sm mb-6"><span class="lang-en">Achieving true linguistic mastery requires a supportive ecosystem for consistent, active speaking.</span><span class="lang-ar">يتطلب تحقيق الإتقان اللغوي الحقيقي بيئة داعمة للتحدث المستمر والنشط.</span></p>
-        <canvas id="rive-mascot" width="120" height="120" class="opacity-80 mix-blend-screen"></canvas>
       </div>
       <div>
         <h4 class="text-white font-bold mb-4 tracking-wide uppercase text-sm"><span class="lang-en">Quick Links</span><span class="lang-ar">روابط سريعة</span></h4>
@@ -875,101 +791,29 @@ When you join Arab Lagos, you are not getting a generic online course. You are g
         </ul>
       </div>
       <div>
-        <h4 class="text-white font-bold mb-4 tracking-wide uppercase text-sm"><span class="lang-en">Portals & Settings</span><span class="lang-ar">البوابات والإعدادات</span></h4>
+        <h4 class="text-white font-bold mb-4 tracking-wide uppercase text-sm"><span class="lang-en">Portals & Contact</span><span class="lang-ar">البوابات والإعدادات</span></h4>
         <ul class="space-y-2 text-sm">
           <li><a href="portal.html" class="hover:text-brand-emerald transition-colors"><span class="lang-en">Student Login</span><span class="lang-ar">دخول الطالب</span></a></li>
-          <li class="mt-4">
-            <button id="theme-picker" class="text-brand-gold hover:text-brand-gold-light border border-brand-gold/30 px-3 py-1 rounded-md text-xs font-semibold transition-colors">
-              <i class="fa-solid fa-palette mr-1"></i> <span class="lang-en">Customize Theme</span><span class="lang-ar">تخصيص المظهر</span>
-            </button>
-          </li>
+          <li class="mt-2"><a href="mailto:support@arablagos.com" class="hover:text-brand-emerald transition-colors"><span class="lang-en">Contact Support</span><span class="lang-ar">اتصل بالدعم</span></a></li>
         </ul>
       </div>
+    </div>
+    <div class="mt-8 pt-8 border-t border-white/10 text-sm flex flex-col md:flex-row justify-between items-center text-slate-500">
+      <p>&copy; 2026 Arab Community of Lagos. All Rights Reserved.</p>
+      <p class="mt-2 md:mt-0 font-medium tracking-wide uppercase text-xs">Directed by Abubakr Solah</p>
     </div>
   </div>
 </footer>
 
 <div id="sticky-cta" class="fixed bottom-0 left-0 w-full z-40 lg:hidden bg-white/90 backdrop-blur-md border-t border-slate-200 shadow-[0_-10px_40px_rgba(0,0,0,0.1)] p-4 transform translate-y-0 transition-transform duration-300">
   <div class="flex max-w-md mx-auto">
-    <a href="#academy" class="confetti-btn w-full py-4 text-center bg-brand-emerald text-white font-bold rounded-xl text-lg active:bg-brand-emerald-dark shadow-glow-emerald transition-colors"><span class="lang-en">Find Your Course</span><span class="lang-ar">اختر مسارك</span></a>
+    <a href="#academy" class="w-full py-4 text-center bg-brand-emerald text-white font-bold rounded-xl text-lg active:bg-brand-emerald-dark shadow-glow-emerald transition-colors"><span class="lang-en">Find Your Course</span><span class="lang-ar">اختر مسارك</span></a>
   </div>
 </div>
 
 <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
-<script src="https://unpkg.com/rough-notation/lib/rough-notation.iife.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/atropos@2.0.2/atropos.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/baffle@0.3.6/dist/baffle.min.js"></script>
-<script src="https://unpkg.com/@rive-app/canvas@2.7.0"></script>
-
-<script type="module">
-  import { proxy, subscribe } from 'https://esm.sh/valtio/vanilla';
-  
-  // ── 1. Valtio State Management + EyeDropper API ──
-  const themeState = proxy({ brandColor: '#046A38' });
-
-  subscribe(themeState, () => {
-    document.documentElement.style.setProperty('--brand-emerald', themeState.brandColor);
-  });
-
-  const pickerBtn = document.getElementById('theme-picker');
-  if (!window.EyeDropper) {
-    pickerBtn.style.display = 'none';
-  } else {
-    pickerBtn.addEventListener('click', async () => {
-      try {
-        const eyeDropper = new EyeDropper();
-        const result = await eyeDropper.open();
-        themeState.brandColor = result.sRGBHex;
-      } catch (e) { console.log('Color picker dismissed'); }
-    });
-  }
-
-  // ── 2. Scheduling API to Prioritize Responsiveness ──
-  function scheduleHeavyInitializations() {
-    // 🚀 Only load heavy 3D Spline on Desktop to prevent mobile lag
-    if (window.innerWidth >= 1024) {
-      const splineContainer = document.getElementById('spline-container');
-      if(splineContainer) splineContainer.classList.remove('hidden');
-    }
-
-    const svgEl = document.querySelector('#retention-chart');
-    if(svgEl && window.chartXkcd) {
-      new chartXkcd.Bar(svgEl, {
-        title: 'Fluency Retention Gap',
-        data: { labels: ['Traditional', 'ACL Method'], datasets: [{ data: [30, 90] }] },
-        options: { xTickCount: 2, yTickCount: 2, legendPosition: 0 }
-      });
-    }
-
-    if(window.rive) {
-      new rive.Rive({ src: 'https://cdn.rive.app/animations/vehicles.riv', canvas: document.getElementById('rive-mascot'), autoplay: true });
-    }
-  }
-
-  if ('scheduler' in window) {
-    scheduler.postTask(scheduleHeavyInitializations, { priority: 'background' });
-  } else {
-    requestIdleCallback ? requestIdleCallback(scheduleHeavyInitializations) : setTimeout(scheduleHeavyInitializations, 0);
-  }
-
-  // ── 3. Comlink Web Worker for Heavy Logic ──
-  const workerCode = `
-    importScripts('https://unpkg.com/comlink/dist/umd/comlink.js');
-    const analyticsProcessing = {
-       simulateHeavyDataAnalysis(records) {
-          let sum = 0;
-          for(let i=0; i<1e7; i++) sum++; // Simulate CPU-heavy task
-          return "Analyzed " + records + " records seamlessly without blocking the main thread.";
-       }
-    }
-    Comlink.expose(analyticsProcessing);
-  `;
-  const blob = new Blob([workerCode], { type: 'application/javascript' });
-  const worker = new Worker(URL.createObjectURL(blob));
-  const api = Comlink.wrap(worker);
-  api.simulateHeavyDataAnalysis(50000).then(res => console.log('Comlink Web Worker:', res));
-</script>
 
 <script>
   // ── Standard UI Scripts ──
@@ -995,7 +839,7 @@ When you join Arab Lagos, you are not getting a generic online course. You are g
       duration: 0.8,           
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,       
-      smoothTouch: false, /* Disabled on touch */
+      smoothTouch: false,
       infinite: false,
     });
 
@@ -1037,42 +881,6 @@ When you join Arab Lagos, you are not getting a generic online course. You are g
   const b = baffle('.baffle-text', { characters: '█▓▒░>_</ ArabLagos', speed: 75 }).start();
   setTimeout(() => b.reveal(1000), 1200);
 
- // ── Upgraded Ribbon Splash Confetti ──
-  document.querySelectorAll('.confetti-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      // Calculate the exact center of the button that was clicked
-      const rect = btn.getBoundingClientRect();
-      const originX = (rect.left + rect.width / 2) / window.innerWidth;
-      const originY = (rect.top + rect.height / 2) / window.innerHeight;
-
-      // Fire a prominent ribbon splash
-      confetti({
-        particleCount: 160,
-        spread: 120,
-        startVelocity: 40,
-        origin: { x: originX, y: originY }, // Splashes exactly from the button
-        colors: ['#046A38', '#D4AF37', '#F3D56B', '#ffffff'], // Emerald, Gold, Light Gold, White
-        shapes: ['square', 'circle'],
-        gravity: 1.1,
-        scalar: 1.2, // Slightly larger ribbons/particles
-        ticks: 350,  // Lasts a bit longer on screen
-        zIndex: 99999 // Forces it to the absolute front, overriding all navigation bars
-      });
-    });
-  });
-
-  // Rough Notation (Delayed to free up main thread on initial load)
-  setTimeout(() => {
-    const targetText = document.getElementById('annotate-target');
-    if (targetText && window.roughNotation) {
-      const annotation = roughNotation.annotate(targetText, { type: 'highlight', color: '#F3D56B', animationDuration: 1500, multiline: true });
-      const observer = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting) { annotation.show(); observer.disconnect(); }
-      }, { threshold: 0.5 });
-      observer.observe(targetText);
-    }
-  }, 500);
-
   // Atropos 3D (Desktop Only to prevent mobile lag)
   if (!isMobile && window.Atropos) {
     document.querySelectorAll('.course-atropos').forEach((el) => {
@@ -1085,10 +893,8 @@ When you join Arab Lagos, you are not getting a generic online course. You are g
   window.addEventListener('scroll', () => {
     if (!ticking) {
       window.requestAnimationFrame(() => {
-        // Navbar
         document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
         
-        // Sticky CTA
         const stickyCta = document.getElementById('sticky-cta');
         const footerSection = document.querySelector('footer');
         if(stickyCta && footerSection) {
@@ -1153,29 +959,18 @@ When you join Arab Lagos, you are not getting a generic online course. You are g
   const trialForm = document.getElementById('trialBookingForm');
   if (trialForm) {
     trialForm.addEventListener('submit', function(e) {
-      e.preventDefault(); // Prevent page reload
+      e.preventDefault(); 
       
       const btn = document.getElementById('trialSubmitBtn');
       const textEn = document.getElementById('trialBtnText');
       const textAr = document.getElementById('trialBtnTextAr');
-      const icon = document.getElementById('trialBtnIcon');
       
-      // UI Loading State
       btn.disabled = true;
       btn.classList.add('opacity-80', 'cursor-not-allowed');
       if(textEn) textEn.textContent = 'Redirecting...';
       if(textAr) textAr.textContent = 'جاري التوجيه...';
-      if(icon) icon.className = 'fa-solid fa-spinner fa-spin';
 
-      // 1. Collect form data
-      const formData = new FormData(this);
-      
-      // 2. (Optional) Send data to your Webhook/CRM to save the lead
-      // fetch('https://hook.eu1.make.com/YOUR_WEBHOOK_URL_HERE', { method: 'POST', body: formData }).catch(e => console.log(e));
-
-      // 3. Redirect to your scheduling page (e.g., Calendly) after a slight delay
       setTimeout(() => { 
-        // Replace this URL with your actual scheduling link
         window.location.href = 'https://calendly.com/arablagos/trial'; 
       }, 1200);
     });
