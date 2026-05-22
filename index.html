@@ -252,6 +252,12 @@
         <a href="#academy" class="text-slate-600 hover:text-brand-emerald font-medium transition-colors text-sm">
           <span class="lang-en">Courses</span><span class="lang-ar">الدورات</span>
         </a>
+        
+        <a href="#book-trial" class="text-brand-gold hover:text-brand-gold-light font-bold transition-colors text-sm flex items-center gap-1">
+          <i class="fa-solid fa-gift"></i>
+          <span class="lang-en">Free Trial</span><span class="lang-ar">تجربة مجانية</span>
+        </a>
+
         <div class="w-px h-6 bg-slate-200"></div>
         
         <button onclick="toggleLanguage()" class="text-slate-600 hover:text-brand-gold font-bold transition-colors text-sm flex items-center gap-2 px-2 py-1 rounded-md border border-slate-200 hover:border-brand-gold">
@@ -260,7 +266,7 @@
           <span class="lang-ar">English</span>
         </button>
 
-        <a href="#" data-on-click="$$get('/api/auth/login')" class="text-slate-600 hover:text-brand-emerald font-medium transition-colors text-sm">
+        <a href="portal.html" class="text-slate-600 hover:text-brand-emerald font-medium transition-colors text-sm">
           <i class="fa-solid fa-lock me-1"></i> 
           <span class="lang-en">Portal Login</span><span class="lang-ar">بوابة الدخول</span>
         </a>
@@ -287,8 +293,15 @@
       <a href="#why-acl" class="mobile-link block px-4 py-3 text-brand-midnight font-medium hover:bg-slate-50 rounded-xl transition-colors"><span class="lang-en">Why ACL</span><span class="lang-ar">لماذا نحن</span></a>
       <a href="#leadership" class="mobile-link block px-4 py-3 text-brand-midnight font-medium hover:bg-slate-50 rounded-xl transition-colors"><span class="lang-en">Leadership</span><span class="lang-ar">الإدارة</span></a>
       <a href="#academy" class="mobile-link block px-4 py-3 text-brand-midnight font-medium hover:bg-slate-50 rounded-xl transition-colors"><span class="lang-en">Courses</span><span class="lang-ar">الدورات</span></a>
+      
+      <a href="#book-trial" class="mobile-link block px-4 py-3 text-brand-gold font-bold hover:bg-slate-50 rounded-xl transition-colors">
+        <i class="fa-solid fa-gift mr-2 rtl:ml-2"></i><span class="lang-en">Book Free Trial</span><span class="lang-ar">احجز تجربة مجانية</span>
+      </a>
+
       <hr class="my-2 border-slate-100">
-      <a href="#" data-on-click="$$get('/api/auth/login')" class="mobile-link block px-4 py-3 text-brand-emerald font-bold hover:bg-slate-50 rounded-xl transition-colors"><i class="fa-solid fa-user-circle me-2"></i><span class="lang-en">Portal Login</span><span class="lang-ar">بوابة الدخول</span></a>
+      
+      <a href="portal.html" class="mobile-link block px-4 py-3 text-brand-emerald font-bold hover:bg-slate-50 rounded-xl transition-colors"><i class="fa-solid fa-user-circle me-2 rtl:ml-2"></i><span class="lang-en">Portal Login</span><span class="lang-ar">بوابة الدخول</span></a>
+      
       <a href="#academy" class="confetti-btn mobile-link mt-4 block w-full text-center px-6 py-3 rounded-xl bg-brand-emerald text-white font-bold shadow-md"><span class="lang-en">View Courses</span><span class="lang-ar">عرض الدورات</span></a>
     </div>
   </div>
@@ -425,6 +438,7 @@
         <h2 class="reveal-left delay-100 font-heading text-3xl md:text-5xl font-bold text-brand-midnight mb-6">
           <span class="lang-en">Why Traditional Arabic Classes Fail.</span><span class="lang-ar">لماذا تفشل فصول اللغة العربية التقليدية.</span>
         </h2>
+        <p class="reveal-left delay-200 text-lg text-slate-600 mb-6 leading-relaxed">
           <span class="lang-en">Research indicates classroom Arabic in Nigeria creates a <strong id="annotate-target" class="text-brand-emerald">70% gap</strong> between grammar knowledge and conversational fluency.</span>
           <span class="lang-ar">تشير الأبحاث إلى أن الفصول التقليدية تخلق <strong id="annotate-target" class="text-brand-emerald">فجوة بنسبة 70%</strong> بين معرفة القواعد والطلاقة في المحادثة.</span>
         </p>
@@ -433,24 +447,21 @@
           <span class="lang-ar">بدون بيئة يومية تفاعلية، يفشل الطلاب في الانتقال من حفظ القواعد إلى الإتقان النشط. نحن نسد هذه الفجوة بمنهجية منهجية تركز على التحدث أولاً.</span>
         </p>
         <div class="reveal-left delay-400">
-              <p class="reveal-left delay-200 text-lg text-slate-600 mb-6 leading-relaxed">
-       <div class="reveal delay-300 video-container">
-<div class="reveal delay-300 video-container">
-  <iframe
-    src="https://www.youtube.com/embed/Q8U2bdqc-n8?autoplay=1&mute=1&rel=0&modestbranding=1"
-    title="Welcome to the Arab Community of Lagos"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen>
-  </iframe>
-</div>
-         </section>
+          <div class="reveal delay-300 video-container mb-8">
+            <iframe
+              src="https://www.youtube.com/embed/Q8U2bdqc-n8?autoplay=1&mute=1&rel=0&modestbranding=1"
+              title="Welcome to the Arab Community of Lagos"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
           <a href="#academy" class="confetti-btn inline-flex items-center gap-2 text-brand-emerald font-bold hover:text-brand-emerald-dark transition-colors group">
             <span class="lang-en">See our methodology</span><span class="lang-ar">اطلع على منهجيتنا</span> 
             <i class="fa-solid fa-arrow-right transform rtl:rotate-180 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform"></i>
           </a>
         </div>
       </div>
-        </section>
+
       <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
         <div class="reveal-up delay-100 bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl hover-card border border-slate-100 text-start">
           <div class="w-14 h-14 rounded-xl bg-brand-emerald/10 flex items-center justify-center text-brand-emerald text-2xl mb-6">
@@ -866,7 +877,7 @@ When you join Arab Lagos, you are not getting a generic online course. You are g
       <div>
         <h4 class="text-white font-bold mb-4 tracking-wide uppercase text-sm"><span class="lang-en">Portals & Settings</span><span class="lang-ar">البوابات والإعدادات</span></h4>
         <ul class="space-y-2 text-sm">
-          <li><a href="#" data-on-click="$$get('/api/auth/login')" class="hover:text-brand-emerald transition-colors"><span class="lang-en">Student Login</span><span class="lang-ar">دخول الطالب</span></a></li>
+          <li><a href="portal.html" class="hover:text-brand-emerald transition-colors"><span class="lang-en">Student Login</span><span class="lang-ar">دخول الطالب</span></a></li>
           <li class="mt-4">
             <button id="theme-picker" class="text-brand-gold hover:text-brand-gold-light border border-brand-gold/30 px-3 py-1 rounded-md text-xs font-semibold transition-colors">
               <i class="fa-solid fa-palette mr-1"></i> <span class="lang-en">Customize Theme</span><span class="lang-ar">تخصيص المظهر</span>
