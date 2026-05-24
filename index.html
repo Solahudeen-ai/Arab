@@ -1145,7 +1145,7 @@ When you join Arab Lagos, you are not getting a generic online course. You are g
   }
   setTimeout(typewrite, 800);
 
-  // ── Trial Booking Form Logic ──
+ // ── Trial Booking Form Logic ──
   const trialForm = document.getElementById('trialBookingForm');
   if (trialForm) {
     trialForm.addEventListener('submit', function(e) {
@@ -1168,11 +1168,11 @@ When you join Arab Lagos, you are not getting a generic online course. You are g
 
       // 3. Redirect to your new booking page and pass the data in the URL
       setTimeout(() => { 
-        window.location.href = `booking.html.?name=${userName}&email=${userEmail}`; 
+        // Note: I removed the stray period that was after .html
+        window.location.href = `booking.html?name=${userName}&email=${userEmail}`; 
       }, 800);
     });
   }
-
 </script>
 
 </body>
