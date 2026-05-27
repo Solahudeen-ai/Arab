@@ -1,20 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" dir="ltr" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Practical Arabic for Hujaj | Arab Community of Lagos</title>
+  <title>Conversational Arabic for Hujjaj | Arab Community of Lagos</title>
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+
   <script>
     tailwind.config = {
       theme: {
@@ -22,304 +18,163 @@
           colors: {
             brand: {
               emerald: '#046A38',
-              'emerald-dark': '#024222',
-              'emerald-light': '#0a8f4e',
+              'emerald-dark': '#034d28',
               gold: '#D4AF37',
               'gold-light': '#F3D56B',
               midnight: '#0B1623',
-              slate: '#1E293B',
               surface: '#F8FAFC',
             }
           },
           fontFamily: {
             heading: ['Outfit', 'sans-serif'],
             body: ['Plus Jakarta Sans', 'sans-serif'],
+            arabic: ['Cairo', 'sans-serif'],
           }
         }
       }
     }
   </script>
 
-  <!-- Custom Styles -->
   <style>
-    body {
-      background-color: #F8FAFC;
-      color: #1E293B;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      -webkit-font-smoothing: antialiased;
+    :root[lang="en"] .lang-ar { display: none !important; }
+    :root[lang="ar"] .lang-en { display: none !important; }
+    :root[lang="ar"] body, :root[lang="ar"] h1, :root[lang="ar"] h2, :root[lang="ar"] h3, :root[lang="ar"] p, :root[lang="ar"] span, :root[lang="ar"] a, :root[lang="ar"] button, :root[lang="ar"] li, :root[lang="ar"] div {
+      font-family: 'Cairo', sans-serif !important; letter-spacing: normal !important;
     }
     
-    /* ── Floating Label Inputs ── */
-    .floating-input-wrapper { position: relative; margin-bottom: 1.25rem; }
-    .floating-input {
-      width: 100%; padding: 1.25rem 1rem 0.5rem 1rem; border: 1px solid #E2E8F0;
-      border-radius: 0.75rem; background-color: #ffffff; outline: none;
-      transition: all 0.3s ease; font-size: 0.95rem;
-    }
-    .floating-input:focus {
-      border-color: var(--brand-emerald); box-shadow: 0 0 0 4px rgba(4, 106, 56, 0.1);
-    }
-    .floating-label {
-      position: absolute; left: 1rem; top: 50%; transform: translateY(-50%);
-      color: #64748B; font-size: 0.95rem; transition: all 0.3s ease; pointer-events: none;
-    }
-    .floating-input:focus ~ .floating-label,
-    .floating-input:not(:placeholder-shown) ~ .floating-label {
-      top: 0.5rem; transform: translateY(0); font-size: 0.7rem; font-weight: 600; color: #046A38;
-    }
-
-    /* Form Progress & Steps */
-    .form-step { display: none; opacity: 0; transform: translateX(20px); transition: all 0.4s ease; }
-    .form-step.active { display: block; opacity: 1; transform: translateX(0); }
-    .progress-bar-fill { transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+    .glass-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); }
+    .reveal-up { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
+    .reveal-up.visible { opacity: 1; transform: none; }
+    
+    .faq-answer { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.3s ease; }
+    .faq-answer > div { overflow: hidden; }
+    details[open] .faq-answer { grid-template-rows: 1fr; }
+    details > summary { list-style: none; }
+    details > summary::-webkit-details-marker { display: none; }
   </style>
-</head>
-<body class="antialiased">
 
-<!-- Simple Minimalist Nav -->
-<nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 h-20 flex items-center">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex justify-between items-center">
-    <a href="index.html" class="flex items-center gap-2 text-slate-500 hover:text-brand-emerald transition-colors font-medium text-sm">
-      <i class="fa-solid fa-arrow-left"></i> Back to Directory
+  <script>
+    if (localStorage.getItem('theme-lang') === 'ar') {
+      document.documentElement.setAttribute('lang', 'ar');
+      document.documentElement.setAttribute('dir', 'rtl');
+    }
+  </script>
+</head>
+<body class="bg-brand-surface text-slate-800 antialiased selection:bg-brand-gold selection:text-brand-midnight">
+
+<nav class="fixed w-full z-50 glass-nav shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
+    <a href="index.html" class="flex items-center gap-3">
+      <img src="logo.png" alt="ACL Logo" class="h-10 w-auto">
+      <span class="font-heading font-bold text-xl text-brand-midnight hidden sm:block">
+        <span class="lang-en">Arab Community of Lagos.</span><span class="lang-ar">مجتمع لاغوس العربي.</span>
+      </span>
     </a>
-    <span class="font-heading font-bold text-lg tracking-tight text-brand-midnight hidden sm:block">
-      Arab Community of Lagos<span class="text-brand-gold">.</span>
-    </span>
+    <div class="flex items-center gap-6">
+      <button onclick="toggleLanguage()" class="text-slate-600 hover:text-brand-gold font-bold text-sm flex items-center gap-2">
+        <i class="fa-solid fa-earth-africa"></i> <span class="lang-en">عربي</span><span class="lang-ar">English</span>
+      </button>
+      <a href="#pricing" class="px-6 py-2.5 rounded-full bg-brand-midnight text-brand-gold font-bold text-sm hover:bg-black transition-all">
+        <span class="lang-en">Enroll Now</span><span class="lang-ar">سجل الآن</span>
+      </a>
+    </div>
   </div>
 </nav>
 
-<!-- Course Hero -->
-<section class="pt-32 pb-16 bg-brand-midnight relative overflow-hidden">
-  <div class="absolute inset-0 z-0 bg-[url('background hero.jpeg')] bg-cover bg-center opacity-20 mix-blend-overlay"></div>
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    <div class="inline-block px-3 py-1 bg-brand-gold/20 border border-brand-gold/30 text-brand-gold text-xs font-bold uppercase tracking-widest rounded-full mb-4">
-      Pilgrim Track
+<section class="pt-32 pb-20 bg-brand-midnight text-white relative overflow-hidden">
+  <div class="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PHBhdGggZD0iTTIwIDBoMjB2MjBIMjB6TTAgMjBoMjB2MjBIMHoiIGZpbGw9IiNmZmYiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg==')]"></div>
+  <div class="max-w-4xl mx-auto px-4 text-center relative z-10 reveal-up">
+    <div class="inline-flex items-center gap-2 px-4 py-2 bg-brand-emerald/20 border border-brand-emerald/40 text-brand-emerald-light rounded-full text-xs font-bold uppercase tracking-widest mb-6">
+      <span class="lang-en">Track 03: Hajj & Umrah Preparation</span><span class="lang-ar">المسار الثالث: التحضير للحج والعمرة</span>
     </div>
-    <h1 class="font-heading text-4xl md:text-6xl font-extrabold text-white mb-4">Living Arabic for Hujaj</h1>
-    <p class="text-slate-300 text-lg md:text-xl max-w-2xl leading-relaxed">
-      Equip yourself for the journey of a lifetime. A specialized, practical track designed to help you navigate Hajj and Umrah with confidence, independence, and peace of mind.
+    <h1 class="font-heading text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
+      <span class="lang-en">Navigate Makkah with <span class="text-brand-gold">Total Confidence.</span></span>
+      <span class="lang-ar">تنقل في مكة بـ <span class="text-brand-gold">ثقة تامة.</span></span>
+    </h1>
+    <p class="text-lg md:text-xl text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed">
+      <span class="lang-en">Don't rely entirely on busy tour guides. Master the essential logistics, survival, and emergency Arabic vocabulary you need before your flight leaves Nigeria.</span>
+      <span class="lang-ar">لا تعتمد كليًا على المرشدين السياحيين المشغولين. أتقن المفردات العربية الأساسية للخدمات اللوجستية والطوارئ قبل مغادرة رحلتك.</span>
     </p>
+    <a href="#pricing" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-brand-gold text-brand-midnight font-bold rounded-xl hover:bg-white transition-all shadow-[0_0_20px_rgba(212,175,55,0.4)] text-lg">
+      <span class="lang-en">Prepare for Your Journey</span><span class="lang-ar">استعد لرحلتك</span>
+      <i class="fa-solid fa-arrow-right rtl:rotate-180"></i>
+    </a>
   </div>
 </section>
 
-<!-- Split Layout -->
-<section class="py-16">
+<section class="py-20 bg-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex flex-col lg:flex-row gap-12 items-start">
-      
-      <!-- Left Content: Course Details -->
-      <div class="lg:w-7/12 space-y-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+      <div class="reveal-up">
+        <h2 class="font-heading text-3xl font-bold text-brand-midnight mb-6">
+          <span class="lang-en">The anxiety of being lost in a foreign land.</span>
+          <span class="lang-ar">قلق الضياع في أرض غريبة.</span>
+        </h2>
+        <div class="space-y-4 text-slate-600 leading-relaxed mb-6">
+          <p><span class="lang-en">Hajj and Umrah are deeply spiritual journeys, but they are also massive logistical challenges. The fear of getting separated from your group, being overcharged at the market, or struggling to explain a medical issue to a pharmacist can severely distract from your worship.</span><span class="lang-ar">الحج والعمرة رحلات روحية عميقة، لكنها أيضًا تحديات لوجستية ضخمة. الخوف من الانفصال عن مجموعتك أو مواجهة صعوبة في شرح مشكلة طبية يمكن أن يشتت انتباهك عن العبادة.</span></p>
+          <p><span class="lang-en">Your spiritual journey shouldn't be clouded by logistical panic.</span><span class="lang-ar">لا ينبغي أن تتأثر رحلتك الروحية بالذعر اللوجستي.</span></p>
+        </div>
+        <div class="inline-block px-4 py-2 bg-slate-100 rounded-lg text-brand-emerald font-bold">
+          <span class="lang-en">Take control of your pilgrimage...</span><span class="lang-ar">تولَّ زمام أمور رحلتك...</span>
+        </div>
+      </div>
+      <div class="bg-brand-surface p-8 rounded-3xl border border-slate-200 reveal-up">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="w-12 h-12 rounded-full bg-brand-emerald text-white flex items-center justify-center text-xl"><i class="fa-solid fa-kaaba"></i></div>
+          <h3 class="font-heading text-xl font-bold text-brand-midnight"><span class="lang-en">The Independence Promise</span><span class="lang-ar">وعد الاستقلالية</span></h3>
+        </div>
+        <p class="text-slate-600 mb-6 font-medium text-lg"><span class="lang-en">In just a few intensive weeks, you will master the specific, practical Arabic phrases required to independently manage transport, shopping, and emergencies in Saudi Arabia.</span><span class="lang-ar">في غضون بضعة أسابيع مكثفة فقط، ستتقن العبارات العربية العملية المحددة المطلوبة لإدارة النقل والتسوق وحالات الطوارئ في المملكة العربية السعودية بشكل مستقل.</span></p>
         
-        <div>
-          <h2 class="font-heading text-3xl font-bold text-brand-midnight mb-4">Course Overview</h2>
-          <p class="text-slate-600 leading-relaxed">
-            Performing Hajj or Umrah is a profoundly physical and spiritual undertaking. Language barriers should not add to the exhaustion or prevent you from fully experiencing the holy cities. This short-form, high-impact track bypasses complex grammar to focus strictly on survival and transactional Arabic. You will learn the exact phrases needed to navigate airports, interact with authorities, request assistance, and fulfill your Manasik (rituals) seamlessly.
-          </p>
-        </div>
-
-        <div>
-          <h3 class="font-heading text-2xl font-bold text-brand-midnight mb-6 border-b border-slate-200 pb-2">What You Will Master</h3>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-              <div class="w-10 h-10 bg-brand-gold/10 text-brand-gold rounded-lg flex items-center justify-center mb-4 text-xl">
-                <i class="fa-solid fa-kaaba"></i>
-              </div>
-              <h4 class="font-bold text-brand-midnight mb-2">Ritual Terminology</h4>
-              <p class="text-sm text-slate-600">Understand the specific terms used during Tawaf, Sa'i, and standing at Arafat, allowing you to focus on worship rather than confusion.</p>
-            </div>
-            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-              <div class="w-10 h-10 bg-brand-gold/10 text-brand-gold rounded-lg flex items-center justify-center mb-4 text-xl">
-                <i class="fa-solid fa-plane-arrival"></i>
-              </div>
-              <h4 class="font-bold text-brand-midnight mb-2">Travel & Logistics</h4>
-              <p class="text-sm text-slate-600">Confidently ask for directions, coordinate with taxi drivers, and manage hotel accommodations without relying on a translator.</p>
-            </div>
-            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-              <div class="w-10 h-10 bg-brand-gold/10 text-brand-gold rounded-lg flex items-center justify-center mb-4 text-xl">
-                <i class="fa-solid fa-shop"></i>
-              </div>
-              <h4 class="font-bold text-brand-midnight mb-2">Shopping & Dining</h4>
-              <p class="text-sm text-slate-600">Navigate local marketplaces, negotiate prices politely, and order meals with ease in the bustling streets of Makkah and Madinah.</p>
-            </div>
-            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-              <div class="w-10 h-10 bg-brand-gold/10 text-brand-gold rounded-lg flex items-center justify-center mb-4 text-xl">
-                <i class="fa-solid fa-kit-medical"></i>
-              </div>
-              <h4 class="font-bold text-brand-midnight mb-2">Health & Safety</h4>
-              <p class="text-sm text-slate-600">Learn crucial, life-saving phrases to communicate effectively with medical staff, security personnel, or guides in an emergency.</p>
-            </div>
+        <div class="relative pt-4">
+          <div class="flex justify-between mb-2">
+            <span class="text-xs font-bold text-slate-400">Enrollment</span>
+            <span class="text-xs font-bold text-brand-emerald">Flight Departure: Ready</span>
+          </div>
+          <div class="h-3 w-full bg-slate-200 rounded-full overflow-hidden">
+            <div class="h-full bg-gradient-to-r from-brand-emerald to-brand-gold w-full animate-pulse"></div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <div>
-          <h3 class="font-heading text-2xl font-bold text-brand-midnight mb-6 border-b border-slate-200 pb-2">Target Audience</h3>
-          <ul class="space-y-3">
-            <li class="flex items-start gap-3">
-              <i class="fa-solid fa-circle-check text-brand-gold mt-1"></i>
-              <span class="text-slate-600">Muslims preparing for their upcoming Hajj or Umrah journey.</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <i class="fa-solid fa-circle-check text-brand-gold mt-1"></i>
-              <span class="text-slate-600">Tour operators and group guides who manage pilgrim delegations in Saudi Arabia.</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <i class="fa-solid fa-circle-check text-brand-gold mt-1"></i>
-              <span class="text-slate-600">Families equipping elderly parents with the language tools to stay safe while traveling.</span>
-            </li>
-          </ul>
+<section class="py-20 bg-slate-50 border-y border-slate-200">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16 reveal-up">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-brand-midnight mb-4"><span class="lang-en">The Pilgrim's Blueprint</span><span class="lang-ar">مخطط الحاج</span></h2>
+      <p class="text-slate-600"><span class="lang-en">A highly focused, non-academic crash course built for immediate survival.</span></p>
+    </div>
+
+    <div class="relative border-l-2 border-brand-gold/30 ml-6 md:ml-1/2 space-y-12 pb-8">
+      
+      <div class="relative pl-8 reveal-up">
+        <div class="absolute w-6 h-6 bg-brand-gold rounded-full -left-[13px] border-4 border-slate-50 flex items-center justify-center"></div>
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+          <span class="text-sm font-bold text-brand-emerald uppercase tracking-wider mb-2 block"><span class="lang-en">Module 1: Logistics & Transit</span><span class="lang-ar">الوحدة 1: اللوجستيات والنقل</span></span>
+          <h3 class="font-heading text-xl font-bold text-brand-midnight mb-3"><span class="lang-en">Navigating Airports & Hotels</span><span class="lang-ar">التنقل في المطارات والفنادق</span></h3>
+          <p class="text-slate-600 text-sm mb-3"><strong class="text-brand-midnight"><span class="lang-en">What you learn:</span><span class="lang-ar">ما تتعلمه:</span></strong> <span class="lang-en">Directional commands, taxi negotiations, baggage claims, and hotel desk interactions.</span><span class="lang-ar">أوامر الاتجاهات، مفاوضات سيارات الأجرة، المطالبة بالأمتعة، وتفاعلات مكتب الفندق.</span></p>
+          <p class="text-slate-600 text-sm"><strong class="text-brand-midnight"><span class="lang-en">What you achieve:</span><span class="lang-ar">ما تحققه:</span></strong> <span class="lang-en">The ability to independently move from Jeddah to your accommodations without relying on a lost guide.</span><span class="lang-ar">القدرة على الانتقال بشكل مستقل من جدة إلى مكان إقامتك دون الاعتماد على مرشد مفقود.</span></p>
         </div>
-
-        <!-- 3-Tier Pricing Section -->
-        <div>
-          <h3 class="font-heading text-2xl font-bold text-brand-midnight mb-6 border-b border-slate-200 pb-2">Tuition & Investment Options</h3>
-          
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center mt-8">
-            
-            <!-- Tier 1: Essential -->
-            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-shadow flex flex-col h-full">
-              <h4 class="font-bold text-slate-500 mb-1 uppercase tracking-wide text-xs">Essential</h4>
-              <div class="font-heading text-3xl font-bold text-brand-midnight mb-4">₦30k<span class="text-sm text-slate-400 font-medium">/mo</span></div>
-              <ul class="text-sm text-slate-600 space-y-3 mb-6 flex-1">
-                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-emerald mt-0.5"></i> Base Curriculum Access</li>
-                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-emerald mt-0.5"></i> Group Sessions</li>
-                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-emerald mt-0.5"></i> Standard Portal Access</li>
-              </ul>
-            </div>
-
-            <!-- Tier 2: Accelerated (The Decoy / Target) -->
-            <div class="bg-brand-midnight rounded-2xl p-8 border-2 border-brand-gold shadow-2xl flex flex-col relative transform md:-translate-y-4 z-10 h-[105%]">
-              <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand-gold text-brand-midnight text-[10px] font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-md whitespace-nowrap">
-                Most Popular
-              </div>
-              <h4 class="font-bold text-brand-gold mb-1 uppercase tracking-wide text-xs">Accelerated</h4>
-              <div class="font-heading text-4xl font-bold text-white mb-4">₦40k<span class="text-sm text-slate-400 font-medium">/mo</span></div>
-              <ul class="text-sm text-slate-200 space-y-4 mb-6 flex-1">
-                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-gold mt-0.5"></i> Everything in Essential</li>
-                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-gold mt-0.5"></i> Live Q&A and Assessments</li>
-                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-gold mt-0.5"></i> Sector-Specific Materials</li>
-                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-gold mt-0.5"></i> Official Certification</li>
-              </ul>
-            </div>
-
-            <!-- Tier 3: VIP Immersive (The Anchor) -->
-            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-shadow flex flex-col h-full">
-              <h4 class="font-bold text-slate-500 mb-1 uppercase tracking-wide text-xs">Immersive VIP</h4>
-              <div class="font-heading text-3xl font-bold text-brand-midnight mb-4">₦75k<span class="text-sm text-slate-400 font-medium">/mo</span></div>
-              <ul class="text-sm text-slate-600 space-y-3 mb-6 flex-1">
-                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-emerald mt-0.5"></i> Everything in Accelerated</li>
-                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-emerald mt-0.5"></i> 1-on-1 Monthly Coaching</li>
-                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-emerald mt-0.5"></i> Priority Support Line</li>
-              </ul>
-            </div>
-
-          </div>
-        </div>
-
       </div>
 
-      <!-- Right Content: The Sticky Application Form with Payment -->
-      <div class="lg:w-5/12 lg:sticky lg:top-28">
-        <div class="bg-white rounded-2xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] border border-slate-200 overflow-hidden">
-          
-          <div class="bg-brand-midnight p-6 text-center border-b-4 border-brand-gold">
-            <h3 class="font-heading text-2xl font-bold text-white">Enroll in this Track</h3>
-            <p class="text-brand-gold text-sm font-medium mt-1">Living Arabic for Hujaj</p>
-          </div>
+      <div class="relative pl-8 reveal-up">
+        <div class="absolute w-6 h-6 bg-brand-gold rounded-full -left-[13px] border-4 border-slate-50 flex items-center justify-center"></div>
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+          <span class="text-sm font-bold text-brand-emerald uppercase tracking-wider mb-2 block"><span class="lang-en">Module 2: Transactions</span><span class="lang-ar">الوحدة 2: المعاملات</span></span>
+          <h3 class="font-heading text-xl font-bold text-brand-midnight mb-3"><span class="lang-en">Food, Markets & Bartering</span><span class="lang-ar">الطعام، الأسواق، والمساومة</span></h3>
+          <p class="text-slate-600 text-sm mb-3"><strong class="text-brand-midnight"><span class="lang-en">What you learn:</span><span class="lang-ar">ما تتعلمه:</span></strong> <span class="lang-en">Numbers, currency exchanges, food ordering, and market negotiation etiquette.</span><span class="lang-ar">الأرقام، صرف العملات، طلب الطعام، وآداب التفاوض في السوق.</span></p>
+          <p class="text-slate-600 text-sm"><strong class="text-brand-midnight"><span class="lang-en">What you achieve:</span><span class="lang-ar">ما تحققه:</span></strong> <span class="lang-en">Confidence to buy what you need at fair local prices without being easily overcharged.</span><span class="lang-ar">الثقة لشراء ما تحتاجه بأسعار محلية عادلة.</span></p>
+        </div>
+      </div>
 
-          <div class="p-8">
-            <!-- Progress Tracker -->
-            <div class="mb-8">
-              <div class="flex justify-between text-xs font-bold text-slate-400 mb-2 uppercase tracking-wider">
-                <span id="stepLabel" class="text-brand-emerald">Step 1: Details</span>
-                <span id="stepPercent">50%</span>
-              </div>
-              <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
-                <div id="progressBar" class="progress-bar-fill h-full bg-brand-emerald rounded-full" style="width:50%"></div>
-              </div>
-            </div>
-
-            <form id="courseApplicationForm">
-              <!-- Hidden input to lock the track automatically -->
-              <input type="hidden" name="inquiry_type" value="Living Arabic for Hujaj">
-
-              <!-- STEP 1: Academic Profile & Details -->
-              <div id="step1" class="form-step active">
-                <div class="floating-input-wrapper">
-                  <input type="text" id="fname" name="first_name" class="floating-input peer" placeholder=" " required>
-                  <label for="fname" class="floating-label">Full Name *</label>
-                </div>
-                
-                <div class="grid grid-cols-2 gap-3 mb-1.5">
-                  <div class="floating-input-wrapper mb-0">
-                    <input type="email" id="email" name="email" class="floating-input peer" placeholder=" " required>
-                    <label for="email" class="floating-label">Email Address *</label>
-                  </div>
-                  <div class="floating-input-wrapper mb-0">
-                    <input type="tel" id="phone" name="Phone_number" class="floating-input peer" placeholder=" " required>
-                    <label for="phone" class="floating-label">Phone Number *</label>
-                  </div>
-                </div>
-
-                <div class="mb-4 mt-2">
-                  <select name="arabic_level" required class="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:border-brand-emerald outline-none text-slate-700 text-sm font-medium appearance-none bg-white relative cursor-pointer" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%231E293B%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: right 1rem top 50%; background-size: 0.65rem auto;">
-                    <option value="" disabled selected>Current Arabic Level *</option>
-                    <option value="beginner">Beginner (Alphabet / Basic words)</option>
-                    <option value="intermediate">Intermediate (Can read, limited vocabulary)</option>
-                    <option value="advanced">Advanced (Conversational but not fluent)</option>
-                  </select>
-                </div>
-
-                <div class="floating-input-wrapper mb-6">
-                  <textarea id="goal" name="primary_goal" class="floating-input peer h-20 resize-none" placeholder=" " required></textarea>
-                  <label for="goal" class="floating-label !top-4">What is your primary goal for this track? *</label>
-                </div>
-                
-                <button type="button" onclick="validateAndNext(1, 2)" class="w-full py-4 bg-brand-midnight text-white font-bold rounded-xl hover:bg-brand-emerald transition-colors shadow-md flex items-center justify-center gap-2 group">
-                  Continue to Selection <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
-                </button>
-              </div>
-
-              <!-- STEP 2: Checkout Review -->
-              <div id="step2" class="form-step">
-                
-                <!-- The Choice Selection -->
-                <div class="mb-6">
-                  <label class="block text-sm font-bold text-slate-700 mb-3">Select Your Tuition Plan *</label>
-                  <select name="selected_tier" required class="w-full px-4 py-4 rounded-xl border-2 border-brand-emerald/30 focus:border-brand-emerald focus:ring-4 focus:ring-brand-emerald/10 outline-none text-brand-midnight font-bold bg-brand-emerald/5 appearance-none relative cursor-pointer" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%231E293B%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: right 1rem top 50%; background-size: 0.85rem auto;">
-                    <option value="" disabled selected>Choose your plan...</option>
-                    <option value="essential">Essential Plan - ₦30,000/mo</option>
-                    <option value="accelerated">Accelerated Plan (Recommended) - ₦40,000/mo</option>
-                    <option value="vip">Immersive VIP Plan - ₦75,000/mo</option>
-                  </select>
-                </div>
-
-                <div class="bg-brand-emerald/5 border border-brand-emerald/20 rounded-xl p-5 mb-6">
-                  <h4 class="font-heading font-bold text-brand-midnight mb-1">Application Ready</h4>
-                  <p class="text-xs text-slate-600 leading-relaxed">
-                    By proceeding to payment, your application will be submitted for processing. You can manage or upgrade your tier inside your portal at any time.
-                  </p>
-                </div>
-
-                <div class="mb-6">
-                  <label class="flex items-start gap-3 cursor-pointer group">
-                    <input type="checkbox" name="terms_agreed" class="mt-1 w-5 h-5 rounded border-slate-300 text-brand-emerald focus:ring-brand-emerald" required>
-                    <span class="text-xs text-slate-600 group-hover:text-brand-midnight transition-colors leading-relaxed">
-                      I agree to the <a href="#" class="text-brand-emerald underline">Terms of Service</a> and confirm my application details are accurate.
-                    </span>
-                  </label>
-                </div>
-
-                <div class="flex gap-3">
-                  <button type="button" onclick="prevStep(2, 1)" class="px-5 py-4 bg-slate-100 text-slate-600 font-bold rounded-xl hover:bg-slate-200 transition-colors"><i class="fa-solid fa-arrow-left"></i></button>
-                  <button type="submit" id="submitBtn" class="flex-1 py-4 bg-brand-gold text-brand-midnight font-bold rounded-xl hover:bg-brand-gold-light transition-all shadow-md flex items-center justify-center gap-2">
-                    <span id="btnText">Pay Securely</span>
-                    <i class="fa-solid fa-lock" id="btnIcon"></i>
-                  </button>
-                </div>
-              </div>
-
-            </form>
-          </div>
+      <div class="relative pl-8 reveal-up">
+        <div class="absolute w-6 h-6 bg-brand-emerald rounded-full -left-[13px] border-4 border-slate-50 flex items-center justify-center"></div>
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-brand-emerald/20 relative overflow-hidden">
+          <span class="text-sm font-bold text-brand-emerald uppercase tracking-wider mb-2 block"><span class="lang-en">Module 3: Security & Health</span><span class="lang-ar">الوحدة 3: الأمن والصحة</span></span>
+          <h3 class="font-heading text-xl font-bold text-brand-midnight mb-3"><span class="lang-en">Emergencies & Medical Care</span><span class="lang-ar">حالات الطوارئ والرعاية الطبية</span></h3>
+          <p class="text-slate-600 text-sm mb-3"><strong class="text-brand-midnight"><span class="lang-en">What you learn:</span><span class="lang-ar">ما تتعلمه:</span></strong> <span class="lang-en">Explaining symptoms to pharmacists, reporting lost items, and speaking to local security.</span><span class="lang-ar">شرح الأعراض للصيادلة، الإبلاغ عن العناصر المفقودة، والتحدث إلى الأمن المحلي.</span></p>
+          <p class="text-slate-600 text-sm"><strong class="text-brand-midnight"><span class="lang-en">What you achieve:</span><span class="lang-ar">ما تحققه:</span></strong> <span class="lang-en">Peace of mind knowing you can effectively seek help if you or a family member falls ill.</span><span class="lang-ar">راحة البال بمعرفة أنه يمكنك طلب المساعدة بفعالية إذا مرضت أنت أو أحد أفراد أسرتك.</span></p>
         </div>
       </div>
 
@@ -327,71 +182,205 @@
   </div>
 </section>
 
-<footer class="bg-white border-t border-slate-200 py-8 mt-12">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    <p class="text-sm text-slate-500">© 2026 Arab Community of Lagos. All rights reserved.</p>
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 text-center reveal-up">
+    <h2 class="font-heading text-3xl font-bold text-brand-midnight mb-12"><span class="lang-en">The Real-World Backup Plan</span><span class="lang-ar">خطة الدعم في العالم الحقيقي</span></h2>
+    
+    <div class="grid md:grid-cols-2 gap-8 text-start">
+      <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200 flex flex-col h-full">
+        <h3 class="text-xl font-bold text-red-600 mb-4 uppercase tracking-wide text-sm"><i class="fa-solid fa-triangle-exclamation mr-2"></i><span class="lang-en">The Blocker: In-the-Moment Panic</span></h3>
+        <p class="text-slate-600 flex-grow mb-4"><span class="lang-en">You can practice in a quiet room in Lagos, but what happens when you are standing in a crowded Saudi pharmacy, completely panicked, and your mind goes blank? Memory fails under pressure.</span></p>
+      </div>
+      
+      <div class="bg-brand-emerald text-white p-8 rounded-2xl border border-brand-emerald-dark shadow-xl flex flex-col h-full relative overflow-hidden">
+        <div class="absolute -bottom-10 -right-10 text-brand-emerald-light opacity-20 text-9xl"><i class="fa-solid fa-headset"></i></div>
+        <h3 class="text-xl font-bold text-brand-gold-light mb-4 uppercase tracking-wide text-sm relative z-10"><i class="fa-solid fa-satellite-dish mr-2"></i><span class="lang-en">Our Unique Solution: On-Ground Support</span></h3>
+        <p class="text-emerald-50 mb-4 relative z-10 font-medium"><span class="lang-en">We don't just teach you and leave you. Students in our Elite tier get exclusive access to our <strong>On-Ground Arabic Support Hotline</strong> during their Hajj.</span></p>
+        <p class="text-emerald-100 text-sm relative z-10"><span class="lang-en">If you are stuck at a hospital, arguing with a taxi driver, or lost, you can send a voice note or call our dedicated line. One of our fluent instructors will translate for you live, ensuring you are never truly stranded.</span></p>
+      </div>
+    </div>
   </div>
+</section>
+
+<section class="py-20 bg-brand-surface border-y border-slate-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16 reveal-up">
+      <h2 class="font-heading text-3xl font-bold text-brand-midnight mb-4"><span class="lang-en">Pilgrims Who Traveled Safely</span><span class="lang-ar">حجاج سافروا بأمان</span></h2>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 reveal-up text-start">
+        <div class="flex text-brand-gold text-xs mb-4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <p class="text-slate-600 text-sm mb-6 leading-relaxed">"My tour guide was overwhelmed with 50 other people. Because I took this crash course, I was able to negotiate my own taxi back to the hotel when I got separated at the Grand Mosque."</p>
+        <div class="font-bold text-brand-midnight text-sm">Alhaji Mutiu A.</div>
+        <div class="text-xs text-slate-400">2025 Hajj Participant</div>
+      </div>
+      <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 reveal-up delay-100 text-start">
+        <div class="flex text-brand-gold text-xs mb-4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <p class="text-slate-600 text-sm mb-6 leading-relaxed">"My mother fell ill in Madinah. The medical vocabulary module allowed me to explain her symptoms to the pharmacist immediately without waiting hours for an official translator."</p>
+        <div class="font-bold text-brand-midnight text-sm">Hajia Zainab K.</div>
+        <div class="text-xs text-slate-400">Accompanied Elderly Parents</div>
+      </div>
+      <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 reveal-up delay-200 text-start">
+        <div class="flex text-brand-gold text-xs mb-4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <p class="text-slate-600 text-sm mb-6 leading-relaxed">"The Elite hotline was a lifesaver. I got into a dispute over a hotel booking and handed my phone to the receptionist. My ACL instructor smoothed it out over the phone in fluent Arabic in 2 minutes."</p>
+        <div class="font-bold text-brand-midnight text-sm">Dr. Olanrewaju S.</div>
+        <div class="text-xs text-slate-400">Elite Tier Member</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" class="py-24 bg-brand-midnight relative">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    
+    <div class="text-center mb-12 reveal-up">
+      <div class="inline-block bg-red-600/20 border border-red-500/50 text-red-400 font-bold px-6 py-2 rounded-full mb-6 animate-pulse">
+        <i class="fa-solid fa-plane-departure mr-2"></i> <span class="lang-en">Enrollment closes 3 weeks prior to the first Nigerian Hajj airlift.</span><span class="lang-ar">يغلق التسجيل قبل 3 أسابيع من أول رحلة طيران للحج النيجيري.</span>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center mt-8">
+      
+      <div class="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-sm reveal-up text-center flex flex-col h-full">
+        <h3 class="text-xl font-bold text-white mb-2">Essential Prep</h3>
+        <div class="text-3xl font-heading font-extrabold text-brand-gold mb-1">₦14,999</div>
+        <p class="text-xs text-slate-400 mb-2">One-time payment</p>
+        <div class="h-px bg-white/10 w-full my-6"></div>
+        <ul class="text-start space-y-4 text-slate-300 text-sm mb-8 flex-grow">
+          <li class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-emerald mt-1"></i> Core Logistics & Transit modules</li>
+          <li class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-emerald mt-1"></i> Group practice sessions</li>
+          <li class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-emerald mt-1"></i> Downloadable Pocket Cheat Sheets</li>
+          <li class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-emerald mt-1"></i> Lifetime access (reuse for Umrah)</li>
+        </ul>
+        <button class="w-full py-3 rounded-xl border border-brand-gold/30 text-brand-gold font-bold hover:bg-brand-gold hover:text-brand-midnight transition-colors mt-auto">Select Essential</button>
+      </div>
+
+      <div class="bg-white rounded-3xl p-8 shadow-[0_0_40px_rgba(212,175,55,0.15)] transform md:-translate-y-4 reveal-up text-center relative border-2 border-brand-gold flex flex-col h-full">
+        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-brand-gold text-brand-midnight text-xs font-bold px-4 py-1 rounded-full uppercase tracking-widest">Most Popular</div>
+        <h3 class="text-xl font-bold text-brand-midnight mb-2">Signature Hajj</h3>
+        <div class="text-4xl font-heading font-extrabold text-brand-midnight mb-1">₦24,999</div>
+        <p class="text-xs text-slate-500 mb-2">One-time payment</p>
+        <div class="h-px bg-slate-200 w-full my-6"></div>
+        <ul class="text-start space-y-4 text-slate-600 text-sm mb-8 font-medium flex-grow">
+          <li class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-emerald mt-1"></i> <strong>All Essential features</strong></li>
+          <li class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-emerald mt-1"></i> Live Conversational Roleplay (Shopping, Airports)</li>
+          <li class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-emerald mt-1"></i> Family prep guide included</li>
+          <li class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-emerald mt-1"></i> Audio pronunciation drills</li>
+        </ul>
+        <button class="w-full py-4 rounded-xl bg-brand-gold text-brand-midnight font-bold hover:bg-black hover:text-brand-gold transition-colors shadow-md mt-auto">Select Signature</button>
+      </div>
+
+      <div class="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-sm reveal-up text-center flex flex-col h-full relative overflow-hidden">
+        <div class="absolute -top-4 -right-4 w-16 h-16 bg-brand-emerald rounded-full mix-blend-screen opacity-50 blur-xl"></div>
+        <h3 class="text-xl font-bold text-white mb-2">Elite Support</h3>
+        <div class="text-3xl font-heading font-extrabold text-brand-gold mb-1">₦39,999</div>
+        <p class="text-xs text-slate-400 mb-2">One-time payment</p>
+        <div class="h-px bg-white/10 w-full my-6"></div>
+        <ul class="text-start space-y-4 text-slate-300 text-sm mb-8 flex-grow">
+          <li class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-emerald mt-1"></i> <strong>All Signature features</strong></li>
+          <li class="flex items-start gap-3 bg-brand-emerald/20 p-2 rounded-lg border border-brand-emerald/30"><i class="fa-solid fa-phone-volume text-brand-gold mt-1"></i> <strong>Live On-Ground Translation Hotline during your Hajj</strong></li>
+          <li class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-emerald mt-1"></i> Priority 1-on-1 prep session</li>
+          <li class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-emerald mt-1"></i> Direct WhatsApp tutor access</li>
+        </ul>
+        <button class="w-full py-3 rounded-xl border border-brand-emerald/50 bg-brand-emerald/20 text-brand-emerald-light font-bold hover:bg-brand-emerald hover:text-white transition-colors mt-auto">Select Elite</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="py-20 bg-white">
+  <div class="max-w-3xl mx-auto px-4">
+    <div class="text-center mb-12 reveal-up">
+      <h2 class="font-heading text-3xl font-bold text-brand-midnight">Frequently Asked Questions</h2>
+    </div>
+    
+    <div class="space-y-4 reveal-up">
+      <details class="group bg-brand-surface rounded-xl border border-slate-200 cursor-pointer">
+        <summary class="flex justify-between items-center font-bold text-brand-midnight p-5">
+          Q1: My flight leaves in 2 weeks. Is it too late to enroll?
+          <i class="fa-solid fa-plus text-brand-emerald group-open:rotate-45 transition-transform"></i>
+        </summary>
+        <div class="faq-answer px-5 pb-5 text-slate-600 text-sm leading-relaxed">
+          <div>We offer an accelerated "Crash Course" track specifically for late enrollees. You will focus exclusively on the core survival phrases and download the cheat sheets for offline use on the plane.</div>
+        </div>
+      </details>
+
+      <details class="group bg-brand-surface rounded-xl border border-slate-200 cursor-pointer">
+        <summary class="flex justify-between items-center font-bold text-brand-midnight p-5">
+          Q2: My spouse and I are traveling together. Do we need two subscriptions?
+          <i class="fa-solid fa-plus text-brand-emerald group-open:rotate-45 transition-transform"></i>
+        </summary>
+        <div class="faq-answer px-5 pb-5 text-slate-600 text-sm leading-relaxed">
+          <div>We offer special family discounts for couples traveling together. The Signature tier includes a family prep guide, and you can share the portal access. However, for the Elite on-ground support hotline, both travelers must register if they want independent phone access.</div>
+        </div>
+      </details>
+
+      <details class="group bg-brand-surface rounded-xl border border-slate-200 cursor-pointer">
+        <summary class="flex justify-between items-center font-bold text-brand-midnight p-5">
+          Q3: Can I keep the materials for Umrah next year?
+          <i class="fa-solid fa-plus text-brand-emerald group-open:rotate-45 transition-transform"></i>
+        </summary>
+        <div class="faq-answer px-5 pb-5 text-slate-600 text-sm leading-relaxed">
+          <div>Yes! All tiers grant lifetime access to the digital course materials and downloadable cheat sheets, so you can refresh your memory before any future trips to Saudi Arabia.</div>
+        </div>
+      </details>
+
+      <details class="group bg-brand-surface rounded-xl border border-slate-200 cursor-pointer">
+        <summary class="flex justify-between items-center font-bold text-brand-midnight p-5">
+          Q4: How exactly does the Elite On-Ground Support Hotline work?
+          <i class="fa-solid fa-plus text-brand-emerald group-open:rotate-45 transition-transform"></i>
+        </summary>
+        <div class="faq-answer px-5 pb-5 text-slate-600 text-sm leading-relaxed">
+          <div>When you arrive in Saudi Arabia, you will be given a dedicated WhatsApp number. If you face a language barrier (e.g., at a pharmacy or hotel desk), you can send a voice note or initiate a call during operational hours, and our instructor will translate your needs in real-time.</div>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="py-24 bg-brand-emerald relative overflow-hidden text-center">
+  <div class="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PHBhdGggZD0iTTIwIDBoMjB2MjBIMjB6TTAgMjBoMjB2MjBIMHoiIGZpbGw9IiNmZmYiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg==')]"></div>
+  <div class="max-w-4xl mx-auto px-4 relative z-10 reveal-up">
+    
+    <h2 class="font-heading text-4xl md:text-5xl font-bold text-white mb-6"><span class="lang-en">Travel with Peace of Mind.</span><span class="lang-ar">سافر براحة بال.</span></h2>
+    <p class="text-emerald-50 text-lg mb-10 max-w-2xl mx-auto"><span class="lang-en">Ensure your focus remains on your worship, not logistical stress. Enroll before the Nigerian airlift cutoff dates.</span></p>
+    
+    <div class="flex flex-col sm:flex-row justify-center gap-4 flex-wrap">
+      <a href="#pricing" class="px-6 py-4 bg-white text-brand-midnight font-bold rounded-xl hover:bg-slate-100 transition-all shadow-lg text-center"><span class="lang-en">Essential (₦14,999)</span></a>
+      <a href="#pricing" class="px-6 py-4 bg-brand-gold text-brand-midnight font-bold rounded-xl hover:bg-[#F3D56B] transition-all shadow-lg text-center border-2 border-brand-gold"><span class="lang-en">Signature (₦24,999)</span></a>
+      <a href="#pricing" class="px-6 py-4 bg-transparent border-2 border-white text-white font-bold rounded-xl hover:bg-white/10 transition-all shadow-lg text-center"><span class="lang-en">Elite Hotline (₦39,999)</span></a>
+    </div>
+  </div>
+</section>
+
+<footer class="bg-brand-midnight text-slate-400 py-12 border-t border-white/10 text-center">
+  <p class="text-sm">&copy; 2026 Arab Community of Lagos. All Rights Reserved.</p>
+  <p class="mt-2 font-medium tracking-wide uppercase text-xs">Directed by Abubakr Solah</p>
 </footer>
 
 <script>
-  // Form Navigation Logic
-  function validateAndNext(currentStep, nextStepNum) {
-    const currentDiv = document.getElementById('step' + currentStep);
-    const inputs = currentDiv.querySelectorAll('input[required], select[required], textarea[required]');
-    let isValid = true;
-    
-    inputs.forEach(input => {
-      if (!input.checkValidity()) {
-        input.reportValidity();
-        isValid = false;
-      }
+  // Language Toggle
+  function toggleLanguage() {
+    const htmlEl = document.documentElement;
+    if (htmlEl.getAttribute('lang') === 'en') {
+      htmlEl.setAttribute('lang', 'ar');
+      htmlEl.setAttribute('dir', 'rtl');
+    } else {
+      htmlEl.setAttribute('lang', 'en');
+      htmlEl.setAttribute('dir', 'ltr');
+    }
+  }
+
+  // Scroll Reveal
+  const revealElements = document.querySelectorAll('.reveal-up');
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
     });
-    
-    if (isValid) nextStep(currentStep, nextStepNum);
-  }
-
-  function nextStep(currentStep, nextStepNum) {
-    document.getElementById('step' + currentStep).classList.remove('active');
-    document.getElementById('step' + nextStepNum).classList.add('active');
-    updateProgress(nextStepNum);
-  }
-
-  function prevStep(currentStep, prevStepNum) {
-    document.getElementById('step' + currentStep).classList.remove('active');
-    document.getElementById('step' + prevStepNum).classList.add('active');
-    updateProgress(prevStepNum);
-  }
-
-  function updateProgress(step) {
-    document.getElementById('stepLabel').textContent = step === 1 ? 'Step 1: Details' : 'Step 2: Checkout';
-    document.getElementById('stepPercent').textContent = step === 1 ? '50%' : '100%';
-    document.getElementById('progressBar').style.width = step === 1 ? '50%' : '100%';
-  }
-
-  // Application Submission & Payment Redirect Logic
-  document.getElementById('courseApplicationForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const btn = document.getElementById('submitBtn');
-    const text = document.getElementById('btnText');
-    const icon = document.getElementById('btnIcon');
-    
-    text.textContent = 'Processing...';
-    icon.className = 'fa-solid fa-spinner fa-spin';
-    btn.disabled = true;
-    btn.classList.add('opacity-80', 'cursor-not-allowed');
-
-    const formData = new FormData(this);
-    
-    // Send data to webhook
-    fetch('https://hook.eu1.make.com/hiyiax5py9qflvy9x4lwvq56xyk1n0gs', { 
-      method: 'POST', body: formData 
-    }).catch(err => console.error('Webhook error:', err));
-    
-    // Redirect to Paystack after a brief delay to ensure webhook fires
-    setTimeout(() => { 
-      window.location.href = 'https://paystack.shop/pay/arablagos'; 
-    }, 1200);
-  });
+  }, { threshold: 0.1 });
+  revealElements.forEach(el => revealObserver.observe(el));
 </script>
 
 </body>
