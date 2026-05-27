@@ -1,19 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" dir="ltr" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Practical Arabic for Business | Arab Community of Lagos</title>
+  <title>Arabic Fluency for Secondary Students | Arab Community of Lagos</title>
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
   <script src="https://cdn.tailwindcss.com"></script>
+
   <script>
     tailwind.config = {
       theme: {
@@ -21,16 +18,17 @@
           colors: {
             brand: {
               emerald: '#046A38',
-              'emerald-dark': '#024222',
-              'emerald-light': '#0a8f4e',
+              'emerald-dark': '#034d28',
               gold: '#D4AF37',
               'gold-light': '#F3D56B',
               midnight: '#0B1623',
+              surface: '#F8FAFC',
             }
           },
           fontFamily: {
             heading: ['Outfit', 'sans-serif'],
             body: ['Plus Jakarta Sans', 'sans-serif'],
+            arabic: ['Cairo', 'sans-serif'],
           }
         }
       }
@@ -38,134 +36,102 @@
   </script>
 
   <style>
-    body { background-color: #F8FAFC; color: #1E293B; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-    
-    /* ── Polished Form Styles ── */
-    .form-step { display: none; opacity: 0; transform: translateY(10px); transition: opacity 0.4s ease, transform 0.4s ease; will-change: transform, opacity; }
-    .form-step.active { display: block; opacity: 1; transform: translateY(0); }
-    
-    .floating-input-wrapper { position: relative; margin-bottom: 1.5rem; }
-    .floating-input {
-      width: 100%; padding: 1.25rem 1rem 0.5rem 1rem; border: 1px solid #CBD5E1;
-      border-radius: 0.75rem; background-color: #ffffff; outline: none;
-      transition: all 0.3s ease; font-size: 0.95rem;
+    :root[lang="en"] .lang-ar { display: none !important; }
+    :root[lang="ar"] .lang-en { display: none !important; }
+    :root[lang="ar"] body, :root[lang="ar"] h1, :root[lang="ar"] h2, :root[lang="ar"] h3, :root[lang="ar"] p, :root[lang="ar"] span, :root[lang="ar"] a, :root[lang="ar"] button, :root[lang="ar"] li, :root[lang="ar"] div {
+      font-family: 'Cairo', sans-serif !important; letter-spacing: normal !important;
     }
-    .floating-input:focus { border-color: #046A38; box-shadow: 0 0 0 4px rgba(4, 106, 56, 0.08); }
-    .floating-label {
-      position: absolute; left: 1rem; top: 50%; transform: translateY(-50%);
-      color: #64748B; font-size: 0.95rem; transition: all 0.2s ease; pointer-events: none;
-    }
-    .floating-input:focus ~ .floating-label,
-    .floating-input:not(:placeholder-shown) ~ .floating-label {
-      top: 0.75rem; transform: translateY(0); font-size: 0.7rem; font-weight: 700; color: #046A38; letter-spacing: 0.05em; text-transform: uppercase;
-    }
-    .progress-bar-fill { transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1); will-change: width; }
     
-    /* Enhanced Card Shadows */
-    .card-shadow { box-shadow: 0 4px 20px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.03); }
+    .glass-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); }
+    .reveal-up { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
+    .reveal-up.visible { opacity: 1; transform: none; }
+    
+    .faq-answer { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.3s ease; }
+    .faq-answer > div { overflow: hidden; }
+    details[open] .faq-answer { grid-template-rows: 1fr; }
+    details > summary { list-style: none; }
+    details > summary::-webkit-details-marker { display: none; }
   </style>
-</head>
-<body class="antialiased">
 
-<nav id="navbar" class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-transparent transition-all duration-300 h-20 flex items-center">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex justify-between items-center">
-    <a href="index.html" class="flex items-center gap-2 text-slate-500 hover:text-brand-emerald transition-colors font-medium text-sm">
-      <i class="fa-solid fa-arrow-left"></i> Back to Directory
+  <script>
+    if (localStorage.getItem('theme-lang') === 'ar') {
+      document.documentElement.setAttribute('lang', 'ar');
+      document.documentElement.setAttribute('dir', 'rtl');
+    }
+  </script>
+</head>
+<body class="bg-brand-surface text-slate-800 antialiased selection:bg-brand-gold selection:text-brand-midnight">
+
+<nav class="fixed w-full z-50 glass-nav shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
+    <a href="index.html" class="flex items-center gap-3">
+      <img src="logo.png" alt="ACL Logo" class="h-10 w-auto">
+      <span class="font-heading font-bold text-xl text-brand-midnight hidden sm:block">
+        <span class="lang-en">Arab Community of Lagos.</span><span class="lang-ar">مجتمع لاغوس العربي.</span>
+      </span>
     </a>
-    <span class="font-heading font-bold text-lg tracking-tight text-brand-midnight hidden sm:block">
-      Arab Community of Lagos<span class="text-brand-gold">.</span>
-    </span>
+    <div class="flex items-center gap-6">
+      <button onclick="toggleLanguage()" class="text-slate-600 hover:text-brand-gold font-bold text-sm flex items-center gap-2">
+        <i class="fa-solid fa-earth-africa"></i> <span class="lang-en">عربي</span><span class="lang-ar">English</span>
+      </button>
+      <a href="#pricing" class="px-6 py-2.5 rounded-full bg-brand-midnight text-brand-gold font-bold text-sm hover:bg-black transition-all">
+        <span class="lang-en">Enroll Now</span><span class="lang-ar">سجل الآن</span>
+      </a>
+    </div>
   </div>
 </nav>
 
-<section class="pt-32 pb-16 bg-brand-midnight relative overflow-hidden">
-  <div class="absolute inset-0 z-0 bg-[url('background hero.jpeg')] bg-cover bg-center opacity-10 mix-blend-overlay"></div>
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    <div class="inline-block px-4 py-1.5 bg-white/10 backdrop-blur border border-white/20 text-white text-[10px] font-bold uppercase tracking-[0.2em] rounded-full mb-6">
-      Professional Track
+<section class="pt-32 pb-20 bg-brand-midnight text-white relative overflow-hidden">
+  <div class="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PHBhdGggZD0iTTIwIDBoMjB2MjBIMjB6TTAgMjBoMjB2MjBIMHoiIGZpbGw9IiNmZmYiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg==')]"></div>
+  <div class="max-w-4xl mx-auto px-4 text-center relative z-10 reveal-up">
+    <div class="inline-flex items-center gap-2 px-4 py-2 bg-brand-emerald/20 border border-brand-emerald/40 text-brand-emerald-light rounded-full text-xs font-bold uppercase tracking-widest mb-6">
+      <span class="lang-en">Secondary & Self-Motivated Students</span><span class="lang-ar">الطلاب في المرحلة الثانوية والمتحمسين ذاتياً</span>
     </div>
-    <h1 class="font-heading text-4xl md:text-6xl font-extrabold text-white mb-6">Living Arabic for Business</h1>
-    <p class="text-slate-300 text-lg md:text-xl max-w-2xl leading-relaxed">
-      Command the room. An advanced track optimized for high-influence leadership, corporate environments, and international negotiation.
+    <h1 class="font-heading text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
+      <span class="lang-en">From Silent to Fluent: Hold Real Conversations with Native Arabs in 12 Months.</span>
+      <span class="lang-ar">من الصمت إلى الطلاقة: أجرِ محادثات حقيقية مع العرب الأصليين في 12 شهرًا.</span>
+    </h1>
+    <p class="text-lg md:text-xl text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed">
+      <span class="lang-en">Stop learning in isolation. Break through the fear of speaking and master conversational Arabic step-by-step.</span>
+      <span class="lang-ar">توقف عن التعلم في عزلة. تغلب على الخوف من التحدث وأتقن المحادثة العربية خطوة بخطوة.</span>
     </p>
+    <a href="#pricing" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-brand-gold text-brand-midnight font-bold rounded-xl hover:bg-white transition-all shadow-[0_0_20px_rgba(212,175,55,0.4)] text-lg">
+      <span class="lang-en">Start my fluency journey</span><span class="lang-ar">ابدأ رحلة الطلاقة</span>
+      <i class="fa-solid fa-arrow-right rtl:rotate-180"></i>
+    </a>
   </div>
 </section>
 
-<section class="py-20">
+<section class="py-20 bg-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex flex-col lg:flex-row gap-16 items-start">
-      
-      <!-- Content -->
-      <div class="lg:w-7/12">
-        <div class="mb-16">
-          <h2 class="font-heading text-3xl font-bold text-brand-midnight mb-6">Course Overview</h2>
-          <p class="text-slate-600 leading-relaxed text-lg">
-            In international business, fluency is not just about vocabulary; it is about respect, nuance, and influence. This specialized track bypasses standard conversational Arabic to focus entirely on corporate dialogue, formal correspondence, and high-stakes negotiation terminology.
-          </p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+      <div class="reveal-up">
+        <h2 class="font-heading text-3xl font-bold text-brand-midnight mb-6">
+          <span class="lang-en">The silent struggle of the Arabic student.</span>
+          <span class="lang-ar">الصراع الصامت لطالب اللغة العربية.</span>
+        </h2>
+        <div class="space-y-4 text-slate-600 leading-relaxed mb-6">
+          <p><span class="lang-en">You study the vocabulary. You memorize the grammar rules. But you're learning in isolation. The moment a native speaker approaches you, you freeze. You can't join conversations, and the fear of speaking keeps you completely stuck.</span><span class="lang-ar">أنت تدرس المفردات. تحفظ القواعد النحوية. لكنك تتعلم في عزلة. في اللحظة التي يقترب منك فيها متحدث أصلي، تتجمد.</span></p>
+          <p><span class="lang-en">Think of what you are missing out on: meaningful exchanges, deep connections, and the confidence to truly use the language you've worked so hard to understand.</span><span class="lang-ar">فكر فيما يفوتك: التبادلات الهادفة، والروابط العميقة، والثقة لاستخدام اللغة التي عملت بجد لفهمها حقًا.</span></p>
         </div>
-
-        <div>
-          <h3 class="font-heading text-2xl font-bold text-brand-midnight mb-8">What You Will Master</h3>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div class="bg-white p-8 rounded-2xl border border-slate-100 card-shadow"><div class="w-12 h-12 bg-brand-emerald/10 text-brand-emerald rounded-xl flex items-center justify-center mb-6 text-xl"><i class="fa-solid fa-handshake"></i></div><h4 class="font-bold text-brand-midnight mb-2">Corporate Etiquette</h4><p class="text-sm text-slate-600 leading-relaxed">Master formal titles and cultural protocols for boardroom environments.</p></div>
-            <div class="bg-white p-8 rounded-2xl border border-slate-100 card-shadow"><div class="w-12 h-12 bg-brand-emerald/10 text-brand-emerald rounded-xl flex items-center justify-center mb-6 text-xl"><i class="fa-solid fa-file-contract"></i></div><h4 class="font-bold text-brand-midnight mb-2">Formal Correspondence</h4><p class="text-sm text-slate-600 leading-relaxed">Draft professional emails, contracts, and proposals with perfect syntax.</p></div>
-            <div class="bg-white p-8 rounded-2xl border border-slate-100 card-shadow"><div class="w-12 h-12 bg-brand-emerald/10 text-brand-emerald rounded-xl flex items-center justify-center mb-6 text-xl"><i class="fa-solid fa-comments-dollar"></i></div><h4 class="font-bold text-brand-midnight mb-2">Negotiation Rhetoric</h4><p class="text-sm text-slate-600 leading-relaxed">Learn the persuasive vocabulary needed to close deals naturally.</p></div>
-            <div class="bg-white p-8 rounded-2xl border border-slate-100 card-shadow"><div class="w-12 h-12 bg-brand-emerald/10 text-brand-emerald rounded-xl flex items-center justify-center mb-6 text-xl"><i class="fa-solid fa-users-gear"></i></div><h4 class="font-bold text-brand-midnight mb-2">Industry Terminology</h4><p class="text-sm text-slate-600 leading-relaxed">Sector-specific vocabulary for finance and legal frameworks.</p></div>
-          </div>
+        <div class="inline-block px-4 py-2 bg-slate-100 rounded-lg text-brand-emerald font-bold">
+          <span class="lang-en">It doesn't have to be this way...</span><span class="lang-ar">ليس من الضروري أن يكون الأمر هكذا...</span>
         </div>
       </div>
-
-      <!-- Application Form -->
-      <div class="lg:w-5/12 lg:sticky lg:top-28">
-        <div class="bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden">
-          <div class="bg-brand-midnight p-8 text-center border-b-4 border-brand-emerald">
-            <h3 class="font-heading text-2xl font-bold text-white">Enroll in this Track</h3>
+      <div class="bg-brand-surface p-8 rounded-3xl border border-slate-200 reveal-up">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="w-12 h-12 rounded-full bg-brand-emerald text-white flex items-center justify-center text-xl"><i class="fa-solid fa-flag-checkered"></i></div>
+          <h3 class="font-heading text-xl font-bold text-brand-midnight"><span class="lang-en">Our 12-Month Promise</span><span class="lang-ar">وعدنا لمدة 12 شهرًا</span></h3>
+        </div>
+        <p class="text-slate-600 mb-6 font-medium text-lg"><span class="lang-en">By the end of this timeline, you will confidently hold exchange conversations with native Arabs.</span><span class="lang-ar">بحلول نهاية هذا الجدول الزمني، ستجري بثقة محادثات متبادلة مع العرب الأصليين.</span></p>
+        
+        <div class="relative pt-4">
+          <div class="flex justify-between mb-2">
+            <span class="text-xs font-bold text-slate-400">Month 1</span>
+            <span class="text-xs font-bold text-brand-emerald">Month 12: Conversational Fluency</span>
           </div>
-          <div class="p-8">
-            <div class="mb-8">
-              <div class="flex justify-between text-xs font-bold text-slate-400 mb-2 uppercase tracking-wider">
-                <span id="stepLabel" class="text-brand-emerald">Step 1: Details</span>
-                <span id="stepPercent">50%</span>
-              </div>
-              <div class="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
-                <div id="progressBar" class="progress-bar-fill h-full bg-brand-emerald rounded-full" style="width:50%"></div>
-              </div>
-            </div>
-
-            <form id="courseApplicationForm">
-              <input type="hidden" name="inquiry_type" value="Living Arabic for Business">
-              
-              <div id="step1" class="form-step active">
-                <div class="floating-input-wrapper"><input type="text" id="fname" name="first_name" class="floating-input peer" placeholder=" " required><label for="fname" class="floating-label">Full Name *</label></div>
-                <div class="grid grid-cols-2 gap-4 mb-2">
-                  <div class="floating-input-wrapper mb-0"><input type="email" id="email" name="email" class="floating-input peer" placeholder=" " required><label for="email" class="floating-label">Email *</label></div>
-                  <div class="floating-input-wrapper mb-0"><input type="tel" id="phone" name="Phone_number" class="floating-input peer" placeholder=" " required><label for="phone" class="floating-label">Phone *</label></div>
-                </div>
-                <div class="mb-6 mt-4">
-                  <select name="arabic_level" required class="w-full px-4 py-4 rounded-xl border border-slate-300 focus:border-brand-emerald outline-none text-slate-600 text-sm font-medium bg-white cursor-pointer transition-colors">
-                    <option value="" disabled selected>Current Arabic Proficiency *</option>
-                    <option value="beginner">Beginner</option><option value="intermediate">Intermediate</option><option value="advanced">Advanced</option>
-                  </select>
-                </div>
-                <button type="button" onclick="validateAndNext(1, 2)" class="w-full py-4 bg-brand-midnight text-white font-bold rounded-xl hover:bg-brand-emerald transition-all shadow-lg active:scale-[0.98]">Continue</button>
-              </div>
-
-              <div id="step2" class="form-step">
-                <div class="mb-6">
-                  <label class="block text-sm font-bold text-slate-700 mb-3">Select Plan *</label>
-                  <select name="selected_tier" required class="w-full px-4 py-4 rounded-xl border-2 border-brand-emerald/30 focus:border-brand-emerald outline-none text-brand-midnight font-bold bg-brand-emerald/5 cursor-pointer transition-all">
-                    <option value="" disabled selected>Choose your plan...</option>
-                    <option value="essential">Essential - ₦30,000/mo</option>
-                    <option value="accelerated">Accelerated - ₦40,000/mo</option>
-                    <option value="vip">VIP Immersive - ₦75,000/mo</option>
-                  </select>
-                </div>
-                <div class="flex gap-3">
-                  <button type="button" onclick="prevStep(2, 1)" class="px-6 py-4 bg-slate-100 text-slate-600 font-bold rounded-xl hover:bg-slate-200 transition-colors"><i class="fa-solid fa-arrow-left"></i></button>
-                  <button type="submit" id="submitBtn" class="flex-1 py-4 bg-brand-gold text-brand-midnight font-bold rounded-xl hover:bg-brand-gold-light transition-all shadow-lg active:scale-[0.98]">Pay Securely</button>
-                </div>
-              </div>
-            </form>
+          <div class="h-3 w-full bg-slate-200 rounded-full overflow-hidden">
+            <div class="h-full bg-gradient-to-r from-brand-emerald to-brand-gold w-full animate-pulse"></div>
           </div>
         </div>
       </div>
@@ -173,51 +139,310 @@
   </div>
 </section>
 
-<footer class="bg-white border-t border-slate-100 py-12">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    <p class="text-sm text-slate-400 font-medium">© 2026 Arab Community of Lagos. All rights reserved.</p>
+<section class="py-20 bg-slate-50 border-y border-slate-200">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16 reveal-up">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-brand-midnight mb-4"><span class="lang-en">How It Works: The Transformation Path</span><span class="lang-ar">كيف تعمل: مسار التحول</span></h2>
+    </div>
+
+    <div class="relative border-l-2 border-brand-gold/30 ml-6 md:ml-1/2 space-y-12 pb-8">
+      
+      <div class="relative pl-8 reveal-up">
+        <div class="absolute w-6 h-6 bg-brand-gold rounded-full -left-[13px] border-4 border-slate-50 flex items-center justify-center"></div>
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+          <span class="text-sm font-bold text-brand-emerald uppercase tracking-wider mb-2 block"><span class="lang-en">Milestone 1 (Months 1-4)</span><span class="lang-ar">المرحلة الأولى (الأشهر 1-4)</span></span>
+          <h3 class="font-heading text-xl font-bold text-brand-midnight mb-3"><span class="lang-en">Perfecting reading skills</span><span class="lang-ar">إتقان مهارات القراءة</span></h3>
+          <p class="text-slate-600 text-sm mb-3"><strong class="text-brand-midnight"><span class="lang-en">What you learn:</span><span class="lang-ar">ما تتعلمه:</span></strong> <span class="lang-en">Foundational pronunciation, reading mechanics, and core vocabulary blocks.</span><span class="lang-ar">النطق الأساسي، آليات القراءة، ومجموعات المفردات الأساسية.</span></p>
+          <p class="text-slate-600 text-sm"><strong class="text-brand-midnight"><span class="lang-en">What you achieve:</span><span class="lang-ar">ما تحققه:</span></strong> <span class="lang-en">The ability to read Arabic texts fluidly and without hesitation.</span><span class="lang-ar">القدرة على قراءة النصوص العربية بطلاقة وبدون تردد.</span></p>
+        </div>
+      </div>
+
+      <div class="relative pl-8 reveal-up">
+        <div class="absolute w-6 h-6 bg-brand-gold rounded-full -left-[13px] border-4 border-slate-50 flex items-center justify-center"></div>
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+          <span class="text-sm font-bold text-brand-emerald uppercase tracking-wider mb-2 block"><span class="lang-en">Milestone 2 (Months 5-8)</span><span class="lang-ar">المرحلة الثانية (الأشهر 5-8)</span></span>
+          <h3 class="font-heading text-xl font-bold text-brand-midnight mb-3"><span class="lang-en">Memorisation of transcripts</span><span class="lang-ar">حفظ النصوص</span></h3>
+          <p class="text-slate-600 text-sm mb-3"><strong class="text-brand-midnight"><span class="lang-en">What you learn:</span><span class="lang-ar">ما تتعلمه:</span></strong> <span class="lang-en">Common conversational frameworks, situational dialogues, and idiom internalization.</span><span class="lang-ar">أطر المحادثة الشائعة، الحوارات الظرفية، واستيعاب التعبيرات الاصطلاحية.</span></p>
+          <p class="text-slate-600 text-sm"><strong class="text-brand-midnight"><span class="lang-en">What you achieve:</span><span class="lang-ar">ما تحققه:</span></strong> <span class="lang-en">Instant recall of responses without getting stuck translating in your head.</span><span class="lang-ar">استرجاع فوري للردود دون التعثر في الترجمة داخل رأسك.</span></p>
+        </div>
+      </div>
+
+      <div class="relative pl-8 reveal-up">
+        <div class="absolute w-6 h-6 bg-brand-emerald rounded-full -left-[13px] border-4 border-slate-50 flex items-center justify-center"></div>
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-brand-emerald/20 relative overflow-hidden">
+          <span class="text-sm font-bold text-brand-emerald uppercase tracking-wider mb-2 block"><span class="lang-en">Milestone 3 (Months 9-12)</span><span class="lang-ar">المرحلة الثالثة (الأشهر 9-12)</span></span>
+          <h3 class="font-heading text-xl font-bold text-brand-midnight mb-3"><span class="lang-en">Real conversation fluency</span><span class="lang-ar">طلاقة المحادثة الحقيقية</span></h3>
+          <p class="text-slate-600 text-sm mb-3"><strong class="text-brand-midnight"><span class="lang-en">What you learn:</span><span class="lang-ar">ما تتعلمه:</span></strong> <span class="lang-en">Unscripted interactions, active listening, and spontaneous thought expression.</span><span class="lang-ar">التفاعلات غير المكتوبة، الاستماع النشط، والتعبير العفوي عن الأفكار.</span></p>
+          <p class="text-slate-600 text-sm"><strong class="text-brand-midnight"><span class="lang-en">What you achieve:</span><span class="lang-ar">ما تحققه:</span></strong> <span class="lang-en">Holding confident, flowing exchange conversations with native Arabs.</span><span class="lang-ar">إجراء محادثات متبادلة واثقة ومتدفقة مع العرب الأصليين.</span></p>
+        </div>
+      </div>
+
+    </div>
   </div>
+</section>
+
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 text-center reveal-up">
+    <div class="grid md:grid-cols-2 gap-12 text-start">
+      <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200">
+        <h3 class="text-xl font-bold text-red-600 mb-4 uppercase tracking-wide text-sm"><i class="fa-solid fa-lock mr-2"></i><span class="lang-en">The Challenge: Confidence in speaking</span><span class="lang-ar">التحدي: الثقة في التحدث</span></h3>
+        <ul class="space-y-4 text-slate-600">
+          <li><i class="fa-solid fa-xmark text-red-400 mr-2"></i> <span class="lang-en">Most students fear judgment and mistakes.</span><span class="lang-ar">يخشى معظم الطلاب الحكم والأخطاء.</span></li>
+          <li><i class="fa-solid fa-xmark text-red-400 mr-2"></i> <span class="lang-en">They get stuck translating in their head.</span><span class="lang-ar">يتعثرون في الترجمة داخل رؤوسهم.</span></li>
+          <li><i class="fa-solid fa-xmark text-red-400 mr-2"></i> <span class="lang-en">Without support, they never break through.</span><span class="lang-ar">بدون دعم، لا يحققون اختراقًا أبدًا.</span></li>
+        </ul>
+      </div>
+      
+      <div class="bg-brand-emerald/10 p-8 rounded-2xl border border-brand-emerald/30">
+        <h3 class="text-xl font-bold text-brand-emerald mb-4 uppercase tracking-wide text-sm"><i class="fa-solid fa-unlock mr-2"></i><span class="lang-en">Our Solution: Personalized encouragement</span><span class="lang-ar">الحل: التشجيع المخصص</span></h3>
+        <ul class="space-y-4 text-slate-700 font-medium">
+          <li><i class="fa-solid fa-check text-brand-emerald mr-2"></i> <span class="lang-en">Every session includes confidence-building moments.</span><span class="lang-ar">تتضمن كل جلسة لحظات بناء الثقة.</span></li>
+          <li><i class="fa-solid fa-check text-brand-emerald mr-2"></i> <span class="lang-en">We celebrate progress, no matter how small.</span><span class="lang-ar">نحتفل بالتقدم، مهما كان صغيراً.</span></li>
+          <li><i class="fa-solid fa-check text-brand-emerald mr-2"></i> <span class="lang-en">You get specific, actionable feedback (not judgment).</span><span class="lang-ar">تحصل على ملاحظات محددة وقابلة للتنفيذ (وليس حكمًا).</span></li>
+          <li><i class="fa-solid fa-check text-brand-emerald mr-2"></i> <span class="lang-en">Progressive challenges: small → medium → large conversations.</span><span class="lang-ar">تحديات تدريجية: محادثات صغيرة ← متوسطة ← كبيرة.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-20 bg-brand-surface border-y border-slate-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="flex flex-wrap justify-center gap-8 mb-16 bg-white p-8 rounded-2xl shadow-sm reveal-up border border-brand-gold/30">
+      <div class="text-center px-4">
+        <div class="text-3xl font-heading font-bold text-brand-emerald mb-2">Month 6</div>
+        <div class="text-sm font-bold text-slate-600 uppercase tracking-wide">Average student reaches conversational fluency</div>
+      </div>
+      <div class="w-px bg-slate-200 hidden md:block"></div>
+      <div class="text-center px-4">
+        <div class="text-3xl font-heading font-bold text-brand-emerald mb-2">92%</div>
+        <div class="text-sm font-bold text-slate-600 uppercase tracking-wide">Of students report increased speaking confidence</div>
+      </div>
+      <div class="w-px bg-slate-200 hidden md:block"></div>
+      <div class="text-center px-4">
+        <div class="text-3xl font-heading font-bold text-brand-emerald mb-2">30-Min</div>
+        <div class="text-sm font-bold text-slate-600 uppercase tracking-wide">Average conversation length by month 8</div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 reveal-up text-start">
+        <div class="flex text-brand-gold text-xs mb-4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <p class="text-slate-600 text-sm mb-6 leading-relaxed">"I used to get stuck in my head and panic when trying to string a sentence together. The progressive challenges completely removed that fear. Now I hold 30-minute conversations with native speakers!"</p>
+        <div class="font-bold text-brand-midnight text-sm">Fatima A.</div>
+        <div class="text-xs text-slate-400">Secondary Student, Lagos</div>
+      </div>
+      <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 reveal-up delay-100 text-start">
+        <div class="flex text-brand-gold text-xs mb-4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <p class="text-slate-600 text-sm mb-6 leading-relaxed">"Learning independently was so isolating. The voice note feedback showed me exactly how to sound native. I finally feel like I am participating in the language, not just reading it."</p>
+        <div class="font-bold text-brand-midnight text-sm">Umar T.</div>
+        <div class="text-xs text-slate-400">Self-Motivated Learner</div>
+      </div>
+      <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 reveal-up delay-200 text-start">
+        <div class="flex text-brand-gold text-xs mb-4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <p class="text-slate-600 text-sm mb-6 leading-relaxed">"The way they celebrate small wins kept me going. I went from avoiding Arabic speakers to actively seeking them out. I can finally express myself confidently without hesitation."</p>
+        <div class="font-bold text-brand-midnight text-sm">Zainab M.</div>
+        <div class="text-xs text-slate-400">University Student</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" class="py-24 bg-brand-midnight relative">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    
+    <div class="text-center mb-12 reveal-up">
+      <div class="inline-block bg-red-600/20 border border-red-500/50 text-red-400 font-bold px-6 py-2 rounded-full mb-6 animate-pulse">
+        🔥 <span class="lang-en">Only 5 spots available in next cohort (starting next week)</span><span class="lang-ar">يتبقى 5 مقاعد فقط في الدفعة القادمة</span>
+      </div>
+      <p class="text-brand-gold-light font-bold text-lg"><span class="lang-en">Early bird pricing available for 3 more days!</span><span class="lang-ar">أسعار التسجيل المبكر متاحة لـ 3 أيام أخرى!</span></p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center mt-8">
+      
+      <div class="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-sm reveal-up text-center flex flex-col h-full">
+        <h3 class="text-xl font-bold text-white mb-2">Entry-Level</h3>
+        <div class="text-3xl font-heading font-extrabold text-brand-gold mb-1">₦11,999<span class="text-sm text-slate-400 font-normal">/mo</span></div>
+        <p class="text-xs text-slate-400 mb-2">for 12 months = ₦143,988 total</p>
+        <div class="h-px bg-white/10 w-full my-6"></div>
+        <ul class="text-start space-y-4 text-slate-300 text-sm mb-8 flex-grow">
+          <li class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-emerald mt-1"></i> Monthly group calls (1x/month)</li>
+          <li class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-emerald mt-1"></i> Conversation practice materials</li>
+          <li class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-emerald mt-1"></i> Vocabulary lists & transcripts</li>
+          <li class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-emerald mt-1"></i> Access to learning portal</li>
+          <li class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-emerald mt-1"></i> 12-month access to all materials</li>
+        </ul>
+        <button class="w-full py-3 rounded-xl border border-brand-gold/30 text-brand-gold font-bold hover:bg-brand-gold hover:text-brand-midnight transition-colors mt-auto">Choose Entry-Level</button>
+      </div>
+
+      <div class="bg-white rounded-3xl p-8 shadow-[0_0_40px_rgba(212,175,55,0.15)] transform md:-translate-y-4 reveal-up text-center relative border-2 border-brand-gold flex flex-col h-full">
+        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-brand-gold text-brand-midnight text-xs font-bold px-4 py-1 rounded-full uppercase tracking-widest">Most Popular</div>
+        <h3 class="text-xl font-bold text-brand-midnight mb-2">Signature</h3>
+        <div class="text-4xl font-heading font-extrabold text-brand-midnight mb-1">₦24,999<span class="text-sm text-slate-500 font-normal">/mo</span></div>
+        <p class="text-xs text-slate-500 mb-2">for 12 months = ₦299,988 total</p>
+        <div class="h-px bg-slate-200 w-full my-6"></div>
+        <ul class="text-start space-y-4 text-slate-600 text-sm mb-8 font-medium flex-grow">
+          <li class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-emerald mt-1"></i> <strong>All Entry-Level features</strong></li>
+          <li class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-emerald mt-1"></i> 2x monthly 1-on-1 coaching calls</li>
+          <li class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-emerald mt-1"></i> Voice note feedback on your practice</li>
+          <li class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-emerald mt-1"></i> Community support group</li>
+          <li class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-emerald mt-1"></i> Lifetime access to materials</li>
+        </ul>
+        <button class="w-full py-4 rounded-xl bg-brand-gold text-brand-midnight font-bold hover:bg-black hover:text-brand-gold transition-colors shadow-md mt-auto">Choose Signature</button>
+      </div>
+
+      <div class="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-sm reveal-up text-center flex flex-col h-full">
+        <h3 class="text-xl font-bold text-white mb-2">Premium</h3>
+        <div class="text-3xl font-heading font-extrabold text-brand-gold mb-1">₦34,999<span class="text-sm text-slate-400 font-normal">/mo</span></div>
+        <p class="text-xs text-slate-400 mb-2">for 12 months = ₦419,988 total</p>
+        <div class="h-px bg-white/10 w-full my-6"></div>
+        <ul class="text-start space-y-4 text-slate-300 text-sm mb-8 flex-grow">
+          <li class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-emerald mt-1"></i> <strong>All Signature features</strong></li>
+          <li class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-emerald mt-1"></i> Weekly 1-on-1 coaching calls</li>
+          <li class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-emerald mt-1"></i> Unlimited voice note feedback</li>
+          <li class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-emerald mt-1"></i> Priority support (fast responses)</li>
+          <li class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-emerald mt-1"></i> Lifetime access + future updates</li>
+        </ul>
+        <button class="w-full py-3 rounded-xl border border-brand-gold/30 text-brand-gold font-bold hover:bg-brand-gold hover:text-brand-midnight transition-colors mt-auto">Choose Premium</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="py-20 bg-white">
+  <div class="max-w-3xl mx-auto px-4">
+    <div class="text-center mb-12 reveal-up">
+      <h2 class="font-heading text-3xl font-bold text-brand-midnight">Frequently Asked Questions</h2>
+    </div>
+    
+    <div class="space-y-4 reveal-up">
+      <details class="group bg-brand-surface rounded-xl border border-slate-200 cursor-pointer">
+        <summary class="flex justify-between items-center font-bold text-brand-midnight p-5">
+          Q1: What if I'm a complete beginner? Do I need prior Arabic knowledge?
+          <i class="fa-solid fa-plus text-brand-emerald group-open:rotate-45 transition-transform"></i>
+        </summary>
+        <div class="faq-answer px-5 pb-5 text-slate-600 text-sm leading-relaxed">
+          <div>No prior knowledge needed. We assess your level and build from there. Entry-Level tier is perfect for beginners.</div>
+        </div>
+      </details>
+
+      <details class="group bg-brand-surface rounded-xl border border-slate-200 cursor-pointer">
+        <summary class="flex justify-between items-center font-bold text-brand-midnight p-5">
+          Q2: I'm busy with school/work. Can I keep up?
+          <i class="fa-solid fa-plus text-brand-emerald group-open:rotate-45 transition-transform"></i>
+        </summary>
+        <div class="faq-answer px-5 pb-5 text-slate-600 text-sm leading-relaxed">
+          <div>Absolutely. Entry and Signature tiers are designed for busy schedules. You set your practice pace; we guide you.</div>
+        </div>
+      </details>
+
+      <details class="group bg-brand-surface rounded-xl border border-slate-200 cursor-pointer">
+        <summary class="flex justify-between items-center font-bold text-brand-midnight p-5">
+          Q3: How much time do I need to commit per week?
+          <i class="fa-solid fa-plus text-brand-emerald group-open:rotate-45 transition-transform"></i>
+        </summary>
+        <div class="faq-answer px-5 pb-5 text-slate-600 text-sm leading-relaxed">
+          <div>Minimum 5 hours/week for Entry-Level. We provide flexible schedules—morning, afternoon, or evening sessions available.</div>
+        </div>
+      </details>
+
+      <details class="group bg-brand-surface rounded-xl border border-slate-200 cursor-pointer">
+        <summary class="flex justify-between items-center font-bold text-brand-midnight p-5">
+          Q4: What if I don't see progress after 3 months?
+          <i class="fa-solid fa-plus text-brand-emerald group-open:rotate-45 transition-transform"></i>
+        </summary>
+        <div class="faq-answer px-5 pb-5 text-slate-600 text-sm leading-relaxed">
+          <div>We guarantee progress or coaching adjustment. If you're not on track, we refine your plan at no extra cost.</div>
+        </div>
+      </details>
+
+      <details class="group bg-brand-surface rounded-xl border border-slate-200 cursor-pointer">
+        <summary class="flex justify-between items-center font-bold text-brand-midnight p-5">
+          Q5: Do I get access to materials after the 12 months end?
+          <i class="fa-solid fa-plus text-brand-emerald group-open:rotate-45 transition-transform"></i>
+        </summary>
+        <div class="faq-answer px-5 pb-5 text-slate-600 text-sm leading-relaxed">
+          <div>Yes. Entry/Signature get 12-month access + lifetime core materials. Premium gets lifetime access to everything including future updates.</div>
+        </div>
+      </details>
+
+      <details class="group bg-brand-surface rounded-xl border border-slate-200 cursor-pointer">
+        <summary class="flex justify-between items-center font-bold text-brand-midnight p-5">
+          Q6: Can I switch tiers if I want more support?
+          <i class="fa-solid fa-plus text-brand-emerald group-open:rotate-45 transition-transform"></i>
+        </summary>
+        <div class="faq-answer px-5 pb-5 text-slate-600 text-sm leading-relaxed">
+          <div>Yes. You can upgrade anytime. We'll pro-rate the difference.</div>
+        </div>
+      </details>
+
+      <details class="group bg-brand-surface rounded-xl border border-slate-200 cursor-pointer">
+        <summary class="flex justify-between items-center font-bold text-brand-midnight p-5">
+          Q7: What payment methods do you accept?
+          <i class="fa-solid fa-plus text-brand-emerald group-open:rotate-45 transition-transform"></i>
+        </summary>
+        <div class="faq-answer px-5 pb-5 text-slate-600 text-sm leading-relaxed">
+          <div>Bank transfer, Flutterwave, Paystack, USSD. We also offer 10% discount for bank transfer (no processing fees).</div>
+        </div>
+      </details>
+
+      <details class="group bg-brand-surface rounded-xl border border-slate-200 cursor-pointer">
+        <summary class="flex justify-between items-center font-bold text-brand-midnight p-5">
+          Q8: Do you offer a refund/guarantee?
+          <i class="fa-solid fa-plus text-brand-emerald group-open:rotate-45 transition-transform"></i>
+        </summary>
+        <div class="faq-answer px-5 pb-5 text-slate-600 text-sm leading-relaxed">
+          <div>100% refund within 14 days if not satisfied. Our process-based guarantee means we coach you until you reach the outcome.</div>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="py-24 bg-brand-emerald relative overflow-hidden text-center">
+  <div class="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PHBhdGggZD0iTTIwIDBoMjB2MjBIMjB6TTAgMjBoMjB2MjBIMHoiIGZpbGw9IiNmZmYiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg==')]"></div>
+  <div class="max-w-4xl mx-auto px-4 relative z-10 reveal-up">
+    
+    <h2 class="font-heading text-4xl md:text-5xl font-bold text-white mb-6">Ready to speak Arabic confidently?</h2>
+    <p class="text-emerald-50 text-lg mb-10 max-w-2xl mx-auto">Only 5 spots available in the next cohort. Lock in your early bird pricing before it expires.</p>
+    
+    <div class="flex flex-col sm:flex-row justify-center gap-4 flex-wrap">
+      <a href="#pricing" class="px-6 py-4 bg-white text-brand-midnight font-bold rounded-xl hover:bg-slate-100 transition-all shadow-lg text-center">Start with Entry-Level (₦11,999/month)</a>
+      <a href="#pricing" class="px-6 py-4 bg-brand-gold text-brand-midnight font-bold rounded-xl hover:bg-[#F3D56B] transition-all shadow-lg text-center border-2 border-brand-gold">Start with Signature (₦24,999/month)</a>
+      <a href="#pricing" class="px-6 py-4 bg-transparent border-2 border-white text-white font-bold rounded-xl hover:bg-white/10 transition-all shadow-lg text-center">Go Premium (₦34,999/month)</a>
+    </div>
+  </div>
+</section>
+
+<footer class="bg-brand-midnight text-slate-400 py-12 border-t border-white/10 text-center">
+  <p class="text-sm">&copy; 2026 Arab Community of Lagos. All Rights Reserved.</p>
+  <p class="mt-2 font-medium tracking-wide uppercase text-xs">Directed by Abubakr Solah</p>
 </footer>
 
 <script>
-  let ticking = false;
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      window.requestAnimationFrame(() => {
-        document.getElementById('navbar').classList.toggle('shadow-md', window.scrollY > 20);
-        ticking = false;
-      });
-      ticking = true;
+  // Language Toggle
+  function toggleLanguage() {
+    const htmlEl = document.documentElement;
+    if (htmlEl.getAttribute('lang') === 'en') {
+      htmlEl.setAttribute('lang', 'ar');
+      htmlEl.setAttribute('dir', 'rtl');
+    } else {
+      htmlEl.setAttribute('lang', 'en');
+      htmlEl.setAttribute('dir', 'ltr');
     }
-  });
-
-  function validateAndNext(curr, next) {
-    const inputs = document.getElementById('step' + curr).querySelectorAll('input[required], select[required]');
-    for (let i = 0; i < inputs.length; i++) { if (!inputs[i].checkValidity()) { inputs[i].reportValidity(); return; } }
-    document.getElementById('step' + curr).classList.remove('active');
-    document.getElementById('step' + next).classList.add('active');
-    updateProgress(next);
   }
 
-  function prevStep(curr, prev) {
-    document.getElementById('step' + curr).classList.remove('active');
-    document.getElementById('step' + prev).classList.add('active');
-    updateProgress(prev);
-  }
-
-  function updateProgress(step) {
-    document.getElementById('stepLabel').textContent = step === 1 ? 'Step 1: Details' : 'Step 2: Checkout';
-    document.getElementById('progressBar').style.width = step === 1 ? '50%' : '100%';
-  }
-
-  document.getElementById('courseApplicationForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const btn = document.getElementById('submitBtn');
-    btn.disabled = true;
-    btn.textContent = 'Processing...';
-    fetch('https://hook.eu1.make.com/hiyiax5py9qflvy9x4lwvq56xyk1n0gs', { method: 'POST', body: new FormData(this) });
-    setTimeout(() => { window.location.href = 'https://paystack.shop/pay/arablagos'; }, 1000);
-  });
+  // Scroll Reveal
+  const revealElements = document.querySelectorAll('.reveal-up');
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+    });
+  }, { threshold: 0.1 });
+  revealElements.forEach(el => revealObserver.observe(el));
 </script>
+
 </body>
 </html>
