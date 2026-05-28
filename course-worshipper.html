@@ -1,20 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" dir="ltr" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Practical Arabic for Worshippers | Arab Community of Lagos</title>
+  <title>Understanding Arabic for Worshippers | Arab Community of Lagos</title>
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+
   <script>
     tailwind.config = {
       theme: {
@@ -22,376 +18,505 @@
           colors: {
             brand: {
               emerald: '#046A38',
-              'emerald-dark': '#024222',
-              'emerald-light': '#0a8f4e',
+              'emerald-dark': '#034d28',
               gold: '#D4AF37',
               'gold-light': '#F3D56B',
               midnight: '#0B1623',
-              slate: '#1E293B',
               surface: '#F8FAFC',
             }
           },
           fontFamily: {
             heading: ['Outfit', 'sans-serif'],
             body: ['Plus Jakarta Sans', 'sans-serif'],
+            arabic: ['Cairo', 'sans-serif'],
           }
         }
       }
     }
   </script>
 
-  <!-- Custom Styles -->
   <style>
-    body {
-      background-color: #F8FAFC;
-      color: #1E293B;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      -webkit-font-smoothing: antialiased;
+    :root[lang="en"] .lang-ar { display: none !important; }
+    :root[lang="ar"] .lang-en { display: none !important; }
+    :root[lang="ar"] body, :root[lang="ar"] h1, :root[lang="ar"] h2, :root[lang="ar"] h3, :root[lang="ar"] p, :root[lang="ar"] span, :root[lang="ar"] a, :root[lang="ar"] button, :root[lang="ar"] li, :root[lang="ar"] div {
+      font-family: 'Cairo', sans-serif !important; letter-spacing: normal !important;
     }
     
-    /* ── Floating Label Inputs ── */
-    .floating-input-wrapper { position: relative; margin-bottom: 1.25rem; }
-    .floating-input {
-      width: 100%; padding: 1.25rem 1rem 0.5rem 1rem; border: 1px solid #E2E8F0;
-      border-radius: 0.75rem; background-color: #ffffff; outline: none;
-      transition: all 0.3s ease; font-size: 0.95rem;
-    }
-    .floating-input:focus {
-      border-color: var(--brand-emerald); box-shadow: 0 0 0 4px rgba(4, 106, 56, 0.1);
-    }
-    .floating-label {
-      position: absolute; left: 1rem; top: 50%; transform: translateY(-50%);
-      color: #64748B; font-size: 0.95rem; transition: all 0.3s ease; pointer-events: none;
-    }
-    .floating-input:focus ~ .floating-label,
-    .floating-input:not(:placeholder-shown) ~ .floating-label {
-      top: 0.5rem; transform: translateY(0); font-size: 0.7rem; font-weight: 600; color: #046A38;
-    }
-
-    /* Form Progress & Steps */
-    .form-step { display: none; opacity: 0; transform: translateX(20px); transition: all 0.4s ease; }
-    .form-step.active { display: block; opacity: 1; transform: translateX(0); }
-    .progress-bar-fill { transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+    .glass-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); }
+    .reveal-up { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
+    .reveal-up.visible { opacity: 1; transform: none; }
+    
+    .faq-answer { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.3s ease; }
+    .faq-answer > div { overflow: hidden; }
+    details[open] .faq-answer { grid-template-rows: 1fr; }
+    details > summary { list-style: none; }
+    details > summary::-webkit-details-marker { display: none; }
   </style>
-</head>
-<body class="antialiased">
 
-<!-- Simple Minimalist Nav -->
-<nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 h-20 flex items-center">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex justify-between items-center">
-    <a href="index.html" class="flex items-center gap-2 text-slate-500 hover:text-brand-emerald transition-colors font-medium text-sm">
-      <i class="fa-solid fa-arrow-left"></i> Back to Directory
+  <script>
+    if (localStorage.getItem('theme-lang') === 'ar') {
+      document.documentElement.setAttribute('lang', 'ar');
+      document.documentElement.setAttribute('dir', 'rtl');
+    }
+  </script>
+</head>
+<body class="bg-brand-surface text-slate-800 antialiased selection:bg-brand-gold selection:text-brand-midnight">
+
+<!-- Navigation -->
+<nav class="fixed w-full z-50 glass-nav shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
+    <a href="index.html" class="flex items-center gap-3">
+      <div class="w-10 h-10 bg-brand-emerald rounded-lg flex items-center justify-center text-brand-gold font-bold text-xl">
+        <i class="fa-solid fa-hands-praying"></i>
+      </div>
+      <span class="font-heading font-bold text-xl text-brand-midnight hidden sm:block">
+        <span class="lang-en">Arab Community of Lagos.</span><span class="lang-ar">مجتمع لاغوس العربي.</span>
+      </span>
     </a>
-    <span class="font-heading font-bold text-lg tracking-tight text-brand-midnight hidden sm:block">
-      Arab Community of Lagos<span class="text-brand-gold">.</span>
-    </span>
+    <div class="flex items-center gap-6">
+      <button onclick="toggleLanguage()" class="text-slate-600 hover:text-brand-gold font-bold text-sm flex items-center gap-2">
+        <i class="fa-solid fa-earth-africa"></i> <span class="lang-en">عربي</span><span class="lang-ar">English</span>
+      </button>
+      <a href="#pricing" class="px-6 py-2.5 rounded-full bg-brand-midnight text-brand-gold font-bold text-sm hover:bg-black transition-all">
+        <span class="lang-en">Enroll Now</span><span class="lang-ar">سجل الآن</span>
+      </a>
+    </div>
   </div>
 </nav>
 
-<!-- Course Hero -->
-<section class="pt-32 pb-16 bg-brand-midnight relative overflow-hidden">
-  <div class="absolute inset-0 z-0 bg-[url('background hero.jpeg')] bg-cover bg-center opacity-20 mix-blend-overlay"></div>
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    <div class="inline-block px-3 py-1 bg-brand-gold/20 border border-brand-gold/30 text-brand-gold text-xs font-bold uppercase tracking-widest rounded-full mb-4">
-      Spiritual Track
+<!-- SECTION 1: HERO / HOOK -->
+<section class="pt-32 pb-20 bg-brand-midnight text-white relative overflow-hidden">
+  <div class="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PHBhdGggZD0iTTIwIDBoMjB2MjBIMjB6TTAgMjBoMjB2MjBIMHoiIGZpbGw9IiNmZmYiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg==')]"></div>
+  <div class="max-w-4xl mx-auto px-4 text-center relative z-10 reveal-up">
+    <div class="inline-flex items-center gap-2 px-4 py-2 bg-brand-emerald/20 border border-brand-emerald/40 text-brand-emerald-light rounded-full text-xs font-bold uppercase tracking-widest mb-6">
+      <span class="lang-en">Track 08: Spiritual Growth</span><span class="lang-ar">المسار الثامن: النمو الروحي</span>
     </div>
-    <h1 class="font-heading text-4xl md:text-6xl font-extrabold text-white mb-4">Practical Arabic for Worshippers</h1>
-    <p class="text-slate-300 text-lg md:text-xl max-w-2xl leading-relaxed">
-      Transform your Salah from rhythmic repetition to profound dialogue. An intensive program designed to give you deep, real-time comprehension of your daily prayers.
+    <h1 class="font-heading text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
+      <span class="lang-en">Pray with Understanding: <span class="text-brand-gold">Experience Arabic in Worship Like Never Before.</span></span>
+      <span class="lang-ar">صلِّ بفهم: <span class="text-brand-gold">جرب اللغة العربية في العبادة كما لم تفعل من قبل.</span></span>
+    </h1>
+    <p class="text-lg md:text-xl text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed">
+      <span class="lang-en">In 3 months, unlock the meaning of every prayer, every Quranic verse, every word of worship — and connect with your faith in Arabic in a way you never have before.</span>
     </p>
+    <a href="#pricing" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-brand-gold text-brand-midnight font-bold rounded-xl hover:bg-white transition-all shadow-[0_0_20px_rgba(212,175,55,0.4)] text-lg">
+      <span class="lang-en">Start Understanding My Worship</span><span class="lang-ar">ابدأ بفهم عبادتي</span>
+      <i class="fa-solid fa-arrow-right rtl:rotate-180"></i>
+    </a>
   </div>
 </section>
 
-<!-- Split Layout -->
-<section class="py-16">
+<!-- SECTION 2 & 3: THE PAIN POINT & THE PROMISE -->
+<section class="py-20 bg-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex flex-col lg:flex-row gap-12 items-start">
-      
-      <!-- Left Content: Course Details -->
-      <div class="lg:w-7/12 space-y-12">
-        
-        <div>
-          <h2 class="font-heading text-3xl font-bold text-brand-midnight mb-4">Course Overview</h2>
-          <p class="text-slate-600 leading-relaxed">
-            For many, prayer is a physical action accompanied by memorized sounds. This track bridges the gap between the tongue and the heart. By focusing on the core, high-frequency vocabulary of the Qur'an and the structural grammar of Salah, you will learn to understand the recitation in real-time and experience a profound increase in Khushu' (spiritual focus).
-          </p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+      <div class="reveal-up">
+        <h2 class="font-heading text-3xl font-bold text-brand-midnight mb-6">
+          <span class="lang-en">Devotion in your heart, but a disconnect in your words.</span>
+        </h2>
+        <div class="space-y-4 text-slate-600 leading-relaxed mb-6">
+          <p><span class="lang-en">You pray five times a day. You recite the Quran. You stand in the house of Allah with devotion in your heart. But there's a disconnect. You mouth the Arabic words your parents taught you — but you don't truly understand what you're saying.</span></p>
+          <p><span class="lang-en">The Surah you recite in Fajr has been beautiful to you for years, but you've never known what it actually means. You hear the Imam's khutbah and catch maybe every tenth word. You stand in prayer feeling like an outsider to the very language of your faith.</span></p>
+          <p><span class="lang-en">The truth? Understanding Quranic Arabic doesn't require you to become a scholar. It requires a framework — and someone who can teach you a simplified, meaningful understanding of the Arabic you already encounter in worship.</span></p>
         </div>
-
-        <div>
-          <h3 class="font-heading text-2xl font-bold text-brand-midnight mb-6 border-b border-slate-200 pb-2">What You Will Master</h3>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-              <div class="w-10 h-10 bg-brand-gold/10 text-brand-gold rounded-lg flex items-center justify-center mb-4 text-xl">
-                <i class="fa-solid fa-hands-praying"></i>
-              </div>
-              <h4 class="font-bold text-brand-midnight mb-2">The Language of Salah</h4>
-              <p class="text-sm text-slate-600">Understand every word of the standard prayers, adhkar, and common supplications without needing to translate in your head.</p>
-            </div>
-            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-              <div class="w-10 h-10 bg-brand-gold/10 text-brand-gold rounded-lg flex items-center justify-center mb-4 text-xl">
-                <i class="fa-solid fa-book-quran"></i>
-              </div>
-              <h4 class="font-bold text-brand-midnight mb-2">High-Frequency Vocabulary</h4>
-              <p class="text-sm text-slate-600">Master the core linguistic roots and words that make up over 70% of the Qur'an, unlocking immediate textual comprehension.</p>
-            </div>
-            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-              <div class="w-10 h-10 bg-brand-gold/10 text-brand-gold rounded-lg flex items-center justify-center mb-4 text-xl">
-                <i class="fa-solid fa-ear-listen"></i>
-              </div>
-              <h4 class="font-bold text-brand-midnight mb-2">Auditory Processing</h4>
-              <p class="text-sm text-slate-600">Train your ear to decode the Imam's recitation in real-time during Tarawih and daily congregational prayers.</p>
-            </div>
-            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-              <div class="w-10 h-10 bg-brand-gold/10 text-brand-gold rounded-lg flex items-center justify-center mb-4 text-xl">
-                <i class="fa-solid fa-heart-pulse"></i>
-              </div>
-              <h4 class="font-bold text-brand-midnight mb-2">Semantic Connection</h4>
-              <p class="text-sm text-slate-600">Move beyond literal definitions to feel the true emotional and spiritual weight of classical Arabic phrasing.</p>
-            </div>
+        <div class="inline-block px-4 py-2 bg-slate-100 rounded-lg text-brand-emerald font-bold">
+          <span class="lang-en">That's what this course provides.</span>
+        </div>
+      </div>
+      <div class="bg-brand-surface p-8 rounded-3xl border border-slate-200 reveal-up">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="w-12 h-12 rounded-full bg-brand-emerald text-white flex items-center justify-center text-xl"><i class="fa-solid fa-book-quran"></i></div>
+          <h3 class="font-heading text-xl font-bold text-brand-midnight"><span class="lang-en">What You'll Achieve in 3 Months</span></h3>
+        </div>
+        <ul class="space-y-3 text-slate-600 mb-6 font-medium text-sm">
+          <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-emerald mt-1"></i> <span class="lang-en">Understand the meaning of every Surah you recite regularly</span></li>
+          <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-emerald mt-1"></i> <span class="lang-en">Know what every prayer phrase means — word by word</span></li>
+          <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-emerald mt-1"></i> <span class="lang-en">Follow the Imam's khutbah and grasp the core message</span></li>
+          <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-emerald mt-1"></i> <span class="lang-en">Experience a profound spiritual deepening through comprehension</span></li>
+        </ul>
+        
+        <div class="relative pt-4 mt-6 border-t border-slate-200">
+          <div class="flex justify-between mb-2">
+            <span class="text-xs font-bold text-slate-400">Month 0: Reciting without understanding</span>
+            <span class="text-xs font-bold text-brand-emerald">Month 3: Full Comprehension</span>
+          </div>
+          <div class="h-3 w-full bg-slate-200 rounded-full overflow-hidden">
+            <div class="h-full bg-gradient-to-r from-brand-emerald to-brand-gold w-full animate-pulse"></div>
+          </div>
+          <div class="flex justify-between mt-2 text-[10px] text-slate-400 font-bold uppercase tracking-widest px-2">
+            <span>M1: Phrases</span>
+            <span>M2: Surahs</span>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- SECTION 4: HOW IT WORKS (TRANSFORMATION PATH) -->
+<section class="py-20 bg-slate-50 border-y border-slate-200">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16 reveal-up">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-brand-midnight mb-4"><span class="lang-en">Your Path to Spiritual Understanding</span></h2>
+      <p class="text-slate-600"><span class="lang-en">3 months of focused, worship-specific learning.</span></p>
+    </div>
+
+    <div class="relative border-l-2 border-brand-gold/30 ml-6 md:ml-1/2 space-y-12 pb-8">
+      
+      <!-- Milestone 1 -->
+      <div class="relative pl-8 reveal-up">
+        <div class="absolute w-6 h-6 bg-brand-gold rounded-full -left-[13px] border-4 border-slate-50 flex items-center justify-center"></div>
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+          <span class="text-sm font-bold text-brand-emerald uppercase tracking-wider mb-2 block"><span class="lang-en">Month 1</span></span>
+          <h3 class="font-heading text-xl font-bold text-brand-midnight mb-3"><span class="lang-en">Quranic Vocabulary & Common Phrases</span></h3>
+          <p class="text-slate-600 text-sm mb-3"><strong class="text-brand-midnight">What You Learn:</strong> The 100 most common Quranic words, essential Islamic vocabulary, every phrase in Surah Al-Fatihah, and common duas explained word-by-word.</p>
+          <p class="text-slate-600 text-sm mb-3"><strong class="text-brand-midnight">What You Achieve:</strong> Recognize core vocabulary, know exactly what you are saying in the five daily prayers, and begin experiencing worship with conscious understanding.</p>
+          <div class="bg-slate-50 p-3 rounded-lg border border-slate-100 text-xs text-slate-500">
+            <strong>Support:</strong> Group learning sessions, visual vocabulary cards, audio pronunciation models, and daily recap exercises.
+          </div>
+        </div>
+      </div>
+
+      <!-- Milestone 2 -->
+      <div class="relative pl-8 reveal-up">
+        <div class="absolute w-6 h-6 bg-brand-gold rounded-full -left-[13px] border-4 border-slate-50 flex items-center justify-center"></div>
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+          <span class="text-sm font-bold text-brand-emerald uppercase tracking-wider mb-2 block"><span class="lang-en">Month 2</span></span>
+          <h3 class="font-heading text-xl font-bold text-brand-midnight mb-3"><span class="lang-en">Understand Common Islamic Terminology</span></h3>
+          <p class="text-slate-600 text-sm mb-3"><strong class="text-brand-midnight">What You Learn:</strong> Religious concepts central to Islam (Iman, Taqwa, Sadaqah), terms used in Quranic interpretation, and vocabulary specific to the five pillars.</p>
+          <p class="text-slate-600 text-sm mb-3"><strong class="text-brand-midnight">What You Achieve:</strong> Understand the theological depth behind concepts, recognize terms the Imam uses in sermons, and move from mechanical recitation to conscious engagement.</p>
+          <div class="bg-slate-50 p-3 rounded-lg border border-slate-100 text-xs text-slate-500">
+            <strong>Support:</strong> Concept connection guides, study circles with fellow worshippers, and audio examples of authentic usage.
+          </div>
+        </div>
+      </div>
+
+      <!-- Milestone 3 -->
+      <div class="relative pl-8 reveal-up">
+        <div class="absolute w-6 h-6 bg-brand-emerald rounded-full -left-[13px] border-4 border-slate-50 flex items-center justify-center"></div>
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-brand-emerald/20 relative overflow-hidden">
+          <span class="text-sm font-bold text-brand-emerald uppercase tracking-wider mb-2 block"><span class="lang-en">Month 3</span></span>
+          <h3 class="font-heading text-xl font-bold text-brand-midnight mb-3"><span class="lang-en">Full Comprehension During Worship</span></h3>
+          <p class="text-slate-600 text-sm mb-3"><strong class="text-brand-midnight">What You Learn:</strong> Complete meanings of your most recited Surahs, advanced concepts, and techniques to approach unfamiliar passages with understanding.</p>
+          <p class="text-slate-600 text-sm mb-3"><strong class="text-brand-midnight">What You Achieve:</strong> Comprehend entire Surahs, follow the khutbah's core teachings, and experience worship as a profound spiritual dialogue.</p>
+          <div class="bg-slate-50 p-3 rounded-lg border border-slate-100 text-xs text-slate-500">
+            <strong>Support:</strong> Group reflection circles, deep dive sessions on important Surahs, and community sharing.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6: THE BLOCKER & HOW WE SOLVE IT -->
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 text-center reveal-up">
+    <div class="bg-brand-midnight rounded-3xl p-8 md:p-12 border border-brand-gold/30 shadow-2xl relative overflow-hidden text-start">
+      <div class="absolute top-0 right-0 w-64 h-64 bg-brand-gold rounded-full mix-blend-screen opacity-5 blur-3xl"></div>
+      
+      <div class="grid md:grid-cols-2 gap-12 items-start relative z-10">
         <div>
-          <h3 class="font-heading text-2xl font-bold text-brand-midnight mb-6 border-b border-slate-200 pb-2">Target Audience</h3>
-          <ul class="space-y-3">
-            <li class="flex items-start gap-3">
-              <i class="fa-solid fa-circle-check text-brand-gold mt-1"></i>
-              <span class="text-slate-600">Every Muslim seeking to cure distraction in prayer and achieve genuine Khushu'.</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <i class="fa-solid fa-circle-check text-brand-gold mt-1"></i>
-              <span class="text-slate-600">Individuals who have memorized parts of the Qur'an but do not understand the meaning natively.</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <i class="fa-solid fa-circle-check text-brand-gold mt-1"></i>
-              <span class="text-slate-600">Lifelong learners wanting a direct, unmediated connection to Islamic texts.</span>
-            </li>
+          <h3 class="text-xl font-bold text-brand-gold-light mb-4 uppercase tracking-wide text-sm"><i class="fa-solid fa-circle-question mr-2"></i><span class="lang-en">The Blocker: Classical Arabic Complexity</span></h3>
+          <p class="text-slate-300 text-sm leading-relaxed mb-4">Quranic (Classical) Arabic is different from modern spoken Arabic. The grammar structures and word formations are complex. Without proper context and simplified explanation, classical Arabic feels impossible.</p>
+          <p class="text-slate-300 text-sm leading-relaxed mb-4">You sense it's different. The complexity feels overwhelming, so you give up trying to understand and resign yourself to recitation alone. Your spiritual connection remains limited.</p>
+        </div>
+        
+        <div class="space-y-4">
+          <h3 class="text-xl font-bold text-brand-emerald-light mb-4 uppercase tracking-wide text-sm"><i class="fa-solid fa-lightbulb mr-2"></i><span class="lang-en">Our Solution: Simplification & Audio-First Learning</span></h3>
+          <div class="bg-white/10 p-5 rounded-xl border border-white/20 backdrop-blur-md">
+            <strong class="text-white block text-sm mb-1">Simplification Framework</strong>
+            <p class="text-slate-200 text-xs">We break down complex grammar into simple patterns. Each lesson flows logically: word → meaning → how it's used in worship → why it matters spiritually.</p>
+          </div>
+          <div class="bg-white/10 p-5 rounded-xl border border-white/20 backdrop-blur-md">
+            <strong class="text-white block text-sm mb-1">Audio-First Learning</strong>
+            <p class="text-slate-200 text-xs">You hear the correct pronunciation before studying the meaning. Listening comprehension comes before reading complexity, building muscle memory naturally.</p>
+          </div>
+          <div class="bg-white/10 p-5 rounded-xl border border-white/20 backdrop-blur-md">
+            <strong class="text-white block text-sm mb-1">Spiritual Context</strong>
+            <p class="text-slate-200 text-xs">Every vocabulary lesson connects to your faith. Classical Arabic stops feeling impossible and becomes a doorway to spiritual depth.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 7: PROOF & SOCIAL PROOF -->
+<section class="py-20 bg-brand-surface border-y border-slate-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16 reveal-up">
+      <h2 class="font-heading text-3xl font-bold text-brand-midnight mb-4"><span class="lang-en">Join 95+ Nigerian Worshippers on a Journey to Understanding</span></h2>
+      <p class="text-slate-600 font-medium max-w-2xl mx-auto">100% of students report greater understanding of their daily prayers. Trusted by worshippers across Lagos, Abuja, Kano, and beyond.</p>
+    </div>
+
+    <!-- Testimonials -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+      <div class="bg-white p-8 rounded-2xl shadow-sm border border-brand-emerald/20 reveal-up text-start relative overflow-hidden">
+        <i class="fa-solid fa-quote-right absolute top-6 right-6 text-brand-emerald/5 text-6xl"></i>
+        <div class="flex text-brand-gold text-xs mb-4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <p class="text-slate-600 text-sm mb-6 leading-relaxed">"For 40 years, I've prayed five times daily. But I never truly knew what I was saying. My children would ask me what a Surah meant and I had no answer. The Entry-Level course was exactly what I needed. By month 2, I could understand Surah Al-Fatihah word by word. My worship became conscious. I now teach my grandchildren what the Surahs mean."</p>
+        <div class="font-bold text-brand-midnight text-sm">Mr. Olawale</div>
+        <div class="text-xs text-slate-400">Worshipper, Family Man, Lagos</div>
+        <div class="mt-4 pt-4 border-t border-slate-100">
+          <ul class="text-xs text-brand-emerald-dark space-y-1 font-medium">
+            <li><i class="fa-solid fa-check mr-1"></i> Understands every daily prayer phrase</li>
+            <li><i class="fa-solid fa-check mr-1"></i> Experiences worship with conscious engagement</li>
           </ul>
         </div>
-
-        <!-- 3-Tier Pricing Section -->
-        <div>
-          <h3 class="font-heading text-2xl font-bold text-brand-midnight mb-6 border-b border-slate-200 pb-2">Tuition & Investment Options</h3>
-          
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center mt-8">
-            
-            <!-- Tier 1: Essential -->
-            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-shadow flex flex-col h-full">
-              <h4 class="font-bold text-slate-500 mb-1 uppercase tracking-wide text-xs">Essential</h4>
-              <div class="font-heading text-3xl font-bold text-brand-midnight mb-4">₦30k<span class="text-sm text-slate-400 font-medium">/mo</span></div>
-              <ul class="text-sm text-slate-600 space-y-3 mb-6 flex-1">
-                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-emerald mt-0.5"></i> Base Curriculum Access</li>
-                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-emerald mt-0.5"></i> Group Sessions</li>
-                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-emerald mt-0.5"></i> Standard Portal Access</li>
-              </ul>
-            </div>
-
-            <!-- Tier 2: Accelerated (The Decoy / Target) -->
-            <div class="bg-brand-midnight rounded-2xl p-8 border-2 border-brand-gold shadow-2xl flex flex-col relative transform md:-translate-y-4 z-10 h-[105%]">
-              <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand-gold text-brand-midnight text-[10px] font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-md whitespace-nowrap">
-                Most Popular
-              </div>
-              <h4 class="font-bold text-brand-gold mb-1 uppercase tracking-wide text-xs">Accelerated</h4>
-              <div class="font-heading text-4xl font-bold text-white mb-4">₦40k<span class="text-sm text-slate-400 font-medium">/mo</span></div>
-              <ul class="text-sm text-slate-200 space-y-4 mb-6 flex-1">
-                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-gold mt-0.5"></i> Everything in Essential</li>
-                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-gold mt-0.5"></i> Live Q&A and Assessments</li>
-                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-gold mt-0.5"></i> Sector-Specific Materials</li>
-                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-gold mt-0.5"></i> Official Certification</li>
-              </ul>
-            </div>
-
-            <!-- Tier 3: VIP Immersive (The Anchor) -->
-            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-shadow flex flex-col h-full">
-              <h4 class="font-bold text-slate-500 mb-1 uppercase tracking-wide text-xs">Immersive VIP</h4>
-              <div class="font-heading text-3xl font-bold text-brand-midnight mb-4">₦75k<span class="text-sm text-slate-400 font-medium">/mo</span></div>
-              <ul class="text-sm text-slate-600 space-y-3 mb-6 flex-1">
-                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-emerald mt-0.5"></i> Everything in Accelerated</li>
-                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-emerald mt-0.5"></i> 1-on-1 Monthly Coaching</li>
-                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-brand-emerald mt-0.5"></i> Priority Support Line</li>
-              </ul>
-            </div>
-
-          </div>
+      </div>
+      
+      <div class="bg-white p-8 rounded-2xl shadow-sm border border-brand-emerald/20 reveal-up delay-100 text-start relative overflow-hidden">
+        <i class="fa-solid fa-quote-right absolute top-6 right-6 text-brand-emerald/5 text-6xl"></i>
+        <div class="flex text-brand-gold text-xs mb-4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <p class="text-slate-600 text-sm mb-6 leading-relaxed">"I recited Arabic I didn't understand — the Quran felt distant despite being in my hands daily. The Premium tier gave me personalized coaching focused on Surahs that speak to my life questions. Understanding Arabic became understanding my faith more deeply. Now when I pray, every word carries weight and meaning. My spirituality has awakened."</p>
+        <div class="font-bold text-brand-midnight text-sm">Brother Muiz</div>
+        <div class="text-xs text-slate-400">Young Adult Worshipper, Abuja</div>
+        <div class="mt-4 pt-4 border-t border-slate-100">
+          <ul class="text-xs text-brand-emerald-dark space-y-1 font-medium">
+            <li><i class="fa-solid fa-check mr-1"></i> Deeply understands important Surahs</li>
+            <li><i class="fa-solid fa-check mr-1"></i> Experiences profound spiritual connection</li>
+          </ul>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- SECTION 5: PRICING (ONE-TIME PAYMENTS) -->
+<section id="pricing" class="py-24 bg-brand-midnight relative">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    
+    <!-- SECTION 10: SCARCITY/URGENCY -->
+    <div class="text-center mb-12 reveal-up">
+      <div class="inline-flex items-center gap-2 bg-brand-emerald/20 border border-brand-emerald/50 text-brand-emerald-light font-bold px-6 py-3 rounded-full mb-4 animate-pulse">
+        <i class="fa-solid fa-moon"></i> <span class="lang-en">Ramadan is approaching. Begin your journey to understanding before the holiest month.</span>
+      </div>
+      <p class="text-slate-300 text-sm">New cohort limited to 12 worshippers to ensure an intimate learning community.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center mt-8">
+      
+      <!-- Entry Level -->
+      <div class="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-sm reveal-up text-center flex flex-col h-full">
+        <h3 class="text-xl font-bold text-white mb-2">Spiritual Foundation</h3>
+        <div class="text-3xl font-heading font-extrabold text-brand-gold mb-1">₦7,999</div>
+        <p class="text-xs text-slate-400 mb-6">One-time payment</p>
+        <div class="h-px bg-white/10 w-full mb-6"></div>
+        <ul class="text-start space-y-4 text-slate-300 text-sm mb-8 flex-grow">
+          <li class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-emerald mt-1"></i> Group learning sessions (3x weekly)</li>
+          <li class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-emerald mt-1"></i> Quranic vocabulary & terminology guides</li>
+          <li class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-emerald mt-1"></i> Surah meaning summaries</li>
+          <li class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-emerald mt-1"></i> Audio pronunciation models</li>
+          <li class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-emerald mt-1"></i> 3 months of access + Community group</li>
+        </ul>
+        <button class="w-full py-3 rounded-xl border border-brand-gold/30 text-brand-gold font-bold hover:bg-brand-gold hover:text-brand-midnight transition-colors mt-auto">Choose Entry-Level</button>
       </div>
 
-      <!-- Right Content: The Sticky Application Form with Payment -->
-      <div class="lg:w-5/12 lg:sticky lg:top-28">
-        <div class="bg-white rounded-2xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] border border-slate-200 overflow-hidden">
-          
-          <div class="bg-brand-midnight p-6 text-center border-b-4 border-brand-gold">
-            <h3 class="font-heading text-2xl font-bold text-white">Enroll in this Track</h3>
-            <p class="text-brand-gold text-sm font-medium mt-1">Living Arabic for Worshippers</p>
-          </div>
+      <!-- Signature (Highlighted) -->
+      <div class="bg-white rounded-3xl p-8 shadow-[0_0_40px_rgba(212,175,55,0.15)] transform md:-translate-y-4 reveal-up text-center relative border-2 border-brand-gold flex flex-col h-full">
+        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-brand-gold text-brand-midnight text-xs font-bold px-4 py-1 rounded-full uppercase tracking-widest">Most Popular</div>
+        <h3 class="text-xl font-bold text-brand-midnight mb-2">Spiritual Awakening</h3>
+        <div class="text-4xl font-heading font-extrabold text-brand-midnight mb-1">₦11,999</div>
+        <p class="text-xs text-slate-500 mb-6">One-time payment</p>
+        <div class="h-px bg-slate-200 w-full mb-6"></div>
+        <ul class="text-start space-y-4 text-slate-600 text-sm mb-8 font-medium flex-grow">
+          <li class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-emerald mt-1"></i> <strong>All Entry-Level features</strong></li>
+          <li class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-emerald mt-1"></i> 2x weekly specialized small group sessions</li>
+          <li class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-emerald mt-1"></i> Concept connection coaching</li>
+          <li class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-emerald mt-1"></i> Personalized Surah selection</li>
+          <li class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-emerald mt-1"></i> Lifetime access + Bonus Duas guide</li>
+        </ul>
+        <button class="w-full py-4 rounded-xl bg-brand-gold text-brand-midnight font-bold hover:bg-black hover:text-brand-gold transition-colors shadow-md mt-auto">Choose Signature</button>
+      </div>
 
-          <div class="p-8">
-            <!-- Progress Tracker -->
-            <div class="mb-8">
-              <div class="flex justify-between text-xs font-bold text-slate-400 mb-2 uppercase tracking-wider">
-                <span id="stepLabel" class="text-brand-emerald">Step 1: Details</span>
-                <span id="stepPercent">50%</span>
-              </div>
-              <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
-                <div id="progressBar" class="progress-bar-fill h-full bg-brand-emerald rounded-full" style="width:50%"></div>
-              </div>
-            </div>
-
-            <form id="courseApplicationForm">
-              <!-- Hidden input to lock the track automatically -->
-              <input type="hidden" name="inquiry_type" value="Living Arabic for Worshippers">
-
-              <!-- STEP 1: Academic Profile & Details -->
-              <div id="step1" class="form-step active">
-                <div class="floating-input-wrapper">
-                  <input type="text" id="fname" name="first_name" class="floating-input peer" placeholder=" " required>
-                  <label for="fname" class="floating-label">Full Name *</label>
-                </div>
-                
-                <div class="grid grid-cols-2 gap-3 mb-1.5">
-                  <div class="floating-input-wrapper mb-0">
-                    <input type="email" id="email" name="email" class="floating-input peer" placeholder=" " required>
-                    <label for="email" class="floating-label">Email Address *</label>
-                  </div>
-                  <div class="floating-input-wrapper mb-0">
-                    <input type="tel" id="phone" name="Phone_number" class="floating-input peer" placeholder=" " required>
-                    <label for="phone" class="floating-label">Phone Number *</label>
-                  </div>
-                </div>
-
-                <div class="mb-4 mt-2">
-                  <select name="arabic_level" required class="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:border-brand-emerald outline-none text-slate-700 text-sm font-medium appearance-none bg-white relative cursor-pointer" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%231E293B%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: right 1rem top 50%; background-size: 0.65rem auto;">
-                    <option value="" disabled selected>Current Arabic Level *</option>
-                    <option value="beginner">Beginner (Alphabet / Basic words)</option>
-                    <option value="intermediate">Intermediate (Can read, limited vocabulary)</option>
-                    <option value="advanced">Advanced (Conversational but not fluent)</option>
-                  </select>
-                </div>
-
-                <div class="floating-input-wrapper mb-6">
-                  <textarea id="goal" name="primary_goal" class="floating-input peer h-20 resize-none" placeholder=" " required></textarea>
-                  <label for="goal" class="floating-label !top-4">What is your primary goal for this track? *</label>
-                </div>
-                
-                <button type="button" onclick="validateAndNext(1, 2)" class="w-full py-4 bg-brand-midnight text-white font-bold rounded-xl hover:bg-brand-emerald transition-colors shadow-md flex items-center justify-center gap-2 group">
-                  Continue to Selection <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
-                </button>
-              </div>
-
-              <!-- STEP 2: Checkout Review -->
-              <div id="step2" class="form-step">
-                
-                <!-- The Choice Selection -->
-                <div class="mb-6">
-                  <label class="block text-sm font-bold text-slate-700 mb-3">Select Your Tuition Plan *</label>
-                  <select name="selected_tier" required class="w-full px-4 py-4 rounded-xl border-2 border-brand-emerald/30 focus:border-brand-emerald focus:ring-4 focus:ring-brand-emerald/10 outline-none text-brand-midnight font-bold bg-brand-emerald/5 appearance-none relative cursor-pointer" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%231E293B%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: right 1rem top 50%; background-size: 0.85rem auto;">
-                    <option value="" disabled selected>Choose your plan...</option>
-                    <option value="essential">Essential Plan - ₦30,000/mo</option>
-                    <option value="accelerated">Accelerated Plan (Recommended) - ₦40,000/mo</option>
-                    <option value="vip">Immersive VIP Plan - ₦75,000/mo</option>
-                  </select>
-                </div>
-
-                <div class="bg-brand-emerald/5 border border-brand-emerald/20 rounded-xl p-5 mb-6">
-                  <h4 class="font-heading font-bold text-brand-midnight mb-1">Application Ready</h4>
-                  <p class="text-xs text-slate-600 leading-relaxed">
-                    By proceeding to payment, your application will be submitted for processing. You can manage or upgrade your tier inside your portal at any time.
-                  </p>
-                </div>
-
-                <div class="mb-6">
-                  <label class="flex items-start gap-3 cursor-pointer group">
-                    <input type="checkbox" name="terms_agreed" class="mt-1 w-5 h-5 rounded border-slate-300 text-brand-emerald focus:ring-brand-emerald" required>
-                    <span class="text-xs text-slate-600 group-hover:text-brand-midnight transition-colors leading-relaxed">
-                      I agree to the <a href="#" class="text-brand-emerald underline">Terms of Service</a> and confirm my application details are accurate.
-                    </span>
-                  </label>
-                </div>
-
-                <div class="flex gap-3">
-                  <button type="button" onclick="prevStep(2, 1)" class="px-5 py-4 bg-slate-100 text-slate-600 font-bold rounded-xl hover:bg-slate-200 transition-colors"><i class="fa-solid fa-arrow-left"></i></button>
-                  <button type="submit" id="submitBtn" class="flex-1 py-4 bg-brand-gold text-brand-midnight font-bold rounded-xl hover:bg-brand-gold-light transition-all shadow-md flex items-center justify-center gap-2">
-                    <span id="btnText">Pay Securely</span>
-                    <i class="fa-solid fa-lock" id="btnIcon"></i>
-                  </button>
-                </div>
-              </div>
-
-            </form>
-          </div>
-        </div>
+      <!-- Premium -->
+      <div class="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-sm reveal-up text-center flex flex-col h-full">
+        <h3 class="text-xl font-bold text-white mb-2">Spiritual Mastery</h3>
+        <div class="text-3xl font-heading font-extrabold text-brand-gold mb-1">₦17,999</div>
+        <p class="text-xs text-slate-400 mb-6">One-time payment</p>
+        <div class="h-px bg-white/10 w-full mb-6"></div>
+        <ul class="text-start space-y-4 text-slate-300 text-sm mb-8 flex-grow">
+          <li class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-emerald mt-1"></i> <strong>All Signature features</strong></li>
+          <li class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-emerald mt-1"></i> Monthly 1-on-1 guidance sessions</li>
+          <li class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-emerald mt-1"></i> Advanced Islamic concepts analysis</li>
+          <li class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-emerald mt-1"></i> Family-friendly teaching resources</li>
+          <li class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-emerald mt-1"></i> Lifetime access + Personal certificate</li>
+        </ul>
+        <button class="w-full py-3 rounded-xl border border-brand-gold/30 text-brand-gold font-bold hover:bg-brand-gold hover:text-brand-midnight transition-colors mt-auto">Choose Premium</button>
       </div>
 
     </div>
   </div>
 </section>
 
-<footer class="bg-white border-t border-slate-200 py-8 mt-12">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    <p class="text-sm text-slate-500">© 2026 Arab Community of Lagos. All rights reserved.</p>
+<!-- SECTION 8: FAQ -->
+<section class="py-20 bg-white">
+  <div class="max-w-3xl mx-auto px-4">
+    <div class="text-center mb-12 reveal-up">
+      <h2 class="font-heading text-3xl font-bold text-brand-midnight">Frequently Asked Questions</h2>
+    </div>
+    
+    <div class="space-y-4 reveal-up">
+      <details class="group bg-brand-surface rounded-xl border border-slate-200 cursor-pointer">
+        <summary class="flex justify-between items-center font-bold text-brand-midnight p-5">
+          Q1: I don't speak any Arabic. Can I still understand this course?
+          <i class="fa-solid fa-plus text-brand-emerald group-open:rotate-45 transition-transform"></i>
+        </summary>
+        <div class="faq-answer px-5 pb-5 text-slate-600 text-sm leading-relaxed">
+          <div>Absolutely. This course is designed for Arabic learners at all levels. We start from zero Arabic knowledge. Audio pronunciation guides help you learn to recognize sounds. Written meanings are provided in English. No prior Arabic knowledge required.</div>
+        </div>
+      </details>
+
+      <details class="group bg-brand-surface rounded-xl border border-slate-200 cursor-pointer">
+        <summary class="flex justify-between items-center font-bold text-brand-midnight p-5">
+          Q2: I'm not Muslim. Can I still take this course to understand Islamic Arabic?
+          <i class="fa-solid fa-plus text-brand-emerald group-open:rotate-45 transition-transform"></i>
+        </summary>
+        <div class="faq-answer px-5 pb-5 text-slate-600 text-sm leading-relaxed">
+          <div>Yes. This course is open to anyone interested in understanding Quranic and Islamic Arabic from a linguistic and cultural perspective. Many take it for cultural understanding, academic interest, or interfaith dialogue.</div>
+        </div>
+      </details>
+
+      <details class="group bg-brand-surface rounded-xl border border-slate-200 cursor-pointer">
+        <summary class="flex justify-between items-center font-bold text-brand-midnight p-5">
+          Q3: Which Surahs will we cover?
+          <i class="fa-solid fa-plus text-brand-emerald group-open:rotate-45 transition-transform"></i>
+        </summary>
+        <div class="faq-answer px-5 pb-5 text-slate-600 text-sm leading-relaxed">
+          <div>Entry and Signature focus on the Surahs you recite most often: Al-Fatihah, Yaseen, Maryam, Al-Kahf, and others commonly recited in daily prayers. Premium students customize their Surah selections based on personal spiritual interest.</div>
+        </div>
+      </details>
+
+      <details class="group bg-brand-surface rounded-xl border border-slate-200 cursor-pointer">
+        <summary class="flex justify-between items-center font-bold text-brand-midnight p-5">
+          Q4: How is this different from Tafsir (Quranic interpretation)?
+          <i class="fa-solid fa-plus text-brand-emerald group-open:rotate-45 transition-transform"></i>
+        </summary>
+        <div class="faq-answer px-5 pb-5 text-slate-600 text-sm leading-relaxed">
+          <div>This course focuses on language comprehension — understanding what each word means. Tafsir is theological interpretation — deeper spiritual analysis. We provide the language foundation; Tafsir deepens the theology. Many students take both.</div>
+        </div>
+      </details>
+      
+      <details class="group bg-brand-surface rounded-xl border border-slate-200 cursor-pointer">
+        <summary class="flex justify-between items-center font-bold text-brand-midnight p-5">
+          Q5: Can I bring my family members to the group sessions?
+          <i class="fa-solid fa-plus text-brand-emerald group-open:rotate-45 transition-transform"></i>
+        </summary>
+        <div class="faq-answer px-5 pb-5 text-slate-600 text-sm leading-relaxed">
+          <div>Yes. Entry and Signature tiers include family-friendly group sessions. Many families attend together. We also provide family materials so you can teach children what you're learning.</div>
+        </div>
+      </details>
+
+      <details class="group bg-brand-surface rounded-xl border border-slate-200 cursor-pointer">
+        <summary class="flex justify-between items-center font-bold text-brand-midnight p-5">
+          Q6: Is there a specific Islamic school or tradition taught?
+          <i class="fa-solid fa-plus text-brand-emerald group-open:rotate-45 transition-transform"></i>
+        </summary>
+        <div class="faq-answer px-5 pb-5 text-slate-600 text-sm leading-relaxed">
+          <div>No. This course teaches Quranic Arabic itself — the language used in the Quran. It doesn't teach specific jurisprudential (fiqh) positions or interpretive schools. Worshippers from all Islamic traditions benefit equally.</div>
+        </div>
+      </details>
+
+      <details class="group bg-brand-surface rounded-xl border border-slate-200 cursor-pointer">
+        <summary class="flex justify-between items-center font-bold text-brand-midnight p-5">
+          Q7: What's the difference between listening and reading comprehension in this course?
+          <i class="fa-solid fa-plus text-brand-emerald group-open:rotate-45 transition-transform"></i>
+        </summary>
+        <div class="faq-answer px-5 pb-5 text-slate-600 text-sm leading-relaxed">
+          <div>Both are covered. You'll hear the Quran recited and understand what you hear. You'll also read Quranic Arabic and understand its written form. The audio-first approach helps you comprehend spoken Quranic Arabic first.</div>
+        </div>
+      </details>
+
+      <details class="group bg-brand-surface rounded-xl border border-slate-200 cursor-pointer">
+        <summary class="flex justify-between items-center font-bold text-brand-midnight p-5">
+          Q8: How long will the course materials remain accessible?
+          <i class="fa-solid fa-plus text-brand-emerald group-open:rotate-45 transition-transform"></i>
+        </summary>
+        <div class="faq-answer px-5 pb-5 text-slate-600 text-sm leading-relaxed">
+          <div>Entry and Signature students have lifetime access to core materials. Premium students have lifetime access including all future additions and updates as we expand the course.</div>
+        </div>
+      </details>
+
+      <details class="group bg-brand-surface rounded-xl border border-slate-200 cursor-pointer">
+        <summary class="flex justify-between items-center font-bold text-brand-midnight p-5">
+          Q9: What payment methods are accepted?
+          <i class="fa-solid fa-plus text-brand-emerald group-open:rotate-45 transition-transform"></i>
+        </summary>
+        <div class="faq-answer px-5 pb-5 text-slate-600 text-sm leading-relaxed">
+          <ul class="list-disc pl-5 mt-2 space-y-1">
+            <li>Bank transfer (10% discount)</li>
+            <li>Flutterwave</li>
+            <li>Paystack</li>
+            <li>USSD (mobile money)</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="group bg-brand-surface rounded-xl border border-slate-200 cursor-pointer">
+        <summary class="flex justify-between items-center font-bold text-brand-midnight p-5">
+          Q10: Can I share what I learn with my community?
+          <i class="fa-solid fa-plus text-brand-emerald group-open:rotate-45 transition-transform"></i>
+        </summary>
+        <div class="faq-answer px-5 pb-5 text-slate-600 text-sm leading-relaxed">
+          <div>Yes — absolutely. Many Premium students become informal teachers in their communities, sharing meanings with family and friends. We provide shareable resources and encourage this community learning.</div>
+        </div>
+      </details>
+    </div>
   </div>
+</section>
+
+<!-- SECTION 9: FINAL CTA -->
+<section class="py-24 bg-brand-emerald relative overflow-hidden text-center">
+  <div class="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PHBhdGggZD0iTTIwIDBoMjB2MjBIMjB6TTAgMjBoMjB2MjBIMHoiIGZpbGw9IiNmZmYiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg==')]"></div>
+  <div class="max-w-5xl mx-auto px-4 relative z-10 reveal-up">
+    
+    <h2 class="font-heading text-4xl md:text-5xl font-bold text-white mb-6"><span class="lang-en">Your Worship Deserves Your Understanding. Your Faith Deserves Your Comprehension.</span></h2>
+    <p class="text-emerald-50 text-lg mb-10 max-w-3xl mx-auto">Every word of the Quran, every phrase of prayer, every moment of worship is meant to touch your heart. In 3 months, the language barrier becomes a doorway to spiritual awakening.</p>
+    
+    <div class="flex flex-col md:flex-row justify-center gap-4 flex-wrap">
+      <a href="#pricing" class="px-6 py-4 bg-white text-brand-midnight font-bold rounded-xl hover:bg-slate-100 transition-all shadow-lg text-center flex flex-col justify-center">
+        <span>Start with Entry-Level</span>
+        <span class="text-xs font-normal text-slate-500 mt-1">₦7,999 (One-Time)</span>
+      </a>
+      <a href="#pricing" class="px-6 py-4 bg-brand-gold text-brand-midnight font-bold rounded-xl hover:bg-[#F3D56B] transition-all shadow-lg text-center border-2 border-brand-gold flex flex-col justify-center">
+        <span>Start with Signature</span>
+        <span class="text-xs font-medium text-brand-midnight/70 mt-1">₦11,999 (One-Time)</span>
+      </a>
+      <a href="#pricing" class="px-6 py-4 bg-transparent border-2 border-white text-white font-bold rounded-xl hover:bg-white/10 transition-all shadow-lg text-center flex flex-col justify-center">
+        <span>Go Premium</span>
+        <span class="text-xs font-normal text-emerald-100 mt-1">₦17,999 (One-Time)</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-brand-midnight text-slate-400 py-12 border-t border-white/10 text-center">
+  <p class="text-sm">&copy; 2026 Arab Community of Lagos. All Rights Reserved. Mastery Through Living Interaction.</p>
+  <p class="mt-2 font-medium tracking-wide uppercase text-xs">Directed by Abubakr Solah</p>
 </footer>
 
 <script>
-  // Form Navigation Logic
-  function validateAndNext(currentStep, nextStepNum) {
-    const currentDiv = document.getElementById('step' + currentStep);
-    const inputs = currentDiv.querySelectorAll('input[required], select[required], textarea[required]');
-    let isValid = true;
-    
-    inputs.forEach(input => {
-      if (!input.checkValidity()) {
-        input.reportValidity();
-        isValid = false;
-      }
+  // Language Toggle
+  function toggleLanguage() {
+    const htmlEl = document.documentElement;
+    if (htmlEl.getAttribute('lang') === 'en') {
+      htmlEl.setAttribute('lang', 'ar');
+      htmlEl.setAttribute('dir', 'rtl');
+    } else {
+      htmlEl.setAttribute('lang', 'en');
+      htmlEl.setAttribute('dir', 'ltr');
+    }
+  }
+
+  // Scroll Reveal
+  const revealElements = document.querySelectorAll('.reveal-up');
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
     });
-    
-    if (isValid) nextStep(currentStep, nextStepNum);
-  }
-
-  function nextStep(currentStep, nextStepNum) {
-    document.getElementById('step' + currentStep).classList.remove('active');
-    document.getElementById('step' + nextStepNum).classList.add('active');
-    updateProgress(nextStepNum);
-  }
-
-  function prevStep(currentStep, prevStepNum) {
-    document.getElementById('step' + currentStep).classList.remove('active');
-    document.getElementById('step' + prevStepNum).classList.add('active');
-    updateProgress(prevStepNum);
-  }
-
-  function updateProgress(step) {
-    document.getElementById('stepLabel').textContent = step === 1 ? 'Step 1: Details' : 'Step 2: Checkout';
-    document.getElementById('stepPercent').textContent = step === 1 ? '50%' : '100%';
-    document.getElementById('progressBar').style.width = step === 1 ? '50%' : '100%';
-  }
-
-  // Application Submission & Payment Redirect Logic
-  document.getElementById('courseApplicationForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const btn = document.getElementById('submitBtn');
-    const text = document.getElementById('btnText');
-    const icon = document.getElementById('btnIcon');
-    
-    text.textContent = 'Processing...';
-    icon.className = 'fa-solid fa-spinner fa-spin';
-    btn.disabled = true;
-    btn.classList.add('opacity-80', 'cursor-not-allowed');
-
-    const formData = new FormData(this);
-    
-    // Send data to webhook
-    fetch('https://hook.eu1.make.com/hiyiax5py9qflvy9x4lwvq56xyk1n0gs', { 
-      method: 'POST', body: formData 
-    }).catch(err => console.error('Webhook error:', err));
-    
-    // Redirect to Paystack after a brief delay to ensure webhook fires
-    setTimeout(() => { 
-      window.location.href = 'https://paystack.shop/pay/arablagos'; 
-    }, 1200);
-  });
+  }, { threshold: 0.1 });
+  revealElements.forEach(el => revealObserver.observe(el));
 </script>
 
 </body>
