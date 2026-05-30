@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Successful | Arab Community of Lagos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { brand: { emerald: '#046A38', gold: '#D4AF37', midnight: '#0B1623' } }, fontFamily: { heading: ['Outfit', 'sans-serif'], body: ['Plus Jakarta Sans', 'sans-serif'] } } }
+    }
+  </script>
+</head>
+<body class="bg-brand-surface font-body flex items-center justify-center min-h-screen p-4">
+
+  <div class="max-w-lg w-full bg-white rounded-3xl shadow-xl border border-slate-100 p-8 md:p-12 text-center">
+    <div class="w-20 h-20 bg-brand-emerald/10 rounded-full flex items-center justify-center mx-auto mb-6">
+      <i class="fa-solid fa-check-double text-4xl text-brand-emerald"></i>
+    </div>
+    
+    <h1 class="font-heading text-3xl font-bold text-brand-midnight mb-4">Enrollment Confirmed</h1>
+    <p class="text-slate-600 mb-8 leading-relaxed">
+      Assalamu alaikum! Your payment has been successfully processed. We have just dispatched an email containing your Student Portal login credentials and onboarding instructions.
+    </p>
+    
+    <div class="bg-slate-50 rounded-xl p-4 mb-8 border border-slate-100 text-sm text-slate-500 flex items-start gap-3 text-left">
+      <i class="fa-solid fa-circle-info text-brand-gold mt-1"></i>
+      <span>Please check your inbox (and spam/promotions folder) for an email from <strong>Arab Community of Lagos</strong>. It should arrive within the next 3 minutes.</span>
+    </div>
+    
+    <a href="index.html" class="inline-block w-full py-4 rounded-xl bg-brand-midnight text-brand-gold font-bold hover:bg-black transition-colors shadow-md">
+      Return to Homepage
+    </a>
+  </div>
+
+</body>
+</html>
